@@ -636,7 +636,7 @@ export default function AutomationPage() {
                     <FileText size={14} /> Output
                   </h4>
                   <p className="text-sm text-white/60">
-                    Generates a beautifully formatted PDF briefing with weather, calendar events, 
+                    Generates a PDF briefing with weather, calendar events, 
                     and curated news. Saved to ~/Documents/Aartiq/Briefings/
                   </p>
                 </div>

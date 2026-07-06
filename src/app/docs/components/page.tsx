@@ -739,7 +739,7 @@ export default function ComponentsPage() {
               </div>
               <p className="text-white/50 mb-6">
                 Full-featured mobile browser with WebView, AI chat, remote desktop control, 
-                and seamless sync with the desktop app via WebSocket.
+                and sync with the desktop app via WebSocket.
               </p>
               <div className="flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-2 text-white/40">

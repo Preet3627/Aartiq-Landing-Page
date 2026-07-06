@@ -134,7 +134,7 @@ const securityLayers = [
       "No automated execution of destructive commands",
       "QR approval ensures physical presence",
       "Mobile app confirms identity",
-      "User maintains full control at all times"
+      "User approval required for execution"
     ]
   }
 ];

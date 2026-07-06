@@ -431,7 +431,7 @@ export default function CloudSyncPage() {
             Permission <span className="text-white/20">Levels</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
-            Control what each connected device can access with granular permission levels.
+            Control what each connected device can access with configurable permission levels.
           </p>
         </div>
 

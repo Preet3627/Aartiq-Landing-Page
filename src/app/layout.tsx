@@ -76,7 +76,6 @@ export const metadata: Metadata = {
   },
   other: {
     'llms.txt': 'https://aartiq.vercel.app/llms.txt',
-    'google-site-verification': 'BgnZqDgMLWR3GCOKwPz1U1qh8PSetoVcIc7DsrEy_iA',
   },
   alternates: {
     canonical: 'https://aartiq.vercel.app',
@@ -85,7 +84,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'BgnZqDgMLWR3GCOKwPz1U1qh8PSetoVcIc7DsrEy_iA',
+    google: ['BgnZqDgMLWR3GCOKwPz1U1qh8PSetoVcIc7DsrEy_iA', 'BuPrG5ROAefeU7rpMmWDlhk1-zm2_Y3mHRgNy4XkDyU'],
     yandex: 'yandex-verification-code',
   },
     icons: [
