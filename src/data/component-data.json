@@ -1,0 +1,1546 @@
+{
+  "generated": "2026-07-06T13:35:08.934Z",
+  "version": "0.2.99",
+  "desktop": {
+    "total": 121,
+    "totalLines": 35496,
+    "byCategory": {
+      "components": 82,
+      "core": 0,
+      "automation": 0,
+      "service": 0,
+      "lib": 39
+    },
+    "components": [
+      {
+        "name": "AIAssistOverlay.tsx",
+        "path": "AIAssistOverlay.tsx",
+        "lines": 282,
+        "description": "Assist Overlay",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "helpers.ts",
+        "path": "AIChatSidebar/helpers.ts",
+        "lines": 37,
+        "description": "Helpers",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "types.ts",
+        "path": "AIChatSidebar/types.ts",
+        "lines": 150,
+        "description": "Types",
+        "tags": [
+          "AI",
+          "PDF",
+          "OCR"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AIChatSidebar.tsx",
+        "path": "AIChatSidebar.tsx",
+        "lines": 4975,
+        "description": "Chat Sidebar",
+        "tags": [
+          "React",
+          "Node.js",
+          "Core",
+          "Security",
+          "AI",
+          "Sync",
+          "Automation",
+          "PDF",
+          "OCR",
+          "Plugin",
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "AICommandQueue.tsx",
+        "path": "AICommandQueue.tsx",
+        "lines": 405,
+        "description": "Command Queue",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AIFeatureDemo.tsx",
+        "path": "AIFeatureDemo.tsx",
+        "lines": 473,
+        "description": "Feature Demo",
+        "tags": [
+          "React",
+          "AI",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AISetupGuide.tsx",
+        "path": "AISetupGuide.tsx",
+        "lines": 272,
+        "description": "Setup Guide",
+        "tags": [
+          "React",
+          "Node.js",
+          "Security",
+          "AI",
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AdminDashboard.tsx",
+        "path": "AdminDashboard.tsx",
+        "lines": 170,
+        "description": "Admin Dashboard",
+        "tags": [
+          "React",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ApiKeysSettings.tsx",
+        "path": "ApiKeysSettings.tsx",
+        "lines": 105,
+        "description": "Api Keys Settings",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AutofillSettings.tsx",
+        "path": "AutofillSettings.tsx",
+        "lines": 115,
+        "description": "Autofill Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AutomationSettings.tsx",
+        "path": "AutomationSettings.tsx",
+        "lines": 932,
+        "description": "Automation Settings",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "PDF",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "BackendSettings.tsx",
+        "path": "BackendSettings.tsx",
+        "lines": 78,
+        "description": "Backend Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "BrowserViewContainer.tsx",
+        "path": "BrowserViewContainer.tsx",
+        "lines": 128,
+        "description": "Browser View Container",
+        "tags": [
+          "React",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CapabilitiesPanel.tsx",
+        "path": "CapabilitiesPanel.tsx",
+        "lines": 75,
+        "description": "Capabilities Panel",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ClipboardManager.tsx",
+        "path": "ClipboardManager.tsx",
+        "lines": 86,
+        "description": "Clipboard Manager",
+        "tags": [
+          "React",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CloudSyncConsent.tsx",
+        "path": "CloudSyncConsent.tsx",
+        "lines": 46,
+        "description": "Cloud Sync Consent",
+        "tags": [
+          "React",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CodingDashboard.tsx",
+        "path": "CodingDashboard.tsx",
+        "lines": 205,
+        "description": "Coding Dashboard",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CrossAppOCR.tsx",
+        "path": "CrossAppOCR.tsx",
+        "lines": 374,
+        "description": "Cross App",
+        "tags": [
+          "React",
+          "AI",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "DinoGame.tsx",
+        "path": "DinoGame.tsx",
+        "lines": 243,
+        "description": "Dino Game",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "Documentation.tsx",
+        "path": "Documentation.tsx",
+        "lines": 272,
+        "description": "Documentation",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Sync",
+          "PDF",
+          "OCR",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ErrorBoundary.tsx",
+        "path": "ErrorBoundary.tsx",
+        "lines": 122,
+        "description": "Error Boundary",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ExtensionManager.tsx",
+        "path": "ExtensionManager.tsx",
+        "lines": 162,
+        "description": "Extension Manager",
+        "tags": [
+          "React",
+          "Node.js",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ExtensionSettings.tsx",
+        "path": "ExtensionSettings.tsx",
+        "lines": 187,
+        "description": "Extension Settings",
+        "tags": [
+          "React",
+          "Node.js",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "HistoryPanel.tsx",
+        "path": "HistoryPanel.tsx",
+        "lines": 49,
+        "description": "History Panel",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "InitializingOverlay.tsx",
+        "path": "InitializingOverlay.tsx",
+        "lines": 66,
+        "description": "Initializing Overlay",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "KeyboardShortcutSettings.tsx",
+        "path": "KeyboardShortcutSettings.tsx",
+        "lines": 103,
+        "description": "Keyboard Shortcut Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "LLMProviderSettings.tsx",
+        "path": "LLMProviderSettings.tsx",
+        "lines": 1061,
+        "description": "Provider Settings",
+        "tags": [
+          "React",
+          "AI",
+          "Sync",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "LandingPage.tsx",
+        "path": "LandingPage.tsx",
+        "lines": 216,
+        "description": "Landing Page",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Automation",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "LoginPrompt.tsx",
+        "path": "LoginPrompt.tsx",
+        "lines": 19,
+        "description": "Login Prompt",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "McpSettings.tsx",
+        "path": "McpSettings.tsx",
+        "lines": 525,
+        "description": "Mcp Settings",
+        "tags": [
+          "React",
+          "Node.js",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "MediaStudio.tsx",
+        "path": "MediaStudio.tsx",
+        "lines": 169,
+        "description": "Media Studio",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "MediaSuggestions.tsx",
+        "path": "MediaSuggestions.tsx",
+        "lines": 44,
+        "description": "Media Suggestions",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "NoNetworkGame.tsx",
+        "path": "NoNetworkGame.tsx",
+        "lines": 140,
+        "description": "No Network Game",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "P2PSyncManager.tsx",
+        "path": "P2PSyncManager.tsx",
+        "lines": 186,
+        "description": "Sync Manager",
+        "tags": [
+          "React",
+          "Node.js",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PDFGenerationPanel.tsx",
+        "path": "PDFGenerationPanel.tsx",
+        "lines": 359,
+        "description": "Generation Panel",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PDFWorkspace.tsx",
+        "path": "PDFWorkspace.tsx",
+        "lines": 267,
+        "description": "PDFWorkspace",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PasswordManager.tsx",
+        "path": "PasswordManager.tsx",
+        "lines": 383,
+        "description": "Password Manager",
+        "tags": [
+          "React",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PerformanceSettings.tsx",
+        "path": "PerformanceSettings.tsx",
+        "lines": 92,
+        "description": "Performance Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PermissionSettings.tsx",
+        "path": "PermissionSettings.tsx",
+        "lines": 698,
+        "description": "Permission Settings",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Automation",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PhoneCamera.tsx",
+        "path": "PhoneCamera.tsx",
+        "lines": 106,
+        "description": "Phone Camera",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PluginSettings.tsx",
+        "path": "PluginSettings.tsx",
+        "lines": 422,
+        "description": "Plugin Settings",
+        "tags": [
+          "React",
+          "Node.js",
+          "AI",
+          "Automation",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PresentonStudio.tsx",
+        "path": "PresentonStudio.tsx",
+        "lines": 396,
+        "description": "Presenton Studio",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ProxyFirewallManager.tsx",
+        "path": "ProxyFirewallManager.tsx",
+        "lines": 374,
+        "description": "Proxy Firewall Manager",
+        "tags": [
+          "React",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ProxySettings.tsx",
+        "path": "ProxySettings.tsx",
+        "lines": 82,
+        "description": "Proxy Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "QuickNavOverlay.tsx",
+        "path": "QuickNavOverlay.tsx",
+        "lines": 213,
+        "description": "Quick Nav Overlay",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SearchEngineSettings.tsx",
+        "path": "SearchEngineSettings.tsx",
+        "lines": 40,
+        "description": "Search Engine Settings",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SettingsDropdown.tsx",
+        "path": "SettingsDropdown.tsx",
+        "lines": 93,
+        "description": "Settings Dropdown",
+        "tags": [
+          "React",
+          "Security",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SettingsPanel.tsx",
+        "path": "SettingsPanel.tsx",
+        "lines": 1099,
+        "description": "Settings Panel",
+        "tags": [
+          "React",
+          "SwiftUI",
+          "Security",
+          "AI",
+          "Sync",
+          "Automation",
+          "OCR",
+          "Plugin",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "SpotlightSearchOverlay.tsx",
+        "path": "SpotlightSearchOverlay.tsx",
+        "lines": 305,
+        "description": "Spotlight Search Overlay",
+        "tags": [
+          "React",
+          "Node.js",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "StartupSetupUI.tsx",
+        "path": "StartupSetupUI.tsx",
+        "lines": 756,
+        "description": "Startup Setup",
+        "tags": [
+          "React",
+          "Node.js",
+          "Security",
+          "AI",
+          "Sync",
+          "Automation",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "SyncSettings.tsx",
+        "path": "SyncSettings.tsx",
+        "lines": 706,
+        "description": "Sync Settings",
+        "tags": [
+          "React",
+          "Node.js",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "TabManager.tsx",
+        "path": "TabManager.tsx",
+        "lines": 255,
+        "description": "Tab Manager",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "TabSwitcherOverlay.tsx",
+        "path": "TabSwitcherOverlay.tsx",
+        "lines": 79,
+        "description": "Tab Switcher Overlay",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ThemeSettings.tsx",
+        "path": "ThemeSettings.tsx",
+        "lines": 266,
+        "description": "Theme Settings",
+        "tags": [
+          "React",
+          "Node.js",
+          "macOS"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "ThinkingIndicator.tsx",
+        "path": "ThinkingIndicator.tsx",
+        "lines": 184,
+        "description": "Thinking Indicator",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "TitleBar.tsx",
+        "path": "TitleBar.tsx",
+        "lines": 178,
+        "description": "Title Bar",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "UnifiedCartPanel.tsx",
+        "path": "UnifiedCartPanel.tsx",
+        "lines": 67,
+        "description": "Unified Cart Panel",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "UnifiedSearch.tsx",
+        "path": "UnifiedSearch.tsx",
+        "lines": 403,
+        "description": "Unified Search",
+        "tags": [
+          "React",
+          "Node.js",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "UpdatesSettings.tsx",
+        "path": "UpdatesSettings.tsx",
+        "lines": 540,
+        "description": "Updates Settings",
+        "tags": [
+          "React",
+          "Security",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "UserAgentSettings.tsx",
+        "path": "UserAgentSettings.tsx",
+        "lines": 49,
+        "description": "User Agent Settings",
+        "tags": [
+          "React",
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "VirtualizedTabBar.tsx",
+        "path": "VirtualizedTabBar.tsx",
+        "lines": 318,
+        "description": "Virtualized Tab Bar",
+        "tags": [
+          "React",
+          "Core",
+          "AI",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "WebStore.tsx",
+        "path": "WebStore.tsx",
+        "lines": 108,
+        "description": "Web Store",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "WelcomeScreen.tsx",
+        "path": "WelcomeScreen.tsx",
+        "lines": 319,
+        "description": "Welcome Screen",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Sync",
+          "Automation",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-05"
+      },
+      {
+        "name": "WorkspaceDashboard.tsx",
+        "path": "WorkspaceDashboard.tsx",
+        "lines": 159,
+        "description": "Workspace Dashboard",
+        "tags": [
+          "React",
+          "AI",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AIConstants.ts",
+        "path": "ai/AIConstants.ts",
+        "lines": 666,
+        "description": "AIConstants",
+        "tags": [
+          "Node.js",
+          "SwiftUI",
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AISetupGuide.tsx",
+        "path": "ai/AISetupGuide.tsx",
+        "lines": 827,
+        "description": "Setup Guide",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AIThinkingAnimation.tsx",
+        "path": "ai/AIThinkingAnimation.tsx",
+        "lines": 520,
+        "description": "Thinking Animation",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AIUtils.ts",
+        "path": "ai/AIUtils.ts",
+        "lines": 1090,
+        "description": "AIUtils",
+        "tags": [
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ChartDiagram.tsx",
+        "path": "ai/ChartDiagram.tsx",
+        "lines": 147,
+        "description": "Chart Diagram",
+        "tags": [
+          "React",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ClickPermissionModal.tsx",
+        "path": "ai/ClickPermissionModal.tsx",
+        "lines": 232,
+        "description": "Click Permission Modal",
+        "tags": [
+          "React",
+          "AI",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CollapsibleOCRMessage.tsx",
+        "path": "ai/CollapsibleOCRMessage.tsx",
+        "lines": 225,
+        "description": "CollapsibleOCRMessage",
+        "tags": [
+          "React",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ConversationHistoryPanel.tsx",
+        "path": "ai/ConversationHistoryPanel.tsx",
+        "lines": 113,
+        "description": "Conversation History Panel",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "DOMSearchDisplay.tsx",
+        "path": "ai/DOMSearchDisplay.tsx",
+        "lines": 360,
+        "description": "Search Display",
+        "tags": [
+          "React",
+          "Security",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "FlowchartDiagram.tsx",
+        "path": "ai/FlowchartDiagram.tsx",
+        "lines": 257,
+        "description": "Flowchart Diagram",
+        "tags": [
+          "React",
+          "Node.js",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "MermaidDiagram.tsx",
+        "path": "ai/MermaidDiagram.tsx",
+        "lines": 129,
+        "description": "Mermaid Diagram",
+        "tags": [
+          "React",
+          "Security",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "MessageActions.tsx",
+        "path": "ai/MessageActions.tsx",
+        "lines": 41,
+        "description": "Message Actions",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "RobustParsers.ts",
+        "path": "ai/RobustParsers.ts",
+        "lines": 225,
+        "description": "Robust Parsers",
+        "tags": [
+          "AI",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SchedulingIntentDetector.ts",
+        "path": "ai/SchedulingIntentDetector.ts",
+        "lines": 369,
+        "description": "Scheduling Intent Detector",
+        "tags": [
+          "Node.js",
+          "AI",
+          "Automation",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SchedulingModal.tsx",
+        "path": "ai/SchedulingModal.tsx",
+        "lines": 496,
+        "description": "Scheduling Modal",
+        "tags": [
+          "React",
+          "Node.js",
+          "AI",
+          "Automation",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SecureDOMReader.ts",
+        "path": "ai/SecureDOMReader.ts",
+        "lines": 361,
+        "description": "SecureDOMReader",
+        "tags": [
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ThinkingPanel.tsx",
+        "path": "ai/ThinkingPanel.tsx",
+        "lines": 153,
+        "description": "Thinking Panel",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "useAIActionSecurityManager.tsx",
+        "path": "ai/useAIActionSecurityManager.tsx",
+        "lines": 214,
+        "description": "Action Security Manager",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AICommandOutput.ts",
+        "path": "AICommandOutput.ts",
+        "lines": 218,
+        "description": "Command Output",
+        "tags": [
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AICommandParser.ts",
+        "path": "AICommandParser.ts",
+        "lines": 657,
+        "description": "Command Parser",
+        "tags": [
+          "Node.js",
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ActionLogsStore.ts",
+        "path": "ActionLogsStore.ts",
+        "lines": 410,
+        "description": "Action Logs Store",
+        "tags": [
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ActionTagParser.d.ts",
+        "path": "ActionTagParser.d.ts",
+        "lines": 7,
+        "description": "Action Tag Parser",
+        "tags": [
+          "Automation"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "AdvancedTabManager.ts",
+        "path": "AdvancedTabManager.ts",
+        "lines": 644,
+        "description": "Advanced Tab Manager",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "BrowserAI.ts",
+        "path": "BrowserAI.ts",
+        "lines": 384,
+        "description": "BrowserAI",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "CloudSyncService.ts",
+        "path": "CloudSyncService.ts",
+        "lines": 530,
+        "description": "Cloud Sync Service",
+        "tags": [
+          "Node.js",
+          "Security",
+          "AI",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "FirebaseService.ts",
+        "path": "FirebaseService.ts",
+        "lines": 204,
+        "description": "Firebase Service",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "FirebaseSyncService.ts",
+        "path": "FirebaseSyncService.ts",
+        "lines": 255,
+        "description": "Firebase Sync Service",
+        "tags": [
+          "Security",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "IntegrationService.ts",
+        "path": "IntegrationService.ts",
+        "lines": 83,
+        "description": "Integration Service",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "P2PFileSyncService.ts",
+        "path": "P2PFileSyncService.ts",
+        "lines": 691,
+        "description": "File Sync Service",
+        "tags": [
+          "Node.js",
+          "Core",
+          "AI",
+          "Sync",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "PDFCommandParser.d.ts",
+        "path": "PDFCommandParser.d.ts",
+        "lines": 11,
+        "description": "Command Parser",
+        "tags": [
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SearchContextStore.ts",
+        "path": "SearchContextStore.ts",
+        "lines": 215,
+        "description": "Search Context Store",
+        "tags": [
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "Security.ts",
+        "path": "Security.ts",
+        "lines": 540,
+        "description": "Security",
+        "tags": [
+          "Node.js",
+          "Security",
+          "AI",
+          "Sync",
+          "PDF",
+          "macOS",
+          "Windows"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ShellCommandParser.d.ts",
+        "path": "ShellCommandParser.d.ts",
+        "lines": 8,
+        "description": "Shell Command Parser",
+        "tags": [],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SkillLoader.ts",
+        "path": "SkillLoader.ts",
+        "lines": 160,
+        "description": "Skill Loader",
+        "tags": [
+          "Node.js",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "SyncMethodManager.ts",
+        "path": "SyncMethodManager.ts",
+        "lines": 259,
+        "description": "Sync Method Manager",
+        "tags": [
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "TabOptimizer.ts",
+        "path": "TabOptimizer.ts",
+        "lines": 181,
+        "description": "Tab Optimizer",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "WiFiSyncService.ts",
+        "path": "WiFiSyncService.ts",
+        "lines": 497,
+        "description": "Wi Fi Sync Service",
+        "tags": [
+          "Node.js",
+          "AI",
+          "Sync",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ai-action-security.ts",
+        "path": "ai-action-security.ts",
+        "lines": 216,
+        "description": "Ai Action Security",
+        "tags": [
+          "Security",
+          "AI",
+          "Sync",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "aiManager.ts",
+        "path": "aiManager.ts",
+        "lines": 93,
+        "description": "ai manager",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "aiReasoningOptions.ts",
+        "path": "aiReasoningOptions.ts",
+        "lines": 38,
+        "description": "Reasoning Options",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "appVersion.ts",
+        "path": "appVersion.ts",
+        "lines": 11,
+        "description": "AppVersion",
+        "tags": [
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "constants.ts",
+        "path": "constants.ts",
+        "lines": 47,
+        "description": "Constants",
+        "tags": [
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "crypto-utils.ts",
+        "path": "crypto-utils.ts",
+        "lines": 189,
+        "description": "Crypto Utils",
+        "tags": [
+          "Node.js",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ExtensionManager.ts",
+        "path": "extensions/ExtensionManager.ts",
+        "lines": 66,
+        "description": "Extension Manager",
+        "tags": [
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "firebaseConfigStorage.ts",
+        "path": "firebaseConfigStorage.ts",
+        "lines": 51,
+        "description": "Config Storage",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "html-sanitizer.ts",
+        "path": "html-sanitizer.ts",
+        "lines": 38,
+        "description": "Html Sanitizer",
+        "tags": [
+          "Security",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "LLMOrchestrator.ts",
+        "path": "llm/LLMOrchestrator.ts",
+        "lines": 65,
+        "description": "LLMOrchestrator",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "base.ts",
+        "path": "llm/providers/base.ts",
+        "lines": 34,
+        "description": "Base",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "claude.ts",
+        "path": "llm/providers/claude.ts",
+        "lines": 50,
+        "description": "Claude",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "gemini.ts",
+        "path": "llm/providers/gemini.ts",
+        "lines": 47,
+        "description": "Gemini",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "groq.ts",
+        "path": "llm/providers/groq.ts",
+        "lines": 58,
+        "description": "Groq",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "ollama.ts",
+        "path": "llm/providers/ollama.ts",
+        "lines": 52,
+        "description": "Ollama",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "openai-compatible.ts",
+        "path": "llm/providers/openai-compatible.ts",
+        "lines": 70,
+        "description": "Openai Compatible",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "modelRegistry.ts",
+        "path": "modelRegistry.ts",
+        "lines": 30,
+        "description": "ModelRegistry",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "safe-eval.ts",
+        "path": "safe-eval.ts",
+        "lines": 125,
+        "description": "Safe Eval",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "url-validator.ts",
+        "path": "url-validator.ts",
+        "lines": 18,
+        "description": "Url Validator",
+        "tags": [
+          "Security",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      },
+      {
+        "name": "useAppVersion.ts",
+        "path": "useAppVersion.ts",
+        "lines": 31,
+        "description": "App Version",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-04"
+      }
+    ]
+  },
+  "flutter": {
+    "total": 0,
+    "totalLines": 0,
+    "byCategory": {
+      "pages": 0,
+      "services": 0,
+      "models": 0,
+      "components": 0,
+      "main": 0
+    },
+    "components": []
+  },
+  "summary": {
+    "total": 121,
+    "totalLines": 35496
+  }
+}

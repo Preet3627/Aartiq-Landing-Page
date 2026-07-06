@@ -1,0 +1,144 @@
+# Aartiq Documentation
+
+## Overview
+
+Aartiq is an open-source, privacy-focused AI-integrated browser with native AI orchestration, background scheduling, and hardware-level automation. It supports Windows, macOS, Linux, and Android.
+
+Website: https://aartiq.vercel.app
+GitHub: https://github.com/Preet3627/Aartiq
+Documentation: https://aartiq.vercel.app/docs
+License: MIT
+
+---
+
+## Documentation Index
+
+### Getting Started
+- **URL:** /docs/getting-started
+- **Title:** Installation Guide
+- **Description:** Complete installation instructions for Windows, macOS, Linux, and Android. Includes setup for AI providers (Gemini, OpenAI, Anthropic, Ollama).
+
+### Keyboard Shortcuts
+- **URL:** /docs/keyboard-shortcuts
+- **Title:** Keyboard Shortcuts
+- **Description:** Complete list of keyboard shortcuts for navigation, search, AI chat, tabs, and browser controls.
+
+### Overview
+- **URL:** /docs/overview
+- **Title:** Project Overview
+- **Description:** Architecture overview, feature summary, and technology stack.
+
+### AI Commands
+- **URL:** /docs/ai-commands
+- **Title:** AI Commands Reference
+- **Description:** Canonical JSON-first AI command reference including navigation, browser control, file creation, shell execution, visual intelligence, scheduling, automation, and plugin commands.
+
+### Security
+- **URL:** /docs/security
+- **Title:** Security Model
+- **Description:** Triple-lock security architecture, E2EE encryption, permission levels, and privacy features.
+
+### Automation
+- **URL:** /docs/automation
+- **Title:** Automation Guide
+- **Description:** Background task scheduling, cron expressions, task queue management, and sleep/wake recovery.
+
+### Cloud Sync
+- **URL:** /docs/cloud-sync
+- **Title:** Cloud Sync Documentation
+- **Description:** End-to-end encrypted cross-device synchronization, WiFi P2P pairing, and mobile app integration.
+
+### Plugins
+- **URL:** /docs/plugins
+- **Title:** Plugin System
+- **Description:** Native plugin architecture, plugin lifecycle, command registration, event hooks, and plugin SDK.
+
+### Native API
+- **URL:** /docs/native-api
+- **Title:** Native API Reference
+- **Description:** JavaScript APIs for desktop automation, robot service, clipboard, screenshots, and system integration.
+
+### Deep Links
+- **URL:** /docs/deep-links
+- **Title:** Deep Links Documentation
+- **Description:** URL scheme support (comet-browser://) for launching browser, executing commands, and opening specific pages.
+
+### API Reference
+- **URL:** /docs/api-reference
+- **Title:** Full API Reference
+- **Description:** Complete IPC handlers, preload APIs, and Electron main process modules.
+
+### Troubleshooting
+- **URL:** /docs/troubleshooting
+- **Title:** Troubleshooting Guide
+- **Description:** Common issues and solutions for installation, permissions, AI integration, and sync.
+
+### Contributing
+- **URL:** /docs/contributing
+- **Title:** Contributing Guide
+- **Description:** How to contribute to the project, coding standards, and development setup.
+
+### Changelog
+- **URL:** /docs/changelog
+- **Title:** Changelog
+- **Description:** Version history and release notes.
+
+### Components
+- **URL:** /docs/components
+- **Title:** UI Components
+- **Description:** React component library and UI documentation.
+
+### Extensions
+- **URL:** /docs/extensions
+- **Title:** Browser Extensions
+- **Description:** Extension system for adding functionality.
+
+---
+
+## Key Features
+
+1. **AI Agent Control**: Natural language commands for browser automation
+2. **Local LLM Support**: Ollama integration for offline AI processing
+3. **Shell Command Execution**: Safe shell command execution with permission system
+4. **Background Scheduling**: Task scheduling even when browser is closed
+5. **Triple-Lock Security**: E2EE, permission levels, and audit logging
+6. **Cross-Device Sync**: WiFi P2P and encrypted cloud sync
+7. **PDF Generation**: JSON-based PDF template system
+8. **Plugin System**: Native plugin architecture for extensibility
+9. **OCR Capabilities**: Native-first screen recognition and cross-app element clicking
+10. **Open Source**: Full source code available on GitHub
+
+---
+
+## Technology Stack
+
+- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
+- **Desktop**: Electron, native Node.js modules
+- **Mobile**: Flutter, Dart
+- **AI**: Google Gemini, OpenAI GPT, Anthropic Claude, Ollama
+- **Security**: AES-256-GCM, RSA-4096, PBKDF2
+
+---
+
+## AI Command Format
+
+Aartiq uses structured JSON commands for reliable parsing:
+
+```json
+{
+  "command": "COMMAND_NAME",
+  "params": {
+    "key": "value"
+  }
+}
+```
+
+Supported commands: NAVIGATE, SEARCH, WEB_SEARCH, RELOAD, GO_BACK, GO_FORWARD, READ_PAGE_CONTENT, LIST_OPEN_TABS, CLICK_ELEMENT, FIND_AND_CLICK, FILL_FORM, CREATE_PDF_JSON, CREATE_FILE_JSON, SHELL_COMMAND, SET_VOLUME, SET_BRIGHTNESS, OPEN_APP, OCR_SCREEN, OCR_COORDINATES, CLICK_APP_ELEMENT, SCHEDULE_TASK, LIST_AUTOMATIONS, DELETE_AUTOMATION, THINK, PLAN, PLUGIN_COMMAND
+
+---
+
+## Contact & Support
+
+- GitHub Issues: https://github.com/Preet3627/Aartiq/issues
+- Releases: https://github.com/Preet3627/Aartiq/releases
+- License: MIT

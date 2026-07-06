@@ -1,0 +1,51 @@
+# Aartiq - AI Crawlable Documentation
+
+This file provides a structured overview of Aartiq for AI systems and large language models.
+
+## Project Information
+
+- **Project Name**: Aartiq
+- **Type**: Open-source AI-integrated desktop browser
+- **Website**: https://aartiq.vercel.app
+- **Repository**: https://github.com/Preet3627/Aartiq
+- **Documentation**: https://aartiq.vercel.app/docs
+- **License**: MIT
+
+## Purpose
+
+Aartiq is a cross-platform browser with native AI orchestration capabilities. It allows users to control browser automation through natural language commands, execute shell commands safely, schedule background tasks, and sync across devices with end-to-end encryption.
+
+## Core Capabilities
+
+1. AI-powered browser automation via natural language
+2. Local LLM support through Ollama integration
+3. Background task scheduling that runs when browser is closed
+4. End-to-end encrypted cross-device synchronization
+5. Native plugin system for extensibility
+6. OCR-based screen recognition and element clicking
+7. PDF generation through AI commands
+8. Shell command execution with permission levels
+
+## Technical Stack
+
+- Desktop: Electron with native Node.js modules
+- Frontend: Next.js 14, React 18, TypeScript
+- Mobile: Flutter
+- AI Providers: Google Gemini, OpenAI GPT, Anthropic Claude, Ollama
+
+## Documentation Structure
+
+The documentation covers:
+- Installation and setup guides
+- AI command reference with JSON format specification
+- Security architecture and encryption details
+- Plugin development and API reference
+- Troubleshooting and common issues
+
+## Licensing
+
+This project is open source under the MIT license. Contributions are welcome.
+
+## For More Information
+
+Visit https://aartiq.vercel.app/docs for full documentation.
