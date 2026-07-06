@@ -1,5 +1,7 @@
 # Aartiq Landing Page
 
+**Production URL:** https://aartiq.ponsrischool.in
+
 This directory contains the public marketing site and documentation for Aartiq.
 
 ## Current Release
