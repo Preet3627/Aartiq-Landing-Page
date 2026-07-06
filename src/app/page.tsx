@@ -94,6 +94,41 @@ const metrics = [
   { label: "AI Commands", value: "25" },
 ];
 
+function ClickToLoadYouTube() {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="relative mx-auto overflow-hidden rounded-[40px] border border-white/10 bg-[#0a0c14]/60 shadow-[0_50px_100px_rgba(0,0,0,0.6)] cursor-pointer group"
+      style={{ maxWidth: '900px' }}
+      onClick={() => setLoaded(true)}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-sky-500/10 pointer-events-none" />
+      <div className="relative" style={{ paddingTop: '65.29%' }}>
+        {loaded ? (
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/embed/QWdeUURLRjo?si=fZPLFzwcx_j5KobL&autoplay=1"
+            title="Aartiq Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0c14]">
+            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 transition-transform group-hover:scale-110">
+              <Video size={40} className="text-white ml-1" />
+            </div>
+            <p className="mt-6 text-sm font-medium text-white/40">Click to load video</p>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
 const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -389,8 +424,8 @@ export default function Home() {
                 <div className="absolute -right-6 -top-6 opacity-[0.02] transition-transform group-hover:scale-125">
                    <Zap size={120} />
                 </div>
-                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.5em] text-white/20">{metric.label}</p>
-                <h4 className="text-4xl font-black text-sky-400">{metric.value}</h4>
+                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.5em] text-white/40">{metric.label}</p>
+                <p className="text-4xl font-black text-sky-400">{metric.value}</p>
               </div>
             ))}
           </motion.div>
@@ -403,29 +438,11 @@ export default function Home() {
               <Video size={14} /> Demo
             </div>
             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl">
-              See It In <span className="text-white/20">Action.</span>
+              See It In <span className="text-white/40">Action.</span>
             </h2>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative mx-auto overflow-hidden rounded-[40px] border border-white/10 bg-[#0a0c14]/60 shadow-[0_50px_100px_rgba(0,0,0,0.6)]"
-            style={{ maxWidth: '900px' }}
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-sky-500/10 pointer-events-none" />
-            <div className="relative" style={{ paddingTop: '65.29%' }}>
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/QWdeUURLRjo?si=fZPLFzwcx_j5KobL"
-                title="Aartiq Demo"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          </motion.div>
+          <ClickToLoadYouTube />
         </section>
 
         {/* FEATURES */}
@@ -435,7 +452,7 @@ export default function Home() {
                <Cpu size={14} /> Core Technologies
              </div>
             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              Core <br /> <span className="text-white/20">Features.</span>
+              Core <br /> <span className="text-white/40">Features.</span>
             </h2>
           </div>
 
@@ -470,7 +487,7 @@ export default function Home() {
                   <Github size={40} />
                 </div>
                 <h2 className="mb-8 text-5xl font-black uppercase tracking-tighter text-white sm:text-7xl lg:text-8xl leading-[0.85]">
-                  Open <br /> <span className="text-white/20">Source.</span>
+                  Open <br /> <span className="text-white/40">Source.</span>
                 </h2>
                 <p className="mb-12 text-xl font-medium leading-relaxed text-white/40 max-w-xl">
                   MIT-licensed. Source at github.com/Preet3627/Aartiq
@@ -504,9 +521,9 @@ export default function Home() {
                     <div key={i} className="rounded-[3rem] border border-white/5 bg-[#03040b]/60 p-10 hover:border-white/10 transition">
                        <div className="mb-4 flex items-center justify-between">
                           <stat.icon size={24} className={stat.color} />
-                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/15">{stat.label}</span>
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">{stat.label}</span>
                        </div>
-                       <h5 className="text-4xl font-black">{stat.value}</h5>
+                       <p className="text-4xl font-black">{stat.value}</p>
                     </div>
                  ))}
               </div>
@@ -521,8 +538,8 @@ export default function Home() {
                  Downloads
               </h2>
               <div className="text-right">
-                 <p className="text-[10px] font-black uppercase tracking-[0.5em] text-sky-400 mb-2">Build</p>
-                 <h4 className="text-2xl font-black">{latestRelease?.tag_name || (version ? `v${version} ${channel}` : '...')}</h4>
+                  <p className="text-[10px] font-black uppercase tracking-[0.5em] text-sky-400 mb-2">Build</p>
+                  <p className="text-2xl font-black">{latestRelease?.tag_name || (version ? `v${version} ${channel}` : '...')}</p>
               </div>
            </div>
 
@@ -658,8 +675,8 @@ export default function Home() {
                </div>
 
                <div>
-                  <h5 className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/20">Source Code</h5>
-                  <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
+                   <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Source Code</p>
+                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
                       <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser" target="_blank" className="hover:text-sky-400 transition">aartiq-browser/</a></li>
                      <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/src/lib" target="_blank" className="hover:text-sky-400 transition">src/lib/</a></li>
                      <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/src/components" target="_blank" className="hover:text-sky-400 transition">src/components/</a></li>
@@ -669,7 +686,7 @@ export default function Home() {
                </div>
 
                <div>
-                  <h5 className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/20">Ecosystem</h5>
+                   <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Ecosystem</p>
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
                      <li><a href="#" className="hover:text-sky-400 transition">Aartiq Web Client</a></li>
                      <li><a href="#" className="hover:text-sky-400 transition">Raycast Extension</a></li>
@@ -678,7 +695,7 @@ export default function Home() {
                </div>
 
                <div>
-                  <h5 className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/20">Support</h5>
+                   <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Support</p>
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
                      <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
                      <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
@@ -688,15 +705,15 @@ export default function Home() {
 
            <div className="mt-40 flex flex-col items-center justify-between gap-10 border-t border-white/5 pt-20 md:flex-row">
               <div className="flex flex-col gap-2">
-                  <p className="text-xs font-black uppercase tracking-[0.5em] text-white/10">
+                  <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">
                      © 2026 Aartiq. MIT License.
                   </p>
-                 <p className="text-[10px] font-bold text-white/5 uppercase tracking-[0.3em]">
+                 <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
                    Built by <span className="text-white/20">Preet3627</span> — v{version || '...'}
                  </p>
               </div>
               <div className="flex items-center gap-10">
-                 <a href="https://github.com/Preet3627/Aartiq" className="text-white/20 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
+                 <a href="https://github.com/Preet3627/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
                   <div className="flex h-12 px-6 items-center rounded-2xl bg-white/5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ring-1 ring-white/10">
                     v{latestRelease?.tag_name?.replace('v', '') || version || '...'}
                   </div>

@@ -19,6 +19,12 @@
     "tailwindcss": "^4",
     "ws": "^8.20.0"
   },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "not ie 11",
+    "not op_mini all"
+  ],
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/react": "19.2.14",
