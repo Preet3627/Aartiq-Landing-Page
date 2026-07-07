@@ -497,6 +497,33 @@ const extensionCategories = [
   { id: "shopping", name: "Shopping", icon: ShoppingCart, count: preBuiltExtensions.filter(e => e.category === "shopping").length }
 ];
 
+const ipcAPI = `// Get all loaded extensions
+const extensions = await window.electron.getExtensions();
+// Returns: [{ id, name, version, description, path }, ...]
+
+// Toggle an extension on/off
+const result = await window.electron.toggleExtension('my-extension-id');
+// Returns: { success: true, enabled: false }  (disabled)
+// Returns: { success: true, enabled: true }   (re-enabled)
+// Returns: { success: false, error: 'Extension not found' }
+
+// Uninstall (remove from session + delete folder)
+await window.electron.uninstallExtension('my-extension-id');
+
+// Get extension storage path
+const extPath = await window.electron.getExtensionPath();
+// macOS: ~/Library/Application Support/Aartiq/extensions/
+
+// Open extensions folder in Finder
+window.electron.openExtensionDir();
+
+// Preload API (see preload.js):
+//   getExtensions()    -> ipcRenderer.invoke('get-extensions')
+//   toggleExtension()  -> ipcRenderer.invoke('toggle-extension', id)
+//   uninstallExtension()-> ipcRenderer.invoke('uninstall-extension', id)
+//   getExtensionPath() -> ipcRenderer.invoke('get-extension-path')
+//   openExtensionDir() -> ipcRenderer.send('open-extension-dir')`;
+
 const codeExamples = {
   extensionManifest: `// extension-manifest.json
 {
@@ -789,14 +816,16 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
     return true; // Keep message channel open for async response
   }
-});`
+});`,
+
+  ipcAPI: ipcAPI
 };
 
 export default function ExtensionsPage() {
   const [activeTab, setActiveTab] = useState<"themes" | "extensions">("extensions");
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
-  const [codeTab, setCodeTab] = useState<"manifest" | "content" | "background" | "popup" | "devtools">("manifest");
+  const [codeTab, setCodeTab] = useState<"manifest" | "content" | "background" | "popup" | "devtools" | "ipcAPI">("manifest");
   const [showCopied, setShowCopied] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
@@ -831,17 +860,17 @@ export default function ExtensionsPage() {
         </h1>
 
         <p className="max-w-3xl text-xl font-medium leading-relaxed text-white/50">
-          Build and install extensions for Aartiq. Source: src/lib/extensions/ExtensionManager.ts, src/components/WebStore.tsx, src/components/ExtensionSettings.tsx, src/components/ThemeSettings.tsx
+          Build and install Chrome-compatible extensions for Aartiq. Extensions are loaded via Electron's <code>session.defaultSession.loadExtension()</code>. Drop your extension folder into the extensions directory and restart, or toggle them at runtime via IPC. See <code>main.js</code> (~line 6000) and <code>src/main/handlers/system-handlers.js</code>.
         </p>
 
         {/* Quick Stats */}
         <div className="mt-12 grid gap-6 sm:grid-cols-5">
           {[
-            { icon: Package, label: "Extensions", value: "12+", color: "text-violet-400", border: "border-violet-500/20" },
+            { icon: Package, label: "API", value: "Chrome MV3", color: "text-violet-400", border: "border-violet-500/20" },
             { icon: Palette, label: "Themes", value: "8", color: "text-pink-400", border: "border-pink-500/20" },
-            { icon: CloudDownload, label: "Downloads", value: "12+", color: "text-emerald-400", border: "border-emerald-500/20" },
-            { icon: Shield, label: "Verified", value: "10", color: "text-sky-400", border: "border-sky-500/20" },
-            { icon: Code2, label: "SDK", value: "v3.0", color: "text-amber-400", border: "border-amber-500/20" }
+            { icon: CloudDownload, label: "Toggle", value: "IPC Runtime", color: "text-emerald-400", border: "border-emerald-500/20" },
+            { icon: Code2, label: "Loading", value: "session.loadExtension", color: "text-sky-400", border: "border-sky-500/20" },
+            { icon: Shield, label: "Electron", value: "Built-in", color: "text-amber-400", border: "border-amber-500/20" }
           ].map((stat) => (
             <div key={stat.label} className={`rounded-2xl border ${stat.border} bg-white/5 p-6 text-center`}>
               <stat.icon size={32} className={`mx-auto mb-4 ${stat.color}`} />
@@ -856,10 +885,10 @@ export default function ExtensionsPage() {
           <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-white/20">Source Files</p>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Extension Manager", path: "src/lib/extensions/ExtensionManager.ts" },
-              { label: "Web Store", path: "src/components/WebStore.tsx" },
-              { label: "Extension Settings", path: "src/components/ExtensionSettings.tsx" },
-              { label: "Theme System", path: "src/components/ThemeSettings.tsx" }
+              { label: "Extension Toggle (main.js)", path: "main.js (~line 6000)" },
+              { label: "System IPC Handlers", path: "src/main/handlers/system-handlers.js" },
+              { label: "Preload Bridge", path: "preload.js (~line 241)" },
+              { label: "TypeScript Types", path: "src/types/electron.d.ts (~line 270)" },
             ].map((ref) => (
               <div key={ref.label} className="flex items-center gap-2 rounded-lg border border-white/5 bg-white/5 px-4 py-3">
                 <FileCode size={14} className="shrink-0 text-violet-400" />
@@ -1064,7 +1093,8 @@ export default function ExtensionsPage() {
             { id: "content", label: "Content Script" },
             { id: "background", label: "Background Script" },
             { id: "popup", label: "Popup UI" },
-            { id: "devtools", label: "DevTools" }
+            { id: "devtools", label: "DevTools" },
+            { id: "ipcAPI", label: "IPC API" }
           ].map((tab) => (
             <button
               key={tab.id}
@@ -1088,6 +1118,7 @@ export default function ExtensionsPage() {
               {codeTab === "background" && "Background Script (background.js)"}
               {codeTab === "popup" && "Popup UI (popup.html/js)"}
               {codeTab === "devtools" && "DevTools Integration"}
+              {codeTab === "ipcAPI" && "IPC API Reference (toggle-extension)"}
             </h3>
             <button
               onClick={() => copyToClipboard(codeExamples[codeTab as keyof typeof codeExamples] || '', `code-${codeTab}`)}
