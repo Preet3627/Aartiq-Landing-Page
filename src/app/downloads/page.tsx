@@ -117,14 +117,25 @@ export default function DownloadsPage() {
                <h2 className="text-5xl font-black uppercase tracking-tighter mb-8 sm:text-7xl leading-none">Remote <br /> <span className="text-white/20">Control.</span></h2>
                <p className="text-xl font-medium text-white/40 leading-relaxed max-w-xl mb-12">Install the mobile companion to authorize shell commands, schedule tasks, and view live automation PDF reports from anywhere in the world.</p>
                
-               <div className="flex flex-wrap gap-5">
-                 <button className="flex items-center gap-4 rounded-full bg-white px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-black transition hover:bg-sky-400 hover:text-white">
-                   <Smartphone size={18} /> Google Play
-                 </button>
-                 <button className="flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/30 transition hover:border-white/20 hover:text-white/60">
-                   iOS (AltStore)
-                 </button>
-               </div>
+                <div className="flex flex-wrap items-center gap-5">
+                  <div dangerouslySetInnerHTML={{
+                    __html: `<ms-store-badge
+                      productid="9nd6wg2rp7cm"
+                      productname="Aartiq"
+                      window-mode="direct"
+                      theme="auto"
+                      size="large"
+                      language="en-gb"
+                      animation="on">
+                    </ms-store-badge>`
+                  }} />
+                  <button className="flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/30 transition hover:border-white/20 hover:text-white/60">
+                    <Smartphone size={18} /> Google Play
+                  </button>
+                  <button className="flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/30 transition hover:border-white/20 hover:text-white/60">
+                    iOS (AltStore)
+                  </button>
+                </div>
              </div>
              
              <div className="relative aspect-video rounded-[3rem] border border-white/10 bg-[#06080f] shadow-2xl overflow-hidden group">

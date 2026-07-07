@@ -104,6 +104,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script type="module" src="https://get.microsoft.com/badge/ms-store-badge.bundled.js"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

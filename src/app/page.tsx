@@ -568,6 +568,24 @@ export default function Home() {
                    <div key={i} className="animate-pulse rounded-[50px] border border-white/5 bg-white/5 p-10 h-72" />
                 ))
               )}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group relative h-72 flex flex-col items-center justify-center rounded-[50px] border border-sky-500/20 bg-sky-500/5 p-10 transition-all hover:bg-sky-500/10 hover:-translate-y-2"
+              >
+                <div dangerouslySetInnerHTML={{
+                  __html: `<ms-store-badge
+                    productid="9nd6wg2rp7cm"
+                    productname="Aartiq"
+                    window-mode="direct"
+                    theme="auto"
+                    size="large"
+                    language="en-gb"
+                    animation="on">
+                  </ms-store-badge>`
+                }} />
+              </motion.div>
            </div>
         </section>
 

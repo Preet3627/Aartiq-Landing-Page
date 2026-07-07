@@ -30,6 +30,7 @@ const steps = [
     content: {
       platforms: [
         { name: "Windows", arch: "x64", format: ".exe", icon: Monitor },
+        { name: "Windows (Microsoft Store)", arch: "x64", format: "Store", icon: Monitor },
         { name: "macOS Apple Silicon", arch: "ARM64", format: ".dmg", icon: Monitor },
         { name: "macOS Intel", arch: "x64", format: ".dmg", icon: Monitor },
         { name: "Linux", arch: "x64", format: ".AppImage", icon: Terminal },
@@ -265,15 +266,34 @@ export default function GettingStartedPage() {
             <div className="space-y-8">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {(steps[0].content.platforms ?? []).map((platform) => (
-                  <a
-                    key={platform.name}
-                    href="/downloads"
-                    className="group flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 text-center transition-all hover:border-sky-500/30 hover:bg-sky-500/5"
-                  >
-                    <platform.icon size={40} className="mb-6 text-white/40 group-hover:text-sky-400 transition-colors" />
-                    <h4 className="mb-2 text-lg font-black uppercase tracking-wider">{platform.name}</h4>
-                    <p className="text-xs text-white/30">{platform.arch} {platform.format}</p>
-                  </a>
+                  platform.name.includes("Microsoft Store") ? (
+                    <div
+                      key={platform.name}
+                      className="group flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 text-center transition-all hover:border-sky-500/30 hover:bg-sky-500/5"
+                    >
+                      <div dangerouslySetInnerHTML={{
+                        __html: `<ms-store-badge
+                          productid="9nd6wg2rp7cm"
+                          productname="Aartiq"
+                          window-mode="direct"
+                          theme="auto"
+                          size="large"
+                          language="en-gb"
+                          animation="on">
+                        </ms-store-badge>`
+                      }} />
+                    </div>
+                  ) : (
+                    <a
+                      key={platform.name}
+                      href="/downloads"
+                      className="group flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 text-center transition-all hover:border-sky-500/30 hover:bg-sky-500/5"
+                    >
+                      <platform.icon size={40} className="mb-6 text-white/40 group-hover:text-sky-400 transition-colors" />
+                      <h4 className="mb-2 text-lg font-black uppercase tracking-wider">{platform.name}</h4>
+                      <p className="text-xs text-white/30">{platform.arch} {platform.format}</p>
+                    </a>
+                  )
                 ))}
               </div>
 
