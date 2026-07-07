@@ -327,7 +327,7 @@ const image = await window.electron.invoke('apple-intelligence-generate-image', 
 // Returns base64 encoded image`,
 
   siriPhrases: `// Siri Phrases available:
-// Siri Phrases & App Intents (v0.2.98+):
+// Siri Phrases & App Intents (v0.3.0+):
 // "Ask Aartiq [prompt]"
 // "What did Comet say?" (Reads latest response)
 // "Refine Comet's response to be shorter/longer"
