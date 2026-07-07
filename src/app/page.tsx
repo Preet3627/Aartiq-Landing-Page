@@ -371,7 +371,7 @@ export default function Home() {
             className="max-w-6xl text-7xl font-black uppercase leading-[0.85] tracking-tighter text-white sm:text-8xl lg:text-[11rem]"
           >
             Aartiq <br />
-            <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Intelligent Browser</span>
+            <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI-Native Browser</span>
           </motion.h1>
 
           <motion.p

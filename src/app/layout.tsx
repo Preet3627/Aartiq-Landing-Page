@@ -12,22 +12,26 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const SITE_URL = 'https://aartiq.vercel.app';
+const LOGO_URL = `${SITE_URL}/logo-transparent.png`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aartiq.vercel.app'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: `Aartiq - Open Source AI-Native Browser`,
-    template: `%s | Aartiq`,
+    default: `Aartiq - Open Source AI-Native Browser with Local LLM & OS Automation`,
+    template: `%s | Aartiq - AI-Native Browser`,
   },
-  description: "Aartiq is an open-source, AI-native browser with autonomous agent capabilities, background task scheduling, local LLM support, and cross-device sync. Built with Electron, Next.js, TypeScript, and Flutter.",
+  description: "Aartiq is an open-source, AI-native browser with autonomous agent capabilities, local LLM support (Ollama), permission-gated OS automation, and cross-device sync. Built with Electron, Next.js, and TypeScript.",
   keywords: [
-    "Aartiq", "Comet-AI", "AI Browser", "Autonomous Browser",
+    "Aartiq", "AI Browser", "Autonomous Browser",
     "Browser Automation", "Electron Browser", "AI Agent",
-    "Local LLM", "Ollama", "Privacy Browser", "Open Source Browser",
-    "E2EE Sync", "Cross-Platform Browser", "AI Automation",
-    "Browser AI Agent", "Open Source Browser", "macOS Browser",
+    "Local LLM", "Ollama Browser", "Privacy Browser", "Open Source Browser",
+    "E2EE Sync", "Cross-Platform Browser", "OS Automation",
+    "Browser AI Agent", "macOS Browser",
     "Windows Browser", "Linux Browser", "Android Browser",
-    "Productivity Browser", "Smart Browser", "AI Assistant Browser",
-    "Neural Browser", "Permission-Gated Automation", "Secure Browser"
+    "Productivity Browser", "AI Assistant Browser",
+    "Permission-Gated Automation", "Secure Browser",
+    "AI-Native Browser", "Autonomous AI Agent"
   ],
   authors: [
     { name: "Preet3627", url: "https://github.com/Preet3627" },
@@ -42,25 +46,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Aartiq - Open Source AI-Native Browser",
-    description: "An open-source, AI-native browser with autonomous agent capabilities, background scheduling, local LLM support, and cross-device sync.",
-    url: 'https://aartiq.vercel.app',
+    description: "An open-source, AI-native browser with autonomous agent capabilities, local LLM support, and cross-device sync. Features permission-gated OS automation and privacy-first design.",
+    url: SITE_URL,
     siteName: 'Aartiq',
     locale: 'en_US',
     type: 'website',
     images: [
       {
-        url: '/logo-transparent.png',
-        width: 512,
-        height: 512,
-        alt: 'Aartiq Icon',
+        url: LOGO_URL,
+        width: 1000,
+        height: 1000,
+        alt: 'Aartiq - Open Source AI-Native Browser',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aartiq',
+    title: 'Aartiq - Open Source AI-Native Browser',
     description: 'Open-source AI-native browser with autonomous agents, local LLM support, and cross-device sync.',
-    images: ['/logo-transparent.png'],
+    images: [LOGO_URL],
     creator: '@Preet3627',
   },
   robots: {
@@ -75,12 +79,12 @@ export const metadata: Metadata = {
     },
   },
   other: {
-    'llms.txt': 'https://aartiq.vercel.app/llms.txt',
+    'llms.txt': `${SITE_URL}/llms.txt`,
   },
   alternates: {
-    canonical: 'https://aartiq.vercel.app',
+    canonical: SITE_URL,
     languages: {
-      'en': 'https://aartiq.vercel.app',
+      'en': SITE_URL,
     },
   },
   verification: {
@@ -88,7 +92,7 @@ export const metadata: Metadata = {
     yandex: 'yandex-verification-code',
   },
     icons: [
-    { rel: "icon", url: "/logo-transparent.png" },
+    { rel: "icon", url: "/favicon.ico" },
     { rel: "apple-touch-icon", url: "/logo-transparent.png" },
     { rel: "manifest", url: "/manifest.json" },
   ],
@@ -110,11 +114,51 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Aartiq",
+              "alternateName": "Aartiq Browser",
+              "url": SITE_URL,
+              "image": LOGO_URL,
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": `${SITE_URL}/search?q={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Aartiq",
+              "alternateName": "Aartiq Browser",
+              "url": SITE_URL,
+              "logo": LOGO_URL,
+              "image": LOGO_URL,
+              "sameAs": [
+                "https://github.com/Preet3627/Aartiq",
+                "https://aartiq.vercel.app"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
               "@type": "SoftwareApplication",
               "name": APP_INFO.name,
               "alternateName": APP_INFO.fullName,
               "description": "Open-source AI-native browser with autonomous agent capabilities, background scheduling, local LLM support, and privacy-focused cross-device sync.",
-              "url": "https://aartiq.vercel.app",
+              "url": SITE_URL,
+              "image": LOGO_URL,
               "applicationCategory": "UtilityApplication",
               "operatingSystem": ["Windows", "macOS", "Linux", "Android"],
               "offers": {
@@ -132,7 +176,7 @@ export default function RootLayout({
                   "name": "Aartiq Team"
                 }
               },
-              "downloadUrl": "https://aartiq.vercel.app/downloads",
+              "downloadUrl": `${SITE_URL}/downloads`,
               "softwareVersion": APP_VERSION.version,
               "releaseNotes": "https://github.com/Preet3627/Aartiq/releases",
               "featureList": [
@@ -156,7 +200,7 @@ export default function RootLayout({
               "@type": "TechArticle",
               "headline": `${APP_INFO.name} Documentation`,
               "description": "Documentation for Aartiq — installation, AI commands, API reference, security model, and developer guides.",
-              "url": "https://aartiq.vercel.app/docs",
+              "url": `${SITE_URL}/docs`,
               "datePublished": "2024-01-01",
               "dateModified": "2026-04-06",
               "author": {
@@ -169,7 +213,7 @@ export default function RootLayout({
                 "name": "Aartiq Team",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://aartiq.vercel.app/logo-transparent.png"
+                  "url": LOGO_URL
                 }
               },
               "about": {
@@ -191,18 +235,18 @@ export default function RootLayout({
               "@type": "CollectionPage",
               "name": `${APP_INFO.name} Documentation Index`,
               "description": "Index of all documentation pages for Aartiq",
-              "url": "https://aartiq.vercel.app/docs",
+              "url": `${SITE_URL}/docs`,
               "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": [
-                  {"@type": "ListItem", "position": 1, "name": "Getting Started", "url": "https://aartiq.vercel.app/docs/getting-started"},
-                  {"@type": "ListItem", "position": 2, "name": "Overview", "url": "https://aartiq.vercel.app/docs/overview"},
-                  {"@type": "ListItem", "position": 3, "name": "AI Commands", "url": "https://aartiq.vercel.app/docs/ai-commands"},
-                  {"@type": "ListItem", "position": 4, "name": "Security", "url": "https://aartiq.vercel.app/docs/security"},
-                  {"@type": "ListItem", "position": 5, "name": "Automation", "url": "https://aartiq.vercel.app/docs/automation"},
-                  {"@type": "ListItem", "position": 6, "name": "Cloud Sync", "url": "https://aartiq.vercel.app/docs/cloud-sync"},
-                  {"@type": "ListItem", "position": 7, "name": "Plugins", "url": "https://aartiq.vercel.app/docs/plugins"},
-                  {"@type": "ListItem", "position": 8, "name": "API Reference", "url": "https://aartiq.vercel.app/docs/api-reference"}
+                  {"@type": "ListItem", "position": 1, "name": "Getting Started", "url": `${SITE_URL}/docs/getting-started`},
+                  {"@type": "ListItem", "position": 2, "name": "Overview", "url": `${SITE_URL}/docs/overview`},
+                  {"@type": "ListItem", "position": 3, "name": "AI Commands", "url": `${SITE_URL}/docs/ai-commands`},
+                  {"@type": "ListItem", "position": 4, "name": "Security", "url": `${SITE_URL}/docs/security`},
+                  {"@type": "ListItem", "position": 5, "name": "Automation", "url": `${SITE_URL}/docs/automation`},
+                  {"@type": "ListItem", "position": 6, "name": "Cloud Sync", "url": `${SITE_URL}/docs/cloud-sync`},
+                  {"@type": "ListItem", "position": 7, "name": "Plugins", "url": `${SITE_URL}/docs/plugins`},
+                  {"@type": "ListItem", "position": 8, "name": "API Reference", "url": `${SITE_URL}/docs/api-reference`}
                 ]
               }
             })

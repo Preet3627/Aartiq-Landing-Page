@@ -1,93 +1,79 @@
 import { NextResponse } from "next/server";
 
-const docsPages = [
-  { slug: "getting-started", title: "Installation Guide", description: "Complete installation instructions for Windows, macOS, Linux, and Android. Includes setup for AI providers (Gemini, OpenAI, Anthropic, Ollama)." },
-  { slug: "keyboard-shortcuts", title: "Keyboard Shortcuts", description: "Complete list of keyboard shortcuts for navigation, search, AI chat, tabs, and browser controls." },
-  { slug: "overview", title: "Project Overview", description: "Architecture overview, feature summary, and technology stack." },
-  { slug: "components", title: "UI Components", description: "React component library and UI documentation." },
-  { slug: "changelog", title: "Changelog", description: "Version history and release notes." },
-  { slug: "cloud-sync", title: "Cloud Sync", description: "End-to-end encrypted cross-device synchronization, WiFi P2P pairing, and mobile app integration." },
-  { slug: "ai-commands", title: "AI Commands Reference", description: "Canonical JSON-first AI command reference including navigation, browser control, OCR, scheduling, automation, and plugin commands." },
-  { slug: "security", title: "Security Model", description: "Triple-lock security architecture, E2EE encryption, permission levels, and privacy features." },
-  { slug: "automation", title: "Automation Guide", description: "Background task scheduling, cron expressions, task queue management, and sleep/wake recovery." },
-  { slug: "native-api", title: "Native API Reference", description: "JavaScript APIs for desktop automation, robot service, clipboard, screenshots, and system integration." },
-  { slug: "deep-links", title: "Deep Links Documentation", description: "URL scheme support (comet-browser://) for launching browser, executing commands, and opening specific pages." },
-  { slug: "plugins", title: "Plugin System", description: "Native plugin architecture, plugin lifecycle, command registration, event hooks, and plugin SDK." },
-  { slug: "extensions", title: "Browser Extensions", description: "Extension system for adding custom functionality." },
-  { slug: "api-reference", title: "Full API Reference", description: "Complete IPC handlers, preload APIs, and Electron main process modules." },
-  { slug: "troubleshooting", title: "Troubleshooting Guide", description: "Common issues and solutions for installation, permissions, AI integration, and sync." },
-  { slug: "contributing", title: "Contributing Guide", description: "How to contribute to the project, coding standards, and development setup." },
-];
+const BASE = 'https://aartiq.vercel.app';
 
 export async function GET() {
-  const content = `# Aartiq Documentation
+  const content = `# Aartiq
 
-## Overview
+> An open-source, AI-native browser with autonomous agent capabilities, local LLM support (Ollama), permission-gated OS automation, background task scheduling, and E2EE cross-device sync. Built with Electron, Next.js, React, TypeScript, and Flutter. MIT-licensed on GitHub.
 
-Aartiq is an open-source, privacy-focused AI-integrated browser with native AI orchestration, background scheduling, and hardware-level automation. It supports Windows, macOS, Linux, and Android.
+Aartiq is a privacy-focused browser that integrates AI directly into the browsing experience. It supports multiple AI providers (Gemini, GPT, Claude, Ollama), can execute OS-level automation through a permission-gated system, schedule background tasks, sync data across devices with end-to-end encryption, and generate PDFs/Excel/PPTX documents from JSON templates. Available on Windows, macOS, Linux, and Android.
 
-- Website: https://aartiq.vercel.app
-- GitHub: https://github.com/Preet3627/Aartiq
-- Documentation: https://aartiq.vercel.app/docs
-- License: MIT
+## Docs
 
----
+- [Getting Started](https://aartiq.vercel.app/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
+- [AI Commands Reference](https://aartiq.vercel.app/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
+- [Security Model](https://aartiq.vercel.app/docs/security): Triple-lock security architecture with E2EE encryption, permission levels, and audit logging
+- [Automation Guide](https://aartiq.vercel.app/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
+- [Cloud Sync](https://aartiq.vercel.app/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
+- [Plugin System](https://aartiq.vercel.app/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
+- [Extensions](https://aartiq.vercel.app/docs/extensions): Chrome-compatible extension system loaded via Electron session
+- [Native API Reference](https://aartiq.vercel.app/docs/native-api): JavaScript APIs for desktop automation, robot service, clipboard, screenshots, and system integration
+- [API Reference](https://aartiq.vercel.app/docs/api-reference): Complete IPC handlers, preload APIs, and Electron main process modules
+- [Architecture Overview](https://aartiq.vercel.app/docs/overview): Component architecture, service layer, communication protocols, and directory layout
+- [Troubleshooting Guide](https://aartiq.vercel.app/docs/troubleshooting): Common issues and solutions for installation, permissions, AI integration, and sync
+- [Keyboard Shortcuts](https://aartiq.vercel.app/docs/keyboard-shortcuts): Complete keyboard shortcut reference
+- [UI Components](https://aartiq.vercel.app/docs/components): React component library and UI documentation
+- [Changelog](https://aartiq.vercel.app/docs/changelog): Version history and release notes
+- [Deep Links](https://aartiq.vercel.app/docs/deep-links): URL scheme support for launching browser, executing commands, and opening specific pages
+- [Contributing Guide](https://aartiq.vercel.app/docs/contributing): How to contribute, coding standards, and development setup
 
-## Documentation Index
+## GitHub
 
-${docsPages.map(page => `### ${page.title}
-- URL: /docs/${page.slug === "" ? "" : page.slug}
-- Description: ${page.description}`).join("\n\n")}
+- [Source Repository](https://github.com/Preet3627/Aartiq): MIT-licensed full source code
+- [Releases](https://github.com/Preet3627/Aartiq/releases): Pre-built binaries for all platforms
+- [Issues](https://github.com/Preet3627/Aartiq/issues): Bug reports and feature requests
 
----
+## Downloads
 
-## Key Features
+- [Download Page](https://aartiq.vercel.app/downloads): Pre-built installers for Windows (.exe, .msix), macOS (.dmg, .zip), Linux (.AppImage, .deb), and Android (.apk)
+- [Microsoft Store](https://apps.microsoft.com/detail/9N5Z9R9Z9Z9Z): Windows Store distribution
+- [Features](https://aartiq.vercel.app/features): Full feature overview and screenshots
 
-1. **AI Agent Control**: Natural language commands for browser automation
-2. **Local LLM Support**: Ollama integration for offline AI processing
-3. **Shell Command Execution**: Safe shell command execution with permission system
-4. **Background Scheduling**: Task scheduling even when browser is closed
-5. **Triple-Lock Security**: E2EE, permission levels, and audit logging
-6. **Cross-Device Sync**: WiFi P2P and encrypted cloud sync
-7. **PDF Generation**: JSON-based PDF template system
-8. **Plugin System**: Native plugin architecture for extensibility
-9. **OCR Capabilities**: Native-first screen recognition and cross-app element clicking
-10. **Open Source**: Full source code available on GitHub
+## Key Capabilities
 
----
+- **AI-Native**: Multi-model AI chat sidebar with Gemini, GPT-4, Claude, Ollama support. RAG memory with local vector database
+- **OS Automation**: Permission-gated shell command execution, app launching, file operations, and screen OCR
+- **Background Scheduler**: Cron-based task scheduling that runs even when the browser window is closed
+- **Document Generation**: PDF, Excel (.xlsx), PowerPoint (.pptx), and Word (.docx) generation from JSON/JSX templates
+- **Cross-Device**: E2EE WiFi sync between desktop and Android devices. Firebase cloud sync with quantum-resistant encryption
+- **Security**: Triple-lock permission system (Normal → Elevated → Critical). AES-256-GCM encryption. Sandboxed automation
+- **Plugin System**: Node.js-based plugin SDK with command registration, event hooks, and persistent config storage
+- **Extensions**: Chrome manifest v3 extension support via Electron session.defaultSession
 
 ## Technology Stack
 
-- **Frontend**: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
-- **Desktop**: Electron, native Node.js modules
-- **Mobile**: Flutter, Dart
-- **AI**: Google Gemini, OpenAI GPT, Anthropic Claude, Ollama
-- **Security**: AES-256-GCM, RSA-4096, PBKDF2
+- Desktop: Electron, Chromium, Node.js
+- Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
+- Mobile: Flutter, Dart, flutter_inappwebview
+- AI SDKs: Vercel AI SDK (OpenAI, Anthropic, Google, Groq, xAI)
+- Database: Firebase Realtime DB, IndexedDB, electron-store
+- Security: AES-256-GCM, RSA-4096, PBKDF2, Web Crypto API
+- macOS: SwiftUI, AppIntents, Apple Intelligence frameworks
+
+## About
+
+- **Type**: SoftwareApplication / OpenSourceBrowser
+- **License**: MIT
+- **Language**: English
+- **Founded**: 2024
+- **Author**: Preet3627 (https://github.com/Preet3627)
+- **Co-author**: Latestinssan (https://github.com/Latestinssan)
+- **Last updated**: 2026-07-07
 
 ---
 
-## AI Command Format
-
-Aartiq uses structured JSON commands for reliable parsing:
-
-\`\`\`json
-{
-  "command": "COMMAND_NAME",
-  "params": {
-    "key": "value"
-  }
-}
-\`\`\`
-
-Supported commands: NAVIGATE, SEARCH, WEB_SEARCH, RELOAD, GO_BACK, GO_FORWARD, READ_PAGE_CONTENT, LIST_OPEN_TABS, CLICK_ELEMENT, FIND_AND_CLICK, FILL_FORM, CREATE_PDF_JSON, CREATE_FILE_JSON, SHELL_COMMAND, SET_VOLUME, SET_BRIGHTNESS, OPEN_APP, OCR_SCREEN, OCR_COORDINATES, CLICK_APP_ELEMENT, SCHEDULE_TASK, LIST_AUTOMATIONS, DELETE_AUTOMATION, THINK, PLAN, PLUGIN_COMMAND
-
----
-
-## Contact & Support
-
-- GitHub Issues: https://github.com/Preet3627/Aartiq/issues
-- Releases: https://github.com/Preet3627/Aartiq/releases
-- License: MIT
+For complete page content, see llms-full.txt: ${BASE}/llms-full.txt
 `;
 
   return new NextResponse(content, {
