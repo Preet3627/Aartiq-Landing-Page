@@ -266,24 +266,7 @@ export default function GettingStartedPage() {
             <div className="space-y-8">
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {(steps[0].content.platforms ?? []).map((platform) => (
-                  platform.name.includes("Microsoft Store") ? (
-                    <div
-                      key={platform.name}
-                      className="group flex flex-col items-center rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 text-center transition-all hover:border-sky-500/30 hover:bg-sky-500/5"
-                    >
-                      <div dangerouslySetInnerHTML={{
-                        __html: `<ms-store-badge
-                          productid="9nd6wg2rp7cm"
-                          productname="Aartiq"
-                          window-mode="direct"
-                          theme="auto"
-                          size="large"
-                          language="en-gb"
-                          animation="on">
-                        </ms-store-badge>`
-                      }} />
-                    </div>
-                  ) : (
+                  platform.name.includes("Microsoft Store") ? null : (
                     <a
                       key={platform.name}
                       href="/downloads"
@@ -295,6 +278,20 @@ export default function GettingStartedPage() {
                     </a>
                   )
                 ))}
+              </div>
+
+              <div className="flex justify-center mt-8">
+                <div dangerouslySetInnerHTML={{
+                  __html: `<ms-store-badge
+                    productid="9nd6wg2rp7cm"
+                    productname="Aartiq"
+                    window-mode="direct"
+                    theme="dark"
+                    size="large"
+                    language="en-gb"
+                    animation="on">
+                  </ms-store-badge>`
+                }} />
               </div>
 
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
