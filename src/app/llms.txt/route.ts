@@ -42,7 +42,8 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ## Key Capabilities
 
-- **AI-Native**: Multi-model AI chat sidebar with Gemini, GPT-4, Claude, Ollama support. RAG memory with local vector database
+- **AI-Native**: Multi-model AI chat sidebar with Gemini, GPT-4, Claude, Ollama support. RAG memory with local vector database and cross-session persistence
+- **AI User Preferences**: Auto-learns user preferences (response style, tone, language, behavior) and persists them across sessions via SAVE_PREFERENCE command
 - **OS Automation**: Permission-gated shell command execution, app launching, file operations, and screen OCR
 - **Background Scheduler**: Cron-based task scheduling that runs even when the browser window is closed
 - **Document Generation**: PDF, Excel (.xlsx), PowerPoint (.pptx), and Word (.docx) generation from JSON/JSX templates

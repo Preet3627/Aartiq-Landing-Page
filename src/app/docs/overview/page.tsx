@@ -19,7 +19,10 @@ import {
   Eye,
   FileText,
   Timer,
-  Workflow
+  Workflow,
+  Heart,
+  Brain,
+  Bookmark
 } from "lucide-react";
 
 const keyFeatures = [
@@ -92,6 +95,36 @@ const keyFeatures = [
     borderColor: "border-cyan-500/20",
     iconColor: "text-cyan-300",
     href: "/docs/api-reference#ai"
+  },
+  {
+    icon: Heart,
+    title: "Preference Auto-Learning",
+    description: "AI detects and remembers user preferences — response style, tone, language, and behavior — across sessions without manual configuration.",
+    fileRef: "src/lib/",
+    color: "from-rose-500/20 to-pink-500/20",
+    borderColor: "border-rose-500/20",
+    iconColor: "text-rose-400",
+    href: "/docs/ai-commands"
+  },
+  {
+    icon: Brain,
+    title: "Cross-Session RAG",
+    description: "Past conversations are automatically ingested into vector memory and available as RAG context in future sessions for continuity.",
+    fileRef: "src/lib/AIAgent.ts",
+    color: "from-violet-500/20 to-purple-500/20",
+    borderColor: "border-violet-500/20",
+    iconColor: "text-violet-400",
+    href: "/docs/ai-commands"
+  },
+  {
+    icon: Bookmark,
+    title: "SAVE_PREFERENCE",
+    description: "AI persists user preferences via the SAVE_PREFERENCE command, enabling personalized interactions without manual setup.",
+    fileRef: "src/lib/AICommandParser.ts",
+    color: "from-amber-500/20 to-yellow-500/20",
+    borderColor: "border-amber-500/20",
+    iconColor: "text-amber-400",
+    href: "/docs/ai-commands"
   },
 ];
 

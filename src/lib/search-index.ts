@@ -15,7 +15,7 @@ export interface SearchIndex {
 }
 
 export const searchIndex: SearchIndex = {
-  lastUpdated: "2026-04-23",
+  lastUpdated: "2026-07-07",
   pages: [
     // CLI Integration
     {
@@ -158,6 +158,38 @@ export const searchIndex: SearchIndex = {
       section: "Scheduling",
       keywords: ["schedule", "automation", "task", "cron"],
       type: "command"
+    },
+
+    // AI User Preferences
+    {
+      id: "ai-user-preferences",
+      title: "AI User Preferences",
+      description: "AI auto-learns user preferences for response style, tone, and behavior across sessions",
+      content: "user preferences AI auto-learning SAVE_PREFERENCE response style concise detailed tone language behavior persistent memory cross-session personalization",
+      url: "/docs/ai-commands#user-preferences",
+      section: "AI Preferences",
+      keywords: ["preferences", "AI learning", "SAVE_PREFERENCE", "auto-learn", "personalization", "response style", "user profile"],
+      type: "guide"
+    },
+    {
+      id: "ai-command-save-preference",
+      title: "SAVE_PREFERENCE Command",
+      description: "AI command to persist user preferences across sessions",
+      content: "SAVE_PREFERENCE key value command persist preference",
+      url: "/docs/ai-commands#user-preferences",
+      section: "AI Preferences",
+      keywords: ["SAVE_PREFERENCE", "preference", "persist", "save", "user preference"],
+      type: "command"
+    },
+    {
+      id: "rag-persistence",
+      title: "Cross-Session RAG Persistence",
+      description: "Past conversations and context are preserved in vector memory and available as RAG context in future sessions",
+      content: "RAG retrieval augmented generation persistence cross-session vector memory conversation ingest semantic search BrowserAI neural encoder local embedding",
+      url: "/docs/overview#ai-agent",
+      section: "AI Agent",
+      keywords: ["RAG", "persistence", "vector memory", "cross-session", "conversation history", "neural search", "local embedding"],
+      type: "guide"
     },
 
     // Security
