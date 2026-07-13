@@ -30,7 +30,7 @@ export const releases: ReleaseEntry[] = [
         'MCP high-risk approval with QR code, PIN, and native OS dialogs (macOS Swift ApprovalCard, Windows/Linux native dialogs)',
         'Cross-platform native approval manager — Windows and Linux approval dialogs replace Electron popups',
         'Biometric Every Action toggle — optional stricter mode requiring Touch ID for every low-risk MCP action',
-        'Auto-configure Claude Desktop — one-click writes MCP server config to Claude Desktop's config file',
+        "Auto-configure Claude Desktop — one-click writes MCP server config to Claude Desktop's config file",
       ],
       fix: [
         'Reclassified destructive file commands (rm, unlink, del) as high risk instead of silently blocking',
