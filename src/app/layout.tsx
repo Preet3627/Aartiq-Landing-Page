@@ -12,7 +12,7 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-const SITE_URL = 'https://aartiq.vercel.app';
+const SITE_URL = 'https://aartiq.ponsrischool.in';
 const LOGO_URL = `${SITE_URL}/logo-transparent.png`;
 
 export const metadata: Metadata = {

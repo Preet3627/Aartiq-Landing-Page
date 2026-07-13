@@ -715,10 +715,11 @@ export default function Home() {
 
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Support</p>
-                  <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
-                     <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
-                  </ul>
+                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
+                      <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
+                      <li><a href="/privacy" className="hover:text-sky-400 transition">Privacy Policy</a></li>
+                      <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
+                   </ul>
                </div>
            </div>
 
