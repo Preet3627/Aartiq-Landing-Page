@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-18T13:55:22.032Z",
+  "generated": "2026-07-18T13:58:13.772Z",
   "version": "0.3.3",
   "desktop": {
     "total": 126,
-    "totalLines": 38159,
+    "totalLines": 38148,
     "byCategory": {
       "components": 87,
       "core": 0,
@@ -426,7 +426,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 5827,
+        "lines": 5816,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -470,6 +470,7 @@
             "./ThinkingIndicator",
             "./LLMProviderSettings",
             "./AICommandQueue",
+            "./AIChatSidebar/types",
             "./CapabilitiesPanel",
             "./ai/DOMSearchDisplay",
             "./ai/SecureDOMReader",
@@ -9584,6 +9585,6 @@
   },
   "summary": {
     "total": 126,
-    "totalLines": 38159
+    "totalLines": 38148
   }
 }
