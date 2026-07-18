@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-18T14:07:11.698Z",
+  "generated": "2026-07-18T16:35:17.127Z",
   "version": "0.3.3",
   "desktop": {
-    "total": 126,
-    "totalLines": 38046,
+    "total": 127,
+    "totalLines": 38568,
     "byCategory": {
-      "components": 87,
+      "components": 88,
       "core": 0,
       "automation": 0,
       "service": 0,
@@ -102,7 +102,7 @@
       {
         "name": "types.ts",
         "path": "AIChatSidebar/types.ts",
-        "lines": 151,
+        "lines": 162,
         "description": "Types",
         "tags": [
           "AI",
@@ -118,11 +118,41 @@
           ],
           "interfaces": [
             {
+              "name": "PlanningStep",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "icon",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "risk",
+                  "type": "'low' | 'medium' | 'high'",
+                  "required": true
+                },
+                {
+                  "name": "estimatedTime",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            },
+            {
               "name": "Attachment",
               "properties": [
                 {
                   "name": "type",
-                  "type": "'image' | 'pdf'",
+                  "type": "'image' | 'pdf' | 'text' | 'markdown'",
                   "required": true
                 },
                 {
@@ -404,6 +434,8 @@
             "MediaItem",
             "ExtendedChatMessage",
             "VisualStage",
+            "AgentState",
+            "PlanningStep",
             "Attachment",
             "FileAttachment",
             "MessageSource",
@@ -426,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 5883,
+        "lines": 6490,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -461,13 +493,13 @@
           "importsInternal": [
             "./ai/ThinkingPanel",
             "./ai/CollapsibleOCRMessage",
+            "./ai/CollapsibleSkillMessage",
             "./ai/MessageActions",
             "./ai/ConversationHistoryPanel",
             "./ai/useAIActionSecurityManager",
             "@/lib/ai-action-security",
             "@/lib/useAppVersion",
             "./ai/AISetupGuide",
-            "./ThinkingIndicator",
             "./LLMProviderSettings",
             "./AICommandQueue",
             "./AIChatSidebar/types",
@@ -481,7 +513,6 @@
             "./ai/FlowchartDiagram",
             "./ai/ChartDiagram",
             "./ai/YouTubePlayer",
-            "@/stores/uiStore",
             "@/lib/AICommandParser",
             "@/store/useAppStore",
             "@/lib/BrowserAI",
@@ -634,6 +665,41 @@
                   "required": true
                 }
               ]
+            },
+            {
+              "name": "SidebarWorkspacePreferences",
+              "properties": [
+                {
+                  "name": "fontFamily",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "fontSize",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "soundsEnabled",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "gradientEffectsEnabled",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "visibleComposerIcons",
+                  "type": "Record<ComposerIconKey, boolean>",
+                  "required": true
+                },
+                {
+                  "name": "modelNicknames",
+                  "type": "Record<string, string>",
+                  "required": true
+                }
+              ]
             }
           ],
           "hooks": [
@@ -664,13 +730,18 @@
             "parseSearchResultEntry",
             "normalizeSearchResults",
             "FilePathLink",
+            "SourceLink",
             "renderMarkdownContent",
             "StreamingMarkdownMessage",
+            "collapseRawSearchDump",
+            "sanitizeVisibleMessage",
+            "ThinkingStatus",
+            "loadSidebarWorkspacePreferences",
+            "blobToBase64",
             "sidebarShellStyle",
             "softPanelStyle",
             "popoverStyle",
             "userBubbleStyle",
-            "modelBubbleStyle",
             "findYouTubeLinkElement",
             "flushStreamText",
             "generateImage",
@@ -678,19 +749,24 @@
             "result",
             "addImage",
             "commonPayload",
+            "pdfMeta",
             "formatMessageForExport",
             "merged",
             "convertTagsToHTML",
             "hOnline",
             "hOffline",
-            "handleGlobalKeyDown"
+            "handleGlobalKeyDown",
+            "handleFocusAI",
+            "handleAbort",
+            "handleToggleAutonomous",
+            "options"
           ]
         }
       },
       {
         "name": "AICommandQueue.tsx",
         "path": "AICommandQueue.tsx",
-        "lines": 405,
+        "lines": 480,
         "description": "Command Queue",
         "tags": [
           "React",
@@ -698,7 +774,8 @@
           "Automation",
           "PDF",
           "OCR",
-          "macOS"
+          "macOS",
+          "Windows"
         ],
         "lastModified": "2026-07-18",
         "codeAnalysis": {
@@ -706,9 +783,7 @@
             "react",
             "framer-motion"
           ],
-          "importsInternal": [
-            "@/lib/useAppVersion"
-          ],
+          "importsInternal": [],
           "interfaces": [
             {
               "name": "AICommand",
@@ -754,6 +829,16 @@
                   "required": true
                 },
                 {
+                  "name": "startTime",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "endTime",
+                  "type": "number",
+                  "required": false
+                },
+                {
                   "name": "category",
                   "type": "string",
                   "required": false
@@ -792,11 +877,24 @@
                   "name": "onCancel",
                   "type": "() => void",
                   "required": false
+                },
+                {
+                  "name": "onStopCurrent",
+                  "type": "() => void",
+                  "required": false
+                },
+                {
+                  "name": "cancelImmediately",
+                  "type": "() => void",
+                  "required": false
                 }
               ]
             }
           ],
-          "hooks": [],
+          "hooks": [
+            "useState",
+            "useMemo"
+          ],
           "componentType": "function-component",
           "exports": [
             "AICommand",
@@ -807,13 +905,19 @@
             "lucide-icons"
           ],
           "keyFunctions": [
-            "getCategoryIcon",
-            "getCategoryColor",
-            "getCategoryBg",
-            "getRiskBadge",
-            "getCommandIcon",
-            "getCommandCategory",
-            "getCommandLabel"
+            "commandGroup",
+            "formatDuration",
+            "formatTimestamp",
+            "elapsedForCommand",
+            "shellSummary",
+            "commandLabel",
+            "outputSummary",
+            "StatusMark",
+            "Timeline",
+            "ExpandableTechnicalDetails",
+            "ResultCard",
+            "ExecutionCard",
+            "toggleCommand"
           ]
         }
       },
@@ -3366,11 +3470,13 @@
       {
         "name": "SpotlightSearchOverlay.tsx",
         "path": "SpotlightSearchOverlay.tsx",
-        "lines": 305,
+        "lines": 345,
         "description": "Spotlight Search Overlay",
         "tags": [
           "React",
           "Node.js",
+          "AI",
+          "PDF",
           "macOS"
         ],
         "lastModified": "2026-07-18",
@@ -3401,12 +3507,43 @@
                   "required": true
                 }
               ]
+            },
+            {
+              "name": "CommandItem",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "category",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "icon",
+                  "type": "React.ReactNode",
+                  "required": true
+                },
+                {
+                  "name": "action",
+                  "type": "() => void",
+                  "required": true
+                }
+              ]
             }
           ],
           "hooks": [
             "useState",
             "useEffect",
-            "useRef"
+            "useRef",
+            "useMemo"
           ],
           "componentType": "function-component",
           "exports": [
@@ -3796,7 +3933,7 @@
       {
         "name": "TitleBar.tsx",
         "path": "TitleBar.tsx",
-        "lines": 218,
+        "lines": 132,
         "description": "Title Bar",
         "tags": [
           "React",
@@ -3810,8 +3947,7 @@
           ],
           "importsInternal": [
             "./VirtualizedTabBar",
-            "@/store/useAppStore",
-            "@/lib/firebaseConfigStorage"
+            "@/store/useAppStore"
           ],
           "interfaces": [
             {
@@ -3832,8 +3968,7 @@
           ],
           "hooks": [
             "useState",
-            "useEffect",
-            "useCallback"
+            "useEffect"
           ],
           "componentType": "function-component",
           "exports": [
@@ -3841,9 +3976,7 @@
           ],
           "apiUsage": [
             "electronAPI",
-            "router",
             "zustand-store",
-            "next-navigation",
             "lucide-icons"
           ],
           "keyFunctions": [
@@ -4411,7 +4544,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 295,
+        "lines": 317,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -4611,7 +4744,7 @@
       {
         "name": "AIUtils.ts",
         "path": "ai/AIUtils.ts",
-        "lines": 1090,
+        "lines": 952,
         "description": "AIUtils",
         "tags": [
           "Security",
@@ -4693,21 +4826,6 @@
                 },
                 {
                   "name": "caption",
-                  "type": "string",
-                  "required": false
-                }
-              ]
-            },
-            {
-              "name": "PDFStyles",
-              "properties": [
-                {
-                  "name": "outlineColor",
-                  "type": "string",
-                  "required": false
-                },
-                {
-                  "name": "accentColor",
                   "type": "string",
                   "required": false
                 }
@@ -4996,7 +5114,6 @@
             "detectHallucinatedContent",
             "sanitizePDFContent",
             "PDFImage",
-            "PDFStyles",
             "buildBodyFromMarkdown",
             "buildCleanPDFContent",
             "PDFActionLog",
@@ -5204,21 +5321,21 @@
       {
         "name": "ClickPermissionModal.tsx",
         "path": "ai/ClickPermissionModal.tsx",
-        "lines": 474,
+        "lines": 392,
         "description": "Click Permission Modal",
         "tags": [
           "React",
           "Node.js",
-          "AI",
-          "Sync",
-          "macOS"
+          "Automation",
+          "macOS",
+          "Windows",
+          "Linux"
         ],
         "lastModified": "2026-07-18",
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "framer-motion",
-            "lucide-react"
+            "framer-motion"
           ],
           "importsInternal": [],
           "interfaces": [
@@ -5296,13 +5413,18 @@
                   "required": false
                 },
                 {
-                  "name": "highRiskQr",
-                  "type": "string | null",
+                  "name": "requiresDeviceUnlock",
+                  "type": "boolean",
                   "required": false
                 },
                 {
-                  "name": "requiresDeviceUnlock",
-                  "type": "boolean",
+                  "name": "affectedPaths",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "estimatedImpact",
+                  "type": "string",
                   "required": false
                 }
               ]
@@ -5321,10 +5443,13 @@
             "lucide-icons"
           ],
           "keyFunctions": [
-            "RISK_CONFIG",
-            "IrreversibleWarning",
+            "riskTone",
+            "actionIcon",
+            "humanAction",
+            "TechnicalDetails",
+            "DangerousActionNotice",
             "toggleIndex",
-            "toggleAll",
+            "PermissionShell",
             "handleKey"
           ]
         }
@@ -5369,6 +5494,50 @@
           "componentType": "react-utility",
           "exports": [
             "default CollapsibleOCRMessage"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "CollapsibleSkillMessage.tsx",
+        "path": "ai/CollapsibleSkillMessage.tsx",
+        "lines": 74,
+        "description": "Collapsible Skill Message",
+        "tags": [
+          "React",
+          "Security",
+          "Automation",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-18",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "CollapsibleSkillMessageProps",
+              "properties": [
+                {
+                  "name": "skills",
+                  "type": "string[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default CollapsibleSkillMessage"
           ],
           "apiUsage": [
             "lucide-icons"
@@ -6595,7 +6764,7 @@
       {
         "name": "useAIActionSecurityManager.tsx",
         "path": "ai/useAIActionSecurityManager.tsx",
-        "lines": 432,
+        "lines": 399,
         "description": "Action Security Manager",
         "tags": [
           "React",
@@ -6646,13 +6815,18 @@
                   "required": true
                 },
                 {
-                  "name": "highRiskQr",
-                  "type": "string | null",
+                  "name": "requiresDeviceUnlock",
+                  "type": "boolean",
                   "required": false
                 },
                 {
-                  "name": "requiresDeviceUnlock",
-                  "type": "boolean",
+                  "name": "affectedPaths",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "estimatedImpact",
+                  "type": "string",
                   "required": false
                 }
               ]
@@ -6698,11 +6872,6 @@
                 {
                   "name": "resolve",
                   "type": "(allowed: boolean) => void",
-                  "required": true
-                },
-                {
-                  "name": "mobileApproved",
-                  "type": "boolean",
                   "required": true
                 },
                 {
@@ -8631,7 +8800,7 @@
       {
         "name": "ai-action-security.ts",
         "path": "ai-action-security.ts",
-        "lines": 475,
+        "lines": 502,
         "description": "Ai Action Security",
         "tags": [
           "Security",
@@ -8932,7 +9101,7 @@
       {
         "name": "constants.ts",
         "path": "constants.ts",
-        "lines": 47,
+        "lines": 52,
         "description": "Constants",
         "tags": [
           "AI",
@@ -9575,7 +9744,7 @@
     "components": []
   },
   "summary": {
-    "total": 126,
-    "totalLines": 38046
+    "total": 127,
+    "totalLines": 38568
   }
 }
