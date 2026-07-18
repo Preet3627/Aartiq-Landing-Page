@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-18T14:01:28.554Z",
+  "generated": "2026-07-18T14:07:11.698Z",
   "version": "0.3.3",
   "desktop": {
     "total": 126,
-    "totalLines": 38215,
+    "totalLines": 38046,
     "byCategory": {
       "components": 87,
       "core": 0,
@@ -5332,11 +5332,10 @@
       {
         "name": "CollapsibleOCRMessage.tsx",
         "path": "ai/CollapsibleOCRMessage.tsx",
-        "lines": 225,
+        "lines": 56,
         "description": "CollapsibleOCRMessage",
         "tags": [
           "React",
-          "PDF",
           "OCR",
           "macOS"
         ],
@@ -5344,7 +5343,6 @@
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "framer-motion",
             "lucide-react"
           ],
           "importsInternal": [],
@@ -5366,23 +5364,16 @@
             }
           ],
           "hooks": [
-            "useState",
-            "useEffect",
-            "useRef"
+            "useState"
           ],
-          "componentType": "function-component",
+          "componentType": "react-utility",
           "exports": [
             "default CollapsibleOCRMessage"
           ],
           "apiUsage": [
-            "framer-motion",
             "lucide-icons"
           ],
-          "keyFunctions": [
-            "onDragStart",
-            "onMove",
-            "onUp"
-          ]
+          "keyFunctions": []
         }
       },
       {
@@ -9585,6 +9576,6 @@
   },
   "summary": {
     "total": 126,
-    "totalLines": 38215
+    "totalLines": 38046
   }
 }
