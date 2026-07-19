@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-19T03:29:40.109Z",
+  "generated": "2026-07-19T05:03:18.985Z",
   "version": "0.3.3",
   "desktop": {
     "total": 128,
-    "totalLines": 39795,
+    "totalLines": 40292,
     "byCategory": {
       "components": 89,
       "core": 0,
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 6713,
+        "lines": 6841,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -668,6 +668,31 @@
               ]
             },
             {
+              "name": "GlowPresetScheme",
+              "properties": [
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "primary",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "secondary",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "tertiary",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
+            {
               "name": "SidebarWorkspacePreferences",
               "properties": [
                 {
@@ -688,6 +713,31 @@
                 {
                   "name": "gradientEffectsEnabled",
                   "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "glowMode",
+                  "type": "GlowMode",
+                  "required": true
+                },
+                {
+                  "name": "glowPreset",
+                  "type": "GlowPreset",
+                  "required": true
+                },
+                {
+                  "name": "glowColorPrimary",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "glowColorSecondary",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "glowColorTertiary",
+                  "type": "string",
                   "required": true
                 },
                 {
@@ -739,6 +789,7 @@
             "ThinkingStatus",
             "loadSidebarWorkspacePreferences",
             "blobToBase64",
+            "hexToRgba",
             "sidebarShellStyle",
             "softPanelStyle",
             "popoverStyle",
@@ -1997,11 +2048,10 @@
       {
         "name": "LLMProviderSettings.tsx",
         "path": "LLMProviderSettings.tsx",
-        "lines": 1138,
+        "lines": 1142,
         "description": "Provider Settings",
         "tags": [
           "React",
-          "Node.js",
           "AI",
           "Sync",
           "PDF",
@@ -3403,7 +3453,7 @@
       {
         "name": "SettingsPanel.tsx",
         "path": "SettingsPanel.tsx",
-        "lines": 1152,
+        "lines": 1153,
         "description": "Settings Panel",
         "tags": [
           "React",
@@ -3567,7 +3617,7 @@
       {
         "name": "StartupSetupUI.tsx",
         "path": "StartupSetupUI.tsx",
-        "lines": 793,
+        "lines": 960,
         "description": "Startup Setup",
         "tags": [
           "React",
@@ -3576,6 +3626,7 @@
           "AI",
           "Sync",
           "Automation",
+          "PDF",
           "macOS",
           "Windows"
         ],
@@ -4589,10 +4640,11 @@
       {
         "name": "AISetupGuide.tsx",
         "path": "ai/AISetupGuide.tsx",
-        "lines": 827,
+        "lines": 1023,
         "description": "Setup Guide",
         "tags": [
           "React",
+          "Node.js",
           "Security",
           "AI",
           "Automation",
@@ -4630,6 +4682,7 @@
             "useState",
             "useEffect",
             "useCallback",
+            "useRef",
             "useMemo"
           ],
           "componentType": "function-component",
@@ -9311,7 +9364,7 @@
       {
         "name": "constants.ts",
         "path": "constants.ts",
-        "lines": 52,
+        "lines": 53,
         "description": "Constants",
         "tags": [
           "AI",
@@ -9955,6 +10008,6 @@
   },
   "summary": {
     "total": 128,
-    "totalLines": 39795
+    "totalLines": 40292
   }
 }
