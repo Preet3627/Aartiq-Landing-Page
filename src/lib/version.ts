@@ -1,8 +1,8 @@
 export const APP_INFO = {
   name: 'Aartiq',
   fullName: 'Aartiq',
-  tagline: 'Navigate, automate, and dominate the web',
-  description: 'Aartiq is a high-performance, privacy-focused autonomous browser built by a 16-year-old student from India (Preet3627) while preparing for JEE. It features native AI orchestration, background scheduling, and hardware-level automation.',
+  tagline: 'Navigate, automate, and control your workflow',
+  description: 'Aartiq is an open-source Electron browser with built-in AI assistant, background task scheduling, and OS-level automation. Built by Preet3627.',
   authors: ['Preet3627', 'Latestinssan'],
   website: 'https://aartiq.vercel.app',
   docs: 'https://aartiq.vercel.app/docs',
@@ -11,10 +11,9 @@ export const APP_INFO = {
   supportEmail: 'support@ponsrischool.in',
 };
 
-export const DOWNLOAD_URLS = {
-  windows: 'https://github.com/Preet3627/Aartiq/releases/latest',
-  macArm64: 'https://github.com/Preet3627/Aartiq/releases/latest',
-  macX64: 'https://github.com/Preet3627/Aartiq/releases/latest',
-  linux: 'https://github.com/Preet3627/Aartiq/releases/latest',
-  android: 'https://github.com/Preet3627/Aartiq/releases/latest',
+export const APP_VERSION = {
+  version: '0.3.4',
+  codename: 'Nebula',
+  releaseDate: '2026-07-20',
+  channel: 'stable',
 };

@@ -15,7 +15,7 @@ export interface SearchIndex {
 }
 
 export const searchIndex: SearchIndex = {
-  lastUpdated: "2026-07-07",
+  lastUpdated: "2026-07-20",
   pages: [
     // CLI Integration
     {
@@ -62,7 +62,7 @@ export const searchIndex: SearchIndex = {
       id: "getting-started-download",
       title: "Download Aartiq",
       description: "Download installers for all supported platforms",
-      content: "Download Comet.Browser.Setup.exe Windows Aartiq arm64 dmg macOS Apple Silicon Aartiq x64 dmg macOS Intel Comet.Browser.AppImage Linux Comet.Browser.apk Android",
+      content: "Download Aartiq.Browser.Setup.exe Windows Aartiq arm64 dmg macOS Apple Silicon Aartiq x64 dmg macOS Intel Aartiq.Browser.AppImage Linux Aartiq.Browser.apk Android",
       url: "/docs/getting-started#download",
       section: "Download",
       keywords: ["download", "exe", "dmg", "appimage", "apk"],
@@ -196,10 +196,10 @@ export const searchIndex: SearchIndex = {
     {
       id: "security",
       title: "Security Model",
-      description: "Triple-lock security architecture and privacy features",
-      content: "security encryption AES-256-GCM PBKDF2 DOMPurify capability-scoped execution AllowedAction E2EE end-to-end encryption permission levels Visual Sandbox Syntactic Firewall Human-in-the-Loop",
+      description: "Three-layer security architecture and privacy features",
+      content: "security encryption AES-256-GCM PBKDF2 DOMPurify capability-scoped execution AllowedAction E2EE end-to-end encryption permission levels Visual Sandbox Syntactic Firewall Human-in-the-Loop biometric Touch ID batch approval irreversible command vault keychain",
       url: "/docs/security",
-      keywords: ["security", "encryption", "AES", "PBKDF2", "DOMPurify", "capability", "E2EE", "permissions", "sandbox", "firewall"],
+      keywords: ["security", "encryption", "AES", "PBKDF2", "DOMPurify", "capability", "E2EE", "permissions", "sandbox", "firewall", "biometric", "Touch ID", "vault"],
       type: "page"
     },
     {
@@ -230,6 +230,36 @@ export const searchIndex: SearchIndex = {
       url: "/docs/security#hitl",
       section: "Human-in-the-Loop",
       keywords: ["approval", "QR", "mobile", "permission", "risk"],
+      type: "section"
+    },
+    {
+      id: "security-biometric",
+      title: "Biometric Authentication",
+      description: "Session-scoped Touch ID authentication for shell commands",
+      content: "biometric Touch ID session authentication per-session auto-approve shell command macOS fingerprint",
+      url: "/docs/security#biometric",
+      section: "Biometric Auth",
+      keywords: ["biometric", "Touch ID", "fingerprint", "session", "authentication", "macOS"],
+      type: "section"
+    },
+    {
+      id: "security-batch-approval",
+      title: "Batch Shell Approval",
+      description: "Approve multiple shell commands in one modal with per-command toggles",
+      content: "batch shell command approval modal per-command toggle Select All Deselect All consecutive commands",
+      url: "/docs/security#batch-approval",
+      section: "Batch Approval",
+      keywords: ["batch", "shell", "approval", "modal", "toggle", "commands"],
+      type: "section"
+    },
+    {
+      id: "security-vault",
+      title: "AES-256-GCM Vault",
+      description: "Encrypted credential storage with OS keychain backup",
+      content: "AES-256-GCM vault encryption keychain macOS Windows Linux credential storage backup",
+      url: "/docs/security#vault",
+      section: "Credential Vault",
+      keywords: ["AES", "vault", "encryption", "keychain", "credentials", "storage"],
       type: "section"
     },
 
@@ -409,7 +439,7 @@ export const searchIndex: SearchIndex = {
     {
       id: "native-api-apple-advanced-paths",
       title: "Writing Tools and Assistant Schemas",
-      description: "Advanced Apple-native integration paths documented for future Comet work",
+      description: "Advanced Apple-native integration paths documented for future Aartiq work",
       content: "Writing Tools assistant schemas App Intents Siri Apple Intelligence native editor integration ImagePlaygroundViewController",
       url: "/docs/native-api",
       section: "Apple Intelligence Paths",
@@ -424,7 +454,7 @@ export const searchIndex: SearchIndex = {
       description: "Siri, Apple Intelligence, Shortcuts, Voice Control, and Raycast integration",
       content: "Apple integration Siri Shortcuts URL scheme aartiq:// voice control dictation text-to-speech Raycast Apple Intelligence on-device AI summaries image generation genmoji macOS 15.0 M-series Foundation Models voice chat dictation speech rate",
       url: "/docs/apple-integration",
-      keywords: ["Apple", "Siri", "Shortcuts", "Raycast", "voice", "dictation", "speech", "comet-ai URL scheme", "Apple Intelligence", "Foundation Models", "genmoji", "on-device AI"],
+      keywords: ["Apple", "Siri", "Shortcuts", "Raycast", "voice", "dictation", "speech", "aartiq URL scheme", "Apple Intelligence", "Foundation Models", "genmoji", "on-device AI"],
       type: "page"
     },
     {
@@ -664,7 +694,7 @@ export const searchIndex: SearchIndex = {
     {
       id: "troubleshooting-apple-intelligence-support",
       title: "Apple Intelligence Unsupported",
-      description: "Why Comet shows unsupported, disabled, or unavailable Apple Intelligence UI states",
+      description: "Why Aartiq shows unsupported, disabled, or unavailable Apple Intelligence UI states",
       content: "Apple Intelligence unsupported disabled unavailable summaryAvailable summaryReason imageAvailable imageReason supported Mac Apple Intelligence settings",
       url: "/docs/troubleshooting",
       section: "AI & Commands",
@@ -825,7 +855,7 @@ export const searchIndex: SearchIndex = {
       id: "native-module-structure",
       title: "Native Module Architecture",
       description: "Electron + Swift architecture for native macOS integration",
-      content: "native module N-API node-gyp objective-c++ bridge swiftui window electron main process comet-ai-sidebar binding.gyp",
+      content: "native module N-API node-gyp objective-c++ bridge swiftui window electron main process aartiq-sidebar binding.gyp",
       url: "/docs/native-api#module-structure",
       section: "Module Structure",
       keywords: ["N-API", "node-gyp", "objective-c++", "bridge", "architecture", "module"],
@@ -835,7 +865,7 @@ export const searchIndex: SearchIndex = {
       id: "sidebar-build-commands",
       title: "Sidebar V2 Build Commands",
       description: "How to build the native Swift module",
-      content: "npm install npm run build node-gyp comet-ai-sidebar native module compilation xcode swift",
+      content: "npm install npm run build node-gyp aartiq-sidebar native module compilation xcode swift",
       url: "/docs/native-api#build",
       section: "Build",
       keywords: ["build", "npm", "install", "compile", "xcode", "swift"],
@@ -845,7 +875,7 @@ export const searchIndex: SearchIndex = {
       id: "sidebar-api-usage",
       title: "Sidebar V2 API Usage",
       description: "JavaScript API for controlling the native sidebar",
-      content: "CometAISidebar showWindow hideWindow toggleWindow configureLLM loadLLMConfig setAutoStart getAutoStart setSidebarVersion getSidebarVersion",
+      content: "AartiqAISidebar showWindow hideWindow toggleWindow configureLLM loadLLMConfig setAutoStart getAutoStart setSidebarVersion getSidebarVersion",
       url: "/docs/native-api#usage",
       section: "Usage",
       keywords: ["API", "showWindow", "hideWindow", "toggleWindow", "configureLLM", "autoStart"],

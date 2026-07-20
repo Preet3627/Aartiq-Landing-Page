@@ -4,8 +4,8 @@ import { join } from 'path';
 export function getVersionFromPackage(): { version: string; codename: string; releaseDate: string; channel: string } {
   try {
     const candidates = [
-      join(process.cwd(), '..', 'comet-browser', 'package.json'),
-      join(process.cwd(), 'comet-browser', 'package.json'),
+      join(process.cwd(), '..', 'aartiq-browser', 'package.json'),
+      join(process.cwd(), 'aartiq-browser', 'package.json'),
       join(process.cwd(), 'package.json'),
     ];
     const packagePath = candidates.find((candidate) => existsSync(candidate)) || candidates[candidates.length - 1];

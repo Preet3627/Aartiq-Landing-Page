@@ -9,7 +9,7 @@ export const docsMetadata: Metadata = {
     default: `Documentation | Aartiq Browser`,
     template: `%s | Aartiq Docs`,
   },
-  description: `Complete documentation for Aartiq Browser - The autonomous AI-integrated browser built by Preet3627 while preparing for JEE.`,
+  description: `Complete documentation for Aartiq Browser - An open-source browser with built-in AI assistant and OS automation, built by Preet3627 while preparing for JEE.`,
   keywords: [
     "Aartiq", 
     "Aartiq Docs", 
@@ -74,7 +74,7 @@ export const docsPages: Record<string, { title: string; description: string; key
   },
   security: {
     title: "Security Model",
-    description: "Triple-lock security architecture, E2EE encryption, permissions, and privacy features",
+    description: "Three-layer security architecture, E2EE encryption, permissions, and privacy features",
     keywords: ["security", "encryption", "E2EE", "privacy", "AES-256", "RSA"],
   },
   automation: {
