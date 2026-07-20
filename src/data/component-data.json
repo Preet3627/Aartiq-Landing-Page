@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-20T07:56:57.093Z",
+  "generated": "2026-07-20T08:35:51.122Z",
   "version": "0.3.4",
   "desktop": {
-    "total": 128,
-    "totalLines": 41439,
+    "total": 131,
+    "totalLines": 41465,
     "byCategory": {
       "components": 92,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 36
+      "lib": 39
     },
     "components": [
       {
@@ -7971,6 +7971,54 @@
         }
       },
       {
+        "name": "ActionTagParser.ts",
+        "path": "ActionTagParser.ts",
+        "lines": 7,
+        "description": "Action Tag Parser",
+        "tags": [
+          "Automation"
+        ],
+        "lastModified": "2026-07-20",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ActionTag",
+              "properties": [
+                {
+                  "name": "type",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "category",
+                  "type": "'system' | 'automation' | 'navigation' | 'utility'",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ActionTag"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "AdvancedTabManager.ts",
         "path": "AdvancedTabManager.ts",
         "lines": 644,
@@ -8594,6 +8642,65 @@
         }
       },
       {
+        "name": "PDFCommandParser.ts",
+        "path": "PDFCommandParser.ts",
+        "lines": 11,
+        "description": "Command Parser",
+        "tags": [
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-20",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "PDFCommand",
+              "properties": [
+                {
+                  "name": "type",
+                  "type": "'pdf'",
+                  "required": true
+                },
+                {
+                  "name": "options",
+                  "type": "{",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "subtitle",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "author",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "screenshot",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "PDFCommand"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "SearchContextStore.ts",
         "path": "SearchContextStore.ts",
         "lines": 215,
@@ -8801,6 +8908,57 @@
           "keyFunctions": [
             "opts"
           ]
+        }
+      },
+      {
+        "name": "ShellCommandParser.ts",
+        "path": "ShellCommandParser.ts",
+        "lines": 8,
+        "description": "Shell Command Parser",
+        "tags": [],
+        "lastModified": "2026-07-20",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ShellCommand",
+              "properties": [
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "args",
+                  "type": "string[]",
+                  "required": true
+                },
+                {
+                  "name": "riskLevel",
+                  "type": "'low' | 'medium' | 'high'",
+                  "required": true
+                },
+                {
+                  "name": "safe",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "requiresPermission",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ShellCommand"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
         }
       },
       {
@@ -10114,7 +10272,7 @@
     "components": []
   },
   "summary": {
-    "total": 128,
-    "totalLines": 41439
+    "total": 131,
+    "totalLines": 41465
   }
 }
