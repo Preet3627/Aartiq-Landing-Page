@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 export async function GET(request: Request) {
     // Basic security token as requested
     const authHeader = request.headers.get('X-Aartiq-App-Token');
-    const isValid = authHeader === (process.env.AARTIQ_APP_TOKEN || process.env.COMET_APP_TOKEN || 'aartiq-secure-v1');
+    const isValid = authHeader === (process.env.AARTIQ_APP_TOKEN || process.env.AARTIQ_APP_TOKEN || 'aartiq-secure-v1');
 
     return NextResponse.json({
         googleClientId: process.env.GOOGLE_CLIENT_ID || '601898745585-8g9t0k72gq4q1a4s1o4d1t6t7e5v4c4g.apps.googleusercontent.com',
@@ -24,7 +24,7 @@ export async function GET(request: Request) {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, X-Aartiq-App-Token, X-Comet-App-Token',
+            'Access-Control-Allow-Headers': 'Content-Type, X-Aartiq-App-Token, X-Aartiq-App-Token',
         }
     });
 }
@@ -34,7 +34,7 @@ export async function OPTIONS() {
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Methods': 'GET, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Headers': 'Content-Type, X-Aartiq-App-Token, X-Aartiq-App-Token, Authorization',
         }
     });
 }

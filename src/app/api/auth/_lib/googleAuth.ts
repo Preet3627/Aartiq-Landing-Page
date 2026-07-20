@@ -8,7 +8,7 @@ const ALLOWED_LITERAL_SCOPES = new Set(DEFAULT_SCOPES);
 const GOOGLE_SCOPE_PREFIX = 'https://www.googleapis.com/auth/';
 
 export function getAartiqAppToken() {
-  return process.env.AARTIQ_APP_TOKEN || process.env.COMET_APP_TOKEN || DEFAULT_AARTIQ_APP_TOKEN;
+  return process.env.AARTIQ_APP_TOKEN || process.env.AARTIQ_APP_TOKEN || DEFAULT_AARTIQ_APP_TOKEN;
 }
 
 export function getGoogleClientId() {

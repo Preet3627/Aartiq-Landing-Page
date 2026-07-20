@@ -36,7 +36,7 @@ export default function AuthCallback() {
             return { app: defaultApp, config: firebaseConfig };
         }
 
-        const appName = `comet-auth-${Date.now()}`;
+        const appName = `aartiq-auth-${Date.now()}`;
         try {
             const existingApp = getApps().find(a => a.name === appName);
             if (existingApp) {
@@ -99,7 +99,7 @@ export default function AuthCallback() {
         if (target === 'desktop') {
             console.log('[Auth] Redirecting to desktop:', callbackUrl);
             console.log(JSON.stringify({
-                type: 'comet-auth-success',
+                type: 'aartiq-auth-success',
                 data: authData
             }));
             window.location.href = callbackUrl;
@@ -109,7 +109,7 @@ export default function AuthCallback() {
         if (window.opener && !window.opener.closed) {
             try {
                 window.opener.postMessage({
-                    type: 'comet-auth-success',
+                    type: 'aartiq-auth-success',
                     data: authData
                 }, '*');
             } catch (e) {
@@ -138,7 +138,7 @@ export default function AuthCallback() {
         let target: 'desktop' | 'mobile' | 'web' = 'web';
         if (redirectUriParam.includes('aartiq://')) {
           target = 'mobile';
-        } else if (redirectUriParam.includes('comet-browser://')) {
+        } else if (redirectUriParam.includes('aartiq-browser://')) {
           target = 'desktop';
         } else if (clientId === 'nexus-ai-native' || redirectUriParam.startsWith('http://127.0.0.1') || redirectUriParam.startsWith('http://localhost')) {
           target = 'desktop';

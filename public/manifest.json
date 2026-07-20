@@ -1,7 +1,7 @@
 {
   "name": "Aartiq",
   "short_name": "Aartiq",
-  "description": "AI-integrated autonomous browser with native AI orchestration",
+  "description": "Open-source browser with built-in AI assistant and OS automation",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#03040b",
