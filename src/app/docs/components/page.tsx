@@ -399,7 +399,7 @@ const flutterCategories: CategorySection[] = [
     description: "Main screens: desktop control, agent chat, home, settings",
     components: [
       { name: "desktop_control_page.dart", lines: 1172, description: "Remote desktop control with AI chat, shell execution, system commands. 3 tabs: AI Chat, Shell, Control.", tags: ["Main", "Control"] },
-      { name: "agent_chat_page.dart", lines: 1020, description: "Agent task execution interface for autonomous actions.", tags: ["AI", "Chat"] },
+      { name: "agent_chat_page.dart", lines: 1020, description: "Agent task execution interface for multi-step actions.", tags: ["AI", "Chat"] },
       { name: "connect_desktop_page.dart", lines: 996, description: "QR scanner for desktop pairing via WiFi sync.", tags: ["Setup", "Sync"] },
       { name: "comet_home_page.dart", lines: 576, description: "Main browser home with tab management.", tags: ["Main"] },
       { name: "automation_page.dart", lines: 648, description: "Scheduled task management with filter and actions.", tags: ["Automation"] },
@@ -420,7 +420,7 @@ const flutterCategories: CategorySection[] = [
     description: "Services: sync, agent, browser controller, WebView tab",
     components: [
       { name: "sync_service.dart", lines: 843, description: "WebSocket sync with desktop. Handles clipboard, AI prompts, shell commands, status updates.", tags: ["Main", "Sync"] },
-      { name: "comet_agent_service.dart", lines: 888, description: "Background agent service for autonomous task execution.", tags: ["Agent"] },
+      { name: "comet_agent_service.dart", lines: 888, description: "Background agent service for automated task execution.", tags: ["Agent"] },
       { name: "browser.dart", lines: 538, description: "Browser controller with WebView management.", tags: ["Core"] },
       { name: "webview_tab.dart", lines: 642, description: "WebView tab controller with lifecycle and navigation.", tags: ["Core"] },
       { name: "auth_service.dart", lines: 244, description: "Firebase authentication service.", tags: ["Auth"] },
