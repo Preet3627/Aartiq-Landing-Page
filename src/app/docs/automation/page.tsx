@@ -332,7 +332,7 @@ export default function AutomationPage() {
             <div className="w-full max-w-4xl rounded-xl border border-sky-500/30 bg-sky-500/10 p-6 text-center">
               <div className="mb-2 flex items-center justify-center gap-2">
                 <Server size={20} className="text-sky-400" />
-                <h3 className="font-black uppercase tracking-wider">Background Service (comet-ai-service)</h3>
+                <h3 className="font-black uppercase tracking-wider">Background Service (aartiq-service)</h3>
               </div>
               <p className="text-sm text-white/50">Runs as system process • ~30-50MB RAM • System tray only</p>
             </div>

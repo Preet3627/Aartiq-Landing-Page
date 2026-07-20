@@ -1,6 +1,6 @@
 # Aartiq
 
-> An open-source, AI-native browser with autonomous agent capabilities, local LLM support (Ollama), permission-gated OS automation, background task scheduling, and E2EE cross-device sync. Built with Electron, Next.js, React, TypeScript, and Flutter. MIT-licensed on GitHub.
+> An open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, background task scheduling, and E2EE cross-device sync. Built with Electron, Next.js, React, TypeScript, and Flutter. MIT-licensed on GitHub.
 
 Aartiq is a privacy-focused browser that integrates AI directly into the browsing experience. It supports multiple AI providers (Gemini, GPT, Claude, Ollama), can execute OS-level automation through a permission-gated system, schedule background tasks, sync data across devices with end-to-end encryption, and generate PDFs/Excel/PPTX documents from JSON templates. Available on Windows, macOS, Linux, and Android.
 
@@ -8,7 +8,7 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 - [Getting Started](https://aartiq.vercel.app/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
 - [AI Commands Reference](https://aartiq.vercel.app/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
-- [Security Model](https://aartiq.vercel.app/docs/security): Triple-lock security architecture with E2EE encryption, permission levels, and audit logging
+- [Security Model](https://aartiq.vercel.app/docs/security): Three-layer security architecture with E2EE encryption, permission levels, and audit logging
 - [Automation Guide](https://aartiq.vercel.app/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
 - [Cloud Sync](https://aartiq.vercel.app/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
 - [Plugin System](https://aartiq.vercel.app/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
@@ -36,19 +36,19 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ## Key Capabilities
 
-- AI-Native: Multi-model AI chat sidebar with Gemini, GPT-4, Claude, Ollama support. RAG memory with local vector database
+- AI Integration: Multi-model AI chat sidebar with Gemini, GPT-4, Claude, Ollama support. RAG memory with local vector database
 - OS Automation: Permission-gated shell command execution, app launching, file operations, and screen OCR
 - Background Scheduler: Cron-based task scheduling that runs even when the browser window is closed
 - Document Generation: PDF, Excel, PowerPoint, and Word generation from JSON/JSX templates
 - Cross-Device: E2EE WiFi sync between desktop and Android devices
-- Security: Triple-lock permission system, AES-256-GCM encryption, sandboxed automation
+- Security: Three-layer permission system, AES-256-GCM encryption, sandboxed automation
 - Plugin System: Node.js-based plugin SDK with command registration and event hooks
 - Extensions: Chrome manifest v3 extension support
 
 ## Technology Stack
 
 - Desktop: Electron, Chromium, Node.js
-- Frontend: Next.js 14, React 18, TypeScript, Tailwind CSS, Framer Motion
+- Frontend: Next.js 16, React 19, TypeScript, Tailwind CSS, Framer Motion
 - Mobile: Flutter, Dart, flutter_inappwebview
 - AI SDKs: Vercel AI SDK (OpenAI, Anthropic, Google, Groq, xAI)
 - Database: Firebase Realtime DB, IndexedDB, electron-store
@@ -63,4 +63,4 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 - **Founded**: 2024
 - **Author**: Preet3627
 - **Co-author**: Latestinssan
-- **Last updated**: 2026-07-07
+- **Last updated**: 2026-07-20

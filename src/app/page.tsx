@@ -44,8 +44,8 @@ interface GitHubStats {
 
 const featureHighlights = [
   {
-    name: "Autonomous Agent",
-    description: "Multi-step autonomous tasks with RAG memory. Source: src/components/AIChatSidebar.tsx, src/lib/AICommandParser.ts",
+    name: "AI Task Agent",
+    description: "Multi-step tasks with RAG memory. Source: src/components/AIChatSidebar.tsx, src/lib/AICommandParser.ts",
     icon: Bot,
     color: "from-blue-500/20 to-cyan-500/20",
     glow: "rgba(59, 130, 246, 0.4)"
@@ -72,7 +72,7 @@ const featureHighlights = [
     glow: "rgba(245, 158, 11, 0.4)"
   },
   {
-    name: "Triple-Lock Security",
+    name: "Three-Layer Security",
     description: "src/lib/Security.ts, src/lib/SecurityValidator.js, src/main/handlers/permission-handlers.js",
     icon: Layers,
     color: "from-indigo-500/20 to-blue-500/20",
@@ -214,7 +214,7 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
               ? "You are signed in to the Aartiq ecosystem. Your history, automations, and cloud settings are synchronized across all devices."
               : isMobile
                 ? "Sign in to sync your Aartiq experience across all your devices. Use the mobile app for the best experience."
-                : "Access Aartiq features including multi-model support, cross-device sync, and autonomous scheduling. Secure OAuth ensures your data remains private."
+                 : "Access Aartiq features including multi-model support, cross-device sync, and task scheduling. Secure OAuth ensures your data remains private."
             }
           </p>
 
@@ -371,7 +371,7 @@ export default function Home() {
             className="max-w-6xl text-7xl font-black uppercase leading-[0.85] tracking-tighter text-white sm:text-8xl lg:text-[11rem]"
           >
             Aartiq <br />
-            <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI-Native Browser</span>
+            <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI-Integrated Browser</span>
           </motion.h1>
 
           <motion.p
@@ -380,7 +380,7 @@ export default function Home() {
             transition={{ delay: 0.2 }}
             className="mt-16 max-w-3xl text-xl font-medium leading-relaxed text-white/40 sm:text-2xl"
           >
-            An open-source, AI-native browser with permission-gated OS automation. Electron + Next.js + React.
+            An open-source browser with a built-in AI assistant and permission-gated OS automation. Electron + Next.js + React.
             <br />
             <span className="mt-4 block text-sm font-black uppercase tracking-[0.4em] text-white/20">
               Built by <span className="text-sky-400">Preet3627</span> & <span className="text-purple-400">Latestinssan</span> — v{version || '...'} {channel}
@@ -688,7 +688,7 @@ export default function Home() {
                      <span className="text-2xl font-black uppercase tracking-tighter">Aartiq</span>
                   </div>
                  <p className="max-w-md text-lg font-medium leading-relaxed text-white/30">
-                     An open-source browser with autonomous AI agents for workflow automation,
+                      An open-source browser with an AI assistant for workflow automation,
                      document generation, and background task scheduling.
                  </p>
                </div>

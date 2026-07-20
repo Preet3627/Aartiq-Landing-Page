@@ -25,11 +25,11 @@ import { auth } from "@/lib/firebase";
 
 const features = [
   {
-    category: "Autonomous Intelligence",
+    category: "AI Task Automation",
     items: [
       {
-        name: "Self-Thinking Agent",
-        description: "An AI agent that plans, searches, and executes multi-step tasks autonomously with chain-of-thought reasoning.",
+        name: "Multi-Step AI Agent",
+        description: "An AI agent that plans, searches, and executes multi-step tasks with chain-of-thought reasoning.",
         icon: Bot,
         color: "from-blue-500 to-cyan-400"
       },
@@ -74,8 +74,8 @@ const features = [
     category: "Hardened Security",
     items: [
       {
-        name: "Triple-Lock Sandbox",
-        description: "A combination of OCR-only visual reading, a syntactic firewall, and human-in-the-loop permission checks.",
+        name: "Three-Layer Security",
+        description: "OCR-only visual reading, a syntactic firewall, and human-in-the-loop permission checks.",
         icon: Layers,
         color: "from-emerald-500 to-teal-400"
       },
@@ -117,10 +117,10 @@ export default function FeaturesPage() {
               <Zap size={14} /> Full Capabilities
             </div>
             <h1 className="text-6xl font-black uppercase tracking-tighter sm:text-8xl leading-none mb-8">
-              Engineered for <br /> <span className="bg-gradient-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent">Autonomy.</span>
+              Built for <br /> <span className="bg-gradient-to-r from-sky-400 to-indigo-500 bg-clip-text text-transparent">Automation.</span>
             </h1>
             <p className="text-xl font-medium text-white/40 leading-relaxed max-w-2xl">
-               Aartiq is a browser operating system that integrates autonomous AI agents, background scheduling, and multi-format document generation.
+               Aartiq is a browser with integrated AI task automation, background scheduling, and multi-format document generation.
             </p>
           </motion.div>
         </section>
@@ -164,7 +164,7 @@ export default function FeaturesPage() {
         <section className="mt-40 rounded-[60px] border border-white/5 bg-white/[0.02] p-12 lg:p-24 text-center overflow-hidden relative">
            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.03] blur-[100px] rounded-full" />
            <h2 className="text-5xl font-black uppercase tracking-tighter mb-8 leading-none">Ready to automate?</h2>
-           <p className="text-xl font-medium text-white/40 mb-12 max-w-xl mx-auto">Get started with Aartiq today and build your own autonomous ecosystem.</p>
+           <p className="text-xl font-medium text-white/40 mb-12 max-w-xl mx-auto">Get started with Aartiq today and extend its capabilities.</p>
            <button className="rounded-full bg-white px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-black transition hover:bg-sky-400 hover:text-white">
               Download Latest Stable
            </button>

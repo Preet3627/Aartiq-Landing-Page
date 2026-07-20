@@ -387,7 +387,7 @@ const commands = [
   {
     name: "OCR_SCREEN",
     category: "ocr",
-    description: "Capture the screen or a region and extract text. Comet uses native OS OCR and accessibility providers first, with image OCR as a fallback path.",
+    description: "Capture the screen or a region and extract text. Aartiq uses native OS OCR and accessibility providers first, with image OCR as a fallback path.",
     format: "JSON",
     riskLevel: "Low",
     requiresApproval: false,
@@ -405,7 +405,7 @@ const commands = [
   {
     name: "OCR_COORDINATES",
     category: "ocr",
-    description: "Resolve coordinates for visible text in desktop apps so Comet can target external UI reliably.",
+    description: "Resolve coordinates for visible text in desktop apps so Aartiq can target external UI reliably.",
     format: "JSON",
     riskLevel: "Low",
     requiresApproval: false,

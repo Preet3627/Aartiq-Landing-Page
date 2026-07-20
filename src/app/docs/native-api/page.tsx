@@ -403,7 +403,7 @@ const appleAdvancedPaths = [
   },
   {
     title: "Assistant Schemas",
-    description: "For deeper Siri and Apple Intelligence integration, App Intents domains and schemas can expose Comet actions and content to Apple's assistant layer.",
+    description: "For deeper Siri and Apple Intelligence integration, App Intents domains and schemas can expose Aartiq actions and content to Apple's assistant layer.",
     fileRef: "src/lib/SiriShortcutsIntegration.ts"
   }
 ];
@@ -600,7 +600,7 @@ export default function NativeAPIPage() {
             Apple Intelligence <span className="text-white/20">Paths</span>
           </h2>
           <p className="mt-6 max-w-3xl text-lg font-medium leading-relaxed text-white/40">
-            Comet ships a native Swift helper for readiness checks, summaries, and Apple image generation.
+            Aartiq ships a native Swift helper for readiness checks, summaries, and Apple image generation.
             Apple's platform docs also point to more advanced integrations through Writing Tools, App Intents
             assistant schemas, and native Image Playground interfaces.
           </p>

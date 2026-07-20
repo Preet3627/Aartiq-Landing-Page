@@ -31,9 +31,9 @@ Aartiq/
 ## Version System
 
 ### Current Version
-- **Version:** `0.3.3` (stable)
+- **Version:** `0.3.4` (stable)
 - **Codename:** Nebula
-- **Release Date:** 2026-07-13
+- **Release Date:** 2026-07-19
 
 ### Version Pattern
 - Format: `Major.Minor.Patch` (e.g., `0.2.7`)
@@ -65,7 +65,7 @@ export const APP_VERSION = {
 | Changelog | `/docs/changelog` | Release notes | Every release |
 | Cloud Sync | `/docs/cloud-sync` | WiFi P2P, E2EE sync, mobile | Sync changes |
 | AI Commands | `/docs/ai-commands` | All JSON commands for AI | New/modified commands |
-| Security | `/docs/security` | Triple-lock security model | Security changes |
+| Security | `/docs/security` | Three-layer security model | Security changes |
 | Automation | `/docs/automation` | Background scheduling, cron | New automation features |
 | Native API | `/docs/native-api` | macOS SwiftUI panels, IPC | New APIs |
 | Apple Integration | `/docs/apple-integration` | Siri, Shortcuts, Voice, Raycast | macOS integration |
@@ -151,7 +151,7 @@ Aartiq uses structured JSON commands. Always respond with JSON format:
 
 ---
 
-### Triple-Lock Architecture
+### Three-Layer Security Architecture
 
 1. **Visual Sandbox & SecureDOM** - AI uses `OCR_SCREEN` for external apps and a dedicated **SecureDOM Reader** (`READ_PAGE_CONTENT`) for internal pages. Raw HTML is filtered via a PII-stripping sanitization layer before reaching the agent.
 2. **In-Page DOM Search** - AI can perform targeted `SEARCH_DOM` queries to find specific text without loading the entire page into context, minimizing token usage and security exposure.
@@ -526,5 +526,5 @@ export default function PageName() {
 
 ---
 
-*Last Updated: 2026-07-13*
+*Last Updated: 2026-07-20*
 *For AI code writers - maintain consistency and update all related files*

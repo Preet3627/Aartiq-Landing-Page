@@ -4,7 +4,7 @@ import { ArrowLeft, Shield, Lock, Eye, Database, Globe, Mail } from "lucide-reac
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Privacy Policy for Aartiq - AI-Native Browser. Learn how we handle your data, what we collect, and your rights.",
+    description: "Privacy Policy for Aartiq - AI-Integrated Browser. Learn how we handle your data, what we collect, and your rights.",
   alternates: {
     canonical: "https://aartiq.ponsrischool.in/privacy",
   },
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
             </div>
           </div>
           <p className="max-w-3xl text-lg font-medium leading-relaxed text-white/50">
-            Aartiq is an open-source, privacy-focused AI-native browser. This policy explains what data we
+            Aartiq is an open-source browser with a built-in AI assistant. This policy explains what data we
             handle, how it is processed, and your rights. Because Aartiq runs locally on your machine,
             most data never leaves your device.
           </p>
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
             </h2>
             <div className="glass-card p-8 space-y-4 text-white/60 leading-relaxed">
               <p>
-                Aartiq is built with a <strong className="text-white/80">privacy-first architecture</strong>.
+                Aartiq is built with a <strong className="text-white/80">local-first architecture</strong>.
                 The application runs entirely on your local machine. Your browsing data, AI conversations,
                 file operations, and automation commands stay on your device unless you explicitly choose to
                 sync or share them.

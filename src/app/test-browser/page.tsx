@@ -49,7 +49,7 @@ interface ChatMessage {
 }
 
 const fakeSearchResults: SearchResult[] = [
-  { title: "Aartiq - AI-Powered Browser", url: "https://aartiq.vercel.app", description: "The next-generation AI browser with automation, scheduling, and mobile sync." },
+  { title: "Aartiq - AI-Powered Browser", url: "https://aartiq.vercel.app", description: "An open-source AI browser with automation, scheduling, and mobile sync." },
   { title: "GitHub - Aartiq", url: "https://github.com/Preet3627/Aartiq", description: "Cross-platform AI-powered browser with advanced automation capabilities." },
   { title: "Aartiq Documentation", url: "https://aartiq.vercel.app/docs", description: "Complete guide to AI commands, automation, and integration." },
   { title: "Download Aartiq", url: "https://aartiq.vercel.app/downloads", description: "Get the latest version for macOS, Windows, and Linux." },

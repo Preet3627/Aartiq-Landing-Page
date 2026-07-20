@@ -48,7 +48,7 @@ const faqs = [
   {
     category: "general",
     question: "Why is the app using so much memory?",
-    answer: "Comet uses additional memory for AI model loading and browser view rendering. The app typically uses 200-500MB during normal use. High memory usage may occur when processing large documents or running multiple AI models.",
+    answer: "Aartiq uses additional memory for AI model loading and browser view rendering. The app typically uses 200-500MB during normal use. High memory usage may occur when processing large documents or running multiple AI models.",
     solutions: [
       "Close unused tabs to reduce memory",
       "Use lighter AI models (Gemini Flash instead of Pro)",
@@ -94,7 +94,7 @@ const faqs = [
   {
     category: "ai",
     question: "Apple Intelligence says it is not supported or not available",
-    answer: "Comet now performs a GUI-based readiness check before using Apple Intelligence. If the UI says Apple Intelligence is unsupported, disabled, or not ready, the native Apple frameworks are not available for Comet on that Mac right now.",
+    answer: "Aartiq now performs a GUI-based readiness check before using Apple Intelligence. If the UI says Apple Intelligence is unsupported, disabled, or not ready, the native Apple frameworks are not available for Aartiq on that Mac right now.",
     solutions: [
       "Check that you are on a supported Mac and macOS version",
       "Enable Apple Intelligence in macOS settings if your device supports it",
@@ -105,10 +105,10 @@ const faqs = [
   {
     category: "ai",
     question: "Apple Intelligence summary still fails even when the Mac supports it",
-    answer: "Apple's frameworks can report partial availability while generation is still blocked by runtime state. Comet now runs a stronger readiness check, but a Mac may still fail if the Apple model is still preparing or the OS has not enabled the feature fully for third-party apps.",
+    answer: "Apple's frameworks can report partial availability while generation is still blocked by runtime state. Aartiq now runs a stronger readiness check, but a Mac may still fail if the Apple model is still preparing or the OS has not enabled the feature fully for third-party apps.",
     solutions: [
       "Wait a few minutes and refresh Apple Intelligence status again",
-      "Restart Comet after enabling Apple Intelligence in macOS settings",
+      "Restart Aartiq after enabling Apple Intelligence in macOS settings",
       "Try the built-in Apple Intelligence Lab before relying on it in a workflow",
       "Use a cloud provider or Ollama until Apple's local runtime becomes ready"
     ]

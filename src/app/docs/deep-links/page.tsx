@@ -34,7 +34,7 @@ import {
 
 const deepLinkFormats = [
   {
-    protocol: "comet-ai",
+    protocol: "aartiq",
     name: "Aartiq Protocol",
     icon: LinkIcon,
     color: "from-sky-500/20 to-cyan-500/20",
@@ -42,7 +42,7 @@ const deepLinkFormats = [
     iconColor: "text-sky-400",
     description: "Primary protocol for all Aartiq deep links",
     example: "aartiq://",
-    usage: "Universal launcher for all Comet features"
+    usage: "Universal launcher for all Aartiq features"
   },
   {
     protocol: "https://aartiq.vercel.app",
@@ -148,10 +148,10 @@ https://aartiq.vercel.app/docs?section=native-api`,
   <dict>
     <key>CFBundleURLSchemes</key>
     <array>
-      <string>comet-ai</string>
+      <string>aartiq</string>
     </array>
     <key>CFBundleURLName</key>
-    <string>com.cometai.app</string>
+    <string>com.aartiq.app</string>
   </dict>
 </array>`,
 
@@ -237,7 +237,7 @@ if (navigator.share) {
   "relation": ["delegate_permission/common.handle_all_urls"],
   "target": {
     "namespace": "android_app",
-    "package_name": "com.cometai.app",
+    "package_name": "com.aartiq.app",
     "sha256_cert_fingerprints": ["..."]
   }
 }]`
@@ -275,7 +275,7 @@ export default function DeepLinksPage() {
         </h1>
 
         <p className="max-w-3xl text-xl font-medium leading-relaxed text-white/50">
-          URL scheme reference for comet-browser:// protocol handlers. Source: main.js (protocol handlers), preload.js
+          URL scheme reference for aartiq-browser:// protocol handlers. Source: main.js (protocol handlers), preload.js
         </p>
       </motion.section>
 

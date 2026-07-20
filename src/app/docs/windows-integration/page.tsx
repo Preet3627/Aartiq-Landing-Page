@@ -225,18 +225,18 @@ const windowsActions = [
 ];
 
 const voiceCommands = [
-  { phrase: "Hey Comet, ask about...", description: "Send a question to AI", example: "Hey Comet, ask about machine learning" },
-  { phrase: "Hey Comet, search for...", description: "Perform a web search", example: "Hey Comet, search for Windows 12 release date" },
-  { phrase: "Hey Comet, create PDF", description: "Generate a PDF document", example: "Hey Comet, create PDF with my meeting notes" },
-  { phrase: "Hey Comet, run command...", description: "Execute a PowerShell command", example: "Hey Comet, run command Get-EventLog" },
-  { phrase: "Hey Comet, schedule...", description: "Schedule a task", example: "Hey Comet, schedule daily report at 8am" },
-  { phrase: "Hey Comet, set volume to...", description: "Adjust system volume", example: "Hey Comet, set volume to 50 percent" },
-  { phrase: "Hey Comet, open...", description: "Launch an application", example: "Hey Comet, open Visual Studio Code" },
-  { phrase: "Hey Comet, take screenshot", description: "Capture screen", example: "Hey Comet, take screenshot of active window" },
-  { phrase: "Hey Comet, speak the answer", description: "Voice chat with AI", example: "Hey Comet, what's the weather? Speak the answer" },
-  { phrase: "Hey Comet, ask Copilot...", description: "Query Microsoft Copilot", example: "Hey Comet, ask Copilot to explain async/await" },
-  { phrase: "Hey Comet, OCR this", description: "Extract text from screen", example: "Hey Comet, OCR this region" },
-  { phrase: "Hey Comet, automate...", description: "Create automation workflow", example: "Hey Comet, automate my backup process" }
+  { phrase: "Hey Aartiq, ask about...", description: "Send a question to AI", example: "Hey Aartiq, ask about machine learning" },
+  { phrase: "Hey Aartiq, search for...", description: "Perform a web search", example: "Hey Aartiq, search for Windows 12 release date" },
+  { phrase: "Hey Aartiq, create PDF", description: "Generate a PDF document", example: "Hey Aartiq, create PDF with my meeting notes" },
+  { phrase: "Hey Aartiq, run command...", description: "Execute a PowerShell command", example: "Hey Aartiq, run command Get-EventLog" },
+  { phrase: "Hey Aartiq, schedule...", description: "Schedule a task", example: "Hey Aartiq, schedule daily report at 8am" },
+  { phrase: "Hey Aartiq, set volume to...", description: "Adjust system volume", example: "Hey Aartiq, set volume to 50 percent" },
+  { phrase: "Hey Aartiq, open...", description: "Launch an application", example: "Hey Aartiq, open Visual Studio Code" },
+  { phrase: "Hey Aartiq, take screenshot", description: "Capture screen", example: "Hey Aartiq, take screenshot of active window" },
+  { phrase: "Hey Aartiq, speak the answer", description: "Voice chat with AI", example: "Hey Aartiq, what's the weather? Speak the answer" },
+  { phrase: "Hey Aartiq, ask Copilot...", description: "Query Microsoft Copilot", example: "Hey Aartiq, ask Copilot to explain async/await" },
+  { phrase: "Hey Aartiq, OCR this", description: "Extract text from screen", example: "Hey Aartiq, OCR this region" },
+  { phrase: "Hey Aartiq, automate...", description: "Create automation workflow", example: "Hey Aartiq, automate my backup process" }
 ];
 
 const copilotActions = [
@@ -621,16 +621,16 @@ $synth.Speak("Processing complete")`} language="powershell" />
                   <h3 className="text-lg font-semibold text-white">Voice Activation Setup</h3>
                 </div>
                 <p className="text-zinc-400 mb-4">
-                  "Hey Comet" wake word detection via VoiceAttack or Windows Speech Recognition.
+                  "Hey Aartiq" wake word detection via VoiceAttack or Windows Speech Recognition.
                 </p>
                 <CodeBlock code={`# Windows Voice Activation via VoiceAttack
 # 1. Download VoiceAttack (free/paid)
 # 2. Create new profile
-# 3. Add voice command: "Hey Comet"
+# 3. Add voice command: "Hey Aartiq"
 
 # In the command action:
 # - Execute: External Program
-# - Path: "C:\\Program Files\\Aartiq\\comet-ai.exe"
+# - Path: "C:\\Program Files\\Aartiq\\aartiq.exe"
 # - Arguments: "aartiq://chat?message={Hwnd}"
 
 # Alternative: Use Windows Speech Recognition
@@ -639,9 +639,9 @@ $synth.Speak("Processing complete")`} language="powershell" />
 # Create VBS script for wake word detection
 Set speechRecognizer = CreateObject("SAPI.SpSharedRecognizer")
 Set context = speechRecognizer.CreateRecoContext
-Set grammar = context.CreateGrammar("CometCommands")
+Set grammar = context.CreateGrammar("AartiqCommands")
 
-# Configure the grammar to listen for "Hey Comet"
+# Configure the grammar to listen for "Hey Aartiq"
 grammar.DictationSetState 0
 
 Do While True
@@ -828,7 +828,7 @@ Loop`} language="powershell" />
                 <div className="space-y-4">
                   <CodeBlock code={`# Power Automate Desktop Flow Setup
 # 1. Open Power Automate Desktop
-# 2. Create new flow: "CometAI_Automation"
+# 2. Create new flow: "Aartiq_Automation"
 # 3. Add HTTP request action to trigger Aartiq
 
 # HTTP Request URL:
@@ -912,19 +912,19 @@ Write-Host $response.result`} language="powershell" />
                     </p>
                     <CodeBlock code={`Windows Registry Editor Version 5.00
 
-[HKEY_CLASSES_ROOT\\comet-ai]
+[HKEY_CLASSES_ROOT\\aartiq]
 @="URL:Aartiq Protocol"
 "URL Protocol"=""
 
-[HKEY_CLASSES_ROOT\\comet-ai\\DefaultIcon]
-@="C:\\\\Program Files\\\\Aartiq\\\\comet-ai.exe,0"
+[HKEY_CLASSES_ROOT\\aartiq\\DefaultIcon]
+@="C:\\\\Program Files\\\\Aartiq\\\\aartiq.exe,0"
 
-[HKEY_CLASSES_ROOT\\comet-ai\\shell]
+[HKEY_CLASSES_ROOT\\aartiq\\shell]
 
-[HKEY_CLASSES_ROOT\\comet-ai\\shell\\open]
+[HKEY_CLASSES_ROOT\\aartiq\\shell\\open]
 
-[HKEY_CLASSES_ROOT\\comet-ai\\shell\\open\\command]
-@="\\"C:\\\\\\\\Program Files\\\\\\\\Aartiq\\\\\\\\comet-ai.exe\\" \\"%1\\""`} />
+[HKEY_CLASSES_ROOT\\aartiq\\shell\\open\\command]
+@="\\"C:\\\\\\\\Program Files\\\\\\\\Aartiq\\\\\\\\aartiq.exe\\" \\"%1\\""`} />
                   </div>
                 </motion.div>
 
@@ -982,7 +982,7 @@ Write-Host $response.result`} language="powershell" />
 Start-Process "aartiq://chat?message=Hello"
 
 # Test voice (requires microphone)
-# Say "Hey Comet, ask about artificial intelligence"
+# Say "Hey Aartiq, ask about artificial intelligence"
 
 # Test Power Automate
 # Open Power Automate Desktop > Run your flow`} />
@@ -998,7 +998,7 @@ Start-Process "aartiq://chat?message=Hello"
                 <ParameterTable
                   params={[
                     { name: "voice.enabled", required: false, type: "boolean", desc: "Enable voice control" },
-                    { name: "voice.wakeWord", required: false, type: "string", desc: "Custom wake word (default: Hey Comet)" },
+                    { name: "voice.wakeWord", required: false, type: "string", desc: "Custom wake word (default: Hey Aartiq)" },
                     { name: "voice.voice", required: false, type: "string", desc: "TTS voice name" },
                     { name: "voice.rate", required: false, type: "number", desc: "Speech rate (-10 to 10)" },
                     { name: "copilot.enabled", required: false, type: "boolean", desc: "Enable Copilot integration" },

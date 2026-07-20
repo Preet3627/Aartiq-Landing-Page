@@ -108,7 +108,7 @@ const setupSteps = [
     step: 3,
     title: "Install Dependencies",
     description: "Install all required packages for development",
-    command: "cd comet-browser && npm install",
+    command: "cd aartiq-browser && npm install",
     icon: Laptop
   },
   {

@@ -6,10 +6,10 @@ This directory contains the public marketing site and documentation for Aartiq.
 
 ## Current Release
 
-- Version: `0.3.1`
+- Version: `0.3.2`
 - Codename: `Nebula`
 - Channel: `alpha`
-- Release date: `2026-07-07`
+- Release date: `2026-07-10`
 
 ## Purpose
 

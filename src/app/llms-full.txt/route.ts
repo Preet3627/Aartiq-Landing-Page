@@ -5,7 +5,7 @@ const BASE = 'https://aartiq.vercel.app';
 export async function GET() {
   const content = `# Aartiq — Full Documentation
 
-> An open-source, AI-native browser with autonomous agent capabilities, local LLM support, permission-gated OS automation, background task scheduling, and E2EE cross-device sync.
+> An open-source browser with a built-in AI assistant, local LLM support, permission-gated OS automation, background task scheduling, and E2EE cross-device sync.
 
 ## Table of Contents
 
@@ -137,7 +137,7 @@ All AI commands use a structured JSON format:
 
 ## 4. Security Model
 
-Aartiq uses a triple-lock security architecture:
+Aartiq uses a three-layer security architecture:
 
 ### Permission Levels
 1. **Normal**: Basic browser commands (navigate, search, read page). No confirmation needed.
@@ -275,7 +275,7 @@ Extensions directory: ~/Library/Application Support/Aartiq/extensions/ (macOS)
 
 ### Desktop (aartiq-browser/)
 - Electron (Chromium + Node.js)
-- Next.js 14 (React 18, TypeScript)
+- Next.js 16 (React 19, TypeScript)
 - Tailwind CSS, Framer Motion
 - Firebase SDK (Auth, Realtime DB, Analytics)
 - Tesseract.js (OCR)
@@ -326,13 +326,13 @@ Extensions directory: ~/Library/Application Support/Aartiq/extensions/ (macOS)
 ## About
 
 - **Site**: Aartiq (https://aartiq.vercel.app)
-- **Type**: Open Source AI-Native Browser (SoftwareApplication)
+- **Type**: Open Source AI-Integrated Browser (SoftwareApplication)
 - **License**: MIT
 - **Language**: English
 - **Founded**: 2024
 - **Authors**: Preet3627, Latestinssan
 - **Repository**: https://github.com/Preet3627/Aartiq
-- **Last updated**: 2026-07-07
+- **Last updated**: 2026-07-20
 `;
 
   return new NextResponse(content, {

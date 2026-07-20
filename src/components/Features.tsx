@@ -6,7 +6,7 @@ import { Zap, ShieldCheck, Cloud, Repeat, Bot, Globe, Database, Terminal, Sparkl
 const features = [
   {
     name: "AI Agent",
-    description: "Multi-step autonomous tasks with RAG memory, thinking panels, and chain-of-thought reasoning — `src/lib/BrowserAI.ts`, `src/lib/AICommandParser.ts`.",
+    description: "Multi-step tasks with RAG memory, thinking panels, and chain-of-thought reasoning — `src/lib/BrowserAI.ts`, `src/lib/AICommandParser.ts`.",
     icon: Bot,
     color: "text-blue-400"
   },
@@ -23,7 +23,7 @@ const features = [
     color: "text-green-400"
   },
   {
-    name: "Triple-Lock Security",
+    name: "Three-Layer Security",
     description: "Visual sandbox (OCR-only view), syntactic firewall, and human-in-the-loop authorization — `src/lib/Security.ts`, `src/lib/SecurityValidator.js`.",
     icon: Layers,
     color: "text-cyan-400"

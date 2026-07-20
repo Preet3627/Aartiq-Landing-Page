@@ -67,8 +67,8 @@ const steps = [
       },
       linux: {
         steps: [
-          "Make the AppImage executable: chmod +x Comet.Browser-x.x.x.AppImage",
-          "Run the AppImage: ./Comet.Browser-x.x.x.AppImage",
+          "Make the AppImage executable: chmod +x Aartiq.Browser-x.x.x.AppImage",
+          "Run the AppImage: ./Aartiq.Browser-x.x.x.AppImage",
           "Or use your package manager to install the .deb file"
         ],
         note: "AppImage requires FUSE to run properly on some distributions."
@@ -152,12 +152,12 @@ const steps = [
 ];
 
 const codeSnippets = {
-  windows: "Comet.Browser.Setup.x.x.x.exe",
+  windows: "Aartiq.Browser.Setup.x.x.x.exe",
   macosArm64: "Aartiq-x.x.x-arm64.dmg",
   macosX64: "Aartiq-x.x-x64.dmg",
-  linux: "Comet.Browser-x.x.x.AppImage",
+  linux: "Aartiq.Browser-x.x.x.AppImage",
   build: `git clone https://github.com/Preet3627/Aartiq.git
-cd Aartiq/comet-browser
+cd Aartiq/aartiq-browser
 npm install
 npm run dev`,
   flutter: `cd flutter_browser_app

@@ -1,16 +1,16 @@
 # Aartiq - Public Overview for LLMs
 
-Aartiq is a next-generation, high-performance web browser built by PreetPatel (Latestinssan). It is designed to be a intelligent workspace that integrates AI native workflows directly into the browsing experience.
+Aartiq is an open-source Electron browser with a built-in AI assistant, developed by PreetPatel (Latestinssan). It integrates AI workflows directly into the browsing experience.
 
 ## Key Features
 - **Native AI Orchestration**: Support for Google Gemini, GPT-4o, Claude, and local models (Deepseek R1 via Ollama).
 - **RAG-Powered Memory**: Local vector database for semantic session retrieval.
-- **Quantum E2EE Sync**: End-to-End Encrypted synchronization of tabs, history, and clipboard.
-- **Performance Optimized**: Hardened Chromium shell optimized for low-end hardware (4GB RAM).
+- **E2EE Sync**: End-to-End Encrypted synchronization of tabs, history, and clipboard via AES-256-GCM.
+- **Performance Optimized**: Electron-based with configurable GPU flags for lower-spec hardware (4GB RAM).
 - **Security First**: Sandboxed tabs and hardware isolation.
 
 ## Technical Stack
-- **Engine**: Chromium (stripped of bloat).
+- **Engine**: Chromium (via Electron).
 - **Frontend**: Next.js, React, Tailwind CSS, Framer Motion.
 - **State Management**: Zustand.
 - **Cloud Backend**: Firebase (Auth, Realtime DB, Analytics).

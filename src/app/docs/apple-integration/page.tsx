@@ -69,15 +69,15 @@ const features = [
     description: "Control Aartiq hands-free using Siri voice commands. Trigger actions from anywhere on your Mac.",
     phrases: [
       { phrase: "Ask Aartiq [prompt]", desc: "Send a question to the AI chat" },
-      { phrase: "What did Comet say?", desc: "Read the latest AI response aloud" },
-      { phrase: "Refine Comet's response to be [style]", desc: "Iteratively improve AI output" },
-      { phrase: "List my conversations in Comet", desc: "Show recent chat sessions" },
-      { phrase: "Regenerate Comet's response", desc: "Try a different version of the answer" },
-      { phrase: "Summarize this page with Comet", desc: "Voice-triggered page summarization" },
-      { phrase: "New chat in Comet", desc: "Start a fresh conversation" },
+      { phrase: "What did Aartiq say?", desc: "Read the latest AI response aloud" },
+      { phrase: "Refine Aartiq's response to be [style]", desc: "Iteratively improve AI output" },
+      { phrase: "List my conversations in Aartiq", desc: "Show recent chat sessions" },
+      { phrase: "Regenerate Aartiq's response", desc: "Try a different version of the answer" },
+      { phrase: "Summarize this page with Aartiq", desc: "Voice-triggered page summarization" },
+      { phrase: "New chat in Aartiq", desc: "Start a fresh conversation" },
       { phrase: "Run [command] in Aartiq", desc: "Execute a terminal command" },
-      { phrase: "Search [query] with Comet", desc: "Perform a smart web search" },
-      { phrase: "Reset Comet chat", desc: "Clear current context" }
+      { phrase: "Search [query] with Aartiq", desc: "Perform a smart web search" },
+      { phrase: "Reset Aartiq chat", desc: "Clear current context" }
     ],
     workflows: [
       "Siri recognizes Aartiq native AppIntent",
@@ -329,16 +329,16 @@ const image = await window.electron.invoke('apple-intelligence-generate-image', 
   siriPhrases: `// Siri Phrases available:
 // Siri Phrases & App Intents (v0.3.0+):
 // "Ask Aartiq [prompt]"
-// "What did Comet say?" (Reads latest response)
-// "Refine Comet's response to be shorter/longer"
-// "List my conversations in Comet"
-// "Regenerate Comet's response"
-// "Summarize this page with Comet"
-// "New chat in Comet"
+// "What did Aartiq say?" (Reads latest response)
+// "Refine Aartiq's response to be shorter/longer"
+// "List my conversations in Aartiq"
+// "Regenerate Aartiq's response"
+// "Summarize this page with Aartiq"
+// "New chat in Aartiq"
 // "Run [command] in Aartiq"
-// "Reset Comet chat"
-// "Open my [Name] conversation in Comet"
-// "Search [query] with Comet"`,
+// "Reset Aartiq chat"
+// "Open my [Name] conversation in Aartiq"
+// "Search [query] with Aartiq"`,
 
   urlScheme: `# Apple Shortcuts URL Schemes
 // Chat message
@@ -425,7 +425,7 @@ async function startVoiceChat() {
 
 // Custom Raycast script
 import { launchCommand, launchApp } from "@raycast/api";
-import { open } from "comet-ai";
+import { open } from "aartiq";
 
 await launchCommand({
   name: "Chat",

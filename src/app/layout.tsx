@@ -18,10 +18,10 @@ const LOGO_URL = `${SITE_URL}/logo-transparent.png`;
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `Aartiq - Open Source AI-Native Browser with Local LLM & OS Automation`,
-    template: `%s | Aartiq - AI-Native Browser`,
+    default: `Aartiq - Open Source AI-Integrated Browser with Local LLM & OS Automation`,
+    template: `%s | Aartiq - AI-Integrated Browser`,
   },
-  description: "Aartiq is an open-source, AI-native browser with autonomous agent capabilities, local LLM support (Ollama), permission-gated OS automation, and cross-device sync. Built with Electron, Next.js, and TypeScript.",
+  description: "Aartiq is an open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, and cross-device sync. Built with Electron, Next.js, and TypeScript.",
   keywords: [
     "Aartiq", "AI Browser", "Autonomous Browser",
     "Browser Automation", "Electron Browser", "AI Agent",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "Windows Browser", "Linux Browser", "Android Browser",
     "Productivity Browser", "AI Assistant Browser",
     "Permission-Gated Automation", "Secure Browser",
-    "AI-Native Browser", "Autonomous AI Agent"
+    "AI-Integrated Browser", "AI Task Agent"
   ],
   authors: [
     { name: "Preet3627", url: "https://github.com/Preet3627" },
@@ -45,8 +45,8 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Aartiq - Open Source AI-Native Browser",
-    description: "An open-source, AI-native browser with autonomous agent capabilities, local LLM support, and cross-device sync. Features permission-gated OS automation and privacy-first design.",
+    title: "Aartiq - Open Source AI-Integrated Browser",
+    description: "An open-source browser with a built-in AI assistant, local LLM support, and cross-device sync. Features permission-gated OS automation and local-first architecture.",
     url: SITE_URL,
     siteName: 'Aartiq',
     locale: 'en_US',
@@ -56,14 +56,14 @@ export const metadata: Metadata = {
         url: LOGO_URL,
         width: 1000,
         height: 1000,
-        alt: 'Aartiq - Open Source AI-Native Browser',
+        alt: 'Aartiq - Open Source AI-Integrated Browser',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aartiq - Open Source AI-Native Browser',
-    description: 'Open-source AI-native browser with autonomous agents, local LLM support, and cross-device sync.',
+    title: 'Aartiq - Open Source AI-Integrated Browser',
+    description: 'Open-source browser with a built-in AI assistant, local LLM support, and cross-device sync.',
     images: [LOGO_URL],
     creator: '@Preet3627',
   },
@@ -156,7 +156,7 @@ export default function RootLayout({
               "@type": "SoftwareApplication",
               "name": APP_INFO.name,
               "alternateName": APP_INFO.fullName,
-              "description": "Open-source AI-native browser with autonomous agent capabilities, background scheduling, local LLM support, and privacy-focused cross-device sync.",
+              "description": "Open-source browser with a built-in AI assistant, background scheduling, local LLM support, and local-first cross-device sync.",
               "url": SITE_URL,
               "image": LOGO_URL,
               "applicationCategory": "UtilityApplication",
@@ -184,7 +184,7 @@ export default function RootLayout({
                 "Local LLM Support (Ollama)",
                 "Shell Command Execution",
                 "Background Scheduling",
-                "Triple-Lock Security",
+                "Three-Layer Security",
                 "Cross-Device Sync",
                 "PDF Generation",
                 "Open Source"

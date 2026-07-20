@@ -34,7 +34,7 @@ const securityLayers = [
     borderColor: "border-blue-500/30",
     iconColor: "text-blue-400",
     level: 1,
-    description: "The AI perceives web pages through screenshots and OCR rather than raw HTML, making it immune to DOM-based manipulation.",
+    description: "The AI perceives web pages through screenshots and OCR rather than raw HTML, significantly reducing DOM-based manipulation attacks.",
     howItWorks: [
       "Full-page screenshots provide visual context",
       "Tesseract.js OCR extracts visible text and layout",
@@ -166,7 +166,7 @@ const threatScenarios = [
   },
   {
     threat: "Unauthorized Shell Execution",
-    scenario: "AI autonomously executes a destructive shell command",
+    scenario: "AI executes a destructive shell command",
     defense: "Human-in-the-Loop requires explicit approval for all shell commands. High-risk commands require QR approval.",
     layer: "HITL"
   },
@@ -262,7 +262,7 @@ export default function SecurityPage() {
         </div>
 
         <h1 className="mb-8 text-5xl font-black uppercase tracking-tighter sm:text-7xl">
-          Triple-Lock <span className="text-white/20">Security</span>
+          Defense-in-Depth <span className="text-white/20">Security</span>
         </h1>
 
         <p className="max-w-3xl text-xl font-medium leading-relaxed text-white/50">

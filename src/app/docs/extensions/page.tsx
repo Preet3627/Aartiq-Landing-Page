@@ -786,7 +786,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 // Create custom panel
 browser.devtools.panels.create(
-  "Comet Inspector",
+  "Aartiq Inspector",
   "icons/panel.png",
   "panel.html"
 ).then(panel => {

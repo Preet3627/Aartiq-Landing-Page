@@ -40,7 +40,7 @@ export const Navbar = ({ onOpenAuth, user }: { onOpenAuth: () => void, user: any
               </span>
             </div>
             <span className="text-[9px] font-bold uppercase tracking-widest text-sky-400/60">
-              Open Source AI-Native Browser
+              Open Source AI-Integrated Browser
             </span>
           </div>
         </Link>
