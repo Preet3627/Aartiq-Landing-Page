@@ -466,15 +466,16 @@ export default function OverviewPage() {
           <p className="mb-4 text-sm text-white/50">Run these commands on your own machine to verify:</p>
           <div className="rounded-xl bg-black/40 p-4 font-mono text-xs text-white/60">
             <p className="text-white/30"># Kill any running instance</p>
-            <p className="text-emerald-400">pkill -f &quot;Aartiq&quot; &amp;&amp; sleep 4</p>
+            <p className="text-emerald-400">{`pkill -f "Aartiq" && sleep 4`}</p>
             <p className="mt-2 text-white/30"># Measure cold launch</p>
-            <p className="text-emerald-400">START=$(python3 -c &quot;import time; print(time.time())&quot;)</p>
-            <p className="text-emerald-400">open -a Aartiq</p>
-            <p className="text-emerald-400">for i in $(seq 1 40); do sleep 0.1; VISIBLE=$(osascript -e &apos;tell application &quot;System Events&quot; to tell process &quot;Aartiq&quot; to get visible&apos; 2&gt;/dev/null); if [ &quot;$VISIBLE&quot; = &quot;true&quot; ]; then echo &quot;Window visible in: $(python3 -c &quot;import time; print(f&apos;{$(date +%s%N)}&apos;)&quot;)&quot;; break; fi; done</p>
+            <p className="text-emerald-400">{`START=$(python3 -c "import time; print(time.time())")`}</p>
+            <p className="text-emerald-400">{`open -a Aartiq`}</p>
+            <p className="text-emerald-400">{`for i in $(seq 1 40); do sleep 0.1; VISIBLE=$(osascript -e 'tell application "System Events" to tell process "Aartiq" to get visible' 2>/dev/null); if [ "$VISIBLE" = "true" ]; then echo "Window visible"; break; fi; done`}</p>
             <p className="mt-2 text-white/30"># Measure memory</p>
-            <p className="text-emerald-400">sleep 3 &amp;&amp; ps -p $(pgrep -f &quot;Aartiq.app/Contents/MacOS/Aartiq&quot;) -o rss=,vsz=,%cpu=,%mem=</p>
+            <p className="text-emerald-400">{`sleep 3 && ps -p $(pgrep -f "Aartiq.app/Contents/MacOS/Aartiq") -o rss=,vsz=,%cpu=,%mem=`}</p>
           </div>
         </div>
+      </motion.section>
     </div>
   );
 }
