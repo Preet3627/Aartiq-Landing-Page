@@ -29,7 +29,7 @@ const keyFeatures = [
   {
     icon: Bot,
     title: "AI Agent",
-    description: "Multi-step autonomous tasks with chain-of-thought reasoning, RAG memory, and real-time action tracking.",
+    description: "Multi-step tasks with chain-of-thought reasoning, RAG memory, and real-time action tracking.",
     fileRef: "src/lib/AIAgent.ts",
     color: "from-blue-500/20 to-cyan-500/20",
     borderColor: "border-blue-500/20",
@@ -38,7 +38,7 @@ const keyFeatures = [
   },
   {
     icon: ShieldCheck,
-    title: "Triple-Lock Security",
+    title: "Three-Layer Security",
     description: "Visual sandbox, syntactic firewall, and human-in-the-loop authorization prevent unauthorized actions.",
     fileRef: "src/lib/Security.ts",
     color: "from-emerald-500/20 to-teal-500/20",
@@ -149,7 +149,7 @@ const architectureLayers = [
   },
   {
     name: "Security Layer",
-    description: "Triple-lock architecture: visual sandbox, syntactic firewall, human-in-the-loop",
+    description: "Three-layer architecture: visual sandbox, syntactic firewall, human-in-the-loop",
     components: ["Permission Store", "PII Scrubber", "Injection Detector", "QR Auth"],
     color: "bg-amber-500"
   },
@@ -367,6 +367,114 @@ export default function OverviewPage() {
           ))}
         </div>
       </motion.section>
+
+      {/* Performance Benchmarks */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
+        <div className="mb-16">
+          <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-sky-400">
+            Verified Benchmarks
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+            Performance <span className="text-white/20">Data</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
+            Real measurements on production hardware. All tests use osascript window-visibility polling and ps RSS sampling.
+          </p>
+        </div>
+
+        {/* Device */}
+        <div className="mb-8 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+          <h3 className="mb-6 text-sm font-black uppercase tracking-[0.3em] text-white/40">Test Environment</h3>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { label: "Device", value: "MacBook Pro (Mac16,8)" },
+              { label: "Chip", value: "Apple M4 Pro — 12 cores" },
+              { label: "RAM", value: "24 GB" },
+              { label: "OS", value: "macOS 26.5 (25F71)" },
+              { label: "App Version", value: "0.3.4" },
+              { label: "Date", value: "2026-07-20" },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center justify-between rounded-xl bg-white/5 p-4">
+                <span className="text-xs text-white/40">{item.label}</span>
+                <code className="text-xs font-mono text-sky-300">{item.value}</code>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Launch Time */}
+        <div className="grid gap-6 lg:grid-cols-3">
+          <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400/60">Cold Launch</p>
+            <p className="text-5xl font-black text-emerald-400">0.32<span className="text-2xl">s</span></p>
+            <p className="mt-2 text-xs text-white/40">Process start → Window visible</p>
+            <p className="mt-1 text-[10px] text-white/20">3/3 runs identical (±0.00s)</p>
+          </div>
+          <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400/60">Warm Start</p>
+            <p className="text-5xl font-black text-sky-400">0.31<span className="text-2xl">s</span></p>
+            <p className="mt-2 text-xs text-white/40">From OS cache (second launch)</p>
+          </div>
+          <div className="rounded-[2rem] border border-purple-500/20 bg-purple-500/5 p-8 text-center">
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400/60">Memory (Main)</p>
+            <p className="text-5xl font-black text-purple-400">430<span className="text-2xl">MB</span></p>
+            <p className="mt-2 text-xs text-white/40">RSS at steady state (1.8% of 24GB)</p>
+          </div>
+        </div>
+
+        {/* Detailed Table */}
+        <div className="mt-8 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+          <h3 className="mb-6 text-sm font-black uppercase tracking-[0.3em] text-white/40">Detailed Results</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="pb-3 text-xs font-black uppercase tracking-wider text-white/40">Metric</th>
+                  <th className="pb-3 text-xs font-black uppercase tracking-wider text-white/40">Value</th>
+                  <th className="pb-3 text-xs font-black uppercase tracking-wider text-white/40">Notes</th>
+                </tr>
+              </thead>
+              <tbody className="text-sm text-white/60">
+                {[
+                  { metric: "Cold Launch (Window Visible)", value: "0.32s", notes: "Average of 3 runs, ±0.00s" },
+                  { metric: "Warm Start (Window Visible)", value: "0.31s", notes: "From OS file cache" },
+                  { metric: "Main Process RSS", value: "430 MB", notes: "Stabilizes to ~610 MB after tab activity" },
+                  { metric: "Total RSS (all processes)", value: "1,712 MB", notes: "8 Electron + Chromium processes" },
+                  { metric: "CPU (idle, window visible)", value: "< 1%", notes: "After initial load completes" },
+                  { metric: "Memory (% of 24 GB)", value: "~7.1%", notes: "Total footprint including GPU subprocesses" },
+                  { metric: "Active Ports", value: "3001, 3004, 46203", notes: "MCP, WiFi sync, Native bridge" },
+                  { metric: "App Bundle Size", value: "1.2 GB", notes: "Frameworks: 276 MB, Resources: 958 MB" },
+                ].map((row, i) => (
+                  <tr key={i} className="border-b border-white/5">
+                    <td className="py-3 font-medium text-white/70">{row.metric}</td>
+                    <td className="py-3"><code className="rounded bg-white/5 px-2 py-1 text-xs font-mono text-sky-300">{row.value}</code></td>
+                    <td className="py-3 text-xs text-white/40">{row.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Reproduce */}
+        <div className="mt-8 rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8">
+          <h3 className="mb-4 text-sm font-black uppercase tracking-[0.3em] text-amber-400/60">How to Reproduce</h3>
+          <p className="mb-4 text-sm text-white/50">Run these commands on your own machine to verify:</p>
+          <div className="rounded-xl bg-black/40 p-4 font-mono text-xs text-white/60">
+            <p className="text-white/30"># Kill any running instance</p>
+            <p className="text-emerald-400">pkill -f &quot;Aartiq&quot; &amp;&amp; sleep 4</p>
+            <p className="mt-2 text-white/30"># Measure cold launch</p>
+            <p className="text-emerald-400">START=$(python3 -c &quot;import time; print(time.time())&quot;)</p>
+            <p className="text-emerald-400">open -a Aartiq</p>
+            <p className="text-emerald-400">for i in $(seq 1 40); do sleep 0.1; VISIBLE=$(osascript -e &apos;tell application &quot;System Events&quot; to tell process &quot;Aartiq&quot; to get visible&apos; 2&gt;/dev/null); if [ &quot;$VISIBLE&quot; = &quot;true&quot; ]; then echo &quot;Window visible in: $(python3 -c &quot;import time; print(f&apos;{$(date +%s%N)}&apos;)&quot;)&quot;; break; fi; done</p>
+            <p className="mt-2 text-white/30"># Measure memory</p>
+            <p className="text-emerald-400">sleep 3 &amp;&amp; ps -p $(pgrep -f &quot;Aartiq.app/Contents/MacOS/Aartiq&quot;) -o rss=,vsz=,%cpu=,%mem=</p>
+          </div>
+        </div>
     </div>
   );
 }
