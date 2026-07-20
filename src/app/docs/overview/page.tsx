@@ -376,13 +376,16 @@ export default function OverviewPage() {
       >
         <div className="mb-16">
           <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-sky-400">
-            Verified Benchmarks
+            Performance Benchmarks
           </p>
           <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
             Performance <span className="text-white/20">Data</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
-            Real measurements on production hardware. All tests use osascript window-visibility polling and ps RSS sampling.
+            Benchmarks measured on physical hardware using the methodology described below. Results may vary depending on hardware, operating system version, and installed extensions.
+          </p>
+          <p className="mt-3 max-w-2xl text-sm text-white/30">
+            All benchmark scripts are included in the repository and can be executed unchanged on supported macOS systems.
           </p>
         </div>
 
@@ -407,17 +410,22 @@ export default function OverviewPage() {
         </div>
 
         {/* Launch Time */}
+        <div className="mb-6 rounded-[2rem] border border-white/5 bg-white/[0.02] p-6">
+          <p className="mb-3 text-sm font-medium text-white/50">
+            Measures the elapsed time from launching the application to the first visible application window. This is not a measurement of full renderer initialization, AI service readiness, or feature availability. Aartiq displays the Chromium window immediately while background services (AI providers, MCP bridge, sync, OCR, etc.) continue initializing asynchronously.
+          </p>
+        </div>
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
-            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400/60">Cold Launch</p>
+            <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400/60">Cold Start (Window Visible)</p>
             <p className="text-5xl font-black text-emerald-400">0.32<span className="text-2xl">s</span></p>
-            <p className="mt-2 text-xs text-white/40">Process start → Window visible</p>
+            <p className="mt-2 text-xs text-white/40">Process start → First visible window</p>
             <p className="mt-1 text-[10px] text-white/20">3/3 runs identical (±0.00s)</p>
           </div>
           <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
             <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400/60">Warm Start</p>
             <p className="text-5xl font-black text-sky-400">0.31<span className="text-2xl">s</span></p>
-            <p className="mt-2 text-xs text-white/40">From OS cache (second launch)</p>
+            <p className="mt-2 text-xs text-white/40">From OS file cache (second launch)</p>
           </div>
           <div className="rounded-[2rem] border border-purple-500/20 bg-purple-500/5 p-8 text-center">
             <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400/60">Memory (Main)</p>
@@ -440,12 +448,14 @@ export default function OverviewPage() {
               </thead>
               <tbody className="text-sm text-white/60">
                 {[
-                  { metric: "Cold Launch (Window Visible)", value: "0.32s", notes: "Average of 3 runs, ±0.00s" },
+                  { metric: "Cold Start (Window Visible)", value: "0.32s", notes: "Average of 3 runs, ±0.00s" },
                   { metric: "Warm Start (Window Visible)", value: "0.31s", notes: "From OS file cache" },
                   { metric: "Main Process RSS", value: "430 MB", notes: "Stabilizes to ~610 MB after tab activity" },
-                  { metric: "Total RSS (all processes)", value: "1,712 MB", notes: "8 Electron + Chromium processes" },
-                  { metric: "CPU (idle, window visible)", value: "< 1%", notes: "After initial load completes" },
-                  { metric: "Memory (% of 24 GB)", value: "~7.1%", notes: "Total footprint including GPU subprocesses" },
+                  { metric: "Total RSS (all processes)", value: "1,712 MB", notes: "Electron main, renderer, GPU, utility, and helper processes" },
+                  { metric: "CPU (at launch)", value: "14.7%", notes: "During initial window creation and first paint" },
+                  { metric: "CPU (idle after init)", value: "< 1%", notes: "After background services finish loading" },
+                  { metric: "Memory (main, % of 24 GB)", value: "~1.7%", notes: "—" },
+                  { metric: "Memory (total, % of 24 GB)", value: "~7.1%", notes: "Including all Chromium subprocesses" },
                   { metric: "Active Ports", value: "3001, 3004, 46203", notes: "MCP, WiFi sync, Native bridge" },
                   { metric: "App Bundle Size", value: "1.2 GB", notes: "Frameworks: 276 MB, Resources: 958 MB" },
                 ].map((row, i) => (
