@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-22T07:54:14.150Z",
+  "generated": "2026-07-22T07:57:59.103Z",
   "version": "0.3.5",
   "desktop": {
     "total": 134,
-    "totalLines": 42914,
+    "totalLines": 42907,
     "byCategory": {
       "components": 93,
       "core": 0,
@@ -9115,7 +9115,7 @@
       {
         "name": "SkillLoader.ts",
         "path": "SkillLoader.ts",
-        "lines": 160,
+        "lines": 153,
         "description": "Skill Loader",
         "tags": [
           "Node.js",
@@ -10566,6 +10566,6 @@
   },
   "summary": {
     "total": 134,
-    "totalLines": 42914
+    "totalLines": 42907
   }
 }
