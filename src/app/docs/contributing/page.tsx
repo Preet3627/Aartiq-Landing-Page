@@ -216,6 +216,47 @@ export default function ContributingPage() {
         </div>
       </motion.section>
 
+      {/* Contributors */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.15 }}
+      >
+        <div className="mb-16">
+          <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-white/20">
+            Recognition
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+            Contributors
+          </h2>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-3">
+          {[
+            { name: "Shashank Shekhar", role: "Microsoft Store Advisor · UI/UX Feedback", desc: "Guided Microsoft Store submission, flagged macOS UI on Windows, suggested ad-blocker and Zen-inspired design.", initials: "SS", gradient: "from-sky-500/20 to-violet-500/20", link: "https://github.com/theshekhr" },
+            { name: "eddzsh", role: "Security Architecture · Approval System Design", desc: "Designed the ticket-based approval system. Hash verification, pre-registered call shapes, pattern-based approval.", initials: "ed", gradient: "from-green-500/20 to-emerald-500/20", link: "https://www.reddit.com/user/eddzsh" },
+            { name: "Dxrkaa", role: "First Issue Reporter · Early Adopter", desc: "Opened the first community bug report. Helped identify and fix a critical Windows launch regression.", initials: "Dx", gradient: "from-orange-500/20 to-red-500/20", link: "https://github.com/Preet3627/Aartiq/issues/6" },
+          ].map((c, i) => (
+            <motion.div
+              key={c.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 + i * 0.1 }}
+              className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 hover:-translate-y-1 hover:border-white/10 transition-all"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className={`flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br ${c.gradient} text-sm font-bold text-white/60`}>{c.initials}</div>
+                <div>
+                  <a href={c.link} target="_blank" rel="noopener noreferrer" className="font-bold text-white hover:text-sky-400 transition-colors">{c.name}</a>
+                  <p className="text-[11px] text-white/30">{c.role}</p>
+                </div>
+              </div>
+              <p className="text-sm text-white/50 leading-relaxed">{c.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
       {/* Ways to Contribute */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
