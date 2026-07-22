@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-22T05:29:39.522Z",
+  "generated": "2026-07-22T05:43:29.148Z",
   "version": "0.3.4",
   "desktop": {
     "total": 134,
-    "totalLines": 41861,
+    "totalLines": 42052,
     "byCategory": {
       "components": 93,
       "core": 0,
@@ -2991,10 +2991,11 @@
       {
         "name": "PermissionSettings.tsx",
         "path": "PermissionSettings.tsx",
-        "lines": 746,
+        "lines": 937,
         "description": "Permission Settings",
         "tags": [
           "React",
+          "Node.js",
           "Security",
           "AI",
           "Automation",
@@ -10510,6 +10511,6 @@
   },
   "summary": {
     "total": 134,
-    "totalLines": 41861
+    "totalLines": 42052
   }
 }
