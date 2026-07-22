@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-22T05:43:29.148Z",
-  "version": "0.3.4",
+  "generated": "2026-07-22T07:54:14.150Z",
+  "version": "0.3.5",
   "desktop": {
     "total": 134,
-    "totalLines": 42052,
+    "totalLines": 42914,
     "byCategory": {
       "components": 93,
       "core": 0,
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7104,
+        "lines": 7490,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -805,6 +805,7 @@
             "addImage",
             "commonPayload",
             "pdfMeta",
+            "formatSection",
             "formatMessageForExport",
             "merged",
             "convertTagsToHTML",
@@ -2051,7 +2052,7 @@
       {
         "name": "LLMProviderSettings.tsx",
         "path": "LLMProviderSettings.tsx",
-        "lines": 1142,
+        "lines": 1153,
         "description": "Provider Settings",
         "tags": [
           "React",
@@ -2991,7 +2992,7 @@
       {
         "name": "PermissionSettings.tsx",
         "path": "PermissionSettings.tsx",
-        "lines": 937,
+        "lines": 1109,
         "description": "Permission Settings",
         "tags": [
           "React",
@@ -4603,7 +4604,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 371,
+        "lines": 373,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -5487,7 +5488,7 @@
       {
         "name": "ClickPermissionModal.tsx",
         "path": "ai/ClickPermissionModal.tsx",
-        "lines": 578,
+        "lines": 602,
         "description": "Click Permission Modal",
         "tags": [
           "React",
@@ -5618,9 +5619,9 @@
             "humanAction",
             "TechnicalDetails",
             "DangerousActionNotice",
+            "handleKey",
             "toggleIndex",
-            "PermissionShell",
-            "handleKey"
+            "PermissionShell"
           ]
         }
       },
@@ -6345,7 +6346,7 @@
       {
         "name": "ProcessingIndicator.tsx",
         "path": "ai/ProcessingIndicator.tsx",
-        "lines": 208,
+        "lines": 212,
         "description": "Processing Indicator",
         "tags": [
           "React",
@@ -6383,7 +6384,7 @@
               "properties": [
                 {
                   "name": "icon",
-                  "type": "React.FC<any>",
+                  "type": "React.FC<any> | null",
                   "required": true
                 },
                 {
@@ -7388,10 +7389,11 @@
       {
         "name": "useAIActionSecurityManager.tsx",
         "path": "ai/useAIActionSecurityManager.tsx",
-        "lines": 391,
+        "lines": 638,
         "description": "Action Security Manager",
         "tags": [
           "React",
+          "Node.js",
           "Security",
           "AI",
           "macOS"
@@ -7399,7 +7401,9 @@
         "lastModified": "2026-07-22",
         "codeAnalysis": {
           "importsExternal": [
-            "react"
+            "react",
+            "framer-motion",
+            "lucide-react"
           ],
           "importsInternal": [
             "./ClickPermissionModal"
@@ -7544,6 +7548,56 @@
                   "required": false
                 }
               ]
+            },
+            {
+              "name": "DirectoryPermissionRequest",
+              "properties": [
+                {
+                  "name": "requestId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "blockedPath",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "blockedPaths",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ShellPermissionRequest",
+              "properties": [
+                {
+                  "name": "requestId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "riskLevel",
+                  "type": "string",
+                  "required": false
+                }
+              ]
             }
           ],
           "hooks": [
@@ -7553,16 +7607,17 @@
             "useRef",
             "useMemo"
           ],
-          "componentType": "function-component",
+          "componentType": "react-utility",
           "exports": [
             "useAIActionSecurityManager"
           ],
           "apiUsage": [
-            "electronAPI"
+            "electronAPI",
+            "framer-motion",
+            "lucide-icons"
           ],
           "keyFunctions": [
-            "getSecuritySettingsSafe",
-            "handleGlobalKeyDown"
+            "getSecuritySettingsSafe"
           ]
         }
       },
@@ -7638,7 +7693,7 @@
       {
         "name": "AICommandParser.ts",
         "path": "AICommandParser.ts",
-        "lines": 798,
+        "lines": 814,
         "description": "Command Parser",
         "tags": [
           "Node.js",
@@ -10511,6 +10566,6 @@
   },
   "summary": {
     "total": 134,
-    "totalLines": 42052
+    "totalLines": 42914
   }
 }
