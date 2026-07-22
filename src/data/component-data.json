@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-22T04:47:19.581Z",
+  "generated": "2026-07-22T04:58:30.905Z",
   "version": "0.3.4",
   "desktop": {
-    "total": 131,
-    "totalLines": 41510,
+    "total": 134,
+    "totalLines": 41825,
     "byCategory": {
-      "components": 92,
+      "components": 93,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 39
+      "lib": 41
     },
     "components": [
       {
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7132,
+        "lines": 7104,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -505,7 +505,6 @@
             "./LLMProviderSettings",
             "./AICommandQueue",
             "./AIChatSidebar/types",
-            "./CapabilitiesPanel",
             "./ai/DOMSearchDisplay",
             "./ai/SmartMessageContent",
             "./ai/SecureDOMReader",
@@ -522,6 +521,7 @@
             "@/lib/Security",
             "@/lib/AICommandOutput",
             "@/lib/SearchContextStore",
+            "@/lib/SkillRegistry",
             "@/lib/ActionLogsStore",
             "@/lib/aiReasoningOptions",
             "@/lib/modelRegistry",
@@ -4602,7 +4602,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 367,
+        "lines": 371,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -6946,6 +6946,100 @@
         }
       },
       {
+        "name": "SettingsApprovalPanel.tsx",
+        "path": "ai/SettingsApprovalPanel.tsx",
+        "lines": 173,
+        "description": "Settings Approval Panel",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-22",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "@/lib/web-search-settings"
+          ],
+          "interfaces": [
+            {
+              "name": "SettingsChange",
+              "properties": [
+                {
+                  "name": "category",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "key",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "oldValue",
+                  "type": "any",
+                  "required": true
+                },
+                {
+                  "name": "newValue",
+                  "type": "any",
+                  "required": true
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "SettingsApprovalPanelProps",
+              "properties": [
+                {
+                  "name": "changes",
+                  "type": "SettingsChange[]",
+                  "required": true
+                },
+                {
+                  "name": "onApprove",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "onDeny",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "onClose",
+                  "type": "() => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default SettingsApprovalPanel"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "RISK_COLORS"
+          ]
+        }
+      },
+      {
         "name": "SmartMessageContent.tsx",
         "path": "ai/SmartMessageContent.tsx",
         "lines": 785,
@@ -7147,7 +7241,7 @@
       {
         "name": "ThinkingPanel.tsx",
         "path": "ai/ThinkingPanel.tsx",
-        "lines": 153,
+        "lines": 152,
         "description": "Thinking Panel",
         "tags": [
           "React",
@@ -8996,6 +9090,68 @@
         }
       },
       {
+        "name": "SkillRegistry.ts",
+        "path": "SkillRegistry.ts",
+        "lines": 62,
+        "description": "Skill Registry",
+        "tags": [
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS"
+        ],
+        "lastModified": "2026-07-22",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "SkillMeta",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "patterns",
+                  "type": "RegExp",
+                  "required": true
+                },
+                {
+                  "name": "icon",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "SkillMeta",
+            "AVAILABLE_SKILLS",
+            "matchSkills",
+            "getSkillSummary",
+            "listAllSkills"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "SyncMethodManager.ts",
         "path": "SyncMethodManager.ts",
         "lines": 259,
@@ -10257,6 +10413,86 @@
             "fallbackVersion"
           ]
         }
+      },
+      {
+        "name": "web-search-settings.ts",
+        "path": "web-search-settings.ts",
+        "lines": 105,
+        "description": "Web Search Settings",
+        "tags": [
+          "Core",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-22",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "WebSearchSettings",
+              "properties": [
+                {
+                  "name": "maxPages",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "maxCharsPerResult",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "totalBudget",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "defaultDepth",
+                  "type": "'summary' | 'full' | 'auto'",
+                  "required": true
+                },
+                {
+                  "name": "autoSummarize",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "deduplicateContent",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "enableQueryRelevance",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "searchEngine",
+                  "type": "'duckduckgo' | 'google'",
+                  "required": true
+                },
+                {
+                  "name": "lastUpdated",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "WebSearchSettings",
+            "WEB_SEARCH_DEFAULTS",
+            "getWebSearchSettings",
+            "updateWebSearchSettings",
+            "resetWebSearchSettings",
+            "resolveSearchParams"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
       }
     ]
   },
@@ -10273,7 +10509,7 @@
     "components": []
   },
   "summary": {
-    "total": 131,
-    "totalLines": 41510
+    "total": 134,
+    "totalLines": 41825
   }
 }
