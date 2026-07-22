@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-22T07:57:59.103Z",
+  "generated": "2026-07-22T12:30:52.326Z",
   "version": "0.3.5",
   "desktop": {
     "total": 134,
-    "totalLines": 42907,
+    "totalLines": 42962,
     "byCategory": {
       "components": 93,
       "core": 0,
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7490,
+        "lines": 7519,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -822,7 +822,7 @@
       {
         "name": "AICommandQueue.tsx",
         "path": "AICommandQueue.tsx",
-        "lines": 480,
+        "lines": 481,
         "description": "Command Queue",
         "tags": [
           "React",
@@ -912,6 +912,11 @@
                 {
                   "name": "jsonFormat",
                   "type": "object",
+                  "required": false
+                },
+                {
+                  "name": "params",
+                  "type": "Record<string, any>",
                   "required": false
                 }
               ]
@@ -4604,7 +4609,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 373,
+        "lines": 381,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -7693,7 +7698,7 @@
       {
         "name": "AICommandParser.ts",
         "path": "AICommandParser.ts",
-        "lines": 814,
+        "lines": 831,
         "description": "Command Parser",
         "tags": [
           "Node.js",
@@ -10566,6 +10571,6 @@
   },
   "summary": {
     "total": 134,
-    "totalLines": 42907
+    "totalLines": 42962
   }
 }
