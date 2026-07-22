@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-22T04:58:30.905Z",
+  "generated": "2026-07-22T05:29:39.522Z",
   "version": "0.3.4",
   "desktop": {
     "total": 134,
-    "totalLines": 41825,
+    "totalLines": 41861,
     "byCategory": {
       "components": 93,
       "core": 0,
@@ -2231,7 +2231,7 @@
       {
         "name": "LandingPage.tsx",
         "path": "LandingPage.tsx",
-        "lines": 228,
+        "lines": 264,
         "description": "Landing Page",
         "tags": [
           "React",
@@ -10510,6 +10510,6 @@
   },
   "summary": {
     "total": 134,
-    "totalLines": 41825
+    "totalLines": 41861
   }
 }
