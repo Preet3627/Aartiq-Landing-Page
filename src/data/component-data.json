@@ -1,9 +1,9 @@
 {
-  "generated": "2026-07-23T07:28:49.727Z",
+  "generated": "2026-07-23T08:09:20.148Z",
   "version": "0.3.5",
   "desktop": {
     "total": 139,
-    "totalLines": 44430,
+    "totalLines": 44442,
     "byCategory": {
       "components": 97,
       "core": 0,
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7583,
+        "lines": 7595,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -11429,6 +11429,6 @@
   },
   "summary": {
     "total": 139,
-    "totalLines": 44430
+    "totalLines": 44442
   }
 }
