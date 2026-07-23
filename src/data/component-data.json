@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-23T04:15:21.335Z",
+  "generated": "2026-07-23T07:28:49.727Z",
   "version": "0.3.5",
   "desktop": {
-    "total": 138,
-    "totalLines": 43832,
+    "total": 139,
+    "totalLines": 44430,
     "byCategory": {
       "components": 97,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 41
+      "lib": 42
     },
     "components": [
       {
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7594,
+        "lines": 7583,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -799,9 +799,9 @@
             "popoverStyle",
             "userBubbleStyle",
             "findYouTubeLinkElement",
-            "newStep",
             "next",
             "flushStreamText",
+            "websiteDetailNode",
             "generateImage",
             "logEntry",
             "result",
@@ -1173,10 +1173,11 @@
       {
         "name": "ApiKeysSettings.tsx",
         "path": "ApiKeysSettings.tsx",
-        "lines": 105,
+        "lines": 318,
         "description": "Api Keys Settings",
         "tags": [
           "React",
+          "Security",
           "AI",
           "macOS",
           "Windows"
@@ -1190,8 +1191,66 @@
           "importsInternal": [
             "@/store/useAppStore"
           ],
-          "interfaces": [],
-          "hooks": [],
+          "interfaces": [
+            {
+              "name": "ProviderCardProps",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "apiKey",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "setApiKey",
+                  "type": "(key: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "model",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "setModel",
+                  "type": "(model: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "placeholder",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "isActive",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "onActivate",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "extraFields",
+                  "type": "React.ReactNode",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState"
+          ],
           "componentType": "function-component",
           "exports": [
             "default ApiKeysSettings"
@@ -1200,7 +1259,10 @@
             "zustand-store",
             "lucide-icons"
           ],
-          "keyFunctions": []
+          "keyFunctions": [
+            "ProviderCard",
+            "providers"
+          ]
         }
       },
       {
@@ -1996,7 +2058,7 @@
       {
         "name": "InitializingOverlay.tsx",
         "path": "InitializingOverlay.tsx",
-        "lines": 66,
+        "lines": 61,
         "description": "Initializing Overlay",
         "tags": [
           "React",
@@ -5219,7 +5281,7 @@
       {
         "name": "ActionChainTimeline.tsx",
         "path": "ai/ActionChainTimeline.tsx",
-        "lines": 268,
+        "lines": 296,
         "description": "Action Chain Timeline",
         "tags": [
           "React",
@@ -5257,6 +5319,11 @@
                 {
                   "name": "detail",
                   "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "detailNode",
+                  "type": "React.ReactNode",
                   "required": false
                 },
                 {
@@ -5317,7 +5384,8 @@
           ],
           "keyFunctions": [
             "statusStyles",
-            "statusIcon"
+            "statusIcon",
+            "DetailDisplay"
           ]
         }
       },
@@ -6433,7 +6501,7 @@
       {
         "name": "ResearchExecutionCard.tsx",
         "path": "ai/ResearchExecutionCard.tsx",
-        "lines": 174,
+        "lines": 209,
         "description": "Research Execution Card",
         "tags": [
           "React",
@@ -6515,6 +6583,21 @@
                   "name": "query",
                   "type": "string",
                   "required": true
+                },
+                {
+                  "name": "progress",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "currentStep",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "totalSteps",
+                  "type": "number",
+                  "required": false
                 }
               ]
             }
@@ -6538,7 +6621,7 @@
       {
         "name": "ResearchReport.tsx",
         "path": "ai/ResearchReport.tsx",
-        "lines": 261,
+        "lines": 302,
         "description": "Research Report",
         "tags": [
           "React",
@@ -6633,7 +6716,7 @@
       {
         "name": "ResearchSourceCard.tsx",
         "path": "ai/ResearchSourceCard.tsx",
-        "lines": 80,
+        "lines": 130,
         "description": "Research Source Card",
         "tags": [
           "React",
@@ -6654,6 +6737,11 @@
                   "name": "name",
                   "type": "string",
                   "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
                 },
                 {
                   "name": "favicon",
@@ -6679,6 +6767,31 @@
                   "name": "used",
                   "type": "boolean",
                   "required": true
+                },
+                {
+                  "name": "qualityReasons",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "domainScore",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "extractionQuality",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "publicationDate",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "updatedDate",
+                  "type": "string",
+                  "required": false
                 }
               ]
             },
@@ -6723,7 +6836,7 @@
       {
         "name": "ResearchTimeline.tsx",
         "path": "ai/ResearchTimeline.tsx",
-        "lines": 195,
+        "lines": 219,
         "description": "Research Timeline",
         "tags": [
           "React",
@@ -7651,7 +7764,7 @@
       {
         "name": "ThinkingPanel.tsx",
         "path": "ai/ThinkingPanel.tsx",
-        "lines": 152,
+        "lines": 173,
         "description": "Thinking Panel",
         "tags": [
           "React",
@@ -10802,6 +10915,348 @@
         }
       },
       {
+        "name": "researchState.ts",
+        "path": "researchState.ts",
+        "lines": 202,
+        "description": "ResearchState",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-23",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ResearchStepSummary",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "stage",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "message",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "favicon",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "score",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "index",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "'running' | 'done' | 'error'",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ResearchSourceSummary",
+              "properties": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "favicon",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "articleCount",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "avgScore",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "used",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "qualityReasons",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "domainScore",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "extractionQuality",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "publicationDate",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "updatedDate",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "ResearchCoverageSummary",
+              "properties": [
+                {
+                  "name": "percentage",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "covered",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "total",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ResearchProgressEvent",
+              "properties": [
+                {
+                  "name": "pipelineId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "researchId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "stage",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "status",
+                  "type": "ResearchUiStatus | string",
+                  "required": false
+                },
+                {
+                  "name": "message",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "query",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "source",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "favicon",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "score",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "index",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "progress",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "sourceSummary",
+                  "type": "ResearchSourceSummary[]",
+                  "required": false
+                },
+                {
+                  "name": "coverage",
+                  "type": "ResearchCoverageSummary",
+                  "required": false
+                },
+                {
+                  "name": "evidenceLedger",
+                  "type": "unknown",
+                  "required": false
+                },
+                {
+                  "name": "contradictions",
+                  "type": "unknown[]",
+                  "required": false
+                },
+                {
+                  "name": "error",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "ResearchUiState",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string | null",
+                  "required": true
+                },
+                {
+                  "name": "query",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "status",
+                  "type": "ResearchUiStatus",
+                  "required": true
+                },
+                {
+                  "name": "progress",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "currentStep",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "totalSteps",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "stage",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "message",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "steps",
+                  "type": "ResearchStepSummary[]",
+                  "required": true
+                },
+                {
+                  "name": "sources",
+                  "type": "ResearchSourceSummary[]",
+                  "required": true
+                },
+                {
+                  "name": "coverage",
+                  "type": "ResearchCoverageSummary | null",
+                  "required": true
+                },
+                {
+                  "name": "errors",
+                  "type": "string[]",
+                  "required": true
+                },
+                {
+                  "name": "startedAt",
+                  "type": "number | null",
+                  "required": true
+                },
+                {
+                  "name": "completedAt",
+                  "type": "number | null",
+                  "required": true
+                },
+                {
+                  "name": "evidenceLedger",
+                  "type": "unknown",
+                  "required": false
+                },
+                {
+                  "name": "contradictions",
+                  "type": "unknown[]",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ResearchUiStatus",
+            "ResearchStepSummary",
+            "ResearchSourceSummary",
+            "ResearchCoverageSummary",
+            "ResearchProgressEvent",
+            "ResearchUiState",
+            "createEmptyResearchState",
+            "createResearchState",
+            "isResearchEventForActiveJob",
+            "applyResearchProgress"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "safe-eval.ts",
         "path": "safe-eval.ts",
         "lines": 125,
@@ -10973,7 +11428,7 @@
     "components": []
   },
   "summary": {
-    "total": 138,
-    "totalLines": 43832
+    "total": 139,
+    "totalLines": 44430
   }
 }
