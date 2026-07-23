@@ -136,6 +136,75 @@ const securityLayers = [
       "Mobile app confirms identity",
       "User approval required for execution"
     ]
+  },
+  {
+    name: "Directory Allowlist",
+    icon: Lock,
+    color: "from-purple-500/20 to-violet-500/20",
+    borderColor: "border-purple-500/30",
+    iconColor: "text-purple-400",
+    level: 4,
+    description: "AI file access is restricted to explicitly approved directories with fine-grained read/write permissions.",
+    howItWorks: [
+      "Each directory in the allowlist specifies access level (Read Only or Read & Write)",
+      "Path canonicalization resolves symlinks before checking against the allowlist",
+      "Just-in-time permission prompts request approval before accessing new directories",
+      "Batched multi-directory approval allows granting access to multiple paths at once",
+      "File management operations (move, copy, open, print) are routed around the shell sandbox",
+      "Read/write separation: a grant to read must not allow deleting/overwriting",
+      "Source files: src/core/directory-allowlist.js, src/main/handlers/permission-handlers.js"
+    ],
+    benefits: [
+      "Prevents AI from accessing sensitive directories (Documents, Desktop, etc.)",
+      "Symlink traversal attacks are blocked via realpath resolution",
+      "Write operations on read-only entries are denied at the kernel level",
+      "Audit trail of all directory access grants with timestamps"
+    ]
+  },
+  {
+    name: "OS-Level Sandboxing",
+    icon: ShieldOff,
+    color: "from-red-500/20 to-rose-500/20",
+    borderColor: "border-red-500/30",
+    iconColor: "text-red-400",
+    level: 5,
+    description: "Shell commands execute within platform-specific OS sandboxes that enforce filesystem, network, and process boundaries.",
+    howItWorks: [
+      "macOS: Seatbelt sandbox profiles restrict filesystem writes and network access",
+      "Linux: bubblewrap (bwrap) creates isolated namespaces with read-only system paths",
+      "Windows: Job Objects confine processes, ACLs restrict filesystem, Firewall blocks network",
+      "All platforms: Environment variables are sanitized — API keys and tokens are never exposed",
+      "Network domain allowlist: only explicitly approved destinations are reachable",
+      "Source files: src/core/sandbox-executor.js, src/core/directory-allowlist.js"
+    ],
+    benefits: [
+      "Even if regex blocklist misses a dangerous command, the OS sandbox blocks it",
+      "Processes physically cannot write outside approved directories",
+      "Credential leakage via ambient env vars is prevented",
+      "Network exfiltration is blocked at the firewall level"
+    ]
+  },
+  {
+    name: "Capability-Scoped Execution",
+    icon: ShieldCheck,
+    color: "from-sky-500/20 to-indigo-500/20",
+    borderColor: "border-sky-500/30",
+    iconColor: "text-sky-400",
+    level: 6,
+    description: "Actions must be explicitly registered with a named handler and approval tier. Unregistered actions are rejected.",
+    howItWorks: [
+      "Each allowed action is registered with the CapabilityController",
+      "Approval tiers: never (auto-approved), first-time-per-session, always (explicit confirm)",
+      "Ticket-based authorization ensures single-use approval for high-risk actions",
+      "Unregistered actions don't exist as callable surfaces — prompt injection cannot invoke them",
+      "Source files: src/core/capability-controller.js, src/core/command-validator.js"
+    ],
+    benefits: [
+      "Removes dangerous primitives from the attack surface entirely",
+      "No amount of prompt injection can invoke an unregistered action",
+      "Ticket system prevents replay attacks on approved actions",
+      "Granular control over what the AI can and cannot do"
+    ]
   }
 ];
 
@@ -175,6 +244,30 @@ const threatScenarios = [
     scenario: "AI is tricked into downloading and running malicious code",
     defense: "Shell commands requiring downloads are blocked by default. User approval ensures no unauthorized code execution.",
     layer: "HITL + Firewall"
+  },
+  {
+    threat: "Symlink Traversal Attack",
+    scenario: "Attacker creates a symlink in an allowed directory pointing to /etc/passwd or other sensitive files",
+    defense: "Path canonicalization resolves all symlinks via fs.realpath() before checking against the directory allowlist. The resolved path is checked, not the user-supplied path.",
+    layer: "Directory Allowlist"
+  },
+  {
+    threat: "Credential Leakage via Environment Variables",
+    scenario: "AI executes a command that inherits the parent process's environment with API keys and tokens",
+    defense: "OS-level sandboxing strips all ambient environment variables. Only explicitly allowlisted variables (PATH, HOME, USER, LANG) are passed to child processes.",
+    layer: "OS-Level Sandboxing"
+  },
+  {
+    threat: "Network Exfiltration via Shell",
+    scenario: "AI is tricked into executing curl to upload sensitive data to an attacker's server",
+    defense: "Windows Firewall rules block all outbound connections by default. Only explicitly allowlisted domains are permitted. Network restrictions auto-expire after the execution window.",
+    layer: "OS-Level Sandboxing"
+  },
+  {
+    threat: "Unauthorized API Invocation",
+    scenario: "Prompt injection attempts to invoke an unregistered shell command or system action",
+    defense: "Capability-Scoped Execution rejects unregistered actions entirely. If there's no registered run_shell_command action, no amount of prompt injection can invoke one.",
+    layer: "Capability-Scoped"
   }
 ];
 
@@ -184,7 +277,9 @@ const permissionLevels = [
   { name: "App Launching", description: "Required for opening applications", mediumRisk: true },
   { name: "File System Access", description: "Required for PDF generation and downloads", required: true },
   { name: "Network Access", description: "Required for web browsing and API calls", required: true },
-  { name: "Clipboard Access", description: "Required for copy/paste functionality", mediumRisk: true }
+  { name: "Clipboard Access", description: "Required for copy/paste functionality", mediumRisk: true },
+  { name: "Directory Allowlist", description: "Controls which directories AI can access", highRisk: true },
+  { name: "OS-Level Sandboxing", description: "Enforces filesystem and network boundaries", required: true }
 ];
 
 const encryptionDetails = {
@@ -209,7 +304,9 @@ const encryptionDetails = {
     { data: "Sync credentials", method: "Encrypted with user passphrase" },
     { data: "API keys", method: "AES-256-GCM with derived key" },
     { data: "Chat history", method: "End-to-end encrypted sync" },
-    { data: "File transfers", method: "P2P encrypted relay" }
+    { data: "File transfers", method: "P2P encrypted relay" },
+    { data: "Vault passwords", method: "Field-level encryption with keychain" },
+    { data: "Legacy data", method: "Proactive migration to E2EE2: format" }
   ]
 };
 
@@ -266,14 +363,14 @@ export default function SecurityPage() {
         </h1>
 
         <p className="max-w-3xl text-xl font-medium leading-relaxed text-white/50">
-          Aartiq uses a defense-in-depth model with three independent security layers: visual sandbox, syntactic firewall, and human-in-the-loop authorization. Source implementations: src/lib/Security.ts, src/lib/SecurityValidator.js, src/core/command-validator.js
+          Aartiq uses a defense-in-depth model with six independent security layers: visual sandbox, syntactic firewall, human-in-the-loop authorization, directory allowlist, OS-level sandboxing, and capability-scoped execution. Source implementations: src/lib/Security.ts, src/lib/SecurityValidator.js, src/core/command-validator.js, src/core/directory-allowlist.js, src/core/sandbox-executor.js
         </p>
 
           {/* Security Stats */}
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 text-center">
             <ShieldCheck size={32} className="mx-auto mb-4 text-sky-400" />
-            <h3 className="text-3xl font-black text-sky-400">3</h3>
+            <h3 className="text-3xl font-black text-sky-400">6</h3>
             <p className="text-sm text-white/50">Security Layers</p>
           </div>
           <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 text-center">
@@ -300,7 +397,7 @@ export default function SecurityPage() {
             Architecture
           </p>
           <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
-            The Three <span className="text-white/20">Layers</span>
+            The Six <span className="text-white/20">Layers</span>
           </h2>
         </div>
 

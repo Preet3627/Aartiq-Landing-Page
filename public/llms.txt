@@ -8,7 +8,7 @@ Aartiq is a local-first browser that integrates AI directly into the browsing ex
 
 - [Getting Started](https://aartiq.vercel.app/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
 - [AI Commands Reference](https://aartiq.vercel.app/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
-- [Security Model](https://aartiq.vercel.app/docs/security): Three-layer security architecture with E2EE encryption, permission levels, and audit logging
+- [Security Model](https://aartiq.vercel.app/docs/security): Six-layer defense-in-depth architecture with E2EE encryption, directory allowlist, OS-level sandboxing, and capability-scoped execution
 - [Automation Guide](https://aartiq.vercel.app/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
 - [Cloud Sync](https://aartiq.vercel.app/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
 - [Plugin System](https://aartiq.vercel.app/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
@@ -45,7 +45,7 @@ Aartiq is a local-first browser that integrates AI directly into the browsing ex
 - Background Scheduler: Cron-based task scheduling that runs even when the browser window is closed
 - Document Generation: PDF, Excel, PowerPoint, and Word generation from JSON/JSX templates
 - Cross-Device: E2EE WiFi sync between desktop and Android devices
-- Security: Three-layer permission system, AES-256-GCM vault encryption with OS keychain backup, sandboxed automation
+- Security: Six-layer permission system, AES-256-GCM vault encryption with OS keychain backup, sandboxed automation
 - Plugin System: Node.js-based plugin SDK with command registration and event hooks
 - Extensions: Chrome manifest v3 extension support
 - Agent Skills: Modular skill cards for automation, browsing, documents, scheduling, security, research, MCP, Apple Intelligence, and image generation

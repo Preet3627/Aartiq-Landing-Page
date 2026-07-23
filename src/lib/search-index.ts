@@ -262,6 +262,46 @@ export const searchIndex: SearchIndex = {
       keywords: ["AES", "vault", "encryption", "keychain", "credentials", "storage"],
       type: "section"
     },
+    {
+      id: "security-directory-allowlist",
+      title: "Directory Allowlist",
+      description: "Fine-grained AI file access control with read/write separation",
+      content: "directory allowlist file access control read write separation symlink canonicalization realpath permission prompt batch approval",
+      url: "/docs/security#directory-allowlist",
+      section: "Directory Allowlist",
+      keywords: ["directory", "allowlist", "file access", "read write", "symlink", "permission"],
+      type: "section"
+    },
+    {
+      id: "security-os-sandboxing",
+      title: "OS-Level Sandboxing",
+      description: "Platform-specific sandboxing with Seatbelt, bubblewrap, and Job Objects",
+      content: "OS sandboxing Seatbelt macOS bubblewrap Linux Job Objects Windows filesystem network process confinement ACLs firewall",
+      url: "/docs/security#os-level-sandboxing",
+      section: "OS-Level Sandboxing",
+      keywords: ["sandbox", "Seatbelt", "bubblewrap", "Job Objects", "filesystem", "network", "confinement"],
+      type: "section"
+    },
+    {
+      id: "security-capability-scoped",
+      title: "Capability-Scoped Execution",
+      description: "Actions must be explicitly registered with approval tiers",
+      content: "capability-scoped execution action registration approval tiers ticket authorization unregistered actions rejected",
+      url: "/docs/security#capability-scoped-execution",
+      section: "Capability-Scoped Execution",
+      keywords: ["capability", "execution", "action", "registration", "approval", "ticket"],
+      type: "section"
+    },
+    {
+      id: "security-vault-migration",
+      title: "Vault Migration",
+      description: "Proactive re-encryption of legacy vault data to modern format",
+      content: "vault migration legacy encryption LCL E2EE E2EE2 proactive re-encryption PBKDF2 600K iterations",
+      url: "/docs/security#vault-migration",
+      section: "Vault Migration",
+      keywords: ["vault", "migration", "legacy", "encryption", "E2EE2", "re-encryption"],
+      type: "section"
+    },
 
     // Automation
     {

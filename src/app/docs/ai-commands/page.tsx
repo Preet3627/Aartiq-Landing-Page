@@ -23,7 +23,8 @@ import {
   Hash,
   Layout,
   Maximize2,
-  Smartphone
+  Smartphone,
+  History
 } from "lucide-react";
 
 const commandCategories = [
@@ -44,7 +45,7 @@ const commandCategories = [
     color: "from-sky-500/20 to-cyan-500/20",
     borderColor: "border-sky-500/30",
     iconColor: "text-sky-400",
-    commands: ["READ_PAGE_CONTENT", "LIST_OPEN_TABS", "CLICK_ELEMENT", "FIND_AND_CLICK", "FILL_FORM"],
+    commands: ["READ_PAGE_CONTENT", "LIST_OPEN_TABS", "CLICK_ELEMENT", "FIND_AND_CLICK", "FILL_FORM", "MULTI_FILL_FORM", "DOM_SEARCH", "SWITCH_TAB", "CLOSE_TAB", "SCROLL_TO", "CLICK_AT", "SCREENSHOT_AND_ANALYZE", "DEEP_RESEARCH", "ORGANIZE_TABS"],
     source: "src/core/window-manager.js, src/components/BrowserViewContainer.tsx"
   },
   {
@@ -107,13 +108,43 @@ const commandCategories = [
     source: "src/service/scheduler.js"
   },
   {
+    id: "media",
+    name: "Media & Generation",
+    icon: Image,
+    color: "from-fuchsia-500/20 to-pink-500/20",
+    borderColor: "border-fuchsia-500/30",
+    iconColor: "text-fuchsia-400",
+    commands: ["GENERATE_IMAGE", "APPLE_INTELLIGENCE_IMAGE", "APPLE_INTELLIGENCE_SUMMARY", "PLAY_VIDEO", "SEARCH_VIDEO", "GENERATE_DIAGRAM", "GENERATE_PDF"],
+    source: "src/components/AIChatSidebar.tsx"
+  },
+  {
+    id: "bookmarks",
+    name: "Bookmarks & History",
+    icon: History,
+    color: "from-teal-500/20 to-emerald-500/20",
+    borderColor: "border-teal-500/30",
+    iconColor: "text-teal-400",
+    commands: ["LIST_BOOKMARKS", "ADD_BOOKMARK", "REMOVE_BOOKMARK", "CLEAR_BOOKMARKS", "LIST_HISTORY", "CLEAR_HISTORY"],
+    source: "src/components/AIChatSidebar.tsx"
+  },
+  {
+    id: "skills",
+    name: "Skills & Settings",
+    icon: Bot,
+    color: "from-violet-500/20 to-purple-500/20",
+    borderColor: "border-violet-500/30",
+    iconColor: "text-violet-400",
+    commands: ["LIST_SKILLS", "LOAD_SKILL", "SETTINGS_QUERY", "SETTINGS_UPDATE", "OPEN_SETTINGS_PANEL"],
+    source: "src/lib/SkillRegistry.ts"
+  },
+  {
     id: "meta",
     name: "Meta Commands",
     icon: Bot,
     color: "from-violet-500/20 to-purple-500/20",
     borderColor: "border-violet-500/30",
     iconColor: "text-violet-400",
-    commands: ["THINK", "PLAN"]
+    commands: ["THINK", "PLAN", "EXPLAIN_CAPABILITIES"]
   },
   {
     id: "integrations",
@@ -629,7 +660,529 @@ const commands = [
 }`,
       natural: "Fill in the login form with email and password"
     }
+  },
+
+  // Additional Browser Commands
+  {
+    name: "MULTI_FILL_FORM",
+    category: "browser",
+    description: "Fill multiple form fields atomically from a JSON field map. Uses dom-engine v2 with AX-tree resolution and cascading fallbacks.",
+    format: "JSON",
+    riskLevel: "Medium",
+    requiresApproval: true,
+    parameters: [
+      { name: "fields", type: "object", required: true, description: "JSON map of {selector: value} pairs" }
+    ],
+    example: {
+      json: `{
+  "command": "MULTI_FILL_FORM",
+  "fields": {
+    "#email": "user@example.com",
+    "#password": "secret123",
+    "input[name=phone]": "555-1234"
   }
+}`,
+      natural: "Fill in the entire registration form at once"
+    }
+  },
+  {
+    name: "DOM_SEARCH",
+    category: "browser",
+    description: "Search within the current page DOM for elements matching a selector, text, or attribute. Returns matching elements with metadata.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "query", type: "string", required: true, description: "CSS selector, text content, or attribute to search for" },
+      { name: "maxResults", type: "number", required: false, description: "Maximum number of results to return" }
+    ],
+    example: {
+      json: `{
+  "command": "DOM_SEARCH",
+  "query": "button[type=submit]",
+  "maxResults": 5
+}`,
+      natural: "Find all submit buttons on this page"
+    }
+  },
+  {
+    name: "SWITCH_TAB",
+    category: "browser",
+    description: "Switch to a specific browser tab by ID or index.",
+    format: "Bracket",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "tabId", type: "string", required: true, description: "Tab ID or index to switch to" }
+    ],
+    example: {
+      json: `[SWITCH_TAB: 2]`,
+      natural: "Switch to the third tab"
+    }
+  },
+  {
+    name: "CLOSE_TAB",
+    category: "browser",
+    description: "Close a specific browser tab by ID.",
+    format: "Bracket",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "tabId", type: "string", required: true, description: "Tab ID to close" }
+    ],
+    example: {
+      json: `[CLOSE_TAB: tab-3]`,
+      natural: "Close the third tab"
+    }
+  },
+  {
+    name: "SCROLL_TO",
+    category: "browser",
+    description: "Scroll to a DOM element on the current page.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "selector", type: "string", required: true, description: "CSS selector of element to scroll to" }
+    ],
+    example: {
+      json: `{
+  "command": "SCROLL_TO",
+  "selector": "#footer"
+}`,
+      natural: "Scroll down to the footer"
+    }
+  },
+  {
+    name: "CLICK_AT",
+    category: "browser",
+    description: "Click at specific screen coordinates (x, y).",
+    format: "JSON",
+    riskLevel: "Medium",
+    requiresApproval: true,
+    parameters: [
+      { name: "x", type: "number", required: true, description: "X coordinate" },
+      { name: "y", type: "number", required: true, description: "Y coordinate" }
+    ],
+    example: {
+      json: `{
+  "command": "CLICK_AT",
+  "x": 500,
+  "y": 300
+}`,
+      natural: "Click at position 500, 300 on screen"
+    }
+  },
+  {
+    name: "SCREENSHOT_AND_ANALYZE",
+    category: "browser",
+    description: "Capture a screenshot of the current page and analyze its visual content using Vision/OCR.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [],
+    example: {
+      json: `{
+  "command": "SCREENSHOT_AND_ANALYZE"
+}`,
+      natural: "Take a screenshot and tell me what you see"
+    }
+  },
+  {
+    name: "DEEP_RESEARCH",
+    category: "browser",
+    description: "Perform deep iterative research with source ranking and coverage analysis across multiple search queries.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "query", type: "string", required: true, description: "Research topic or question" },
+      { name: "depth", type: "number", required: false, description: "Research depth (1-5, default 3)" }
+    ],
+    example: {
+      json: `{
+  "command": "DEEP_RESEARCH",
+  "query": "latest advances in quantum computing 2026",
+  "depth": 4
+}`,
+      natural: "Do deep research on quantum computing advances"
+    }
+  },
+  {
+    name: "ORGANIZE_TABS",
+    category: "browser",
+    description: "Use AI to intelligently group all open tabs by topic or domain.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [],
+    example: {
+      json: `{
+  "command": "ORGANIZE_TABS"
+}`,
+      natural: "Organize my tabs into groups"
+    }
+  },
+
+  // Additional System Commands
+  {
+    name: "ENABLE_CLI",
+    category: "system",
+    description: "Automatically enable the Aartiq CLI terminal tool for command-line browser control.",
+    format: "JSON",
+    riskLevel: "Medium",
+    requiresApproval: true,
+    parameters: [],
+    example: {
+      json: `{
+  "command": "ENABLE_CLI"
+}`,
+      natural: "Enable the CLI tool"
+    }
+  },
+
+  // Additional PDF/Document Commands
+  {
+    name: "GENERATE_PDF",
+    category: "pdf",
+    description: "Create a PDF from markdown content (legacy fallback). For structured documents, prefer CREATE_PDF_JSON.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "content", type: "string", required: true, description: "Markdown content to convert to PDF" },
+      { name: "filename", type: "string", required: false, description: "Output filename" }
+    ],
+    example: {
+      json: `{
+  "command": "GENERATE_PDF",
+  "content": "# My Report\\n\\nThis is the content...",
+  "filename": "report.pdf"
+}`,
+      natural: "Create a PDF from this markdown"
+    }
+  },
+  {
+    name: "GENERATE_DIAGRAM",
+    category: "pdf",
+    description: "Create charts and diagrams using Mermaid.js syntax.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "type", type: "string", required: true, description: "Diagram type: flowchart, sequence, gantt, pie, etc." },
+      { name: "content", type: "string", required: true, description: "Mermaid diagram definition" }
+    ],
+    example: {
+      json: `{
+  "command": "GENERATE_DIAGRAM",
+  "type": "flowchart",
+  "content": "graph TD; A-->B; B-->C; C-->D;"
+}`,
+      natural: "Create a flowchart diagram"
+    }
+  },
+
+  // Media & Generation Commands
+  {
+    name: "GENERATE_IMAGE",
+    category: "media",
+    description: "Generate an AI image with a detailed text prompt.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "prompt", type: "string", required: true, description: "Detailed image description" },
+      { name: "style", type: "string", required: false, description: "Image style (e.g., photorealistic, anime, oil painting)" }
+    ],
+    example: {
+      json: `{
+  "command": "GENERATE_IMAGE",
+  "prompt": "A futuristic city skyline at sunset with flying cars",
+  "style": "photorealistic"
+}`,
+      natural: "Generate an image of a futuristic city"
+    }
+  },
+  {
+    name: "APPLE_INTELLIGENCE_IMAGE",
+    category: "media",
+    description: "Generate an image using Apple Intelligence local models (macOS only).",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "prompt", type: "string", required: true, description: "Image description" }
+    ],
+    example: {
+      json: `{
+  "command": "APPLE_INTELLIGENCE_IMAGE",
+  "prompt": "A watercolor painting of mountains"
+}`,
+      natural: "Use Apple Intelligence to generate a mountain painting"
+    }
+  },
+  {
+    name: "APPLE_INTELLIGENCE_SUMMARY",
+    category: "media",
+    description: "Summarize text using Apple Intelligence local models (macOS only).",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "text", type: "string", required: true, description: "Text to summarize" }
+    ],
+    example: {
+      json: `{
+  "command": "APPLE_INTELLIGENCE_SUMMARY",
+  "text": "Long article text here..."
+}`,
+      natural: "Summarize this article using Apple Intelligence"
+    }
+  },
+  {
+    name: "PLAY_VIDEO",
+    category: "media",
+    description: "Play a YouTube video inline in the chat interface.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "url", type: "string", required: true, description: "YouTube video URL" }
+    ],
+    example: {
+      json: `{
+  "command": "PLAY_VIDEO",
+  "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}`,
+      natural: "Play this YouTube video"
+    }
+  },
+  {
+    name: "SEARCH_VIDEO",
+    category: "media",
+    description: "Search YouTube and auto-play the top result.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "query", type: "string", required: true, description: "YouTube search query" }
+    ],
+    example: {
+      json: `{
+  "command": "SEARCH_VIDEO",
+  "query": "how to train a dragon full movie"
+}`,
+      natural: "Find and play a YouTube video about dragons"
+    }
+  },
+
+  // Bookmarks & History Commands
+  {
+    name: "LIST_BOOKMARKS",
+    category: "bookmarks",
+    description: "List all saved browser bookmarks.",
+    format: "Bracket",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [],
+    example: {
+      json: `[LIST_BOOKMARKS]`,
+      natural: "Show me all my bookmarks"
+    }
+  },
+  {
+    name: "ADD_BOOKMARK",
+    category: "bookmarks",
+    description: "Add a bookmark for the current page or a specific URL.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "url", type: "string", required: true, description: "URL to bookmark" },
+      { name: "title", type: "string", required: false, description: "Bookmark title" }
+    ],
+    example: {
+      json: `{
+  "command": "ADD_BOOKMARK",
+  "url": "https://github.com/Preet3627/Aartiq",
+  "title": "Aartiq Repository"
+}`,
+      natural: "Bookmark this page"
+    }
+  },
+  {
+    name: "REMOVE_BOOKMARK",
+    category: "bookmarks",
+    description: "Remove a bookmark by URL.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: true,
+    parameters: [
+      { name: "url", type: "string", required: true, description: "URL to remove from bookmarks" }
+    ],
+    example: {
+      json: `{
+  "command": "REMOVE_BOOKMARK",
+  "url": "https://example.com"
+}`,
+      natural: "Remove this bookmark"
+    }
+  },
+  {
+    name: "CLEAR_BOOKMARKS",
+    category: "bookmarks",
+    description: "Remove all bookmarks.",
+    format: "Bracket",
+    riskLevel: "High",
+    requiresApproval: true,
+    parameters: [],
+    example: {
+      json: `[CLEAR_BOOKMARKS]`,
+      natural: "Clear all my bookmarks"
+    }
+  },
+  {
+    name: "LIST_HISTORY",
+    category: "bookmarks",
+    description: "List or search browsing history.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "query", type: "string", required: false, description: "Search filter for history" },
+      { name: "limit", type: "number", required: false, description: "Maximum entries to return" }
+    ],
+    example: {
+      json: `{
+  "command": "LIST_HISTORY",
+  "query": "github",
+  "limit": 10
+}`,
+      natural: "Show my recent browsing history"
+    }
+  },
+  {
+    name: "CLEAR_HISTORY",
+    category: "bookmarks",
+    description: "Clear all browsing history.",
+    format: "Bracket",
+    riskLevel: "High",
+    requiresApproval: true,
+    parameters: [],
+    example: {
+      json: `[CLEAR_HISTORY]`,
+      natural: "Clear my browsing history"
+    }
+  },
+
+  // Skills & Settings Commands
+  {
+    name: "LIST_SKILLS",
+    category: "skills",
+    description: "List all available skill guides that can be loaded for domain-specific knowledge.",
+    format: "Bracket",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [],
+    example: {
+      json: `[LIST_SKILLS]`,
+      natural: "What skills are available?"
+    }
+  },
+  {
+    name: "LOAD_SKILL",
+    category: "skills",
+    description: "Load a specific skill guide into context for domain-specific knowledge and workflows.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "skillId", type: "string", required: true, description: "Skill ID to load (e.g., settings, automation, pdf)" }
+    ],
+    example: {
+      json: `{
+  "command": "LOAD_SKILL",
+  "skillId": "settings"
+}`,
+      natural: "Load the settings skill"
+    }
+  },
+  {
+    name: "SETTINGS_QUERY",
+    category: "skills",
+    description: "Read current settings for a specific category.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "category", type: "string", required: true, description: "Settings category (e.g., llm, appearance, security)" }
+    ],
+    example: {
+      json: `{
+  "command": "SETTINGS_QUERY",
+  "category": "llm"
+}`,
+      natural: "Show my current LLM settings"
+    }
+  },
+  {
+    name: "SETTINGS_UPDATE",
+    category: "skills",
+    description: "Request a settings change. Changes are applied after user confirmation.",
+    format: "JSON",
+    riskLevel: "Medium",
+    requiresApproval: true,
+    parameters: [
+      { name: "category", type: "string", required: true, description: "Settings category" },
+      { name: "key", type: "string", required: true, description: "Setting key to change" },
+      { name: "value", type: "any", required: true, description: "New value" }
+    ],
+    example: {
+      json: `{
+  "command": "SETTINGS_UPDATE",
+  "category": "appearance",
+  "key": "theme",
+  "value": "dark"
+}`,
+      natural: "Change the theme to dark mode"
+    }
+  },
+  {
+    name: "OPEN_SETTINGS_PANEL",
+    category: "skills",
+    description: "Open a specific settings panel in the UI.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [
+      { name: "panel", type: "string", required: true, description: "Panel to open (e.g., llm, automation, mcp)" }
+    ],
+    example: {
+      json: `{
+  "command": "OPEN_SETTINGS_PANEL",
+  "panel": "mcp"
+}`,
+      natural: "Open the MCP settings"
+    }
+  },
+
+  // Additional Meta Commands
+  {
+    name: "EXPLAIN_CAPABILITIES",
+    category: "meta",
+    description: "List all available AI features and capabilities of Aartiq.",
+    format: "JSON",
+    riskLevel: "Low",
+    requiresApproval: false,
+    parameters: [],
+    example: {
+      json: `{
+  "command": "EXPLAIN_CAPABILITIES"
+}`,
+      natural: "What can you do?"
+    }
+  },
 ];
 
 const commandStatus = {
@@ -1010,7 +1563,7 @@ export default function AICommandsPage() {
           <h2 className="mb-8 text-2xl font-black uppercase tracking-wider">Quick Command Reference</h2>
           
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {commands.slice(0, 9).map((cmd) => (
+            {commands.slice(0, 15).map((cmd) => (
               <div key={cmd.name} className="flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-4">
                 <code className="text-sm font-mono text-sky-400">{cmd.name}</code>
                 {cmd.requiresApproval && (
