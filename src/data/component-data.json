@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-24T08:56:38.633Z",
+  "generated": "2026-07-24T09:13:19.998Z",
   "version": "0.3.5",
   "desktop": {
-    "total": 159,
-    "totalLines": 48899,
+    "total": 180,
+    "totalLines": 52611,
     "byCategory": {
-      "components": 98,
+      "components": 117,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 61
+      "lib": 63
     },
     "components": [
       {
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7976,
+        "lines": 7987,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -1318,7 +1318,7 @@
       {
         "name": "AutofillSettings.tsx",
         "path": "AutofillSettings.tsx",
-        "lines": 115,
+        "lines": 255,
         "description": "Autofill Settings",
         "tags": [
           "React",
@@ -1328,27 +1328,111 @@
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "lucide-react",
             "framer-motion"
           ],
-          "importsInternal": [
-            "@/store/useAppStore"
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "Profile",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "firstName",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "lastName",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "email",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "phone",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "organization",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "addressLine1",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "addressLine2",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "city",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "state",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "postalCode",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "country",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "createdAt",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "updatedAt",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
           ],
-          "interfaces": [],
           "hooks": [
-            "useState"
+            "useState",
+            "useEffect",
+            "useCallback"
           ],
           "componentType": "function-component",
           "exports": [
             "default AutofillSettings"
           ],
           "apiUsage": [
-            "zustand-store",
+            "electronAPI",
             "framer-motion",
             "lucide-icons"
           ],
           "keyFunctions": [
-            "handleSave"
+            "PROFILE_FIELDS",
+            "handleNew",
+            "handleEdit",
+            "handleCancel",
+            "n"
           ]
         }
       },
@@ -1492,7 +1576,7 @@
       {
         "name": "AutomationSettings.tsx",
         "path": "AutomationSettings.tsx",
-        "lines": 965,
+        "lines": 1034,
         "description": "Automation Settings",
         "tags": [
           "React",
@@ -2070,6 +2154,76 @@
         }
       },
       {
+        "name": "ExtensionActionBar.tsx",
+        "path": "ExtensionActionBar.tsx",
+        "lines": 115,
+        "description": "Extension Action Bar",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ExtensionAction",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "popup",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "badgeText",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "badgeBg",
+                  "type": "number[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useRef"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default ExtensionActionBar"
+          ],
+          "apiUsage": [
+            "electronAPI"
+          ],
+          "keyFunctions": [
+            "ACTION_BAR_KEYS"
+          ]
+        }
+      },
+      {
         "name": "ExtensionManager.tsx",
         "path": "ExtensionManager.tsx",
         "lines": 161,
@@ -2144,11 +2298,12 @@
       {
         "name": "ExtensionSettings.tsx",
         "path": "ExtensionSettings.tsx",
-        "lines": 187,
+        "lines": 495,
         "description": "Extension Settings",
         "tags": [
           "React",
           "Node.js",
+          "Automation",
           "Plugin",
           "macOS"
         ],
@@ -2156,7 +2311,6 @@
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "lucide-react",
             "framer-motion"
           ],
           "importsInternal": [],
@@ -2188,13 +2342,34 @@
                   "name": "path",
                   "type": "string",
                   "required": true
+                },
+                {
+                  "name": "enabled",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "permissions",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "host_permissions",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "manifest_version",
+                  "type": "number",
+                  "required": false
                 }
               ]
             }
           ],
           "hooks": [
             "useState",
-            "useEffect"
+            "useEffect",
+            "useCallback"
           ],
           "componentType": "function-component",
           "exports": [
@@ -2206,8 +2381,7 @@
             "lucide-icons"
           ],
           "keyFunctions": [
-            "handleOpenDir",
-            "handleInstallPlugin"
+            "handleOpenDir"
           ]
         }
       },
@@ -3100,7 +3274,7 @@
       {
         "name": "PasswordManager.tsx",
         "path": "PasswordManager.tsx",
-        "lines": 383,
+        "lines": 503,
         "description": "Password Manager",
         "tags": [
           "React",
@@ -3118,7 +3292,9 @@
           "interfaces": [],
           "hooks": [
             "useState",
-            "useEffect"
+            "useEffect",
+            "useCallback",
+            "useRef"
           ],
           "componentType": "function-component",
           "exports": [
@@ -3130,8 +3306,10 @@
             "lucide-icons"
           ],
           "keyFunctions": [
+            "next",
             "pushVaultStatus",
-            "getEntryIcon"
+            "getEntryIcon",
+            "n"
           ]
         }
       },
@@ -3716,7 +3894,7 @@
       {
         "name": "SettingsPanel.tsx",
         "path": "SettingsPanel.tsx",
-        "lines": 1196,
+        "lines": 1195,
         "description": "Settings Panel",
         "tags": [
           "React",
@@ -4607,11 +4785,10 @@
       {
         "name": "VirtualizedTabBar.tsx",
         "path": "VirtualizedTabBar.tsx",
-        "lines": 319,
+        "lines": 336,
         "description": "Virtualized Tab Bar",
         "tags": [
           "React",
-          "Core",
           "AI",
           "Plugin",
           "macOS"
@@ -4624,7 +4801,8 @@
             "framer-motion"
           ],
           "importsInternal": [
-            "@/store/useAppStore"
+            "@/store/useAppStore",
+            "@/lib/TabGroupingService"
           ],
           "interfaces": [
             {
@@ -4701,6 +4879,7 @@
           "hooks": [
             "useState",
             "useEffect",
+            "useCallback",
             "useRef",
             "useMemo"
           ],
@@ -4715,6 +4894,7 @@
             "lucide-icons"
           ],
           "keyFunctions": [
+            "handleKeyDown",
             "handleTabClick",
             "handleReorder",
             "onDragStart",
@@ -4861,7 +5041,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 382,
+        "lines": 438,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -4897,6 +5077,53 @@
             "THREAT_STORAGE_KEY"
           ],
           "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "AISessionVisualization.tsx",
+        "path": "ai/AISessionVisualization.tsx",
+        "lines": 129,
+        "description": "Session Visualization",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion"
+          ],
+          "importsInternal": [
+            "@/store/tabIntelligenceStore"
+          ],
+          "interfaces": [
+            {
+              "name": "AISessionVisualizationProps",
+              "properties": [
+                {
+                  "name": "compact",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "className",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "AISessionVisualization"
+          ],
+          "apiUsage": [
+            "framer-motion"
+          ],
           "keyFunctions": []
         }
       },
@@ -5063,7 +5290,7 @@
       {
         "name": "AIUtils.ts",
         "path": "ai/AIUtils.ts",
-        "lines": 952,
+        "lines": 956,
         "description": "AIUtils",
         "tags": [
           "Security",
@@ -6609,7 +6836,7 @@
       {
         "name": "ProcessingIndicator.tsx",
         "path": "ai/ProcessingIndicator.tsx",
-        "lines": 212,
+        "lines": 216,
         "description": "Processing Indicator",
         "tags": [
           "React",
@@ -7752,7 +7979,7 @@
       {
         "name": "SmartMessageContent.tsx",
         "path": "ai/SmartMessageContent.tsx",
-        "lines": 785,
+        "lines": 789,
         "description": "Smart Message Content",
         "tags": [
           "React",
@@ -7945,6 +8172,54 @@
             "ShellOutputCard",
             "ShellOutputBlock",
             "SmartMessageContent"
+          ]
+        }
+      },
+      {
+        "name": "TabActivityOverlay.tsx",
+        "path": "ai/TabActivityOverlay.tsx",
+        "lines": 109,
+        "description": "Tab Activity Overlay",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion"
+          ],
+          "importsInternal": [
+            "@/store/tabIntelligenceStore"
+          ],
+          "interfaces": [
+            {
+              "name": "TabActivityOverlayProps",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "className",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "TabActivityOverlay"
+          ],
+          "apiUsage": [
+            "framer-motion"
+          ],
+          "keyFunctions": [
+            "stateConfig"
           ]
         }
       },
@@ -8330,9 +8605,1201 @@
         }
       },
       {
+        "name": "AIFallback.tsx",
+        "path": "sidebar/AIFallback.tsx",
+        "lines": 50,
+        "description": "AIFallback",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "AIFallbackProps",
+              "properties": [
+                {
+                  "name": "onOpenSettings",
+                  "type": "() => void",
+                  "required": false
+                },
+                {
+                  "name": "message",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "AIFallback"
+          ]
+        }
+      },
+      {
+        "name": "AITabAnimation.tsx",
+        "path": "sidebar/AITabAnimation.tsx",
+        "lines": 135,
+        "description": "Tab Animation",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "UseTabAnimationOptions",
+              "properties": [
+                {
+                  "name": "settings",
+                  "type": "AIVisualSettings",
+                  "required": true
+                },
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useEffect",
+            "useRef"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default memo",
+            "useTabAura",
+            "injectTabAnimationCSS",
+            "removeTabAnimationCSS"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "setState",
+            "AITabAnimation"
+          ]
+        }
+      },
+      {
+        "name": "AIVisualTheme.tsx",
+        "path": "sidebar/AIVisualTheme.tsx",
+        "lines": 144,
+        "description": "Visual Theme",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "ThemeControlProps",
+              "properties": [
+                {
+                  "name": "current",
+                  "type": "AIVisualSettings",
+                  "required": true
+                },
+                {
+                  "name": "onUpdate",
+                  "type": "(s: AIVisualSettings) => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useCallback"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo",
+            "getCSSForAIVisual",
+            "getTabAnimationStyle"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "colorOptions",
+            "AIVisualThemeControl",
+            "updated"
+          ]
+        }
+      },
+      {
+        "name": "BackgroundNotifications.tsx",
+        "path": "sidebar/BackgroundNotifications.tsx",
+        "lines": 217,
+        "description": "Background Notifications",
+        "tags": [
+          "React",
+          "Automation",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "BackgroundTaskEvent",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "taskName",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "taskType",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "status",
+                  "type": "'success' | 'failed' | 'missed'",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "BackgroundNotificationsProps",
+              "properties": [
+                {
+                  "name": "onShowDetails",
+                  "type": "(event: BackgroundTaskEvent) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default memo",
+            "BackgroundNotificationsProps"
+          ],
+          "apiUsage": [
+            "electronAPI",
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "saveEvents",
+            "formatTime",
+            "BackgroundNotifications",
+            "handler"
+          ]
+        }
+      },
+      {
+        "name": "CustomizationPanel.tsx",
+        "path": "sidebar/CustomizationPanel.tsx",
+        "lines": 166,
+        "description": "Customization Panel",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "CustomizationPanelProps",
+              "properties": [
+                {
+                  "name": "onClose",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "currentPrefs",
+                  "type": "SidebarPreferences",
+                  "required": true
+                },
+                {
+                  "name": "onUpdatePrefs",
+                  "type": "(prefs: SidebarPreferences) => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "CustomizationPanel"
+          ]
+        }
+      },
+      {
+        "name": "PrivacyControls.tsx",
+        "path": "sidebar/PrivacyControls.tsx",
+        "lines": 125,
+        "description": "Privacy Controls",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "PrivacyControlsProps",
+              "properties": [
+                {
+                  "name": "onClose",
+                  "type": "() => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "PrivacyControls",
+            "updated"
+          ]
+        }
+      },
+      {
+        "name": "WidgetContainer.tsx",
+        "path": "sidebar/WidgetContainer.tsx",
+        "lines": 91,
+        "description": "Widget Container",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "WidgetContainerProps",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "WidgetId",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "icon",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "isCollapsed",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "onToggleCollapse",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "onRemove",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "children",
+                  "type": "React.ReactNode",
+                  "required": true
+                },
+                {
+                  "name": "dragHandleProps",
+                  "type": "Record<string, any>",
+                  "required": false
+                },
+                {
+                  "name": "className",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useRef"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "WidgetContainer"
+          ]
+        }
+      },
+      {
+        "name": "WidgetErrorBoundary.tsx",
+        "path": "sidebar/WidgetErrorBoundary.tsx",
+        "lines": 61,
+        "description": "Widget Error Boundary",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "WidgetErrorBoundaryProps",
+              "properties": [
+                {
+                  "name": "children",
+                  "type": "React.ReactNode",
+                  "required": true
+                },
+                {
+                  "name": "widgetName",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "WidgetErrorBoundaryState",
+              "properties": [
+                {
+                  "name": "hasError",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "error",
+                  "type": "Error | null",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "class-component",
+          "exports": [
+            "WidgetErrorBoundary"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "types.ts",
+        "path": "sidebar/types.ts",
+        "lines": 147,
+        "description": "Types",
+        "tags": [
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "SidebarWidget",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "WidgetId",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "icon",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "defaultVisible",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "defaultOrder",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "minHeight",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "SidebarPreferences",
+              "properties": [
+                {
+                  "name": "enabledWidgets",
+                  "type": "WidgetId[]",
+                  "required": true
+                },
+                {
+                  "name": "widgetOrder",
+                  "type": "WidgetId[]",
+                  "required": true
+                },
+                {
+                  "name": "collapsedWidgets",
+                  "type": "WidgetId[]",
+                  "required": true
+                },
+                {
+                  "name": "sidebarWidth",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "sidebarMode",
+                  "type": "'full' | 'compact' | 'hidden'",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "AIVisualSettings",
+              "properties": [
+                {
+                  "name": "enabled",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "glowMode",
+                  "type": "GlowMode",
+                  "required": true
+                },
+                {
+                  "name": "color",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "intensity",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "animationSpeed",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "PrivacySettings",
+              "properties": [
+                {
+                  "name": "disableMemory",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "disablePreferenceLearning",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "disableTabIntelligence",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "disableAnimations",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "WidgetId",
+            "SidebarWidget",
+            "SidebarPreferences",
+            "GlowMode",
+            "AIVisualSettings",
+            "PrivacySettings",
+            "WIDGET_DEFINITIONS",
+            "DEFAULT_SIDEBAR_PREFERENCES",
+            "DEFAULT_AI_VISUAL_SETTINGS",
+            "DEFAULT_PRIVACY_SETTINGS",
+            "getSidebarPreferences",
+            "saveSidebarPreferences",
+            "getAIVisualSettings",
+            "saveAIVisualSettings",
+            "getPrivacySettings",
+            "savePrivacySettings"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "updated"
+          ]
+        }
+      },
+      {
+        "name": "CapabilitiesWidget.tsx",
+        "path": "sidebar/widgets/CapabilitiesWidget.tsx",
+        "lines": 30,
+        "description": "Capabilities Widget",
+        "tags": [
+          "React",
+          "Automation",
+          "PDF",
+          "OCR",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "capabilities",
+            "CapabilitiesWidget"
+          ]
+        }
+      },
+      {
+        "name": "DashboardWidget.tsx",
+        "path": "sidebar/widgets/DashboardWidget.tsx",
+        "lines": 148,
+        "description": "Dashboard Widget",
+        "tags": [
+          "React",
+          "PDF",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabInfo",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "groupId",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "DashboardStats",
+              "properties": [
+                {
+                  "name": "memories",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "openTabs",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "sessionsToday",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "DashboardWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useMemo"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "greeting",
+            "getTabContext",
+            "getContextualActions",
+            "DashboardWidget",
+            "items",
+            "handleAction"
+          ]
+        }
+      },
+      {
+        "name": "MemoryWidget.tsx",
+        "path": "sidebar/widgets/MemoryWidget.tsx",
+        "lines": 207,
+        "description": "Memory Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "MemoryItem",
+              "properties": [
+                {
+                  "name": "key",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "category",
+                  "type": "'preference' | 'session' | 'fact'",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "MemoryWidget"
+          ]
+        }
+      },
+      {
+        "name": "QuickActionsWidget.tsx",
+        "path": "sidebar/widgets/QuickActionsWidget.tsx",
+        "lines": 122,
+        "description": "Quick Actions Widget",
+        "tags": [
+          "React",
+          "AI",
+          "PDF",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabInfo",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "groupId",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "HistoryEntry",
+              "properties": [
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "QuickActionsWidgetProps",
+              "properties": [
+                {
+                  "name": "onAction",
+                  "type": "(command: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": false
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "history",
+                  "type": "HistoryEntry[]",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "HARDCODED_ACTIONS",
+            "getContextualActions",
+            "QuickActionsWidget"
+          ]
+        }
+      },
+      {
+        "name": "SessionTimelineWidget.tsx",
+        "path": "sidebar/widgets/SessionTimelineWidget.tsx",
+        "lines": 102,
+        "description": "Session Timeline Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "@/components/ai/ActionChainTimeline"
+          ],
+          "interfaces": [
+            {
+              "name": "SessionTimelineWidgetProps",
+              "properties": [
+                {
+                  "name": "steps",
+                  "type": "ActionChainStep[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "statusConfig",
+            "statusIcon",
+            "SessionTimelineWidget"
+          ]
+        }
+      },
+      {
+        "name": "TabIntelligenceWidget.tsx",
+        "path": "sidebar/widgets/TabIntelligenceWidget.tsx",
+        "lines": 138,
+        "description": "Tab Intelligence Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabInfo",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "groupId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isLoading",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "TabIntelligenceWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "setInputMessage",
+                  "type": "(msg: string) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "domainIcon",
+            "TabIntelligenceWidget"
+          ]
+        }
+      },
+      {
+        "name": "TasksWidget.tsx",
+        "path": "sidebar/widgets/TasksWidget.tsx",
+        "lines": 262,
+        "description": "Tasks Widget",
+        "tags": [
+          "React",
+          "Automation",
+          "PDF",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "AutomationRun",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "totalCommands",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "successCount",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "failedCount",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "startTime",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "endTime",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "TasksWidgetProps",
+              "properties": [
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default memo"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "saveRuns",
+            "statusIcon",
+            "TasksWidget",
+            "handler",
+            "formatDuration",
+            "formatTime"
+          ]
+        }
+      },
+      {
         "name": "AICommandOutput.ts",
         "path": "AICommandOutput.ts",
-        "lines": 218,
+        "lines": 220,
         "description": "Command Output",
         "tags": [
           "AI",
@@ -8401,7 +9868,7 @@
       {
         "name": "AICommandParser.ts",
         "path": "AICommandParser.ts",
-        "lines": 847,
+        "lines": 862,
         "description": "Command Parser",
         "tags": [
           "Node.js",
@@ -9856,9 +11323,10 @@
       {
         "name": "SkillRegistry.ts",
         "path": "SkillRegistry.ts",
-        "lines": 62,
+        "lines": 65,
         "description": "Skill Registry",
         "tags": [
+          "Node.js",
           "Security",
           "AI",
           "Automation",
@@ -10068,6 +11536,234 @@
           "apiUsage": [
             "firebase"
           ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "TabContextManager.ts",
+        "path": "TabContextManager.ts",
+        "lines": 268,
+        "description": "Tab Context Manager",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabMetadata",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "favicon",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isActive",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isLoading",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "lastAccessed",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "isAudible",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "isSuspended",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "TabContent",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "content",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "textLength",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "extractedAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "TabSnapshot",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabMetadata[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string | null",
+                  "required": true
+                },
+                {
+                  "name": "totalTabs",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "capturedAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "TabActivityEvent",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "state",
+                  "type": "TabActivityState",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "TabMetadata",
+            "TabContent",
+            "TabSnapshot",
+            "TabActivityState",
+            "TabActivityEvent",
+            "cacheTabContent",
+            "getCachedTabContent",
+            "tabContextManager"
+          ],
+          "apiUsage": [
+            "electronAPI"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "TabGroupingService.ts",
+        "path": "TabGroupingService.ts",
+        "lines": 185,
+        "description": "Tab Grouping Service",
+        "tags": [
+          "AI",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./AdvancedTabManager"
+          ],
+          "interfaces": [
+            {
+              "name": "GroupingResult",
+              "properties": [
+                {
+                  "name": "success",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "GroupingOptions",
+              "properties": [
+                {
+                  "name": "strategy",
+                  "type": "GroupingStrategy",
+                  "required": true
+                },
+                {
+                  "name": "maxGroupSize",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "deduplicate",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "timeout",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "GroupingStrategy",
+            "GroupingResult",
+            "GroupingOptions",
+            "TabGroupingService",
+            "tabGroupingService"
+          ],
+          "apiUsage": [],
           "keyFunctions": []
         }
       },
@@ -10709,7 +12405,7 @@
       {
         "name": "ai-action-security.ts",
         "path": "ai-action-security.ts",
-        "lines": 598,
+        "lines": 607,
         "description": "Ai Action Security",
         "tags": [
           "Security",
@@ -13177,7 +14873,7 @@
     "components": []
   },
   "summary": {
-    "total": 159,
-    "totalLines": 48899
+    "total": 180,
+    "totalLines": 52611
   }
 }
