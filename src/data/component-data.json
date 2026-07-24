@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-24T09:13:19.998Z",
+  "generated": "2026-07-24T13:24:18.574Z",
   "version": "0.3.5",
   "desktop": {
-    "total": 180,
-    "totalLines": 52611,
+    "total": 191,
+    "totalLines": 53965,
     "byCategory": {
-      "components": 117,
+      "components": 127,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 63
+      "lib": 64
     },
     "components": [
       {
@@ -458,7 +458,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7987,
+        "lines": 7943,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -528,17 +528,10 @@
             "@/lib/SearchContextStore",
             "@/lib/SkillRegistry",
             "@/lib/ActionLogsStore",
-            "./sidebar/WidgetContainer",
-            "./sidebar/WidgetErrorBoundary",
             "./sidebar/AIFallback",
-            "./sidebar/widgets/MemoryWidget",
-            "./sidebar/widgets/SessionTimelineWidget",
-            "./sidebar/widgets/TabIntelligenceWidget",
-            "./sidebar/widgets/QuickActionsWidget",
-            "./sidebar/widgets/CapabilitiesWidget",
-            "./sidebar/widgets/TasksWidget",
-            "./sidebar/widgets/DashboardWidget",
+            "./sidebar/AIHomeExperience",
             "./sidebar/CustomizationPanel",
+            "@/store/tabIntelligenceStore",
             "./sidebar/PrivacyControls",
             "./sidebar/AIVisualTheme",
             "./sidebar/AITabAnimation",
@@ -846,7 +839,6 @@
             "softPanelStyle",
             "popoverStyle",
             "userBubbleStyle",
-            "updated",
             "findYouTubeLinkElement",
             "next",
             "flushStreamText",
@@ -868,7 +860,8 @@
             "handleFocusAI",
             "handleAbort",
             "handleToggleAutonomous",
-            "options"
+            "options",
+            "updated"
           ]
         }
       },
@@ -5978,11 +5971,13 @@
       {
         "name": "ClickPermissionModal.tsx",
         "path": "ai/ClickPermissionModal.tsx",
-        "lines": 602,
+        "lines": 608,
         "description": "Click Permission Modal",
         "tags": [
           "React",
           "Node.js",
+          "Security",
+          "AI",
           "Sync",
           "Automation",
           "macOS",
@@ -5995,7 +5990,9 @@
             "react",
             "framer-motion"
           ],
-          "importsInternal": [],
+          "importsInternal": [
+            "@/lib/ai-action-security"
+          ],
           "interfaces": [
             {
               "name": "BatchCommandInfo",
@@ -6022,7 +6019,7 @@
                 },
                 {
                   "name": "risk",
-                  "type": "'low' | 'medium' | 'high'",
+                  "type": "ActionRiskLevel",
                   "required": true
                 },
                 {
@@ -6057,7 +6054,7 @@
                 },
                 {
                   "name": "risk",
-                  "type": "'low' | 'medium' | 'high'",
+                  "type": "ActionRiskLevel",
                   "required": true
                 },
                 {
@@ -8652,6 +8649,104 @@
         }
       },
       {
+        "name": "AIHomeExperience.tsx",
+        "path": "sidebar/AIHomeExperience.tsx",
+        "lines": 145,
+        "description": "Home Experience",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "./types",
+            "@/components/ai/ActionChainTimeline",
+            "@/lib/homeIntelligence",
+            "./widgets/home/CurrentContextWidget",
+            "./widgets/home/WorkspaceIntelligenceWidget",
+            "./widgets/home/AISuggestionsWidget",
+            "./widgets/home/SessionResumeWidget",
+            "./widgets/home/AutomationMonitorWidget",
+            "./widgets/home/MemoryInsightsWidget",
+            "./widgets/home/AIHomeTimelineWidget"
+          ],
+          "interfaces": [
+            {
+              "name": "AIHomeExperienceProps",
+              "properties": [
+                {
+                  "name": "enabledWidgets",
+                  "type": "WidgetId[]",
+                  "required": true
+                },
+                {
+                  "name": "widgetOrder",
+                  "type": "WidgetId[]",
+                  "required": true
+                },
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "history",
+                  "type": "HistoryEntry[]",
+                  "required": false
+                },
+                {
+                  "name": "actionSteps",
+                  "type": "ActionChainStep[]",
+                  "required": true
+                },
+                {
+                  "name": "sessionLabel",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "function-component",
+          "exports": [
+            "default AIHomeExperience",
+            "AIHomeExperienceProps"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "renderWidget"
+          ]
+        }
+      },
+      {
         "name": "AITabAnimation.tsx",
         "path": "sidebar/AITabAnimation.tsx",
         "lines": 135,
@@ -9103,12 +9198,123 @@
         }
       },
       {
+        "name": "AIHomeCard.tsx",
+        "path": "sidebar/home/AIHomeCard.tsx",
+        "lines": 95,
+        "description": "Home Card",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "AIHomeCardProps",
+              "properties": [
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "subtitle",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "children",
+                  "type": "React.ReactNode",
+                  "required": true
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "defaultExpanded",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "collapsible",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "headerActions",
+                  "type": "React.ReactNode",
+                  "required": false
+                },
+                {
+                  "name": "className",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "AIHomeCard",
+            "HomeSkeleton"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "cardTransition"
+          ]
+        }
+      },
+      {
+        "name": "useActiveTabDwell.ts",
+        "path": "sidebar/home/useActiveTabDwell.ts",
+        "lines": 20,
+        "description": "Active Tab Dwell",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [],
+          "interfaces": [],
+          "hooks": [
+            "useState",
+            "useEffect"
+          ],
+          "componentType": "utility",
+          "exports": [
+            "useActiveTabDwell"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "types.ts",
         "path": "sidebar/types.ts",
-        "lines": 147,
+        "lines": 190,
         "description": "Types",
         "tags": [
           "AI",
+          "Automation",
           "macOS",
           "Flutter"
         ],
@@ -9794,6 +10000,420 @@
             "formatDuration",
             "formatTime"
           ]
+        }
+      },
+      {
+        "name": "AIHomeTimelineWidget.tsx",
+        "path": "sidebar/widgets/home/AIHomeTimelineWidget.tsx",
+        "lines": 128,
+        "description": "Home Timeline Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard",
+            "@/lib/homeIntelligence",
+            "@/components/ai/ActionChainTimeline"
+          ],
+          "interfaces": [
+            {
+              "name": "AIHomeTimelineWidgetProps",
+              "properties": [
+                {
+                  "name": "steps",
+                  "type": "ActionChainStep[]",
+                  "required": true
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default AIHomeTimelineWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "AISuggestionsWidget.tsx",
+        "path": "sidebar/widgets/home/AISuggestionsWidget.tsx",
+        "lines": 55,
+        "description": "Suggestions Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard",
+            "@/lib/homeIntelligence"
+          ],
+          "interfaces": [
+            {
+              "name": "AISuggestionsWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default AISuggestionsWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "AutomationMonitorWidget.tsx",
+        "path": "sidebar/widgets/home/AutomationMonitorWidget.tsx",
+        "lines": 80,
+        "description": "Automation Monitor Widget",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard",
+            "@/components/ai/ActionChainTimeline"
+          ],
+          "interfaces": [
+            {
+              "name": "AutomationMonitorWidgetProps",
+              "properties": [
+                {
+                  "name": "steps",
+                  "type": "ActionChainStep[]",
+                  "required": true
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default AutomationMonitorWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "nodeIcon"
+          ]
+        }
+      },
+      {
+        "name": "CurrentContextWidget.tsx",
+        "path": "sidebar/widgets/home/CurrentContextWidget.tsx",
+        "lines": 143,
+        "description": "Current Context Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard",
+            "../../home/useActiveTabDwell"
+          ],
+          "interfaces": [
+            {
+              "name": "CurrentContextWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "sessionLabel",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isWorking",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default CurrentContextWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "MemoryInsightsWidget.tsx",
+        "path": "sidebar/widgets/home/MemoryInsightsWidget.tsx",
+        "lines": 116,
+        "description": "Memory Insights Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard"
+          ],
+          "interfaces": [
+            {
+              "name": "MemoryInsightsWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "activeTabId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default MemoryInsightsWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "SessionResumeWidget.tsx",
+        "path": "sidebar/widgets/home/SessionResumeWidget.tsx",
+        "lines": 77,
+        "description": "Session Resume Widget",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react",
+            "framer-motion"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard",
+            "@/lib/homeIntelligence"
+          ],
+          "interfaces": [
+            {
+              "name": "AutomationRun",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "startTime",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "SessionResumeWidgetProps",
+              "properties": [
+                {
+                  "name": "history",
+                  "type": "HistoryEntry[]",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useMemo"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default SessionResumeWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "onStorage"
+          ]
+        }
+      },
+      {
+        "name": "WorkspaceIntelligenceWidget.tsx",
+        "path": "sidebar/widgets/home/WorkspaceIntelligenceWidget.tsx",
+        "lines": 74,
+        "description": "Workspace Intelligence Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../../home/AIHomeCard"
+          ],
+          "interfaces": [
+            {
+              "name": "WorkspaceIntelligenceWidgetProps",
+              "properties": [
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                },
+                {
+                  "name": "onAction",
+                  "type": "(cmd: string) => void",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default WorkspaceIntelligenceWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
         }
       },
       {
@@ -13507,6 +14127,315 @@
         }
       },
       {
+        "name": "homeIntelligence.ts",
+        "path": "homeIntelligence.ts",
+        "lines": 416,
+        "description": "HomeIntelligence",
+        "tags": [
+          "Node.js",
+          "Automation",
+          "macOS"
+        ],
+        "lastModified": "2026-07-24",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabInfo",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "groupId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isLoading",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "HistoryEntry",
+              "properties": [
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "PageContext",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "domain",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "isBlank",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isSearch",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isDocs",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isVideo",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isCode",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isArticle",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "isCommerce",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "hasReadableContent",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ContextSuggestion",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "priority",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "TopicGroup",
+              "properties": [
+                {
+                  "name": "topic",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "DuplicateTabCluster",
+              "properties": [
+                {
+                  "name": "normalizedUrl",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "tabs",
+                  "type": "TabInfo[]",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "MemoryRecord",
+              "properties": [
+                {
+                  "name": "key",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "category",
+                  "type": "'preference' | 'session' | 'fact'",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ResumeItem",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "subtitle",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "kind",
+                  "type": "'research' | 'automation' | 'session'",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "TimelineEvent",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "phase",
+                  "type": "TimelinePhase",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "status",
+                  "type": "'pending' | 'running' | 'done' | 'error' | 'skipped'",
+                  "required": true
+                },
+                {
+                  "name": "timestamp",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "TabInfo",
+            "HistoryEntry",
+            "PageContext",
+            "ContextSuggestion",
+            "TopicGroup",
+            "DuplicateTabCluster",
+            "MemoryRecord",
+            "ResumeItem",
+            "TimelinePhase",
+            "TimelineEvent",
+            "parsePageContext",
+            "estimateUnderstandingScore",
+            "formatDwellTime",
+            "estimateReadingMinutes",
+            "groupTabsByTopic",
+            "findDuplicateTabs",
+            "loadMemories",
+            "filterRelevantMemories",
+            "buildContextSuggestions",
+            "buildResumeItems",
+            "inferObjective",
+            "mapStepsToTimeline",
+            "activeWorkspaceLabel"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "phaseForLabel"
+          ]
+        }
+      },
+      {
         "name": "html-sanitizer.ts",
         "path": "html-sanitizer.ts",
         "lines": 38,
@@ -14873,7 +15802,7 @@
     "components": []
   },
   "summary": {
-    "total": 180,
-    "totalLines": 52611
+    "total": 191,
+    "totalLines": 53965
   }
 }
