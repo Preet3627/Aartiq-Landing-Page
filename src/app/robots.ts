@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: ['/api/', '/admin/'], // Protect dynamic routes if needed, but allow content
+            disallow: ['/api/', '/admin/', '/auth', '/oauth2callback', '/test-browser'],
         },
         sitemap: 'https://aartiq.ponsrischool.in/sitemap.xml',
         host: 'https://aartiq.ponsrischool.in',

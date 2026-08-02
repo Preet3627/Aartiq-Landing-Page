@@ -208,7 +208,8 @@ export default function PrivacyPolicy() {
             </h2>
             <div className="glass-card p-8 space-y-4 text-white/60 leading-relaxed">
               <p>
-                Aartiq is fully open source under the <strong className="text-white/80">MIT License</strong>.
+                Aartiq™ is fully open source under the <strong className="text-white/80">Apache License 2.0</strong> (browser core)
+                with the MCP server <strong className="text-white/80">MIT-licensed</strong>.
                 You can audit every line of code to verify our privacy claims:
               </p>
               <ul className="space-y-3 mt-4">

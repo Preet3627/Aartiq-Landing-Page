@@ -5,7 +5,7 @@ const BASE = 'https://aartiq.ponsrischool.in';
 export async function GET() {
   const content = `# Aartiq
 
-> An open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, background task scheduling, and E2EE cross-device sync. Built with Electron, Next.js, React, TypeScript, and Flutter. MIT-licensed on GitHub.
+> An open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, background task scheduling, and E2EE cross-device sync. Built with Electron, Next.js, React, TypeScript, and Flutter. Dual-licensed on GitHub (Apache-2.0 browser core / MIT MCP server).
 
 Aartiq is a privacy-focused browser that integrates AI directly into the browsing experience. It supports multiple AI providers (Gemini, GPT, Claude, Ollama), can execute OS-level automation through a permission-gated system, schedule background tasks, sync data across devices with end-to-end encryption, and generate PDFs/Excel/PPTX documents from JSON templates. Available on Windows, macOS, Linux, and Android.
 

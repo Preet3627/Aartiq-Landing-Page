@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { APP_INFO } from "@/lib/version";
@@ -15,8 +15,14 @@ const outfit = Outfit({
 const SITE_URL = 'https://aartiq.ponsrischool.in';
 const LOGO_URL = `${SITE_URL}/logo-transparent.png`;
 
+export const viewport: Viewport = {
+  themeColor: "#03040b",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: "Aartiq",
+  category: "technology",
   title: {
     default: `Aartiq - Open Source AI-Integrated Browser with Local LLM & OS Automation`,
     template: `%s | Aartiq - AI-Integrated Browser`,
@@ -54,20 +60,11 @@ export const metadata: Metadata = {
     siteName: 'Aartiq',
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: LOGO_URL,
-        width: 1000,
-        height: 1000,
-        alt: 'Aartiq - Open Source AI-Integrated Browser',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Aartiq - Open Source AI-Integrated Browser',
     description: 'Open-source browser with a built-in AI assistant, local LLM support, and cross-device sync.',
-    images: [LOGO_URL],
     creator: '@Preet3627',
   },
   robots: {
@@ -88,11 +85,11 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     languages: {
       'en': SITE_URL,
+      'x-default': SITE_URL,
     },
   },
   verification: {
     google: ['BgnZqDgMLWR3GCOKwPz1U1qh8PSetoVcIc7DsrEy_iA', 'BuPrG5ROAefeU7rpMmWDlhk1-zm2_Y3mHRgNy4XkDyU'],
-    yandex: 'yandex-verification-code',
   },
     icons: [
     { rel: "icon", url: "/favicon.ico" },

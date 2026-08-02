@@ -58,6 +58,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth
+Disallow: /oauth2callback
+Disallow: /test-browser
 
 # Allow common AI crawler user-agents that may use different formats
 User-agent: CCBot

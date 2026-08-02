@@ -34,7 +34,7 @@ export const Navbar = ({ onOpenAuth, user }: { onOpenAuth: () => void, user: any
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-xl font-black uppercase tracking-tighter leading-none">{APP_INFO.name}</span>
+              <span className="text-xl font-black uppercase tracking-tighter leading-none">{APP_INFO.name}™</span>
               <span className="rounded-full bg-sky-500/10 px-2 py-0.5 text-[9px] font-black text-sky-400">
                 v{version || '0.3.0'}
               </span>

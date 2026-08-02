@@ -45,6 +45,8 @@ import { APP_INFO } from "@/lib/version";
 import { useVersion } from "@/lib/useVersion";
 import { SearchModal } from "@/components/docs/SearchModal";
 
+const SITE_URL = 'https://aartiq.ponsrischool.in';
+
 interface NavItem {
   id: string;
   title: string;
@@ -222,6 +224,15 @@ export default function DocsLayout({
   const [searchOpen, setSearchOpen] = useState(false);
   const { version } = useVersion();
 
+  const breadcrumbItems = [
+    { name: "Aartiq", url: `${SITE_URL}/` },
+    { name: "Docs", url: `${SITE_URL}/docs` },
+  ];
+  const currentNavItem = navigation.find((item) => item.href === pathname);
+  if (currentNavItem) {
+    breadcrumbItems.push({ name: currentNavItem.title, url: `${SITE_URL}${currentNavItem.href}` });
+  }
+
   useEffect(() => {
     return auth.onAuthStateChanged((user) => setUser(user));
   }, []);
@@ -259,7 +270,23 @@ export default function DocsLayout({
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#03040b] text-white font-outfit">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbItems.map((item, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "name": item.name,
+              "item": item.url,
+            })),
+          }),
+        }}
+      />
+      <div className="min-h-screen bg-[#03040b] text-white font-outfit">
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
       
       {/* Top Navigation Bar */}
@@ -281,7 +308,7 @@ export default function DocsLayout({
                   className="object-cover"
                 />
               </div>
-              <span className="text-sm font-black uppercase tracking-widest">Aartiq</span>
+              <span className="text-sm font-black uppercase tracking-widest">Aartiq™</span>
             </Link>
             <span className="hidden text-[10px] font-black uppercase tracking-[0.4em] text-sky-400/60 sm:block">
               Documentation
@@ -414,6 +441,7 @@ export default function DocsLayout({
         </aside>
       </div>
     </div>
+    </>
   );
 }
 

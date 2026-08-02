@@ -36,6 +36,8 @@ import {
   Quote,
   Sparkles,
   Lock,
+  HelpCircle,
+  Plus,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -291,6 +293,98 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
 
 import { Navbar } from "@/components/Navbar";
 
+const faqs = [
+  {
+    q: "What is Aartiq?",
+    a: "Aartiq is an open-source, AI-native browser built with Electron and Next.js. It pairs a built-in AI assistant with permission-gated OS automation, local-first memory, and end-to-end encrypted cross-device sync.",
+  },
+  {
+    q: "Is Aartiq free?",
+    a: "Yes. Aartiq is free and open source under the Apache-2.0 license (browser core), with the MCP server MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.",
+  },
+  {
+    q: "Which platforms does Aartiq support?",
+    a: "Aartiq runs on Windows, macOS, and Linux as a desktop browser, with a Flutter companion app for Android for remote control, sync, and push notifications.",
+  },
+  {
+    q: "Does Aartiq work with local AI models?",
+    a: "Yes. Aartiq supports local models through Ollama (including DeepSeek R1) alongside cloud providers like Google Gemini, OpenAI GPT, and Anthropic Claude — with multi-model orchestration.",
+  },
+  {
+    q: "How is Aartiq different from ChatGPT or a browser extension?",
+    a: "Aartiq is the browser itself, not a chat window or a passive extension. It schedules background tasks, runs permission-gated OS automation, and executes natural-language commands with a visual sandbox and risk assessment before anything runs.",
+  },
+  {
+    q: "How does permission-based AI work?",
+    a: "Before any non-trivial action, Aartiq explains its plan, shows the risk level, and asks for your approval. You can approve, modify, or deny each step, keeping you in control at all times.",
+  },
+];
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section id="faq" className="py-40 scroll-mt-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((faq) => ({
+              "@type": "Question",
+              "name": faq.q,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.a,
+              },
+            })),
+          }),
+        }}
+      />
+
+      <div className="mb-24 text-center">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
+          <HelpCircle size={14} /> FAQ
+        </div>
+        <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+          Frequently Asked <br /> <span className="text-white/40">Questions.</span>
+        </h2>
+      </div>
+
+      <div className="mx-auto max-w-4xl space-y-5">
+        {faqs.map((faq, i) => (
+          <div key={i} className="overflow-hidden rounded-[40px] border border-white/5 bg-[#0a0c10]/50">
+            <button
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              className="flex w-full items-center justify-between gap-6 p-8 text-left"
+              aria-expanded={openIndex === i}
+            >
+              <span className="text-lg font-black text-white">{faq.q}</span>
+              <Plus
+                size={20}
+                className={`shrink-0 text-sky-400 transition-transform duration-300 ${openIndex === i ? "rotate-45" : ""}`}
+              />
+            </button>
+            <AnimatePresence initial={false}>
+              {openIndex === i && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <p className="px-8 pb-8 text-base font-medium leading-relaxed text-white/40">{faq.a}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const [showAuth, setShowAuth] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -376,7 +470,7 @@ export default function Home() {
             transition={{ delay: 0.1 }}
             className="max-w-6xl text-7xl font-black uppercase leading-[0.85] tracking-tighter text-white sm:text-8xl lg:text-[11rem]"
           >
-            Aartiq <br />
+            Aartiq™ <br />
             <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI-Integrated Browser</span>
           </motion.h1>
 
@@ -831,6 +925,9 @@ export default function Home() {
               </div>
            </div>
         </section>
+
+        {/* FAQ */}
+        <FaqSection />
 
         {/* FOOTER */}
         <footer className="border-t border-white/5 pt-40 pb-20">

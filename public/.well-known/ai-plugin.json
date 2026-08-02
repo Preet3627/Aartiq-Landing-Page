@@ -9,7 +9,7 @@ This file provides a structured overview of Aartiq for AI systems and large lang
 - **Website**: https://aartiq.ponsrischool.in
 - **Repository**: https://github.com/Preet3627/Aartiq
 - **Documentation**: https://aartiq.ponsrischool.in/docs
-- **License**: MIT
+- **License**: Dual-licensed — Apache-2.0 (browser core) / MIT (MCP plugin examples)
 
 ## Purpose
 
@@ -29,7 +29,7 @@ Aartiq is a cross-platform browser with native AI orchestration capabilities. It
 ## Technical Stack
 
 - Desktop: Electron with native Node.js modules
-- Frontend: Next.js 14, React 18, TypeScript
+- Frontend: Next.js, React, TypeScript
 - Mobile: Flutter
 - AI Providers: Google Gemini, OpenAI GPT, Anthropic Claude, Ollama
 
@@ -44,7 +44,7 @@ The documentation covers:
 
 ## Licensing
 
-This project is open source under the MIT license. Contributions are welcome.
+This project is open source under a dual license (Apache-2.0 for the browser core, MIT for MCP plugin examples). Contributions are welcome.
 
 ## For More Information
 
