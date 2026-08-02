@@ -15,7 +15,6 @@ import {
   Scan,
   ArrowRight,
   Layers,
-  FileWarning,
   UserCheck,
   Bug,
   ShieldCheck,
@@ -34,19 +33,21 @@ const securityLayers = [
     borderColor: "border-blue-500/30",
     iconColor: "text-blue-400",
     level: 1,
-    description: "The AI perceives web pages through screenshots and OCR rather than raw HTML, significantly reducing DOM-based manipulation attacks.",
+    description: "The AI perceives web pages through screenshots + OCR and a sanitized secure-DOM extractor rather than raw, unprocessed HTML. This significantly reduces DOM-based manipulation attacks, but it is a mitigation, not an absolute guarantee.",
     howItWorks: [
-      "Full-page screenshots provide visual context",
-      "Tesseract.js OCR extracts visible text and layout",
-      "SecureDOMParser analyzes content for injection patterns and strips executable code",
-      "AI Fortress masks API keys and secrets before content reaches the LLM",
+      "Primary input is the rendered page: Electron webContents.capturePage() screenshots (src/main/handlers/browser-handlers.js) and Tesseract.js OCR (src/lib/tesseract-service.js). The AI never runs inside the page's JavaScript realm.",
+      "SecureDOMReader (src/components/ai/SecureDOMReader.ts) provides a text fallback path. It blocks script/style/iframe/object/embed/form/input/button tags and nav/footer/header/modal/overlay/ads classes before text extraction.",
+      "PII redaction: emails, phone numbers, card numbers, bearer tokens, session IDs, and password/api-key assignments are replaced with [REDACTED] placeholders before content reaches the model.",
+      "SecureDOMParser (src/lib/Security.ts) runs the extracted content against shell-primitive, encoding, and injection pattern groups, decodes base64/hex payloads, and rewrites dangerous matches to [BLOCKED: LAYER].",
+      "AI Fortress masks API keys and secrets before content reaches the LLM (src/lib/Security.ts, src/components/AIChatSidebar.tsx).",
+      "The AI context is explicitly built as read-only: the model cannot modify the DOM; interaction is limited to approved click/fill commands (FIND_AND_CLICK / CLICK_ELEMENT).",
       "Source files: src/lib/Security.ts, src/lib/html-sanitizer.js, src/components/ai/SecureDOMReader.ts"
     ],
     benefits: [
-      "Prevents prompt injection via DOM manipulation",
-      "No JavaScript can influence AI behavior",
-      "Hidden elements remain invisible to AI",
-      "Malicious scripts cannot reach the AI layer"
+      "Significantly reduces prompt-injection via DOM manipulation — hidden, scripted, or style-obfuscated content is stripped before it reaches the model",
+      "Page JavaScript cannot directly invoke the AI's execution layer (Electron context isolation + no DOM-write access); scripts are stripped from AI-visible content",
+      "Hidden elements and blocked tags/classes never appear in AI-visible content",
+      "Malicious scripts, event handlers (on*=), javascript:, data:, vbscript:, iframe/embed/object are removed from the AI's reading path"
     ],
     diagram: {
       browser: "Chrome / WebView",
@@ -65,26 +66,27 @@ const securityLayers = [
     level: 2,
     description: "Every command is analyzed for dangerous patterns before execution.",
     howItWorks: [
-      "Commands are scanned for shell primitives (rm -rf, sudo, dd)",
-      "Encoded payloads and obfuscation are decoded and checked",
-      "Jailbreak patterns and role-override attempts are blocked",
-      "Network-based attacks (curl to malicious servers) are prevented",
-      "Source files: src/lib/SecurityValidator.js, src/core/command-validator.js"
+      "Commands are scanned for destructive shell primitives and blocked commands (rm, sudo, su, passwd, chgrp, dd if=, mkfs, fork-bomb, command substitution)",
+      "Encoded payloads and obfuscation (hex, base64, HTML entities) are decoded via extractBase64Strings and re-checked against injection patterns",
+      "Jailbreak patterns ('ignore all previous instructions', etc.) are blocked before content reaches the model",
+      "Network-triggering commands (curl, wget) are flagged, and the OS sandbox denies network by default",
+      "This layer is explicitly documented as a fast first-pass reject — not sufficient on its own (SecurityValidator.js header)",
+      "Source files: src/lib/SecurityValidator.js, src/lib/Security.ts, src/core/command-validator.js"
     ],
     patterns: {
       blocked: [
-        { pattern: "rm -rf", description: "Recursive delete" },
-        { pattern: "sudo ", description: "Privilege escalation" },
+        { pattern: "rm -rf /", description: "Recursive delete of root" },
+        { pattern: "sudo", description: "Blocked command (privilege escalation)" },
         { pattern: "dd if=", description: "Direct disk write" },
         { pattern: ":(){ :|:& };:", description: "Fork bomb" },
-        { pattern: "eval(base64", description: "Encoded payload" },
-        { pattern: "curl\\s+-", description: "Network request" },
-        { pattern: "wget\\s+", description: "Network download" }
+        { pattern: "$( ... )", description: "Command substitution" },
+        { pattern: "\\x.. hex / chmod 777", description: "Encoded payload / permissive mode" },
+        { pattern: "curl / wget", description: "Network download (flagged; sandbox denies net)" }
       ],
       monitored: [
-        { pattern: "rm ", description: "File deletion" },
-        { pattern: "chmod 777", description: "Permission change" },
-        { pattern: "kill ", description: "Process termination" }
+        { pattern: "rm ", description: "File deletion (requires approval)" },
+        { pattern: "chmod / chown", description: "Permission change (requires approval)" },
+        { pattern: "kill / shutdown / mount", description: "Process/system change (requires approval)" }
       ]
     },
     benefits: [
@@ -146,20 +148,21 @@ const securityLayers = [
     level: 4,
     description: "AI file access is restricted to explicitly approved directories with fine-grained read/write permissions.",
     howItWorks: [
-      "Each directory in the allowlist specifies access level (Read Only or Read & Write)",
-      "Path canonicalization resolves symlinks before checking against the allowlist",
+      "Each directory in the allowlist specifies an access level (Read Only or Read & Write) and recursive flag (src/lib/permission-store.js)",
+      "Path canonicalization resolves symlinks via fs.realpathSync before checking against the allowlist — the resolved path is checked, never the user-supplied string (src/core/directory-allowlist.js)",
       "Just-in-time permission prompts request approval before accessing new directories",
       "Batched multi-directory approval allows granting access to multiple paths at once",
       "File management operations (move, copy, open, print) are routed around the shell sandbox",
-      "Read/write separation: a grant to read must not allow deleting/overwriting",
-      "Source files: src/core/directory-allowlist.js, src/main/handlers/permission-handlers.js"
+      "Read/write separation: a read grant must never allow deleting/overwriting — enforced in isPathAllowed() for both read and write operations",
+      "Source files: src/core/directory-allowlist.js, src/lib/permission-store.js, src/main/handlers/permission-handlers.js"
     ],
     benefits: [
-      "Prevents AI from accessing sensitive directories (Documents, Desktop, etc.)",
+      "Scopes AI file access to an explicit allowlist — any path outside it is denied with a structured reason",
+      "Note: the legacy default allowlist includes the user's home, Desktop, Documents, and Downloads (read-write). Remove or downgrade these in Settings for a stricter posture; the newer directory-allowlist.js default ships with only the app data directory + temp",
       "Symlink traversal attacks are blocked via realpath resolution",
-      "Write operations on read-only entries are denied at the kernel level",
-      "Audit trail of all directory access grants with timestamps"
-    ]
+      "Read-only entries never receive write access — enforced in the sandbox profile (macOS/Linux) and by isPathAllowed() on all platforms",
+      "Audit trail of all directory access grants with timestamps (comet-audit.jsonl)"
+    ],
   },
   {
     name: "OS-Level Sandboxing",
@@ -168,20 +171,22 @@ const securityLayers = [
     borderColor: "border-red-500/30",
     iconColor: "text-red-400",
     level: 5,
-    description: "Shell commands execute within platform-specific OS sandboxes that enforce filesystem, network, and process boundaries.",
+    description: "Shell commands execute inside platform-specific OS sandboxes that enforce process, filesystem, and network boundaries. Execution is FAIL-CLOSED: if the sandbox cannot be built and verified, the command is never run — there is no automatic fallback to unsandboxed execution.",
     howItWorks: [
-      "macOS: Seatbelt sandbox profiles restrict filesystem writes and network access",
-      "Linux: bubblewrap (bwrap) creates isolated namespaces with read-only system paths",
-      "Windows: Job Objects confine processes, ACLs restrict filesystem, Firewall blocks network",
-      "All platforms: Environment variables are sanitized — API keys and tokens are never exposed",
-      "Network domain allowlist: only explicitly approved destinations are reachable",
-      "Source files: src/core/sandbox-executor.js, src/core/directory-allowlist.js"
+      "macOS: Seatbelt (sandbox-exec) with a closed-by-default profile — (deny file-read*) and (deny file-write*) then re-allow only system paths + allowlisted directories, (deny network*), and (deny process-exec*) with allowlisted exec paths",
+      "The Seatbelt profile is written to a temp file and validated with a pre-flight `sandbox-exec -f <profile> /usr/bin/true` run; if the profile fails to compile, the command is rejected (SANDBOX_POLICY_INVALID)",
+      "Linux: bubblewrap (bwrap) with unshared pid/net/ipc/uts namespaces, read-only system mounts (/usr, /bin, /sbin, /lib, /lib64, /etc), private /tmp, and --unshare-net",
+      "Windows: Job Object containment (src/core/win-job-runner.ps1) — the target is created SUSPENDED, assigned to a Job Object, verified via IsProcessInJob, then resumed; limits (KILL_ON_JOB_CLOSE, active-process cap, job memory, die-on-unhandled-exception) are applied and verified before the target runs a single instruction",
+      "Windows explicitly does NOT provide OS-level filesystem or network isolation in this release — the directory allowlist is enforced at the application layer (isPathAllowed), and requesting a per-process network policy fails closed (SANDBOX_UNAVAILABLE)",
+      "All platforms: environment is sanitized — only allowlisted variables (PATH, HOME, USER, LANG, LC_ALL, TMPDIR, SHELL, TERM, etc.) pass through; API keys and tokens never reach the sandboxed process (buildSafeEnv)",
+      "Network inside the sandbox is denied by default on macOS (deny network*) and Linux (--unshare-net). Per-domain network allowlisting is NOT supported on any platform — requesting it fails closed. Windows cannot enforce per-process network policy in this release",
+      "Source files: src/core/sandbox-executor.js, src/core/win-job-runner.ps1, src/core/directory-allowlist.js"
     ],
     benefits: [
-      "Even if regex blocklist misses a dangerous command, the OS sandbox blocks it",
-      "Processes physically cannot write outside approved directories",
-      "Credential leakage via ambient env vars is prevented",
-      "Network exfiltration is blocked at the firewall level"
+      "Defense in depth: even if the regex blocklist is bypassed, the OS sandbox still confines what the command can read, write, execute, and reach on the network",
+      "On macOS/Linux the sandbox physically prevents writes outside the workspace + allowlisted write directories; on Windows this is enforced at the application layer by isPathAllowed()",
+      "Credential leakage via ambient environment variables is prevented by the env allowlist",
+      "Network exfiltration is blocked by default-deny networking inside the sandbox (macOS/Linux), not by firewall rules"
     ]
   },
   {
@@ -254,13 +259,13 @@ const threatScenarios = [
   {
     threat: "Credential Leakage via Environment Variables",
     scenario: "AI executes a command that inherits the parent process's environment with API keys and tokens",
-    defense: "OS-level sandboxing strips all ambient environment variables. Only explicitly allowlisted variables (PATH, HOME, USER, LANG) are passed to child processes.",
+    defense: "OS-level sandboxing strips all ambient environment variables. Only explicitly allowlisted variables (PATH, HOME, USER, LANG, LC_ALL, TMPDIR, SHELL, TERM, etc.) are passed to child processes; on Windows only non-credential system variables (SystemRoot, TEMP, USERPROFILE, etc.) pass through.",
     layer: "OS-Level Sandboxing"
   },
   {
     threat: "Network Exfiltration via Shell",
     scenario: "AI is tricked into executing curl to upload sensitive data to an attacker's server",
-    defense: "Windows Firewall rules block all outbound connections by default. Only explicitly allowlisted domains are permitted. Network restrictions auto-expire after the execution window.",
+    defense: "The sandbox denies network by default: macOS Seatbelt emits (deny network*) and Linux bubblewrap runs with --unshare-net. curl/wget downloads are additionally flagged by the command validator, and all shell execution requires human approval. Per-domain allowlisting is not supported; Windows cannot enforce per-process network policy in this release.",
     layer: "OS-Level Sandboxing"
   },
   {
@@ -374,15 +379,24 @@ export default function SecurityPage() {
             <p className="text-sm text-white/50">Security Layers</p>
           </div>
           <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 text-center">
-            <Terminal size={32} className="mx-auto mb-4 text-emerald-400" />
-            <h3 className="text-3xl font-black text-emerald-400">22</h3>
-            <p className="text-sm text-white/50">Gated IPC Channels</p>
+            <Layers size={32} className="mx-auto mb-4 text-emerald-400" />
+            <h3 className="text-3xl font-black text-emerald-400">3</h3>
+            <p className="text-sm text-white/50">Enforcement Layers Beyond Regex</p>
           </div>
           <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 text-center">
-            <FileWarning size={32} className="mx-auto mb-4 text-amber-400" />
-            <h3 className="text-3xl font-black text-amber-400">9</h3>
-            <p className="text-sm text-white/50">Monitoring-Only Channels</p>
+            <Key size={32} className="mx-auto mb-4 text-amber-400" />
+            <h3 className="text-3xl font-black text-amber-400">600K</h3>
+            <p className="text-sm text-white/50">PBKDF2 Key-Derivation Iterations</p>
           </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-sm leading-relaxed text-white/40">
+          <p>
+            The regex blocklist in SecurityValidator.js is documented as a <em>fast first-pass reject layer only</em> —
+            not the primary defense. Primary enforcement happens in three layers: the risk-tiered permission store
+            (checkShellPermission), the capability controller's ticket-based approval (capability-controller.js), and
+            the fail-closed OS sandbox (sandbox-executor.js). The exact layer counts cited below reflect this model.
+          </p>
         </div>
       </motion.section>
 

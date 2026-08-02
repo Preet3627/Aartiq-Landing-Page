@@ -22,7 +22,11 @@ import {
   Workflow,
   Heart,
   Brain,
-  Bookmark
+  Bookmark,
+  AlertTriangle,
+  Scale,
+  Quote,
+  Sparkles
 } from "lucide-react";
 
 const keyFeatures = [
@@ -194,6 +198,12 @@ export default function OverviewPage() {
             Aartiq?
           </span>
         </h1>
+
+        <div className="mb-8">
+          <span className="inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-5 py-2 text-[11px] font-black uppercase tracking-[0.3em] text-purple-400">
+            <Quote size={13} /> For The Questions That Matter
+          </span>
+        </div>
         
         <p className="mx-auto mb-12 max-w-3xl text-xl font-medium leading-relaxed text-white/50">
           Aartiq is an open-source Electron application that integrates large 
@@ -485,6 +495,141 @@ export default function OverviewPage() {
             <p className="text-emerald-400">{`sleep 3 && ps -p $(pgrep -f "Aartiq.app/Contents/MacOS/Aartiq") -o rss=,vsz=,%cpu=,%mem=`}</p>
           </div>
         </div>
+      </motion.section>
+
+      {/* Project Philosophy */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-10 lg:p-16 text-center"
+      >
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-5 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+          <Quote size={14} /> Project Philosophy
+        </div>
+        <h2 className="mb-8 text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+          For The <span className="text-white/20">Questions That Matter.</span>
+        </h2>
+        <p className="mx-auto max-w-3xl text-xl font-bold leading-relaxed text-white/80">
+          The most important question isn't what you ask AI. It's what AI asks you before it acts.
+        </p>
+        <blockquote className="mx-auto mt-8 max-w-3xl text-lg font-medium leading-relaxed text-white/40">
+          "Aartiq™ exists because one unasked question taught me that the questions we don't ask matter most."
+        </blockquote>
+        <p className="mx-auto mt-8 max-w-3xl text-lg font-medium leading-relaxed text-white/40">
+          That idea became the foundation of Aartiq's permission-first design: before any non-trivial action,
+          the AI explains its plan, asks for your approval, and only then executes it.
+        </p>
+      </motion.section>
+
+      {/* Project Status */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.15 }}
+        className="rounded-[2.5rem] border border-amber-500/20 bg-amber-500/[0.03] p-10 lg:p-16"
+      >
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-5 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
+          <AlertTriangle size={14} /> 🚧 Project Status
+        </div>
+        <h2 className="mb-6 text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+          Aartiq™ is temporarily <span className="text-amber-400">on hold.</span>
+        </h2>
+        <div className="space-y-5 text-base font-medium leading-relaxed text-white/40">
+          <p>
+            This project started as a simple experiment called Comet-AI — a question about what AI could become.
+            Over time, that question evolved into Aartiq™, an AI-native browser built around the idea that AI
+            should not only answer questions, but help execute tasks while keeping humans in control.
+          </p>
+          <p>
+            After five months of building Aartiq independently, including its AI systems, security architecture,
+            MCP integration, synchronization features, and multi-platform releases, I am taking a temporary pause
+            to focus on my studies and recharge after balancing development with academics.
+          </p>
+          <p>
+            Development, feature work, and issue responses will be limited until my exams are over. The repository
+            will remain public, and existing releases will continue to be available. Once the exam is completed,
+            development will resume with new features, improvements, and bug fixes.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-[2rem] border border-white/5 bg-white/[0.03] p-8">
+            <blockquote className="text-lg font-bold leading-relaxed text-white/70">
+              "What happened to my private diary should never happen to a computer system."
+            </blockquote>
+            <p className="mt-4 text-sm text-white/40">Aartiq was built on one belief.</p>
+          </div>
+          <div className="rounded-[2rem] border border-white/5 bg-white/[0.03] p-8">
+            <blockquote className="text-lg font-bold leading-relaxed text-white/70">
+              "Aartiq exists because one unasked question taught me that the questions we don't ask matter most."
+            </blockquote>
+            <p className="mt-4 text-sm text-white/40">This is not the end of the journey.</p>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-[2rem] border border-purple-500/20 bg-purple-500/5 p-8 text-center">
+          <p className="text-2xl font-black uppercase tracking-tighter">
+            Aartiq is just <span className="text-purple-400">1 CM</span> away from the future.
+          </p>
+          <p className="mx-auto mt-4 max-w-2xl text-sm font-medium leading-relaxed text-white/40">
+            "The '1 CM' in Aartiq is a personal reminder that respecting a boundary often begins with asking before crossing it."
+          </p>
+          <p className="mt-6 text-base font-bold text-white/60">
+            Thank you for your patience and support. <span className="text-rose-400">❤️</span>
+          </p>
+          <p className="mt-1 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">— Preet Patel</p>
+        </div>
+      </motion.section>
+
+      {/* License */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+        className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-10 lg:p-16"
+      >
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-5 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+          <Scale size={14} /> Legal
+        </div>
+        <h2 className="mb-8 text-4xl font-black uppercase tracking-tighter sm:text-5xl">License</h2>
+
+        <div className="overflow-hidden rounded-[2rem] border border-white/5">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Component</th>
+                <th className="px-6 py-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">License</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm font-medium text-white/60">
+              <tr className="border-b border-white/5">
+                <td className="px-6 py-4">Aartiq Browser (desktop, mobile, all core code)</td>
+                <td className="px-6 py-4"><span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-emerald-400">Apache License 2.0</span></td>
+              </tr>
+              <tr>
+                <td className="px-6 py-4">Aartiq MCP Server (aartiq-mcp/)</td>
+                <td className="px-6 py-4"><span className="rounded-full border border-sky-500/20 bg-sky-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-sky-400">MIT License</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="mt-6 text-sm font-medium leading-relaxed text-white/40">
+          The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.
+          All other components remain Apache 2.0.
+        </p>
+        <p className="mt-6 rounded-[1.5rem] border border-amber-500/10 bg-amber-500/[0.03] p-6 text-sm font-medium leading-relaxed text-white/40">
+          "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
+          While our source code is freely available under the Apache 2.0 License, this license does not grant
+          permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
+          browser must be rebranded under a completely different name."
+        </p>
+        <p className="mt-6 text-xs font-black uppercase tracking-[0.4em] text-white/30">
+          © 2026 Aartiq™. All rights reserved.
+        </p>
       </motion.section>
     </div>
   );

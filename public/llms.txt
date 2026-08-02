@@ -25,7 +25,7 @@ Aartiq is a local-first browser that integrates AI directly into the browsing ex
 
 ## GitHub
 
-- [Source Repository](https://github.com/Preet3627/Aartiq): MIT-licensed full source code
+- [Source Repository](https://github.com/Preet3627/Aartiq): Apache-2.0 licensed full source code
 - [Releases](https://github.com/Preet3627/Aartiq/releases): Pre-built binaries for all platforms
 - [Issues](https://github.com/Preet3627/Aartiq/issues): Bug reports and feature requests
 
@@ -66,6 +66,6 @@ Aartiq is a local-first browser that integrates AI directly into the browsing ex
 - **License**: Apache 2.0
 - **Language**: English
 - **Founded**: 2024
-- **Author**: Preet3627
-- **Co-author**: Latestinssan
+- **Author**: Preet Patel (Latestinssan, Preet3627)
+- **Co-author**: Preet Patel (Latestinssan, Preet3627)
 - **Last updated**: 2026-07-20 (v0.3.4)

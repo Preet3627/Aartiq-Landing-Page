@@ -30,7 +30,7 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ## GitHub
 
-- [Source Repository](https://github.com/Preet3627/Aartiq): MIT-licensed full source code
+- [Source Repository](https://github.com/Preet3627/Aartiq): Apache-2.0 licensed full source code
 - [Releases](https://github.com/Preet3627/Aartiq/releases): Pre-built binaries for all platforms
 - [Issues](https://github.com/Preet3627/Aartiq/issues): Bug reports and feature requests
 
@@ -65,11 +65,11 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 ## About
 
 - **Type**: SoftwareApplication / OpenSourceBrowser
-- **License**: MIT
+- **License**: Apache-2.0 (Browser), MIT (MCP Server)
 - **Language**: English
 - **Founded**: 2024
-- **Author**: Preet3627 (https://github.com/Preet3627)
-- **Co-author**: Latestinssan (https://github.com/Latestinssan)
+- **Author**: Preet Patel (https://github.com/Preet3627)
+- **Co-author**: Preet Patel (Latestinssan, https://github.com/Latestinssan)
 - **Last updated**: 2026-07-20
 
 ---

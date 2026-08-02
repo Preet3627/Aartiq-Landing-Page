@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   description: "Aartiq is an open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, and cross-device sync. Built with Electron, Next.js, and TypeScript.",
   keywords: [
-    "Aartiq", "AI Browser", "Autonomous Browser",
+    "Aartiq", "Aartiq Browser", "AI Browser", "Autonomous Browser",
     "Browser Automation", "Electron Browser", "AI Agent",
     "Local LLM", "Ollama Browser", "Privacy Browser", "Open Source Browser",
     "E2EE Sync", "Cross-Platform Browser", "OS Automation",
@@ -31,13 +31,16 @@ export const metadata: Metadata = {
     "Windows Browser", "Linux Browser", "Android Browser",
     "Productivity Browser", "AI Assistant Browser",
     "Permission-Gated Automation", "Secure Browser",
-    "AI-Integrated Browser", "AI Task Agent"
+    "AI-Integrated Browser", "AI Task Agent",
+    "Aartipreet", "aart", "aartiq", "aartiqpreet",
+    "aartiq preet", "aarti preet", "aartipreet browser",
+    "aarti", "aarti browser"
   ],
   authors: [
-    { name: "Preet3627", url: "https://github.com/Preet3627" },
-    { name: "Latestinssan", url: "https://github.com/Latestinssan" }
+    { name: "Preet Patel", url: "https://github.com/Preet3627" },
+    { name: "Preet Patel", url: "https://github.com/Latestinssan" }
   ],
-  creator: "Preet3627",
+  creator: "Preet Patel",
   publisher: "Aartiq",
   formatDetection: {
     email: false,
@@ -169,7 +172,7 @@ export default function RootLayout({
               },
               "author": {
                 "@type": "Person",
-                "name": "Preet3627",
+                "name": "Preet Patel",
                 "url": "https://github.com/Preet3627",
                 "memberOf": {
                   "@type": "Organization",
@@ -205,7 +208,7 @@ export default function RootLayout({
               "dateModified": "2026-04-06",
               "author": {
                 "@type": "Person",
-                "name": "Preet3627",
+                "name": "Preet Patel",
                 "url": "https://github.com/Preet3627"
               },
               "publisher": {

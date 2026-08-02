@@ -30,6 +30,12 @@ import {
   Video,
   ChevronRight,
   CheckCircle2,
+  Heart,
+  AlertTriangle,
+  Scale,
+  Quote,
+  Sparkles,
+  Lock,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -383,7 +389,7 @@ export default function Home() {
             An open-source browser with a built-in AI assistant and permission-gated OS automation. Electron + Next.js + React.
             <br />
             <span className="mt-4 block text-sm font-black uppercase tracking-[0.4em] text-white/20">
-              Built by <span className="text-sky-400">Preet3627</span> & <span className="text-purple-400">Latestinssan</span> — v{version || '...'} {channel}
+              Built by <span className="text-sky-400">Preet Patel</span> — v{version || '...'} {channel}
             </span>
           </motion.p>
 
@@ -445,6 +451,161 @@ export default function Home() {
           <ClickToLoadYouTube />
         </section>
 
+        {/* PROJECT PHILOSOPHY */}
+        <section id="mission" className="py-40 scroll-mt-24">
+          <div className="mb-24 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              <Quote size={14} /> Project Philosophy
+            </div>
+            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+              For The <br /> <span className="text-white/40">Questions That Matter.</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-center lg:p-20">
+            <div className="mb-10 flex justify-center">
+              <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-gradient-to-br from-sky-500/20 to-purple-500/20 text-sky-400 shadow-2xl">
+                <Sparkles size={36} />
+              </div>
+            </div>
+            <p className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
+              The most important question isn't what you ask AI.
+              <span className="mt-2 block bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                It's what AI asks you before it acts.
+              </span>
+            </p>
+            <blockquote className="mt-12 text-xl font-medium leading-relaxed text-white/40">
+              "Aartiq™ exists because one unasked question taught me that the questions we don't ask matter most."
+            </blockquote>
+            <p className="mx-auto mt-12 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
+              That idea became the foundation of Aartiq's permission-first design: before any non-trivial action,
+              the AI explains its plan, asks for your approval, and only then executes it.
+            </p>
+          </div>
+        </section>
+
+        {/* PROJECT STATUS */}
+        <section id="status" className="py-40 scroll-mt-24">
+          <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
+            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
+              <AlertTriangle size={14} /> 🚧 Project Status
+            </div>
+            <h2 className="mb-10 max-w-4xl text-5xl font-black uppercase tracking-tighter sm:text-7xl leading-[0.9]">
+              Aartiq™ is temporarily <span className="text-amber-400">on hold.</span>
+            </h2>
+
+            <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
+              <p>
+                This project started as a simple experiment called Comet-AI — a question about what AI could become.
+                Over time, that question evolved into Aartiq™, an AI-native browser built around the idea that AI
+                should not only answer questions, but help execute tasks while keeping humans in control.
+              </p>
+              <p>
+                After five months of building Aartiq independently, including its AI systems, security architecture,
+                MCP integration, synchronization features, and multi-platform releases, I am taking a temporary pause
+                to focus on my studies and recharge after balancing development with academics.
+              </p>
+              <p>
+                Development, feature work, and issue responses will be limited until my exams are over.
+              </p>
+              <p>
+                The repository will remain public, and existing releases will continue to be available. Once the exam
+                is completed, development will resume with new features, improvements, and bug fixes.
+              </p>
+            </div>
+
+            <div className="mt-16 grid gap-6 lg:grid-cols-2">
+              <div className="rounded-[40px] border border-white/5 bg-white/[0.03] p-10">
+                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-400">
+                  <Lock size={24} />
+                </div>
+                <blockquote className="text-xl font-bold leading-relaxed text-white/70">
+                  "What happened to my private diary should never happen to a computer system."
+                </blockquote>
+                <p className="mt-6 text-sm font-medium leading-relaxed text-white/40">
+                  Aartiq was built on one belief.
+                </p>
+              </div>
+
+              <div className="rounded-[40px] border border-white/5 bg-white/[0.03] p-10">
+                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-400">
+                  <Heart size={24} />
+                </div>
+                <blockquote className="text-xl font-bold leading-relaxed text-white/70">
+                  "Aartiq exists because one unasked question taught me that the questions we don't ask matter most."
+                </blockquote>
+                <p className="mt-6 text-sm font-medium leading-relaxed text-white/40">
+                  This is not the end of the journey.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-16 rounded-[40px] border border-purple-500/20 bg-purple-500/5 p-10 lg:p-14 text-center">
+              <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-4xl">
+                Aartiq is just <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">1 CM</span> away from the future.
+              </p>
+              <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
+                "The '1 CM' in Aartiq is a personal reminder that respecting a boundary often begins with asking before crossing it."
+              </p>
+            </div>
+
+            <div className="mt-16 flex flex-col items-center justify-center gap-4 text-center">
+              <p className="text-lg font-bold text-white/60">
+                Thank you for your patience and support. <span className="text-rose-400">❤️</span>
+              </p>
+              <p className="text-xs font-black uppercase tracking-[0.4em] text-white/30">— Preet Patel</p>
+            </div>
+          </div>
+        </section>
+
+        {/* LICENSE */}
+        <section id="license" className="py-40 scroll-mt-24">
+          <div className="mb-24 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+              <Scale size={14} /> Legal
+            </div>
+            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+              License
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-[#0a0c10]/50">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Component</th>
+                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">License</th>
+                  </tr>
+                </thead>
+                <tbody className="text-base font-medium text-white/60">
+                  <tr className="border-b border-white/5">
+                    <td className="px-10 py-6">Aartiq Browser (desktop, mobile, all core code)</td>
+                    <td className="px-10 py-6"><span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-400">Apache License 2.0</span></td>
+                  </tr>
+                  <tr>
+                    <td className="px-10 py-6">Aartiq MCP Server (aartiq-mcp/)</td>
+                    <td className="px-10 py-6"><span className="rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-sky-400">MIT License</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="border-t border-white/5 p-10 text-sm font-medium leading-relaxed text-white/40">
+              The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.
+              All other components remain Apache 2.0.
+            </div>
+          </div>
+
+          <div className="mx-auto mt-10 max-w-4xl rounded-[40px] border border-amber-500/10 bg-amber-500/[0.03] p-10">
+            <p className="text-base font-medium leading-relaxed text-white/40">
+              "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
+              While our source code is freely available under the Apache 2.0 License, this license does not grant
+              permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
+              browser must be rebranded under a completely different name."
+            </p>
+          </div>
+        </section>
+
         {/* FEATURES */}
         <section id="features" className="py-40">
           <div className="mb-24 text-center">
@@ -490,7 +651,7 @@ export default function Home() {
                   Open <br /> <span className="text-white/40">Source.</span>
                 </h2>
                 <p className="mb-12 text-xl font-medium leading-relaxed text-white/40 max-w-xl">
-                  MIT-licensed. Source at github.com/Preet3627/Aartiq
+                  Apache-2.0 licensed. Source at github.com/Preet3627/Aartiq
                 </p>
 
                 <div className="flex flex-wrap gap-5">
@@ -724,14 +885,14 @@ export default function Home() {
            </div>
 
            <div className="mt-40 flex flex-col items-center justify-between gap-10 border-t border-white/5 pt-20 md:flex-row">
-              <div className="flex flex-col gap-2">
-                  <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">
-                     © 2026 Aartiq. MIT License.
+               <div className="flex flex-col gap-2">
+                   <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">
+                      © 2026 Aartiq™. All rights reserved.
+                   </p>
+                  <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
+                    Built by <span className="text-white/20">Preet Patel</span> (Latestinssan · Preet3627) — v{version || '...'}
                   </p>
-                 <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
-                   Built by <span className="text-white/20">Preet3627</span> — v{version || '...'}
-                 </p>
-              </div>
+               </div>
               <div className="flex items-center gap-10">
                  <a href="https://github.com/Preet3627/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
                   <div className="flex h-12 px-6 items-center rounded-2xl bg-white/5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ring-1 ring-white/10">
