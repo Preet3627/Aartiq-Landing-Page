@@ -34,7 +34,6 @@ import {
   AlertTriangle,
   Scale,
   Quote,
-  Sparkles,
   Lock,
   HelpCircle,
   Plus,
@@ -558,8 +557,14 @@ export default function Home() {
 
           <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-center lg:p-20">
             <div className="mb-10 flex justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-gradient-to-br from-sky-500/20 to-purple-500/20 text-sky-400 shadow-2xl">
-                <Sparkles size={36} />
+              <div className="relative h-20 w-20 overflow-hidden rounded-[2rem] bg-gradient-to-br from-sky-500/20 to-purple-500/20 shadow-2xl">
+                <Image
+                  src="/logo-transparent.png"
+                  alt="Aartiq Logo"
+                  width={80}
+                  height={80}
+                  className="h-full w-full object-contain"
+                />
               </div>
             </div>
             <p className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
