@@ -70,7 +70,7 @@ User-agent: ScreenshotBot
 Allow: /
 
 # AI/LLM Specific Files
-Sitemap: https://aartiq.vercel.app/sitemap.xml
+Sitemap: https://aartiq.ponsrischool.in/sitemap.xml
 Allow: /llms.txt
 Allow: /.well-known/ai-plugin.json
 

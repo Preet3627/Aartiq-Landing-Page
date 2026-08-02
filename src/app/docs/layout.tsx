@@ -35,7 +35,8 @@ import {
   Command,
   Keyboard,
   Apple,
-  Monitor
+  Monitor,
+  TestTube
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import Image from "next/image";
@@ -163,6 +164,12 @@ const navigation: NavItem[] = [
     icon: AlertTriangle,
   },
   {
+    id: "testing",
+    title: "Testing & Test Series",
+    href: "/docs/testing",
+    icon: TestTube,
+  },
+  {
     id: "contributing",
     title: "Contributing",
     href: "/docs/contributing",
@@ -198,7 +205,7 @@ const sectionGroups = [
   {
     title: "Reference",
     items: navigation.filter(item => 
-      ["api-reference", "troubleshooting", "contributing"].includes(item.id)
+      ["api-reference", "troubleshooting", "testing", "contributing"].includes(item.id)
     ),
   },
 ];

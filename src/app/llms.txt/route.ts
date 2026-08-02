@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BASE = 'https://aartiq.vercel.app';
+const BASE = 'https://aartiq.ponsrischool.in';
 
 export async function GET() {
   const content = `# Aartiq
@@ -11,22 +11,22 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ## Docs
 
-- [Getting Started](https://aartiq.vercel.app/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
-- [AI Commands Reference](https://aartiq.vercel.app/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
-- [Security Model](https://aartiq.vercel.app/docs/security): Three-layer security architecture with E2EE encryption, permission levels, and audit logging
-- [Automation Guide](https://aartiq.vercel.app/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
-- [Cloud Sync](https://aartiq.vercel.app/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
-- [Plugin System](https://aartiq.vercel.app/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
-- [Extensions](https://aartiq.vercel.app/docs/extensions): Chrome-compatible extension system loaded via Electron session
-- [Native API Reference](https://aartiq.vercel.app/docs/native-api): JavaScript APIs for desktop automation, robot service, clipboard, screenshots, and system integration
-- [API Reference](https://aartiq.vercel.app/docs/api-reference): Complete IPC handlers, preload APIs, and Electron main process modules
-- [Architecture Overview](https://aartiq.vercel.app/docs/overview): Component architecture, service layer, communication protocols, and directory layout
-- [Troubleshooting Guide](https://aartiq.vercel.app/docs/troubleshooting): Common issues and solutions for installation, permissions, AI integration, and sync
-- [Keyboard Shortcuts](https://aartiq.vercel.app/docs/keyboard-shortcuts): Complete keyboard shortcut reference
-- [UI Components](https://aartiq.vercel.app/docs/components): React component library and UI documentation
-- [Changelog](https://aartiq.vercel.app/docs/changelog): Version history and release notes
-- [Deep Links](https://aartiq.vercel.app/docs/deep-links): URL scheme support for launching browser, executing commands, and opening specific pages
-- [Contributing Guide](https://aartiq.vercel.app/docs/contributing): How to contribute, coding standards, and development setup
+- [Getting Started](https://aartiq.ponsrischool.in/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
+- [AI Commands Reference](https://aartiq.ponsrischool.in/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
+- [Security Model](https://aartiq.ponsrischool.in/docs/security): Three-layer security architecture with E2EE encryption, permission levels, and audit logging
+- [Automation Guide](https://aartiq.ponsrischool.in/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
+- [Cloud Sync](https://aartiq.ponsrischool.in/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
+- [Plugin System](https://aartiq.ponsrischool.in/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
+- [Extensions](https://aartiq.ponsrischool.in/docs/extensions): Chrome-compatible extension system loaded via Electron session
+- [Native API Reference](https://aartiq.ponsrischool.in/docs/native-api): JavaScript APIs for desktop automation, robot service, clipboard, screenshots, and system integration
+- [API Reference](https://aartiq.ponsrischool.in/docs/api-reference): Complete IPC handlers, preload APIs, and Electron main process modules
+- [Architecture Overview](https://aartiq.ponsrischool.in/docs/overview): Component architecture, service layer, communication protocols, and directory layout
+- [Troubleshooting Guide](https://aartiq.ponsrischool.in/docs/troubleshooting): Common issues and solutions for installation, permissions, AI integration, and sync
+- [Keyboard Shortcuts](https://aartiq.ponsrischool.in/docs/keyboard-shortcuts): Complete keyboard shortcut reference
+- [UI Components](https://aartiq.ponsrischool.in/docs/components): React component library and UI documentation
+- [Changelog](https://aartiq.ponsrischool.in/docs/changelog): Version history and release notes
+- [Deep Links](https://aartiq.ponsrischool.in/docs/deep-links): URL scheme support for launching browser, executing commands, and opening specific pages
+- [Contributing Guide](https://aartiq.ponsrischool.in/docs/contributing): How to contribute, coding standards, and development setup
 
 ## GitHub
 
@@ -36,9 +36,9 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ## Downloads
 
-- [Download Page](https://aartiq.vercel.app/downloads): Pre-built installers for Windows (.exe, .msix), macOS (.dmg, .zip), Linux (.AppImage, .deb), and Android (.apk)
+- [Download Page](https://aartiq.ponsrischool.in/downloads): Pre-built installers for Windows (.exe, .msix), macOS (.dmg, .zip), Linux (.AppImage, .deb), and Android (.apk)
 - [Microsoft Store](https://apps.microsoft.com/detail/9N5Z9R9Z9Z9Z): Windows Store distribution
-- [Features](https://aartiq.vercel.app/features): Full feature overview and screenshots
+- [Features](https://aartiq.ponsrischool.in/features): Full feature overview and screenshots
 
 ## Key Capabilities
 

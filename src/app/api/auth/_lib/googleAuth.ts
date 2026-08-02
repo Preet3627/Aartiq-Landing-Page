@@ -78,7 +78,7 @@ export function isAllowedRedirectUri(redirectUri: string) {
       (url.hostname === '127.0.0.1' || url.hostname === 'localhost');
     const isSameOrigin =
       url.protocol === 'https:' &&
-      url.hostname === 'aartiq.vercel.app';
+      url.hostname === 'aartiq.ponsrischool.in';
 
     return isLoopback || isSameOrigin;
   } catch {

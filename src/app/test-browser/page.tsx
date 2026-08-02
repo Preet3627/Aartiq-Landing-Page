@@ -49,10 +49,10 @@ interface ChatMessage {
 }
 
 const fakeSearchResults: SearchResult[] = [
-  { title: "Aartiq - AI-Powered Browser", url: "https://aartiq.vercel.app", description: "An open-source AI browser with automation, scheduling, and mobile sync." },
+  { title: "Aartiq - AI-Powered Browser", url: "https://aartiq.ponsrischool.in", description: "An open-source AI browser with automation, scheduling, and mobile sync." },
   { title: "GitHub - Aartiq", url: "https://github.com/Preet3627/Aartiq", description: "Cross-platform AI-powered browser with advanced automation capabilities." },
-  { title: "Aartiq Documentation", url: "https://aartiq.vercel.app/docs", description: "Complete guide to AI commands, automation, and integration." },
-  { title: "Download Aartiq", url: "https://aartiq.vercel.app/downloads", description: "Get the latest version for macOS, Windows, and Linux." },
+  { title: "Aartiq Documentation", url: "https://aartiq.ponsrischool.in/docs", description: "Complete guide to AI commands, automation, and integration." },
+  { title: "Download Aartiq", url: "https://aartiq.ponsrischool.in/downloads", description: "Get the latest version for macOS, Windows, and Linux." },
 ];
 
 const mockAIResponse = `Here's what I found for you:
@@ -67,7 +67,7 @@ Aartiq is a cross-platform AI-powered browser with:
 
 Let me also open the documentation for you:
 
-**[NAVIGATE: https://aartiq.vercel.app/docs]**
+**[NAVIGATE: https://aartiq.ponsrischool.in/docs]**
 
 Is there anything specific you'd like to explore?`;
 
@@ -236,7 +236,7 @@ export default function TestBrowserPage() {
           } flex items-center gap-2`}>
             <Lock width={12} height={12} className="text-green-500" />
             <span className={`text-sm ${darkMode ? "text-white/60" : "text-gray-600"}`}>
-              aartiq.vercel.app
+              aartiq.ponsrischool.in
             </span>
           </div>
 
@@ -519,7 +519,7 @@ export default function TestBrowserPage() {
       {/* Footer */}
       <div className={`border-t py-4 text-center ${darkMode ? "border-white/10" : "border-gray-200"}`}>
         <p className={`text-sm ${darkMode ? "text-white/30" : "text-gray-400"}`}>
-          Demo Mode — <a href="https://aartiq.vercel.app/downloads" className="text-sky-500 hover:underline">Download the full browser</a> for complete features
+          Demo Mode — <a href="https://aartiq.ponsrischool.in/downloads" className="text-sky-500 hover:underline">Download the full browser</a> for complete features
         </p>
       </div>
     </div>

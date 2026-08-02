@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-const SITE = 'https://aartiq.vercel.app';
+const SITE = 'https://aartiq.ponsrischool.in';
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

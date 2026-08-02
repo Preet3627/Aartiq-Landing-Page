@@ -45,14 +45,14 @@ const deepLinkFormats = [
     usage: "Universal launcher for all Aartiq features"
   },
   {
-    protocol: "https://aartiq.vercel.app",
+    protocol: "https://aartiq.ponsrischool.in",
     name: "Web URL",
     icon: Globe,
     color: "from-emerald-500/20 to-teal-500/20",
     borderColor: "border-emerald-500/30",
     iconColor: "text-emerald-400",
     description: "Web-based links that work across platforms",
-    example: "https://aartiq.vercel.app/",
+    example: "https://aartiq.ponsrischool.in/",
     usage: "Shareable links for web and mobile"
   }
 ];
@@ -130,8 +130,8 @@ aartiq://automation
 aartiq://settings
 
 # Web URLs
-https://aartiq.vercel.app/chat
-https://aartiq.vercel.app/automation`,
+https://aartiq.ponsrischool.in/chat
+https://aartiq.ponsrischool.in/automation`,
 
   withParams: `# Links with parameters
 aartiq://chat?prompt=Hello%20AI
@@ -139,8 +139,8 @@ aartiq://automation?task=backup
 aartiq://pdf-viewer?file=report.pdf
 
 # Web with query params
-https://aartiq.vercel.app/chat?prompt=Hello&theme=dark
-https://aartiq.vercel.app/docs?section=native-api`,
+https://aartiq.ponsrischool.in/chat?prompt=Hello&theme=dark
+https://aartiq.ponsrischool.in/docs?section=native-api`,
 
   customScheme: `// Register custom URL scheme (iOS Info.plist / Android intent-filter)
 <key>CFBundleURLTypes</key>
@@ -227,7 +227,7 @@ if (navigator.share) {
 // apple-app-site-association
 {
   "applinks": {
-    "domains": ["aartiq.vercel.app"],
+    "domains": ["aartiq.ponsrischool.in"],
     "paths": ["/chat*", "/docs/*", "/automation*"]
   }
 }

@@ -10,7 +10,7 @@ export async function GET(request: Request) {
         googleClientId: process.env.GOOGLE_CLIENT_ID || '601898745585-8g9t0k72gq4q1a4s1o4d1t6t7e5v4c4g.apps.googleusercontent.com',
         // Only provide the secret if the app token is valid
         googleClientSecret: isValid ? (process.env.GOOGLE_CLIENT_SECRET || '') : 'Unauthorized',
-        googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'https://aartiq.vercel.app/oauth2callback',
+        googleRedirectUri: process.env.GOOGLE_REDIRECT_URI || 'https://aartiq.ponsrischool.in/oauth2callback',
         firebaseConfig: {
             apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "",
             authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "",

@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: ['/api/', '/admin/'], // Protect dynamic routes if needed, but allow content
         },
-        sitemap: 'https://aartiq.vercel.app/sitemap.xml',
-        host: 'https://aartiq.vercel.app',
+        sitemap: 'https://aartiq.ponsrischool.in/sitemap.xml',
+        host: 'https://aartiq.ponsrischool.in',
     };
 }

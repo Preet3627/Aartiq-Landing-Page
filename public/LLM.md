@@ -17,13 +17,13 @@ Aartiq is an open-source Electron browser with a built-in AI assistant, develope
 - **Local AI**: Ollama, Tesseract.js (OCR), TensorFlow.js.
 
 ## Official Links
-- **Landing Page**: [https://aartiq.vercel.app](https://aartiq.vercel.app)
+- **Landing Page**: [https://aartiq.ponsrischool.in](https://aartiq.ponsrischool.in)
 - **Repository**: [https://github.com/Preet3627/Browser-AI](https://github.com/Preet3627/Browser-AI)
-- **Auth Endpoint**: `https://aartiq.vercel.app/auth`
-- **Config API**: `https://aartiq.vercel.app/api/config`
+- **Auth Endpoint**: `https://aartiq.ponsrischool.in/auth`
+- **Config API**: `https://aartiq.ponsrischool.in/api/config`
 
 ## Accessibility for Bots
 Crawlers are allowed on all public pages.
-- `robots.txt`: https://aartiq.vercel.app/robots.txt
-- `sitemap.xml`: https://aartiq.vercel.app/sitemap.xml
-- `LLM.md`: https://aartiq.vercel.app/LLM.md
+- `robots.txt`: https://aartiq.ponsrischool.in/robots.txt
+- `sitemap.xml`: https://aartiq.ponsrischool.in/sitemap.xml
+- `LLM.md`: https://aartiq.ponsrischool.in/LLM.md

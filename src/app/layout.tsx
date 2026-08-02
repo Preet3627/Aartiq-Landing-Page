@@ -146,7 +146,7 @@ export default function RootLayout({
               "image": LOGO_URL,
               "sameAs": [
                 "https://github.com/Preet3627/Aartiq",
-                "https://aartiq.vercel.app"
+                "https://aartiq.ponsrischool.in"
               ]
             })
           }}

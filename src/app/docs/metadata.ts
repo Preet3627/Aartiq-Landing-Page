@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { APP_INFO } from "@/lib/version";
 
-const baseUrl = "https://aartiq.vercel.app";
+const baseUrl = "https://aartiq.ponsrischool.in";
 
 export const docsMetadata: Metadata = {
   metadataBase: new URL(baseUrl),

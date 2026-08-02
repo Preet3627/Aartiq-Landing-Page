@@ -58,6 +58,17 @@ export const searchIndex: SearchIndex = {
       keywords: ["keyboard", "shortcuts", "hotkeys", "key bindings", "⌘K", "Cmd", "Ctrl"],
       type: "page"
     },
+
+    // Testing & Test Series
+    {
+      id: "testing",
+      title: "Testing & Test Series",
+      description: "Jest test suite results: 13 suites, 471 tests passing across sandboxing, security, extraction, and automation",
+      content: "testing test series jest test suites tests passing coverage sandbox-security directory-allowlist security-validator security-fixes extraction dom-engine dom-handlers webauthn automation skill-loading tab-intelligence component-tests home-intelligence fail-closed Seatbelt bubblewrap bwrap Job Object Windows macOS Linux unit integration how to run npx jest",
+      url: "/docs/testing",
+      keywords: ["tests", "testing", "jest", "test series", "coverage", "sandbox", "security", "npx jest", "CI"],
+      type: "page"
+    },
     {
       id: "getting-started-download",
       title: "Download Aartiq",
@@ -276,7 +287,7 @@ export const searchIndex: SearchIndex = {
       id: "security-os-sandboxing",
       title: "OS-Level Sandboxing",
       description: "Platform-specific sandboxing with Seatbelt, bubblewrap, and Job Objects",
-      content: "OS sandboxing Seatbelt macOS bubblewrap Linux Job Objects Windows filesystem network process confinement ACLs firewall",
+      content: "OS sandboxing Seatbelt macOS bubblewrap Linux Job Objects Windows filesystem network process containment",
       url: "/docs/security#os-level-sandboxing",
       section: "OS-Level Sandboxing",
       keywords: ["sandbox", "Seatbelt", "bubblewrap", "Job Objects", "filesystem", "network", "confinement"],

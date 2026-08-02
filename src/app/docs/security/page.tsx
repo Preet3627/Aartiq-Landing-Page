@@ -641,6 +641,104 @@ export default function SecurityPage() {
         </div>
       </motion.section>
 
+      {/* Risk Levels */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35 }}
+      >
+        <div className="mb-16">
+          <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-white/20">
+            Risk Assessment
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+            Risk <span className="text-white/20">Levels</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
+            Every command is classified into one of four risk tiers before it reaches the permission gate. Higher tiers require stronger, more explicit approval.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            {
+              name: "Low Risk",
+              risk: "Auto-approved",
+              icon: ShieldCheck,
+              color: "text-emerald-400",
+              border: "border-emerald-500/20",
+              bg: "bg-emerald-500/5",
+              description: "Read-only actions and navigation",
+              examples: ["Reading tabs", "Navigating to URLs", "Performing searches"],
+              approval: "Auto-approved based on user preferences"
+            },
+            {
+              name: "Medium Risk",
+              risk: "Per-action approval",
+              icon: ShieldAlert,
+              color: "text-amber-400",
+              border: "border-amber-500/20",
+              bg: "bg-amber-500/5",
+              description: "Actions that modify state or affect the system",
+              examples: ["Shell commands", "File writes", "Clipboard access"],
+              approval: "Per-action approval dialog"
+            },
+            {
+              name: "High Risk",
+              risk: "Biometric confirmation",
+              icon: ShieldAlert,
+              color: "text-red-400",
+              border: "border-red-500/20",
+              bg: "bg-red-500/5",
+              description: "Destructive or irreversible operations",
+              examples: ["rm -rf", "dd if=", "Deleting files"],
+              approval: "Biometric confirmation (Touch ID / Windows Hello), falling back to OS password prompt; QR/PIN mobile approval for remote-origin commands"
+            },
+            {
+              name: "Critical Risk",
+              risk: "Always explicit",
+              icon: ShieldOff,
+              color: "text-rose-400",
+              border: "border-rose-500/30",
+              bg: "bg-rose-500/5",
+              description: "Remote or privileged operations — never auto-approved",
+              examples: ["Remote shell commands", "Privilege escalation (sudo)", "System-level changes"],
+              approval: "Always requires explicit approval; never auto-approved. Routed through the capability controller's ticket-based flow."
+            }
+          ].map((tier, i) => (
+            <motion.div
+              key={tier.name}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: i * 0.05 }}
+              className={`flex flex-col gap-6 rounded-2xl border ${tier.border} ${tier.bg} p-8 lg:flex-row lg:items-center lg:justify-between`}
+            >
+              <div className="flex items-start gap-4">
+                <tier.icon size={24} className={`mt-1 shrink-0 ${tier.color}`} />
+                <div>
+                  <div className="flex items-center gap-3">
+                    <h4 className="font-bold text-white">{tier.name}</h4>
+                    <span className={`rounded-full ${tier.bg} px-3 py-1 text-[10px] font-black uppercase tracking-wider ${tier.color}`}>
+                      {tier.risk}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-white/40">{tier.description}</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {tier.examples.map((ex) => (
+                      <code key={ex} className="rounded bg-black/30 px-2 py-1 text-xs text-white/50">{ex}</code>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="max-w-sm lg:text-right">
+                <p className="text-xs font-black uppercase tracking-wider text-white/30">Approval</p>
+                <p className="mt-1 text-sm text-white/60">{tier.approval}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
       {/* Mobile Approval Process */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -697,6 +795,69 @@ export default function SecurityPage() {
                 "Mobile must be paired via secure handshake",
                 "Failed attempts are logged with timestamps",
                 "All approvals are logged with timestamps"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="mt-0.5 text-emerald-400" />
+                  <span className="text-white/60">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Remote Device Security */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45 }}
+      >
+        <div className="mb-16">
+          <p className="mb-4 text-[10px] font-black uppercase tracking-[0.5em] text-white/20">
+            Remote Access
+          </p>
+          <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
+            Remote Device <span className="text-white/20">Security</span>
+          </h2>
+          <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
+            Commands originating from a paired mobile device receive the same validation as local commands — plus additional scrutiny because the origin is remote.
+          </p>
+        </div>
+
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-10">
+            <Smartphone size={40} className="mb-6 text-sky-400" />
+            <h3 className="mb-4 text-xl font-black uppercase tracking-wider">Elevated Risk for Remote Origin</h3>
+            <p className="mb-6 text-white/50">
+              WiFi Sync commands from paired mobile devices pass through the exact same validation and permission checks as local commands, with one difference: the remote origin elevates the risk tier by one level.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "low → medium",
+                "medium → high",
+                "high → critical (never auto-approved)",
+                "Critical-risk commands are never auto-approved, regardless of origin"
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="mt-0.5 text-emerald-400" />
+                  <span className="text-white/60">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-10">
+            <Shield size={40} className="mb-6 text-emerald-400" />
+            <h3 className="mb-4 text-xl font-black uppercase tracking-wider">High-Risk Remote Actions</h3>
+            <p className="mb-6 text-white/50">
+              Power actions and shell commands from a remote device require QR/PIN approval before execution, matching the on-device high-risk flow.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Shutdown, restart, sleep, and lock require QR/PIN approval",
+                "Remote shell commands are validated by SecurityValidator, routed through the capability controller, and executed via execFile (no shell interpretation)",
+                "The MCP server binds to 127.0.0.1 only — no external network exposure",
+                "Pairing tokens expire after 10 minutes"
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <CheckCircle2 size={18} className="mt-0.5 text-emerald-400" />
@@ -778,6 +939,60 @@ export default function SecurityPage() {
               <p className="text-xs text-purple-300">Source: src/lib/crypto-utils.ts</p>
             </div>
           </div>
+        </div>
+
+        {/* Vault Migration */}
+        <div className="mt-8 rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-10">
+          <FileKey size={40} className="mb-6 text-sky-400" />
+          <h3 className="mb-4 text-xl font-black uppercase tracking-wider">Vault Migration</h3>
+          <p className="mb-6 text-white/50">
+            Legacy vault entries are automatically detected and re-encrypted to the modern E2EE2 format — the older formats used weaker key derivation.
+          </p>
+          <div className="grid gap-4 lg:grid-cols-3">
+            {[
+              {
+                format: "LCL:",
+                desc: "Plaintext base64 — no encryption, no salt",
+                status: "Legacy"
+              },
+              {
+                format: "E2EE:",
+                desc: "PBKDF2 100K iterations, no salt",
+                status: "Legacy"
+              },
+              {
+                format: "E2EE2:",
+                desc: "PBKDF2 600K iterations, per-entry random salt + IV",
+                status: "Current"
+              }
+            ].map((v) => (
+              <div key={v.format} className="rounded-xl bg-black/30 p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <code className="font-mono text-sky-300">{v.format}</code>
+                  <span className={`rounded-full px-2 py-0.5 text-[10px] font-black uppercase tracking-wider ${
+                    v.status === "Current"
+                      ? "bg-emerald-500/20 text-emerald-400"
+                      : "bg-amber-500/20 text-amber-400"
+                  }`}>
+                    {v.status}
+                  </span>
+                </div>
+                <p className="text-xs text-white/40">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+          <ul className="mt-8 space-y-3">
+            {[
+              "Atomic vault writes — backup before migration, rollback on failure",
+              "Proactive migration re-encrypts LCL: and E2EE: entries to E2EE2: on demand",
+              "Migration requires biometric / native verification before re-encryption begins"
+            ].map((item, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <CheckCircle2 size={18} className="mt-0.5 text-emerald-400" />
+                <span className="text-white/60">{item}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </motion.section>
 

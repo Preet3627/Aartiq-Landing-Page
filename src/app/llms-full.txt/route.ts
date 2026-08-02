@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BASE = 'https://aartiq.vercel.app';
+const BASE = 'https://aartiq.ponsrischool.in';
 
 export async function GET() {
   const content = `# Aartiq — Full Documentation
@@ -51,7 +51,7 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 ### macOS
 \`\`\`
-Download Aartiq-x.x.x.dmg from https://aartiq.vercel.app/downloads
+Download Aartiq-x.x.x.dmg from https://aartiq.ponsrischool.in/downloads
 Open the DMG and drag Aartiq to Applications
 \`\`\`
 
@@ -325,7 +325,7 @@ Extensions directory: ~/Library/Application Support/Aartiq/extensions/ (macOS)
 
 ## About
 
-- **Site**: Aartiq (https://aartiq.vercel.app)
+- **Site**: Aartiq (https://aartiq.ponsrischool.in)
 - **Type**: Open Source AI-Integrated Browser (SoftwareApplication)
 - **License**: Apache-2.0 (Browser), MIT (MCP Server)
 - **Language**: English
