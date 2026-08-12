@@ -20,38 +20,42 @@ import {
 } from "lucide-react";
 
 const testSuites = [
+  { file: "sandbox-security.test.js", count: 60, focus: "Fail-closed sandboxing (Seatbelt / bubblewrap / Job Objects), macOS adversarial OS-enforcement, command tokenizer, env sanitization" },
+  { file: "windows-job-sandbox.test.js", count: 10, focus: "Windows Job Object JS contract + runtime matrix (suspended start, verified job assignment, grandchild containment, secret isolation, KILL_ON_JOB_CLOSE)" },
+  { file: "linux-bwrap-sandbox.test.js", count: 14, focus: "bubblewrap arg generation, namespace/unshare flags, capability pre-flight fail-closed, Linux runtime enforcement" },
+  { file: "security-fixes.test.js", count: 40, focus: "Regression suite for applied security fixes" },
+  { file: "security-validator.test.js", count: 42, focus: "Blocklist / injection detection / risk classification" },
+  { file: "directory-allowlist.test.js", count: 36, focus: "Path canonicalization, symlink traversal, read/write separation" },
+  { file: "approval-ticket-security.test.js", count: 21, focus: "Ticket-based approval + capability-controller regression (audit findings)" },
   { file: "skill-loading.test.js", count: 54, focus: "Dynamic skill loading, validation allowlist, require-path resolution" },
   { file: "extraction.test.js", count: 58, focus: "Web extractor, DOM parsing, content extraction edge cases" },
   { file: "tab-intelligence.test.ts", count: 51, focus: "Tab intelligence, domain grouping, smart icons" },
-  { file: "sandbox-security.test.js", count: 51, focus: "Fail-closed sandboxing (Seatbelt / bubblewrap / Job Objects), command tokenizer, env sanitization" },
-  { file: "component-tests.test.js", count: 37, focus: "React component behavior and props" },
-  { file: "security-validator.test.js", count: 42, focus: "Blocklist / injection detection / risk classification" },
-  { file: "directory-allowlist.test.js", count: 36, focus: "Path canonicalization, symlink traversal, read/write separation" },
   { file: "dom-engine.test.js", count: 40, focus: "DOM interaction engine, click/fill strategies" },
+  { file: "component-tests.test.js", count: 37, focus: "React component behavior and props" },
   { file: "webauthn-service.test.js", count: 26, focus: "WebAuthn / FIDO2 challenge-response flow" },
-  { file: "security-fixes.test.js", count: 40, focus: "Regression suite for applied security fixes" },
   { file: "automation.test.js", count: 16, focus: "OS automation layer (click / scroll / app launch)" },
   { file: "dom-handlers.test.js", count: 16, focus: "Browser DOM IPC handlers" },
   { file: "home-intelligence.test.ts", count: 4, focus: "Home intelligence logic" },
 ];
 
 const covered = [
-  "Fail-closed sandbox behavior: every sandbox setup/validation/policy failure returns a structured SANDBOX_* error and the command is never silently run unsandboxed",
-  "macOS Seatbelt: real OS-level enforcement tests — writing outside the directory allowlist is denied by the kernel and the file is verified absent",
-  "Linux bubblewrap: closed-by-default namespaces, correct --bind vs --ro-bind mapping, network denied by default, bwrap-unavailable fail-closed",
-  "Windows Job Object containment: policy fail-closed (network policy rejected as SANDBOX_UNAVAILABLE), runner result parsing, missing-runner fail-closed",
-  "Directory allowlist: fs.realpath() canonicalization, ../ traversal, symlink escape, read-only vs read-write separation, invalid-path rejection",
-  "Command execution: tokenizer preserves quoted arguments verbatim, direct execution vs explicit shell mode, no string-reconstructed sh -c",
-  "Environment sanitization: API keys, tokens, and secrets are stripped from every sandboxed process",
-  "Security regressions: 40-test regression suite re-verifying each applied security fix",
+  "Fail-closed by construction: every sandbox setup, validation, or policy failure returns a structured SANDBOX_* error and the command is never silently run unsandboxed — there is no automatic fallback path",
+  "macOS Seatbelt — real OS enforcement: writing outside the directory allowlist is denied by the kernel and the file is verified absent; reading a secret outside the allowlist is denied; /tmp is writable; a network bind is denied; reading/writing through a symlink that escapes the allowlist is denied; a child process spawned by the target is still contained",
+  "Linux bubblewrap — closed-by-default namespaces (pid/net/ipc/uts), correct --bind (write) vs --ro-bind (read-only) mapping, network denied by default, and fail-closed when bwrap is missing OR present-but-incapable of creating the required namespaces (the new capability pre-flight)",
+  "Windows Job Object containment — policy fail-closed (a per-process network policy is rejected as SANDBOX_UNAVAILABLE), missing-runner fail-closed, result parsing, explicit isolation flags ({ filesystem:false, network:false, process:true }), and a runtime matrix proving suspended start + verified job assignment + grandchild containment + secret isolation + KILL_ON_JOB_CLOSE",
+  "Explicit isolation contract — every result carries { filesystem, network, process } so callers cannot mistake process containment for filesystem/network isolation; Windows reports process-only, macOS/Linux report all true, and any setup failure reports all false",
+  "Directory allowlist — fs.realpath() canonicalization, ../ traversal, symlink escape, read-only vs read-write separation, and invalid/missing-path rejection (never silently skipped)",
+  "Command execution — the tokenizer preserves quoted arguments verbatim, separates direct execution from explicit shell mode, and never reconstructs a command via a string-joined sh -c; it is documented as a classifier, not a security parser",
+  "Environment sanitization — API keys, tokens, and secrets are stripped from every sandboxed process; only an allowlisted set of non-credential variables passes through",
+  "Security regressions — a 40-test regression suite re-verifying each applied security fix, plus approval-ticket tests that lock in the audit remediation",
 ];
 
 const limitations = [
-  "The Windows Job Object runner (win-job-runner.ps1 / C# P/Invoke) has been reviewed and its result protocol is covered by tests, but it has NOT been executed on real Windows hardware as part of this suite. That verification requires a Windows CI runner.",
-  "Seatbelt OS-enforcement tests execute only on macOS; bubblewrap OS-enforcement tests only on Linux hosts where bwrap is installed. The profile-generation and fail-closed config paths are asserted on every platform.",
+  "Windows and Linux runtime enforcement tests are real test files, but they only EXECUTE on their own OS: the Windows matrix runs on windows-latest CI, the Linux matrix on Linux hosts with bwrap installed. On macOS they are collected but skipped — their JS-contract portions still run everywhere.",
+  "macOS Seatbelt OS-enforcement tests execute only on macOS; they ran and passed on this machine. The profile-generation and fail-closed config paths are asserted on every platform.",
   "These are unit and integration tests for core modules. They do NOT cover the full Electron UI, installers, MSIX/MSI packaging, or complete end-to-end user flows.",
-  "automation.test.js exercises OS-level actions that require macOS automation permissions; on hosts without them the OS calls degrade gracefully and the assertions still pass — the suite records warnings, not failures.",
-  "Test counts reflect the repository state at the time this page was generated. Always run npx jest to get current numbers.",
+  "A sandbox confines what code can do; it is not a proof that the AI's decisions are safe, nor a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code. See the security page's 'What this does NOT guarantee'.",
+  "Test counts reflect the repository state at the time this page was generated (525 tests across 16 suites; 514 passing, 11 platform-skipped, 0 failing). Always run npx jest to get current numbers.",
 ];
 
 export default function TestingPage() {
@@ -88,19 +92,19 @@ export default function TestingPage() {
             <p className="text-sm text-white/50">Test Suites</p>
           </div>
           <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 text-center">
-            <CheckCircle2 size={32} className="mx-auto mb-4 text-sky-400" />
+            <Layers size={32} className="mx-auto mb-4 text-sky-400" />
             <h3 className="text-3xl font-black text-sky-400">{totalTests}</h3>
-            <p className="text-sm text-white/50">Tests Passing</p>
+            <p className="text-sm text-white/50">Total Tests</p>
           </div>
           <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-6 text-center">
-            <ShieldCheck size={32} className="mx-auto mb-4 text-emerald-400" />
-            <h3 className="text-3xl font-black text-emerald-400">0</h3>
-            <p className="text-sm text-white/50">Failures</p>
+            <CheckCircle2 size={32} className="mx-auto mb-4 text-emerald-400" />
+            <h3 className="text-3xl font-black text-emerald-400">514</h3>
+            <p className="text-sm text-white/50">Passing</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-center">
-            <Activity size={32} className="mx-auto mb-4 text-white/40" />
-            <h3 className="text-3xl font-black text-white/60">0</h3>
-            <p className="text-sm text-white/50">Skipped / Pending</p>
+          <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 text-center">
+            <Activity size={32} className="mx-auto mb-4 text-amber-400" />
+            <h3 className="text-3xl font-black text-amber-400">11</h3>
+            <p className="text-sm text-white/50">Platform-skipped · 0 failing</p>
           </div>
         </div>
       </motion.section>

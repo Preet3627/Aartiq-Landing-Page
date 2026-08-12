@@ -177,9 +177,11 @@ const securityLayers = [
       "macOS: Seatbelt (sandbox-exec) with a closed-by-default profile — (deny file-read*) and (deny file-write*) then re-allow only system paths + allowlisted directories, (deny network*), and (deny process-exec*) with allowlisted exec paths",
       "The Seatbelt profile is written to a temp file and validated with a pre-flight `sandbox-exec -f <profile> /usr/bin/true` run; if the profile fails to compile, the command is rejected (SANDBOX_POLICY_INVALID)",
       "Linux: bubblewrap (bwrap) with unshared pid/net/ipc/uts namespaces, read-only system mounts (/usr, /bin, /sbin, /lib, /lib64, /etc), private /tmp, and --unshare-net",
+      "bubblewrap gets an extra capability pre-flight: `--version` succeeds even when user namespaces are disabled, so we run a real `--unshare-pid/net/ipc/uts /bin/true` probe and fail closed if the namespaces we require cannot be created (common in locked-down containers and some CI runners)",
       "Windows: Job Object containment (src/core/win-job-runner.ps1) — the target is created SUSPENDED, assigned to a Job Object, verified via IsProcessInJob, then resumed; limits (KILL_ON_JOB_CLOSE, active-process cap, job memory, die-on-unhandled-exception) are applied and verified before the target runs a single instruction",
       "Windows explicitly does NOT provide OS-level filesystem or network isolation in this release — the directory allowlist is enforced at the application layer (isPathAllowed), and requesting a per-process network policy fails closed (SANDBOX_UNAVAILABLE)",
       "All platforms: environment is sanitized — only allowlisted variables (PATH, HOME, USER, LANG, LC_ALL, TMPDIR, SHELL, TERM, etc.) pass through; API keys and tokens never reach the sandboxed process (buildSafeEnv)",
+      "Every result carries an explicit `isolation` object ({ filesystem, network, process }) so callers cannot mistake process containment for filesystem/network isolation: macOS/Linux report all true, Windows reports {false, false, true}, and any setup failure reports all false. No single boolean 'sandboxed' is trusted on its own",
       "Network inside the sandbox is denied by default on macOS (deny network*) and Linux (--unshare-net). Per-domain network allowlisting is NOT supported on any platform — requesting it fails closed. Windows cannot enforce per-process network policy in this release",
       "Source files: src/core/sandbox-executor.js, src/core/win-job-runner.ps1, src/core/directory-allowlist.js"
     ],
@@ -188,6 +190,13 @@ const securityLayers = [
       "On macOS/Linux the sandbox physically prevents writes outside the workspace + allowlisted write directories; on Windows this is enforced at the application layer by isPathAllowed()",
       "Credential leakage via ambient environment variables is prevented by the env allowlist",
       "Network exfiltration is blocked by default-deny networking inside the sandbox (macOS/Linux), not by firewall rules"
+    ],
+    notGuaranteed: [
+      "On Windows, the Job Object confines processes only. It does NOT isolate the filesystem or network at the OS layer. The directory allowlist and network denial are enforced by application code (isPathAllowed), not by the kernel — a bug in that code, or a path you explicitly allowlist, sits outside the Job Object's reach.",
+      "A sandbox confines what a command can do. It does not make a malicious command safe, and it does not decide what the AI asks for. Human approval is a social control, not a cryptographic one; a coerced or careless approval still executes.",
+      "Seatbelt and bubblewrap constrain the process, not the data it is handed. If you allowlist a directory that contains secrets, the sandboxed command can read them. Allowlists are trust boundaries you draw — only as good as where you draw them.",
+      "These guarantees apply to code executed through executeSandboxed(). The Electron main process, the renderer, native modules, and helper apps are NOT inside the sandbox. Sandboxing reduces blast radius; it is not a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code.",
+      "Fail-closed means we refuse to run rather than run uncontained. It does not mean every malicious input is harmless — a command that is allowed by policy and approved by a human runs, inside the sandbox, with whatever access the policy grants."
     ]
   },
   {
@@ -372,6 +381,18 @@ export default function SecurityPage() {
           Aartiq uses a defense-in-depth model with six independent security layers: visual sandbox, syntactic firewall, human-in-the-loop authorization, directory allowlist, OS-level sandboxing, and capability-scoped execution. Source implementations: src/lib/Security.ts, src/lib/SecurityValidator.js, src/core/command-validator.js, src/core/directory-allowlist.js, src/core/sandbox-executor.js
         </p>
 
+        <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.02] p-6 text-sm leading-relaxed text-white/40">
+          <p className="mb-2 text-[10px] font-black uppercase tracking-[0.4em] text-sky-400/70">Philosophy</p>
+          <p>
+            We did not set out to build a fortress. We set out to build a browser that can act on your
+            behalf without becoming a liability — so that when the model is wrong, the damage stops at a
+            boundary it cannot cross. Every layer below is a deliberate &ldquo;no&rdquo;: no raw page HTML in the
+            model&apos;s context, no unverified command, no unsandboxed fallback, no silent yes. Security here is
+            not a toggle you flip; it is the shape of the thing. The claims on this page are stated plainly,
+            with their limits, because a security claim you cannot disprove is not a claim — it is a wish.
+          </p>
+        </div>
+
           {/* Security Stats */}
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 text-center">
@@ -528,6 +549,23 @@ export default function SecurityPage() {
                         </div>
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {/* Honest limits for OS sandbox */}
+                {layer.notGuaranteed && (
+                  <div className="mt-8 rounded-xl border border-rose-500/20 bg-rose-500/5 p-6">
+                    <h5 className="mb-4 flex items-center gap-2 text-sm font-black uppercase text-rose-400">
+                      <ShieldOff size={16} /> What this does NOT guarantee
+                    </h5>
+                    <ul className="space-y-3">
+                      {layer.notGuaranteed.map((item, j) => (
+                        <li key={j} className="flex items-start gap-3 text-sm text-white/60">
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </div>
@@ -1169,23 +1207,62 @@ export default function SecurityPage() {
            </p>
          </div>
 
-         <div className="grid gap-6 lg:grid-cols-3">
-           <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
-             <Bug size={32} className="mx-auto mb-4 text-emerald-400" />
-             <h3 className="text-3xl font-black text-emerald-400">492</h3>
-             <p className="text-sm text-white/50">Total Jest tests passing</p>
-           </div>
-           <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
-             <ShieldCheck size={32} className="mx-auto mb-4 text-sky-400" />
-             <h3 className="text-3xl font-black text-sky-400">21</h3>
-             <p className="text-sm text-white/50">Approval-ticket regression tests</p>
-           </div>
-           <div className="rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8 text-center">
-             <Layers size={32} className="mx-auto mb-4 text-amber-400" />
-             <h3 className="text-3xl font-black text-amber-400">6</h3>
-             <p className="text-sm text-white/50">Security layers under test</p>
-           </div>
-         </div>
+          <div className="grid gap-6 lg:grid-cols-4">
+            <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
+              <Bug size={32} className="mx-auto mb-4 text-emerald-400" />
+              <h3 className="text-3xl font-black text-emerald-400">525</h3>
+              <p className="text-sm text-white/50">Total Jest tests (514 passing, 11 platform-skipped, 0 failing)</p>
+            </div>
+            <div className="rounded-[2rem] border border-rose-500/20 bg-rose-500/5 p-8 text-center">
+              <ShieldOff size={32} className="mx-auto mb-4 text-rose-400" />
+              <h3 className="text-3xl font-black text-rose-400">84</h3>
+              <p className="text-sm text-white/50">OS-sandbox tests (fail-closed + adversarial)</p>
+            </div>
+            <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
+              <ShieldCheck size={32} className="mx-auto mb-4 text-sky-400" />
+              <h3 className="text-3xl font-black text-sky-400">21</h3>
+              <p className="text-sm text-white/50">Approval-ticket regression tests</p>
+            </div>
+            <div className="rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8 text-center">
+              <Layers size={32} className="mx-auto mb-4 text-amber-400" />
+              <h3 className="text-3xl font-black text-amber-400">6</h3>
+              <p className="text-sm text-white/50">Security layers under test</p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-black uppercase tracking-wider text-white/70">
+                <FileText size={16} className="text-emerald-400" /> sandbox-security.test.js
+              </h4>
+              <p className="text-sm text-white/50">
+                macOS Seatbelt fail-closed + real OS-enforcement (read/write denied outside the allowlist, /tmp allowed,
+                network bind denied, symlink-escape denied, child processes contained), plus Linux bubblewrap and
+                Windows Job Object contract tests and command-tokenizer/env-sanitization checks.
+              </p>
+            </div>
+            <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-black uppercase tracking-wider text-white/70">
+                <FileText size={16} className="text-emerald-400" /> windows-job-sandbox.test.js
+              </h4>
+              <p className="text-sm text-white/50">
+                JS contract (isolation flags, fail-closed network/allowlist policy) runs everywhere; the
+                runtime matrix — suspended start, verified job assignment, grandchild containment, secret
+                isolation, and KILL_ON_JOB_CLOSE — runs on Windows CI (windows-latest).
+              </p>
+            </div>
+            <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-black uppercase tracking-wider text-white/70">
+                <FileText size={16} className="text-emerald-400" /> linux-bwrap-sandbox.test.js
+              </h4>
+              <p className="text-sm text-white/50">
+                JS contract (unshare flags, --bind vs --ro-bind, fail-closed when bwrap is missing or
+                present-but-incapable of creating namespaces) runs everywhere; the runtime matrix
+                (no read/write outside allowlist, private /tmp, network denied, symlink-escape denied)
+                runs on Linux hosts where bwrap is installed.
+              </p>
+            </div>
+          </div>
 
          <div className="mt-8 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
            <h4 className="mb-4 flex items-center gap-2 text-lg font-black uppercase tracking-wider text-white/70">
