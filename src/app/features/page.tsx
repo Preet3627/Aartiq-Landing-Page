@@ -74,8 +74,8 @@ const features = [
     category: "Hardened Security",
     items: [
       {
-        name: "Three-Layer Security",
-        description: "OCR-only visual reading, a syntactic firewall, and human-in-the-loop permission checks.",
+        name: "Six-Layer Security",
+        description: "Visual sandbox, syntactic firewall, human-in-the-loop, directory allowlist, OS-level sandboxing, and capability-scoped execution — defense in depth.",
         icon: Layers,
         color: "from-emerald-500 to-teal-400"
       },

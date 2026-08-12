@@ -13,7 +13,7 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 
 - [Getting Started](https://aartiq.ponsrischool.in/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
 - [AI Commands Reference](https://aartiq.ponsrischool.in/docs/ai-commands): Canonical JSON-first AI command reference — navigation, browser control, OCR, scheduling, automation, shell, and plugin commands
-- [Security Model](https://aartiq.ponsrischool.in/docs/security): Three-layer security architecture with E2EE encryption, permission levels, and audit logging
+- [Security Model](https://aartiq.ponsrischool.in/docs/security): Six-layer defense-in-depth security architecture with E2EE encryption, permission levels, and audit logging
 - [Automation Guide](https://aartiq.ponsrischool.in/docs/automation): Background task scheduling with cron expressions, task queue management, and sleep/wake recovery
 - [Cloud Sync](https://aartiq.ponsrischool.in/docs/cloud-sync): E2EE cross-device synchronization, WiFi P2P pairing, and mobile app integration
 - [Plugin System](https://aartiq.ponsrischool.in/docs/plugins): Native plugin architecture with lifecycle management, command registration, event hooks, and SDK
@@ -48,7 +48,7 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 - **Background Scheduler**: Cron-based task scheduling that runs even when the browser window is closed
 - **Document Generation**: PDF, Excel (.xlsx), PowerPoint (.pptx), and Word (.docx) generation from JSON/JSX templates
 - **Cross-Device**: E2EE WiFi sync between desktop and Android devices. Firebase cloud sync with AES-256-GCM encryption
-- **Security**: Three-layer permission system (Normal → Elevated → Critical). AES-256-GCM encryption. Sandboxed automation
+- **Security**: Six-layer defense-in-depth model (visual sandbox, syntactic firewall, human-in-the-loop, directory allowlist, OS-level sandboxing, capability-scoped execution). Three-tier permission system (Normal → Elevated → Critical). AES-256-GCM encryption. Sandboxed automation
 - **Plugin System**: Node.js-based plugin SDK with command registration, event hooks, and persistent config storage
 - **Extensions**: Chrome manifest v3 extension support via Electron session.defaultSession
 
