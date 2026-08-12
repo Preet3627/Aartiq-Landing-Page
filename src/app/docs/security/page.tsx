@@ -1165,58 +1165,60 @@ export default function SecurityPage() {
             Security <span className="text-white/20">Test Coverage</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
-            Every layer above is backed by automated regression tests. The suite runs in CI on every push and protects the security invariants from silent regressions.
-          </p>
-        </div>
+             Every layer above is backed by automated regression tests. The full suite runs in GitHub Actions CI (`.github/workflows/jest.yml`) on every push and pull request, and protects the security invariants from silent regressions.
+           </p>
+         </div>
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
-            <Bug size={32} className="mx-auto mb-4 text-emerald-400" />
-            <h3 className="text-3xl font-black text-emerald-400">488</h3>
-            <p className="text-sm text-white/50">Total Jest tests passing</p>
-          </div>
-          <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
-            <ShieldCheck size={32} className="mx-auto mb-4 text-sky-400" />
-            <h3 className="text-3xl font-black text-sky-400">17</h3>
-            <p className="text-sm text-white/50">Approval-ticket regression tests</p>
-          </div>
-          <div className="rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8 text-center">
-            <Layers size={32} className="mx-auto mb-4 text-amber-400" />
-            <h3 className="text-3xl font-black text-amber-400">6</h3>
-            <p className="text-sm text-white/50">Security layers under test</p>
-          </div>
-        </div>
+         <div className="grid gap-6 lg:grid-cols-3">
+           <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
+             <Bug size={32} className="mx-auto mb-4 text-emerald-400" />
+             <h3 className="text-3xl font-black text-emerald-400">492</h3>
+             <p className="text-sm text-white/50">Total Jest tests passing</p>
+           </div>
+           <div className="rounded-[2rem] border border-sky-500/20 bg-sky-500/5 p-8 text-center">
+             <ShieldCheck size={32} className="mx-auto mb-4 text-sky-400" />
+             <h3 className="text-3xl font-black text-sky-400">21</h3>
+             <p className="text-sm text-white/50">Approval-ticket regression tests</p>
+           </div>
+           <div className="rounded-[2rem] border border-amber-500/20 bg-amber-500/5 p-8 text-center">
+             <Layers size={32} className="mx-auto mb-4 text-amber-400" />
+             <h3 className="text-3xl font-black text-amber-400">6</h3>
+             <p className="text-sm text-white/50">Security layers under test</p>
+           </div>
+         </div>
 
-        <div className="mt-8 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
-          <h4 className="mb-4 flex items-center gap-2 text-lg font-black uppercase tracking-wider text-white/70">
-            <FileText size={18} className="text-emerald-400" /> New: approval-ticket-security.test.js
-          </h4>
-          <p className="mb-4 text-sm text-white/50">
-            A dedicated regression suite for the ticket-based approval + capability-controller system. It locks in the fixes for the audit findings and fails if any invariant regresses.
-          </p>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              "Red 1 — redeemTicket verifies the params/context hash (tamper → 'tampered')",
-              "Red 2 — persistent grant cannot override an 'always' approval",
-              "Red 3 — 'first-time-per-session' never becomes a persistent grant",
-              "Red 4 — call-shape hashing agrees on context at register + verify",
-              "Red 5 / Orange 6 — missing params fail constraints; 'optional' allows absence",
-              "Orange 7/8 — registration gated to a ticket; pattern validates the action",
-              "Orange 9 — regex patterns length-limited against catastrophic backtracking",
-              "Orange 10 — unknown ticket IDs are rejected",
-              "Yellow 11 — tickets bound to capabilityVersion; replaceAction invalidates them",
-              "Yellow 12 — returned ticket params are defensive clones",
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-2 rounded-lg bg-white/5 p-3 text-xs text-white/60">
-                <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-emerald-400" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-xs text-white/30">
-            Source: <code className="font-mono">aartiq-browser/tests/approval-ticket-security.test.js</code>
-          </p>
-        </div>
+         <div className="mt-8 rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
+           <h4 className="mb-4 flex items-center gap-2 text-lg font-black uppercase tracking-wider text-white/70">
+             <FileText size={18} className="text-emerald-400" /> approval-ticket-security.test.js
+           </h4>
+           <p className="mb-4 text-sm text-white/50">
+             A dedicated regression suite for the ticket-based approval + capability-controller system. It locks in the fixes for the audit findings and fails if any invariant regresses.
+           </p>
+           <div className="grid gap-3 sm:grid-cols-2">
+             {[
+               "Red 1 — redeemTicket verifies the params/context hash (tamper → 'tampered')",
+               "Red 2 — persistent grant cannot override an 'always' approval",
+               "Red 3 — 'first-time-per-session' never becomes a persistent grant",
+               "Red 4 — call-shape hashing agrees on context at register + verify",
+               "Red 5 / Orange 6 — missing params fail constraints; 'optional' allows absence",
+               "Orange 7/8 — registration gated to a ticket; pattern validates the action",
+               "Orange 9 — regex patterns length-limited against catastrophic backtracking",
+               "Orange 10 — unknown ticket IDs are rejected",
+               "Yellow 11 — tickets bound to capabilityVersion; replaceAction invalidates them",
+               "Yellow 12 — returned ticket params are defensive clones",
+               "Arch — approval produces a pure AuthorizationDecision; the executor consumes it and never reconstructs authorization",
+               "Arch — a v1 ticket is rejected (never executed) after the action is replaced with v2",
+             ].map((item, i) => (
+               <div key={i} className="flex items-start gap-2 rounded-lg bg-white/5 p-3 text-xs text-white/60">
+                 <CheckCircle2 size={14} className="mt-0.5 shrink-0 text-emerald-400" />
+                 <span>{item}</span>
+               </div>
+             ))}
+           </div>
+           <p className="mt-4 text-xs text-white/30">
+             Source: <code className="font-mono">aartiq-browser/tests/approval-ticket-security.test.js</code>
+           </p>
+         </div>
       </motion.section>
     </div>
   );
