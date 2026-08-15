@@ -711,7 +711,7 @@ export default function Home() {
           >
             Aartiq™
             <span className="mt-4 block bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              AI can act. You decide where it stops.
+              For Questions That Matter.
             </span>
           </motion.h1>
 
@@ -1190,7 +1190,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-5xl font-black uppercase leading-[0.9] tracking-tighter text-white sm:text-7xl"
           >
-            AI can act. <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">You decide where it stops.</span>
+            For <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Questions That Matter.</span>
           </motion.h2>
           <p className="mx-auto mt-8 max-w-3xl text-xl font-medium leading-relaxed text-white/50">
             “The most important question isn't what you ask AI. It's what AI asks you before it acts.”
