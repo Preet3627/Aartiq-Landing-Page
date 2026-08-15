@@ -1365,6 +1365,18 @@ export default function Home() {
           </motion.div>
         </section>
 
+        {/* 1 CM footer note */}
+        <section className="pb-24 text-center">
+          <div className="mx-auto max-w-3xl rounded-[40px] border border-purple-500/20 bg-purple-500/5 px-8 py-12 sm:px-12">
+            <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-4xl">
+              Aartiq is just <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">1 CM</span> away from the future.
+            </p>
+            <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
+              The “1 CM” is a personal reminder that respecting a boundary often begins with asking before crossing it.
+            </p>
+          </div>
+        </section>
+
         {/* FOOTER */}
         <footer className="border-t border-white/5 pt-40 pb-20">
            <div className="grid gap-20 sm:grid-cols-2 lg:grid-cols-5">
