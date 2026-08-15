@@ -97,10 +97,10 @@ const featureHighlights = [
 ];
 
 const metrics = [
-  { label: "Components", value: "179" },
-  { label: "Lines of Code", value: "40,709" },
+  { label: "Automated Tests", value: "492" },
   { label: "Platforms", value: "4" },
   { label: "AI Commands", value: "25" },
+  { label: "Security Model", value: "Capability-gated" },
 ];
 
 function ClickToLoadYouTube() {
@@ -297,7 +297,7 @@ import { Navbar } from "@/components/Navbar";
 const faqs = [
   {
     q: "What is Aartiq?",
-    a: "Aartiq is an open-source, AI-native browser built with Electron and Next.js. It pairs a built-in AI assistant with permission-gated OS automation, local-first memory, and end-to-end encrypted cross-device sync.",
+    a: "Aartiq is an open-source, AI-native browser built with Electron and Next.js. It pairs a built-in AI assistant with permission-gated OS automation and local-first memory.",
   },
   {
     q: "Is Aartiq free?",
@@ -386,12 +386,11 @@ function FaqSection() {
   );
 }
 
-/* ---------- Hidden 1 CM motif: thin cyan boundary line ---------- */
+/* ---------- Hidden 1 CM motif: thin cyan boundary line (no watermark label) ---------- */
 function Boundary() {
   return (
     <div className="relative mx-auto my-2 flex max-w-7xl items-center justify-center px-6 sm:px-12">
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-      <span className="absolute right-6 text-[8px] font-black uppercase tracking-[0.4em] text-cyan-500/30 sm:right-12">1 CM</span>
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
     </div>
   );
 }
@@ -838,7 +837,7 @@ export default function Home() {
               AI shouldn't interpret <span className="text-white/40">missing context</span> as permission.
             </h2>
             <p className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/50">
-              A generic assistant treats missing context as permission. It finishes the task and hopes the user meant it. Aartiq treats missing context as a reason to pause.
+              Most assistants treat missing context as permission — they finish the task and hope you meant it. Aartiq's policy treats missing context as a reason to pause and ask. That distinction is enforced by its capability policy, which you can read in the source.
             </p>
           </div>
 
@@ -907,7 +906,7 @@ export default function Home() {
             <DemoCard
               tag="Demo 5 — Attack"
               title="Attack the system"
-              body="Prompt injection, malicious page instructions, path traversal, escalation. Aartiq refuses or contains."
+              body="Webpage instructions are treated as untrusted input and cannot directly authorize privileged capabilities. See the tested threat model."
               href="/docs/testing"
               cta="Tests & threat model"
             />
@@ -980,7 +979,7 @@ export default function Home() {
               <div className="rounded-3xl border border-cyan-400/30 bg-cyan-500/[0.04] p-6">
                 <p className="mb-3 text-[10px] uppercase tracking-widest text-cyan-400">Aartiq</p>
                 <p className="text-base font-medium leading-relaxed text-white/70">
-                  Recognized as untrusted page content, not a user command. It refused, and asked the user whether the page should be allowed to issue commands at all.
+                  Aartiq's tested threat model treats webpage instructions as untrusted input and prevents them from directly authorizing privileged capabilities. It asks the user before any page-derived command runs.
                   <Link href="/docs/testing" className="ml-1 text-cyan-400 hover:underline">View the test →</Link>
                 </p>
               </div>
@@ -1063,10 +1062,10 @@ export default function Home() {
                <Cpu size={14} /> Core Technologies
              </div>
             <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              Built <span className="text-white/40">capable.</span>
+              One job. <span className="text-white/40">Many capabilities.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/50">
-              Aartiq does more than ask — but asking is the part that matters most. The full feature matrix lives in the <Link href="/features" className="text-cyan-400 hover:underline">docs</Link>.
+              Aartiq is one thing: a permissioned AI browser. Everything below is a capability it brings to that single job. The full matrix lives in the <Link href="/features" className="text-cyan-400 hover:underline">docs</Link>.
             </p>
           </div>
 
