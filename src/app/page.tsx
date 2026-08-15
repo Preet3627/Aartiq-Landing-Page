@@ -1118,29 +1118,6 @@ export default function Home() {
 
         <Boundary />
 
-        {/* FINAL REVEAL — 1 CM as identity, reduced repetition */}
-        <section id="reveal" className="py-48 scroll-mt-24 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="space-y-10"
-          >
-            <p className="text-xs font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
-            <h2 className="text-8xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(56,189,248,0.55)] drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] sm:text-[12rem] leading-none">
-              1 CM
-            </h2>
-            <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
-              The space between capability and authority.
-            </p>
-            <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
-              1 CM is more than a distance. It is a reminder that being able to cross a boundary doesn't mean you have the right to. Sometimes, trust begins by leaving space for someone to decide.
-            </p>
-          </motion.div>
-        </section>
-
-        <Boundary />
-
         {/* CLOSING */}
         <section className="py-32 text-center">
           <motion.h2
@@ -1305,6 +1282,29 @@ export default function Home() {
                "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627). While our source code is freely available under the Apache 2.0 License, this license does not grant permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this browser must be rebranded under a completely different name."
              </p>
            </div>
+        </section>
+
+        <Boundary />
+
+        {/* FINAL REVEAL — 1 CM as identity, reduced repetition */}
+        <section id="reveal" className="py-48 scroll-mt-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            <p className="text-xs font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
+            <h2 className="text-8xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(56,189,248,0.55)] drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] sm:text-[12rem] leading-none">
+              1 CM
+            </h2>
+            <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
+              The space between capability and authority.
+            </p>
+            <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
+              1 CM is more than a distance. It is a reminder that being able to cross a boundary doesn't mean you have the right to. Sometimes, trust begins by leaving space for someone to decide.
+            </p>
+          </motion.div>
         </section>
 
         {/* FOOTER */}
