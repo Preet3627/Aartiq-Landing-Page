@@ -30,14 +30,12 @@ import {
   Video,
   ChevronRight,
   CheckCircle2,
-  Heart,
   AlertTriangle,
   Scale,
   Quote,
   Lock,
   HelpCircle,
   Plus,
-  Pause,
   GitBranch,
   ShieldAlert,
   FolderLock,
@@ -201,7 +199,7 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
         <div className="bg-[#06080f] p-10">
           <div className="mb-10 flex items-center justify-between">
             <div className="flex items-center gap-4">
-                     <div className="relative flex h-12 w-12 items-center justify-center">
+              <div className="relative flex h-12 w-12 items-center justify-center">
                 <Image
                   src="/logo-transparent.png"
                   alt="Aartiq Logo"
@@ -446,16 +444,16 @@ function BeforeIContinue() {
   };
 
   return (
-    <section id="before" className="py-32 scroll-mt-24" ref={ref}>
-      <div className="mb-16 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400">
-          <FolderLock size={14} /> Signature Interaction
+    <section id="before" className="py-16 scroll-mt-24" ref={ref}>
+      <div className="mb-10 text-center">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400">
+          <FolderLock size={14} /> Demo 1 — Filesystem
         </div>
-        <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+        <h3 className="text-3xl font-black uppercase tracking-tighter sm:text-4xl">
           Before I <span className="text-cyan-400">Continue</span>...
-        </h2>
-        <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/50">
-          Aartiq reaches for context — then stops at the boundary and asks.
+        </h3>
+        <p className="mx-auto mt-4 max-w-xl text-sm font-medium text-white/50">
+          Say: “Clean up my Downloads folder.” Aartiq reaches for context — then stops at the boundary and asks.
         </p>
       </div>
 
@@ -511,7 +509,14 @@ function BeforeIContinue() {
               className="mt-6 rounded-3xl border border-cyan-400/50 bg-gradient-to-b from-cyan-950/40 to-[#04060e] p-6 text-center shadow-[0_0_40px_rgba(6,182,212,0.25)]"
             >
               <p className="text-xs font-black uppercase tracking-[0.4em] text-cyan-400">Before I continue…</p>
-              <p className="mt-3 text-lg font-bold text-white">Should I include <span className="text-cyan-300">/Private</span>?</p>
+              <p className="mt-3 text-base font-bold text-white sm:text-lg">I can do that, but first:</p>
+              <ul className="mx-auto mt-4 max-w-md space-y-1 text-left text-xs font-medium text-white/70 sm:text-sm">
+                <li>• Which directories may I inspect?</li>
+                <li>• May I move existing files?</li>
+                <li>• May I delete temporary files?</li>
+                <li>• Should private documents be excluded?</li>
+                <li>• Should I show you the proposed changes first?</li>
+              </ul>
               <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
                 <button onClick={() => onChoice('approve')} className="rounded-full bg-cyan-500 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-cyan-400">Approve</button>
                 <button onClick={() => onChoice('exclude')} className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:bg-white/10">Exclude</button>
@@ -532,6 +537,10 @@ function BeforeIContinue() {
             </motion.div>
           )}
         </AnimatePresence>
+
+        <p className="mt-5 text-center text-[10px] uppercase tracking-[0.3em] text-white/30">
+          See the capability boundary in action — <Link href="/docs/security" className="text-cyan-400 hover:underline">docs/security</Link>
+        </p>
       </div>
     </section>
   );
@@ -554,7 +563,7 @@ function Typewriter({ text, className, speed = 22 }: { text: string; className?:
   return <span className={className}>{display}</span>;
 }
 
-/* ---------- See Aartiq in Action workflow ---------- */
+/* ---------- Aartiq Loop workflow ---------- */
 function ActionWorkflow() {
   const steps = ["Understand", "Plan", "Explain", "Ask", "Execute", "Result"];
   const ref = useRef<HTMLDivElement>(null);
@@ -566,7 +575,6 @@ function ActionWorkflow() {
     let i = 0;
     const id = setInterval(() => {
       i += 1;
-      // slow briefly at "Ask"
       setStep(i);
       if (i >= steps.length) clearInterval(id);
     }, 700);
@@ -574,7 +582,7 @@ function ActionWorkflow() {
   }, [inView, reduced]);
 
   return (
-    <div ref={ref} className="mx-auto mt-12 grid max-w-2xl gap-3">
+    <div ref={ref} className="mx-auto mt-10 grid max-w-2xl gap-3">
       {steps.map((s, idx) => (
         <div key={s} className="flex flex-col items-center">
           <motion.div
@@ -601,6 +609,20 @@ function ActionWorkflow() {
         </div>
       ))}
     </div>
+  );
+}
+
+/* ---------- Compact demo card ---------- */
+function DemoCard({ tag, title, body, href, cta }: { tag: string; title: string; body: string; href: string; cta: string }) {
+  return (
+    <Link href={href} className="group flex flex-col rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition-all hover:border-cyan-400/40 hover:bg-[#0a0c10]/80">
+      <span className="mb-4 text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400">{tag}</span>
+      <h4 className="mb-3 text-xl font-black uppercase tracking-[0.05em] text-white">{title}</h4>
+      <p className="mb-6 flex-1 text-sm font-medium leading-relaxed text-white/40">{body}</p>
+      <span className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-white/60 transition group-hover:text-cyan-400">
+        {cta} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+      </span>
+    </Link>
   );
 }
 
@@ -696,8 +718,17 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-14 max-w-3xl text-xl font-medium leading-relaxed text-white/50 sm:text-2xl"
+            transition={{ delay: 0.18 }}
+            className="mt-14 max-w-3xl text-2xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl"
+          >
+            AI that can act. <span className="text-cyan-400">You decide where it stops.</span>
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.24 }}
+            className="mt-8 max-w-3xl text-xl font-medium leading-relaxed text-white/50 sm:text-2xl"
           >
             “The most important question isn't what you ask AI. It's what AI asks you before it acts.”
           </motion.p>
@@ -705,8 +736,8 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.25 }}
-            className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-white/40 sm:text-lg"
+            transition={{ delay: 0.3 }}
+            className="mt-6 max-w-3xl text-base font-medium leading-relaxed text-white/40 sm:text-lg"
           >
             Aartiq™ is an open-source AI browser that plans tasks, explains non-trivial actions, requests permission when required, and executes through controlled capabilities.
           </motion.p>
@@ -714,7 +745,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.32 }}
+            transition={{ delay: 0.36 }}
             className="mt-8 inline-flex items-center gap-3 rounded-full border border-cyan-500/30 bg-cyan-500/5 px-6 py-3 font-mono text-xs font-black uppercase tracking-[0.25em] text-cyan-300"
           >
             <span>Plan</span><span className="text-cyan-500/50">→</span>
@@ -726,7 +757,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
+            transition={{ delay: 0.44 }}
             className="mt-16 flex flex-wrap items-center justify-center gap-6"
           >
             <Link href="/downloads" className="group flex items-center gap-4 rounded-[2.5rem] bg-white px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-black transition hover:bg-sky-400 hover:text-white">
@@ -760,247 +791,219 @@ export default function Home() {
 
         <Boundary />
 
-        {/* 2. BEFORE I CONTINUE */}
-        <BeforeIContinue />
-
-        <Boundary />
-
-        {/* 3. WHY AARTIQ */}
-        <section id="why" className="py-40 scroll-mt-24">
+        {/* 2. THE PROBLEM */}
+        <section id="problem" className="py-40 scroll-mt-24">
           <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
-              <Quote size={14} /> Why Aartiq
+            <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-rose-500/20 bg-rose-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-rose-400">
+              <AlertTriangle size={14} /> The Problem
             </div>
-            <div className="space-y-8">
-              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
-                Traditional browsers help you navigate the web.
-              </motion.p>
-              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
-                AI assistants help you understand information.
-              </motion.p>
-              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-3xl font-black leading-relaxed text-white sm:text-4xl">
-                Aartiq is built for the space between the two: helping AI carry out tasks while keeping the user in control.
-              </motion.p>
-              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="pt-10 text-4xl font-black uppercase tracking-tighter bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent sm:text-6xl">
-                AI can act. You decide what it is allowed to do.
-              </motion.p>
-            </div>
-          </div>
-        </section>
-
-        <Boundary />
-
-        {/* 4. SEE AARTIQ IN ACTION */}
-        <section id="demo" className="py-40 scroll-mt-24">
-          <div className="mb-12 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
-              <Video size={14} /> Demo
-            </div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl">
-              See It In <span className="text-white/40">Action.</span>
+            <h2 className="text-4xl font-black uppercase leading-[1.05] tracking-tighter text-white sm:text-6xl">
+              AI can act <span className="text-white/40">without asking</span> the questions that matter.
             </h2>
-          </div>
-
-          <ClickToLoadYouTube />
-
-          <div className="mt-24 text-center">
-            <p className="mb-2 text-xs font-black uppercase tracking-[0.5em] text-cyan-400">The Aartiq Loop</p>
-            <ActionWorkflow />
-          </div>
-        </section>
-
-        <Boundary />
-
-        {/* 5. THE QUESTION THAT WASN'T ASKED */}
-        <section id="unasked" className="py-40 scroll-mt-24">
-          <div className="mb-16 text-center">
-            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
-              The Question That <span className="text-white/40">Wasn't Asked.</span>
-            </h2>
-          </div>
-
-          <div className="grid items-stretch gap-6 lg:grid-cols-2">
-            <div className="relative overflow-hidden rounded-[40px] border border-rose-500/20 bg-[#0a070e] p-10">
-              <p className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-rose-400">Generic AI</p>
-              <div className="space-y-3 font-mono text-sm text-white/70">
-                <p className="rounded-xl bg-white/5 p-3">&gt; Organize my files.</p>
-                <p className="rounded-xl bg-rose-500/10 p-3 text-rose-300">&gt; Done. All files sorted into folders.</p>
-              </div>
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-rose-500/10 py-3 text-xs font-black uppercase tracking-[0.4em] text-rose-300 backdrop-blur"
-              >
-                It never asked.
-              </motion.div>
-            </div>
-
-            <div className="rounded-[40px] border border-cyan-500/20 bg-[#070a14] p-10">
-              <p className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-cyan-400">Aartiq reveals</p>
-              <ul className="space-y-3 text-sm font-medium text-white/80">
-                {[
-                  "Which directories should be scanned?",
-                  "Can existing file structures be modified?",
-                  "Should temporary files be permanently deleted?",
-                  "Are private or sensitive documents involved?",
-                  "Should changes be applied immediately or held for review?",
-                ].map((q, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.25 }}
-                    className="flex items-start gap-3 rounded-xl bg-white/[0.03] p-3"
-                  >
-                    <span className="text-cyan-400 font-bold">0{i+1}.</span> {q}
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-16 max-w-3xl rounded-[40px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-center">
-            <blockquote className="text-2xl font-bold leading-relaxed text-white sm:text-3xl">
-              <Typewriter text={'"One unasked question taught me that the questions we don’t ask matter most."'} className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent" />
-            </blockquote>
-          </div>
-        </section>
-
-        <Boundary />
-
-        {/* 6. PERMISSION-FIRST AI */}
-        <section id="permissions" className="py-40 scroll-mt-24">
-          <div className="mb-16 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
-              <ShieldCheck size={14} /> Permission-First AI
-            </div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              Risk-Based <span className="text-white/40">Permissions.</span>
-            </h2>
-          </div>
-
-          <div className="mx-auto max-w-4xl space-y-5">
-            {[
-              { level: "Low", behavior: "Automatic / policy-controlled", color: "bg-emerald-500" },
-              { level: "Medium", behavior: "Explicit approval", color: "bg-amber-500" },
-              { level: "High", behavior: "Stronger confirmation", color: "bg-orange-500" },
-              { level: "Critical", behavior: "Explicit authorization; never silently auto-approved", color: "bg-rose-500" },
-            ].map((r, i) => (
-              <motion.div
-                key={r.level}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="flex flex-col gap-4 rounded-[32px] border border-white/5 bg-[#0a0c10]/50 p-8 sm:flex-row sm:items-center sm:justify-between"
-              >
-                <div className="flex items-center gap-4">
-                  <span className={`h-3 w-3 rounded-full ${r.color}`} />
-                  <span className="text-2xl font-black uppercase tracking-wider text-white">{r.level}</span>
-                </div>
-                <p className="max-w-md text-sm font-medium text-white/50 sm:text-right">{r.behavior}</p>
-              </motion.div>
-            ))}
-            <p className="pt-6 text-center text-sm font-medium text-white/40">
-              Risk is assigned to the <span className="text-white/70">capability being invoked</span>, not inferred solely from the wording of the prompt.
+            <p className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/50">
+              A generic assistant treats missing context as permission. It finishes the task and hopes the user meant it. Aartiq treats missing context as a reason to pause.
             </p>
           </div>
         </section>
 
         <Boundary />
 
-        {/* 7. HOW IT WORKS */}
-        <section id="how" className="py-40 scroll-mt-24">
-          <div className="mb-16 text-center">
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              How It <span className="text-white/40">Works.</span>
+        {/* 3. THE AARTIQ LOOP */}
+        <section id="loop" className="py-40 scroll-mt-24">
+          <div className="mb-8 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              <Bot size={14} /> The Aartiq Loop
+            </div>
+            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+              Understand → Plan → Explain → <span className="text-cyan-400">Ask</span> → Execute → Result
             </h2>
           </div>
+          <ActionWorkflow />
+          <p className="mx-auto mt-10 max-w-xl text-center text-sm font-medium text-white/40">
+            The only phase that can slow the whole system is <span className="text-cyan-400 font-bold">Ask</span>. That is intentional.
+          </p>
+        </section>
 
-          <div className="mx-auto max-w-2xl space-y-0">
-            {[
-              { label: "USER", sub: "Natural-language goal", strong: false },
-              { label: "AI ORCHESTRATOR", sub: "Interprets intent", strong: false },
-              { label: "TASK PLANNING", sub: "Structures execution", strong: false },
-              { label: "PERMISSION", sub: "Evaluates policy & boundaries", strong: true },
-              { label: "APPROVAL", sub: "Human-in-the-loop authorization", strong: true },
-              { label: "EXECUTION", sub: "Controlled, capability-scoped", strong: false },
-            ].map((node, i, arr) => (
-              <div key={node.label} className="flex flex-col items-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`w-full rounded-3xl border px-8 py-6 text-center ${
-                    node.strong
-                      ? "border-cyan-400/50 bg-cyan-500/10 shadow-[0_0_30px_rgba(6,182,212,0.2)]"
-                      : "border-white/10 bg-white/[0.03]"
-                  }`}
-                >
-                  <p className={`text-xl font-black uppercase tracking-[0.2em] ${node.strong ? "text-cyan-300" : "text-white/80"}`}>{node.label}</p>
-                  <p className="mt-1 text-xs font-medium text-white/40">{node.sub}</p>
-                </motion.div>
-                {i < arr.length - 1 && <div className="my-1 text-cyan-400/60">↓</div>}
-              </div>
-            ))}
+        <Boundary />
+
+        {/* 4. LIVE EXAMPLES */}
+        <section id="examples" className="py-24 scroll-mt-24">
+          <div className="mb-12 text-center">
+            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+              Five <span className="text-white/40">Demos.</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm font-medium text-white/50">
+              One killer interaction, plus the scenarios that prove the thesis.
+            </p>
+          </div>
+
+          <BeforeIContinue />
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <DemoCard
+              tag="Demo 2 — Browser"
+              title="Browser action"
+              body="A task needs navigation and a click. Aartiq explains the consequential step before performing it."
+              href="/docs/automation"
+              cta="How automation works"
+            />
+            <DemoCard
+              tag="Demo 3 — Documents"
+              title="Document creation"
+              body="“Turn these files into a report.” Planning → source selection → generated document → result."
+              href="/docs/ai-commands"
+              cta="AI command reference"
+            />
+            <DemoCard
+              tag="Demo 4 — Boundary"
+              title="Dangerous request"
+              body="Give it a task where a generic agent would overreach. Aartiq stops before the consequential step."
+              href="/docs/security"
+              cta="Security model"
+            />
+            <DemoCard
+              tag="Demo 5 — Attack"
+              title="Attack the system"
+              body="Prompt injection, malicious page instructions, path traversal, escalation. Aartiq refuses or contains."
+              href="/docs/testing"
+              cta="Tests & threat model"
+            />
           </div>
         </section>
 
         <Boundary />
 
-        {/* 8. SECURITY */}
+        {/* 5. SECURITY ARCHITECTURE — evidence-driven */}
         <section id="security" className="py-40 scroll-mt-24">
-          <div className="mb-16 text-center">
+          <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
-              <Lock size={14} /> Security
+              <Lock size={14} /> Security Architecture
             </div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
               Defense In <span className="text-white/40">Depth.</span>
             </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-base font-medium text-white/50">
+              Every claim below links to the source or documentation that backs it. Inspect, don't trust.
+            </p>
           </div>
 
           <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { icon: ShieldAlert, title: "Capability Controls", text: "Actions are gated by registered capabilities and a risk policy, not by prompt wording." },
-              { icon: FolderLock, title: "Directory Allowlists", text: "Filesystem boundaries are explicit, inspectable, and user-controlled." },
-              { icon: Lock, title: "Encrypted Vault", text: "Secrets and credentials are stored in an encrypted local vault." },
-              { icon: GitBranch, title: "CI Verification", text: "Builds and policies are verified continuously in CI before release." },
-              { icon: CheckCircle2, title: "492 Automated Tests", text: "A broad test suite guards permission, security, and execution behavior." },
-              { icon: HelpCircle, title: "Honest Limitations", text: "Aartiq documents what it cannot guarantee — no security theater." },
-            ].map((s, i) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8"
-              >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
-                  <s.icon size={24} />
-                </div>
-                <h3 className="mb-3 text-lg font-black uppercase tracking-[0.1em] text-white">{s.title}</h3>
-                <p className="text-sm font-medium leading-relaxed text-white/40">{s.text}</p>
-              </motion.div>
-            ))}
+            <Link href="/docs/security" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><ShieldAlert size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">Capability Controls</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Actions are gated by registered capabilities and a risk policy, not by prompt wording.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/security →</span>
+            </Link>
+            <Link href="/docs/security" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><FolderLock size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">Directory Allowlists</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Filesystem boundaries are explicit, inspectable, and user-controlled — see them enforced live above.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/security →</span>
+            </Link>
+            <Link href="/docs/security" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-6 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><Lock size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">Encrypted Vault</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Secrets and credentials are stored in an encrypted local vault. Read the threat model it addresses.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/security →</span>
+            </Link>
+            <Link href="/docs/testing" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><GitBranch size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">CI Verification</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Builds and policies are verified continuously in CI before any release ships.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/testing →</span>
+            </Link>
+            <Link href="/docs/testing" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><CheckCircle2 size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">492 Automated Tests</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Including approval-ticket and permission-boundary regression tests. Browse the suite directly.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/testing →</span>
+            </Link>
+            <Link href="/docs/security" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><HelpCircle size={24} /></div>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">Honest Limitations</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Aartiq documents what it cannot guarantee. No security theater — read what is and isn't claimed.</p>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">docs/security →</span>
+            </Link>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-5xl rounded-[40px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-10">
+            <p className="mb-6 text-[10px] font-black uppercase tracking-[0.5em] text-emerald-400">Inspect the repository in this order</p>
+            <div className="flex flex-wrap items-center gap-3 text-xs font-black uppercase tracking-[0.15em] text-white/70">
+              <Link href="/docs/overview" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Architecture</Link>
+              <span className="text-white/20">→</span>
+              <Link href="/docs/security" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Security model</Link>
+              <span className="text-white/20">→</span>
+              <Link href="/docs/security" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Threat model</Link>
+              <span className="text-white/20">→</span>
+              <Link href="/docs/automation" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Permissions</Link>
+              <span className="text-white/20">→</span>
+              <Link href="/docs/testing" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Tests</Link>
+              <span className="text-white/20">→</span>
+              <a href="https://github.com/Preet3627/Aartiq" target="_blank" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Source</a>
+            </div>
           </div>
         </section>
 
         <Boundary />
 
-        {/* 9. CORE FEATURES */}
+        {/* 6. OPEN SOURCE */}
+        <section id="opensource" className="py-40 scroll-mt-24">
+          <div className="rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 lg:p-24 overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.03] blur-[120px] rounded-full sm:block hidden" />
+            <div className="grid gap-16 lg:grid-cols-2 items-center">
+              <div>
+                <div className="mb-10 inline-flex items-center gap-4 rounded-3xl bg-white/5 p-4 text-white ring-1 ring-white/10 shadow-2xl">
+                  <Github size={40} />
+                </div>
+                <h2 className="mb-8 text-5xl font-black uppercase tracking-tighter text-white sm:text-7xl lg:text-8xl leading-[0.85]">
+                  Open <br /> <span className="text-white/40">Source.</span>
+                </h2>
+                <p className="mb-12 text-xl font-medium leading-relaxed text-white/40 max-w-xl">
+                  Apache-2.0 licensed. Because systems that deal with powerful capabilities should be understandable and reviewable.
+                </p>
+                <div className="flex flex-wrap gap-5">
+                  <a href="https://github.com/Preet3627/Aartiq" target="_blank" className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10">
+                    View Source <ExternalLink size={18} />
+                  </a>
+                  <a href="https://github.com/Preet3627/Aartiq/fork" target="_blank" className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white">
+                    Fork Project <GitPullRequest size={18} />
+                  </a>
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-5">
+                 {[
+                    { icon: Star, label: "Stars", value: githubStats.stars, color: "text-amber-400" },
+                    { icon: Users, label: "Contributors", value: githubStats.contributors, color: "text-sky-400" },
+                    { icon: GitPullRequest, label: "Pull Requests", value: githubStats.pull_requests, color: "text-purple-400" },
+                    { icon: MessageSquare, label: "Issues", value: githubStats.open_issues, color: "text-emerald-400" },
+                 ].map((stat, i) => (
+                    <div key={i} className="rounded-[3rem] border border-white/5 bg-[#03040b]/60 p-10 hover:border-white/10 transition">
+                       <div className="mb-4 flex items-center justify-between">
+                          <stat.icon size={24} className={stat.color} />
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">{stat.label}</span>
+                       </div>
+                       <p className="text-4xl font-black">{stat.value}</p>
+                    </div>
+                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* CORE FEATURES — concise, full matrix in docs */}
         <section id="features" className="py-40">
-          <div className="mb-24 text-center">
+          <div className="mb-16 text-center">
              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
                <Cpu size={14} /> Core Technologies
              </div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              Core <br /> <span className="text-white/40">Features.</span>
+            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+              Built <span className="text-white/40">capable.</span>
             </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/50">
+              Aartiq does more than ask — but asking is the part that matters most. The full feature matrix lives in the <Link href="/features" className="text-cyan-400 hover:underline">docs</Link>.
+            </p>
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -1025,7 +1028,7 @@ export default function Home() {
 
         <Boundary />
 
-        {/* 10. FOUNDER STORY */}
+        {/* FOUNDER STORY */}
         <section id="founder" className="py-40 scroll-mt-24">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-12 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
@@ -1080,25 +1083,25 @@ export default function Home() {
 
         <Boundary />
 
-        {/* 11. PROJECT STATUS */}
+        {/* PROJECT STATUS — reframed, product-oriented */}
         <section id="status" className="py-40 scroll-mt-24">
           <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
             <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
               <AlertTriangle size={14} /> 🚧 Project Status
             </div>
-            <h2 className="mb-10 max-w-4xl text-5xl font-black uppercase tracking-tighter sm:text-7xl leading-[0.9]">
-              Aartiq isn't <span className="text-amber-400">abandoned.</span> It's <span className="text-amber-400">paused.</span>
+            <h2 className="mb-10 max-w-4xl text-4xl font-black uppercase tracking-tighter sm:text-6xl leading-[0.95]">
+              Development is currently <span className="text-amber-400">paused.</span>
             </h2>
 
             <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
               <p>
-                After five months of independently building Aartiq, the founder is temporarily shifting primary focus toward studies and upcoming exams.
+                Development is currently paused while the founder focuses on studies. The repository remains available, and security-, permission-, and user-data-related changes require human review.
               </p>
               <p>
                 During this period, AI agents may assist with reviewing issues, analyzing bugs, improving documentation, maintaining the codebase, and preparing proposed fixes.
               </p>
               <p className="text-white/70">
-                But changes involving security, permissions, user data, releases, or project direction remain subject to human review and approval. AI assists. Humans remain responsible.
+                AI assistance does not replace human responsibility. The philosophy of the product and the governance of the project are the same: AI can assist, but consequential authority stays with a human.
               </p>
             </div>
 
@@ -1115,7 +1118,7 @@ export default function Home() {
 
         <Boundary />
 
-        {/* 12. FINAL REVEAL */}
+        {/* FINAL REVEAL — 1 CM as identity, reduced repetition */}
         <section id="reveal" className="py-48 scroll-mt-24 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
@@ -1128,7 +1131,7 @@ export default function Home() {
               1 CM
             </h2>
             <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
-              1 CM away from the future.
+              The space between capability and authority.
             </p>
             <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
               1 CM is not merely a measurement of distance. It is a reminder that capability and authority are not the same thing. Sometimes the difference between an AI that can act and an AI you can trust is the space it leaves for you to decide.
@@ -1138,7 +1141,7 @@ export default function Home() {
 
         <Boundary />
 
-        {/* 13. CLOSING */}
+        {/* CLOSING */}
         <section className="py-32 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -1165,59 +1168,61 @@ export default function Home() {
         {/* FAQ */}
         <FaqSection />
 
-        {/* RESOURCES: GITHUB + CONTRIBUTORS */}
-        <section id="github" className="py-40">
-          <div className="rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 lg:p-24 overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.03] blur-[120px] rounded-full sm:block hidden" />
-
-            <div className="grid gap-20 lg:grid-cols-2 items-center">
-              <div>
-                <div className="mb-10 inline-flex items-center gap-4 rounded-3xl bg-white/5 p-4 text-white ring-1 ring-white/10 shadow-2xl">
-                  <Github size={40} />
-                </div>
-                <h2 className="mb-8 text-5xl font-black uppercase tracking-tighter text-white sm:text-7xl lg:text-8xl leading-[0.85]">
-                  Open <br /> <span className="text-white/40">Source.</span>
-                </h2>
-                <p className="mb-12 text-xl font-medium leading-relaxed text-white/40 max-w-xl">
-                  Apache-2.0 licensed. Source at github.com/Preet3627/Aartiq
-                </p>
-
-                <div className="flex flex-wrap gap-5">
-                  <a
-                    href="https://github.com/Preet3627/Aartiq"
-                    target="_blank"
-                    className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10"
-                  >
-                    View Source <ExternalLink size={18} />
-                  </a>
-                  <a
-                    href="https://github.com/Preet3627/Aartiq/fork"
-                    target="_blank"
-                    className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white"
-                  >
-                    Fork Project <GitPullRequest size={18} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-5">
-                 {[
-                    { icon: Star, label: "Stars", value: githubStats.stars, color: "text-amber-400" },
-                    { icon: Users, label: "Contributors", value: githubStats.contributors, color: "text-sky-400" },
-                    { icon: GitPullRequest, label: "Pull Requests", value: githubStats.pull_requests, color: "text-purple-400" },
-                    { icon: MessageSquare, label: "Issues", value: githubStats.open_issues, color: "text-emerald-400" },
-                 ].map((stat, i) => (
-                    <div key={i} className="rounded-[3rem] border border-white/5 bg-[#03040b]/60 p-10 hover:border-white/10 transition">
-                       <div className="mb-4 flex items-center justify-between">
-                          <stat.icon size={24} className={stat.color} />
-                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">{stat.label}</span>
-                       </div>
-                       <p className="text-4xl font-black">{stat.value}</p>
+        {/* DOCS */}
+        <section id="docs" className="py-40 scroll-mt-24">
+           <div className="overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14] to-[#04060b] shadow-[0_50px_100px_rgba(0,0,0,0.6)]">
+              <div className="grid lg:grid-cols-[1.2fr_2fr]">
+                 <div className="border-b border-white/5 p-16 lg:border-b-0 lg:border-r">
+                    <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-400 shadow-2xl">
+                       <BookOpen size={32} />
                     </div>
-                 ))}
+                    <h2 className="mb-10 text-5xl font-black uppercase tracking-tighter text-white sm:text-6xl">Documentation</h2>
+                    <div className="space-y-3">
+                       <Link href="/docs/ai-commands" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
+                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">AI Commands</span>
+                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                       </Link>
+                       <Link href="/docs/overview" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
+                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Architecture Overview</span>
+                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                       </Link>
+                       <Link href="/docs/security" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
+                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Security Model</span>
+                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                       </Link>
+                       <Link href="/docs/automation" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
+                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Automation</span>
+                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                       </Link>
+                       <Link href="/docs/testing" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
+                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Testing & Threat Model</span>
+                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+                       </Link>
+                    </div>
+                 </div>
+                 <div className="p-16 lg:p-28">
+                   <p className="mb-3 text-[10px] font-black uppercase tracking-[0.6em] text-sky-400">Reference</p>
+                   <h3 className="mb-10 text-5xl font-black text-white leading-tight">Documentation</h3>
+                   <p className="mb-14 text-xl font-medium leading-relaxed text-white/40">
+                     Core documentation for AI command reference, automation API, security architecture, and cross-platform deployment.
+                   </p>
+                   <div className="grid gap-6">
+                     <Link href="/docs/ai-commands" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
+                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors"><CheckCircle2 size={16} /></div>
+                       <span className="text-base font-medium leading-relaxed text-white/60">AI command catalog with risk indicators and multi-model orchestration. Source: src/lib/AICommandParser.ts</span>
+                     </Link>
+                     <Link href="/docs/security" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
+                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors"><CheckCircle2 size={16} /></div>
+                       <span className="text-base font-medium leading-relaxed text-white/60">Visual sandbox, syntactic firewall, and human-in-the-loop authorization. Source: src/lib/Security.ts</span>
+                     </Link>
+                     <Link href="/docs/getting-started" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
+                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors"><CheckCircle2 size={16} /></div>
+                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Preet3627/Aartiq</span>
+                     </Link>
+                   </div>
+                 </div>
               </div>
-            </div>
-          </div>
+           </div>
         </section>
 
         {/* DOWNLOADS */}
@@ -1231,7 +1236,6 @@ export default function Home() {
                   <p className="text-2xl font-black">{latestRelease?.tag_name || (version ? `v${version} ${channel}` : '...')}</p>
               </div>
            </div>
-
            <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-5">
               {downloadLinks.length > 0 ? downloadLinks.map((item, i) => (
                 <motion.a
@@ -1258,92 +1262,10 @@ export default function Home() {
                 ))
               )}
              </div>
-
-             <motion.div
-               initial={{ opacity: 0, y: 20 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               className="mt-12 flex justify-center"
-             >
-              <div dangerouslySetInnerHTML={{
-                __html: `<ms-store-badge
-                  productid="9nd6wg2rp7cm"
-                  productname="Aartiq"
-                  window-mode="direct"
-                  theme="dark"
-                  size="large"
-                  language="en-gb"
-                  animation="on">
-                </ms-store-badge>`
-              }} />
+             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-12 flex justify-center">
+              <div dangerouslySetInnerHTML={{ __html: `<ms-store-badge productid="9nd6wg2rp7cm" productname="Aartiq" window-mode="direct" theme="dark" size="large" language="en-gb" animation="on"></ms-store-badge>` }} />
             </motion.div>
           </section>
-
-        {/* DOCS */}
-        <section id="docs" className="py-40 scroll-mt-24">
-           <div className="overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14] to-[#04060b] shadow-[0_50px_100px_rgba(0,0,0,0.6)]">
-              <div className="grid lg:grid-cols-[1.2fr_2fr]">
-                 <div className="border-b border-white/5 p-16 lg:border-b-0 lg:border-r">
-                    <div className="mb-10 flex h-16 w-16 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-400 shadow-2xl">
-                       <BookOpen size={32} />
-                    </div>
-                    <h2 className="mb-10 text-5xl font-black uppercase tracking-tighter text-white sm:text-6xl">Documentation</h2>
-
-                    <div className="space-y-3">
-                       <Link href="/docs/ai-commands" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
-                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">AI Commands</span>
-                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
-                       </Link>
-                       <Link href="/docs/overview" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
-                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Architecture Overview</span>
-                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
-                       </Link>
-                       <Link href="/docs/security" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
-                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Security Model</span>
-                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
-                       </Link>
-                       <Link href="/docs/automation" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
-                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Automation</span>
-                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
-                       </Link>
-                       <Link href="/docs/getting-started" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
-                         <span className="text-[12px] font-black uppercase tracking-[0.3em]">Getting Started</span>
-                         <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
-                       </Link>
-                    </div>
-                 </div>
-
-                 <div className="p-16 lg:p-28">
-                   <p className="mb-3 text-[10px] font-black uppercase tracking-[0.6em] text-sky-400">Reference</p>
-                   <h3 className="mb-10 text-5xl font-black text-white leading-tight">Documentation</h3>
-                   <p className="mb-14 text-xl font-medium leading-relaxed text-white/40">
-                     Core documentation for AI command reference, automation API, security architecture, and cross-platform deployment.
-                   </p>
-
-                   <div className="grid gap-6">
-                     <Link href="/docs/ai-commands" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
-                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors">
-                         <CheckCircle2 size={16} />
-                       </div>
-                       <span className="text-base font-medium leading-relaxed text-white/60">AI command catalog with risk indicators and multi-model orchestration. Source: src/lib/AICommandParser.ts</span>
-                     </Link>
-                     <Link href="/docs/security" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
-                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors">
-                         <CheckCircle2 size={16} />
-                       </div>
-                       <span className="text-base font-medium leading-relaxed text-white/60">Visual sandbox, syntactic firewall, and human-in-the-loop authorization. Source: src/lib/Security.ts</span>
-                     </Link>
-                     <Link href="/docs/getting-started" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
-                       <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors">
-                         <CheckCircle2 size={16} />
-                       </div>
-                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Preet3627/Aartiq</span>
-                     </Link>
-                   </div>
-                 </div>
-              </div>
-           </div>
-        </section>
 
         {/* LICENSE */}
         <section id="license" className="py-40 scroll-mt-24">
@@ -1351,11 +1273,8 @@ export default function Home() {
              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
                <Scale size={14} /> Legal
              </div>
-             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-               License
-             </h2>
+             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">License</h2>
            </div>
-
            <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-[#0a0c10]/50">
              <div className="overflow-x-auto">
                <table className="w-full text-left">
@@ -1378,17 +1297,12 @@ export default function Home() {
                </table>
              </div>
              <div className="border-t border-white/5 p-10 text-sm font-medium leading-relaxed text-white/40">
-               The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.
-               All other components remain Apache 2.0.
+               The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients. All other components remain Apache 2.0.
              </div>
            </div>
-
            <div className="mx-auto mt-10 max-w-4xl rounded-[40px] border border-amber-500/10 bg-amber-500/[0.03] p-10">
              <p className="text-base font-medium leading-relaxed text-white/40">
-               "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
-               While our source code is freely available under the Apache 2.0 License, this license does not grant
-               permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
-               browser must be rebranded under a completely different name."
+               "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627). While our source code is freely available under the Apache 2.0 License, this license does not grant permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this browser must be rebranded under a completely different name."
              </p>
            </div>
         </section>
@@ -1398,23 +1312,15 @@ export default function Home() {
            <div className="grid gap-20 sm:grid-cols-2 lg:grid-cols-5">
                <div className="lg:col-span-2">
                   <div className="mb-10 flex items-center gap-4">
-              <div className="relative flex h-12 w-12 items-center justify-center">
-                       <Image
-                          src="/logo-transparent.png"
-                          alt="Aartiq Logo"
-                          width={48}
-                          height={48}
-                          className="h-full w-full object-contain"
-                       />
+                     <div className="relative flex h-12 w-12 items-center justify-center">
+                       <Image src="/logo-transparent.png" alt="Aartiq Logo" width={48} height={48} className="h-full w-full object-contain" />
                      </div>
                      <span className="text-2xl font-black uppercase tracking-tighter">Aartiq</span>
                   </div>
                  <p className="max-w-md text-lg font-medium leading-relaxed text-white/30">
-                      An open-source browser with an AI assistant for workflow automation,
-                     document generation, and background task scheduling.
+                      An open-source browser with an AI assistant for workflow automation, document generation, and background task scheduling.
                  </p>
                </div>
-
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Source Code</p>
                    <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
@@ -1425,7 +1331,6 @@ export default function Home() {
                      <li><a href="https://github.com/Preet3627/Aartiq/tree/main/flutter_browser_app" target="_blank" className="hover:text-sky-400 transition">flutter_browser_app/</a></li>
                   </ul>
                </div>
-
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Ecosystem</p>
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
@@ -1434,7 +1339,6 @@ export default function Home() {
                      <li><a href="#" className="hover:text-sky-400 transition">Mobile Verifier</a></li>
                   </ul>
                </div>
-
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Support</p>
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
@@ -1444,12 +1348,9 @@ export default function Home() {
                   </ul>
                </div>
            </div>
-
            <div className="mt-40 flex flex-col items-center justify-between gap-10 border-t border-white/5 pt-20 md:flex-row">
                <div className="flex flex-col gap-2">
-                   <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">
-                      © 2026 Aartiq™. All rights reserved.
-                   </p>
+                   <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">© 2026 Aartiq™. All rights reserved.</p>
                   <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
                     Built by <span className="text-white/20">Preet Patel</span> (Latestinssan · Preet3627) — v{version || '...'}
                   </p>
