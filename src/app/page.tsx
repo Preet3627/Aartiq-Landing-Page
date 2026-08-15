@@ -789,8 +789,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="mx-auto max-w-3xl"
           >
-            <p className="text-[10px] font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
-            <h2 className="mt-6 text-7xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(56,189,248,0.45)] sm:text-9xl">
+            <h2 className="text-7xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(56,189,248,0.45)] sm:text-9xl">
               1 CM
             </h2>
             <p className="mt-8 text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
@@ -837,7 +836,7 @@ export default function Home() {
               AI shouldn't interpret <span className="text-white/40">missing context</span> as permission.
             </h2>
             <p className="mx-auto mt-8 max-w-2xl text-lg font-medium leading-relaxed text-white/50">
-              Most assistants treat missing context as permission — they finish the task and hope you meant it. Aartiq's policy treats missing context as a reason to pause and ask. That distinction is enforced by its capability policy, which you can read in the source.
+              Many AI systems are optimized to complete the task when context is incomplete. Aartiq treats missing context differently: when authority is unclear, it can pause and ask. That distinction is enforced by its capability policy, which you can read in the source.
             </p>
           </div>
 
@@ -877,7 +876,7 @@ export default function Home() {
               The same agent, <span className="text-white/40">four more scenarios.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-sm font-medium text-white/50">
-              Beyond the filesystem example above — each one shows the 1 CM boundary holding.
+              Beyond the filesystem example above — each one shows the permission boundary holding.
             </p>
           </div>
 
@@ -1173,7 +1172,7 @@ export default function Home() {
                 Aartiq isn't abandoned. It's <span className="text-amber-400">paused</span> — by design, with review.
               </p>
               <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
-                The 1 CM boundary that defines the product also defines how the project is run: capabilities ship only with human authorization.
+                This boundary that defines the product also defines how the project is run: capabilities ship only with human authorization.
               </p>
             </div>
           </div>
@@ -1349,23 +1348,19 @@ export default function Home() {
 
         <Boundary />
 
-        {/* FINAL REVEAL — 1 CM as identity, reduced repetition */}
+        {/* FINAL REVEAL — quiet signature, not another explanation */}
         <section id="reveal" className="py-48 scroll-mt-24 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="space-y-10"
+            className="space-y-8"
           >
-            <p className="text-xs font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
             <h2 className="text-8xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(56,189,248,0.55)] drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] sm:text-[12rem] leading-none">
               1 CM
             </h2>
-            <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
+            <p className="text-3xl font-black uppercase tracking-tight text-white/80 sm:text-5xl">
               The space between capability and authority.
-            </p>
-            <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
-              1 CM is the space between what you can cross and what you choose to respect.
             </p>
           </motion.div>
         </section>
