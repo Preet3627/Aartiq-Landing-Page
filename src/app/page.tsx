@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { APP_INFO } from "@/lib/version";
@@ -37,6 +37,10 @@ import {
   Lock,
   HelpCircle,
   Plus,
+  Pause,
+  GitBranch,
+  ShieldAlert,
+  FolderLock,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -199,7 +203,7 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
             <div className="flex items-center gap-4">
               <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
                 <Image
-                  src="/logo-transparent.png"
+                  src="/icon.png"
                   alt="Aartiq Logo"
                   width={48}
                   height={48}
@@ -384,6 +388,222 @@ function FaqSection() {
   );
 }
 
+/* ---------- Hidden 1 CM motif: thin cyan boundary line ---------- */
+function Boundary() {
+  return (
+    <div className="relative mx-auto my-2 flex max-w-7xl items-center justify-center px-6 sm:px-12">
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
+      <span className="absolute right-6 text-[8px] font-black uppercase tracking-[0.4em] text-cyan-500/30 sm:right-12">1 CM</span>
+    </div>
+  );
+}
+
+/* ---------- Before I Continue — signature permission interaction ---------- */
+const fsFolders = [
+  { name: "/Documents", status: "✓", state: "allowed" },
+  { name: "/Projects", status: "✓", state: "allowed" },
+  { name: "/Downloads", status: "?", state: "ask" },
+  { name: "/Private", status: "🔒", state: "restricted" },
+  { name: "/Diary", status: "🔒", state: "restricted" },
+];
+
+function BeforeIContinue() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: false, amount: 0.35 });
+  const reduced = useReducedMotion();
+  const [scanIndex, setScanIndex] = useState(0);
+  const [phase, setPhase] = useState<'idle' | 'scanning' | 'paused' | 'resolved'>('idle');
+  const [choice, setChoice] = useState<null | 'approve' | 'exclude' | 'deny'>(null);
+
+  useEffect(() => {
+    if (!inView) {
+      setScanIndex(0);
+      setPhase('idle');
+      setChoice(null);
+      return;
+    }
+    if (reduced) {
+      setScanIndex(3);
+      setPhase('paused');
+      return;
+    }
+    setPhase('scanning');
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setScanIndex(i);
+      if (i >= 3) {
+        clearInterval(id);
+        setPhase('paused');
+      }
+    }, 850);
+    return () => clearInterval(id);
+  }, [inView, reduced]);
+
+  const onChoice = (c: 'approve' | 'exclude' | 'deny') => {
+    setChoice(c);
+    setPhase('resolved');
+  };
+
+  return (
+    <section id="before" className="py-32 scroll-mt-24" ref={ref}>
+      <div className="mb-16 text-center">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400">
+          <FolderLock size={14} /> Signature Interaction
+        </div>
+        <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+          Before I <span className="text-cyan-400">Continue</span>...
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-base font-medium text-white/50">
+          Aartiq reaches for context — then stops at the boundary and asks.
+        </p>
+      </div>
+
+      <div className="mx-auto max-w-3xl rounded-[40px] border border-white/10 bg-[#070a14]/80 p-6 sm:p-10 shadow-2xl">
+        <div className="mb-6 flex items-center justify-between rounded-2xl bg-black/40 px-5 py-3 font-mono text-[10px] uppercase tracking-widest text-white/40">
+          <span>filesystem scan</span>
+          <span className="text-cyan-400">{phase === 'scanning' ? 'scanning…' : phase === 'paused' ? 'boundary reached' : phase === 'resolved' ? 'resolved' : 'idle'}</span>
+        </div>
+
+        <div className="space-y-3">
+          {fsFolders.map((f, idx) => {
+            const active = idx === scanIndex && phase !== 'resolved';
+            const isPrivate = f.state === 'restricted';
+            return (
+              <motion.div
+                key={f.name}
+                animate={{
+                  opacity: idx <= scanIndex || phase === 'resolved' ? 1 : 0.35,
+                  x: active ? 6 : 0,
+                }}
+                className={`flex items-center justify-between rounded-2xl border px-5 py-4 font-mono text-sm transition-colors ${
+                  active
+                    ? "border-cyan-400/60 bg-cyan-500/10"
+                    : isPrivate
+                      ? "border-rose-500/20 bg-rose-500/[0.04]"
+                      : "border-white/5 bg-white/[0.02]"
+                }`}
+              >
+                <span className="flex items-center gap-3 text-white/80">
+                  {active && (
+                    <motion.span
+                      className="h-2 w-2 rounded-full bg-cyan-400"
+                      animate={{ opacity: [1, 0.3, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.2 }}
+                    />
+                  )}
+                  {f.name}
+                </span>
+                <span className={isPrivate ? "text-rose-400 font-bold" : f.state === 'ask' ? "text-amber-400 font-bold" : "text-emerald-400 font-bold"}>
+                  {f.status}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <AnimatePresence>
+          {phase === 'paused' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mt-6 rounded-3xl border border-cyan-400/50 bg-gradient-to-b from-cyan-950/40 to-[#04060e] p-6 text-center shadow-[0_0_40px_rgba(6,182,212,0.25)]"
+            >
+              <p className="text-xs font-black uppercase tracking-[0.4em] text-cyan-400">Before I continue…</p>
+              <p className="mt-3 text-lg font-bold text-white">Should I include <span className="text-cyan-300">/Private</span>?</p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+                <button onClick={() => onChoice('approve')} className="rounded-full bg-cyan-500 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-black transition hover:bg-cyan-400">Approve</button>
+                <button onClick={() => onChoice('exclude')} className="rounded-full border border-white/15 bg-white/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:bg-white/10">Exclude</button>
+                <button onClick={() => onChoice('deny')} className="rounded-full border border-rose-500/30 bg-rose-500/5 px-6 py-3 text-xs font-black uppercase tracking-[0.2em] text-rose-400 transition hover:bg-rose-500/10">Deny</button>
+              </div>
+            </motion.div>
+          )}
+
+          {phase === 'resolved' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5 text-center font-mono text-xs"
+            >
+              {choice === 'approve' && <span className="text-emerald-400">✓ Approved — /Private included. Authority granted by you.</span>}
+              {choice === 'exclude' && <span className="text-cyan-400">↩ Excluded — /Private untouched. Boundary respected.</span>}
+              {choice === 'deny' && <span className="text-rose-400">⛔ Denied — scan halted. Human remains in control.</span>}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Typewriter ---------- */
+function Typewriter({ text, className, speed = 22 }: { text: string; className?: string; speed?: number }) {
+  const [display, setDisplay] = useState('');
+  const reduced = useReducedMotion();
+  useEffect(() => {
+    if (reduced) { setDisplay(text); return; }
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setDisplay(text.slice(0, i));
+      if (i >= text.length) clearInterval(id);
+    }, speed);
+    return () => clearInterval(id);
+  }, [text, reduced, speed]);
+  return <span className={className}>{display}</span>;
+}
+
+/* ---------- See Aartiq in Action workflow ---------- */
+function ActionWorkflow() {
+  const steps = ["Understand", "Plan", "Explain", "Ask", "Execute", "Result"];
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.3 });
+  const reduced = useReducedMotion();
+  const [step, setStep] = useState(0);
+  useEffect(() => {
+    if (!inView || reduced) { if (reduced) setStep(steps.length); return; }
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      // slow briefly at "Ask"
+      setStep(i);
+      if (i >= steps.length) clearInterval(id);
+    }, 700);
+    return () => clearInterval(id);
+  }, [inView, reduced]);
+
+  return (
+    <div ref={ref} className="mx-auto mt-12 grid max-w-2xl gap-3">
+      {steps.map((s, idx) => (
+        <div key={s} className="flex flex-col items-center">
+          <motion.div
+            animate={{
+              opacity: idx <= step ? 1 : 0.25,
+              scale: idx === step ? 1.04 : 1,
+            }}
+            className={`w-full rounded-2xl border px-6 py-4 text-center font-black uppercase tracking-[0.2em] text-sm transition-colors ${
+              s === "Ask"
+                ? "border-cyan-400/60 bg-cyan-500/10 text-cyan-300"
+                : "border-white/10 bg-white/[0.03] text-white/70"
+            }`}
+          >
+            {s}
+          </motion.div>
+          {idx < steps.length - 1 && (
+            <motion.div
+              animate={{ opacity: idx < step ? 1 : 0.15 }}
+              className="my-1 text-cyan-400/60"
+            >
+              ↓
+            </motion.div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function Home() {
   const [showAuth, setShowAuth] = useState(false);
   const [user, setUser] = useState<any>(null);
@@ -420,16 +640,14 @@ export default function Home() {
     return () => unsubscribe();
   }, []);
 
-  const downloadLinks = useMemo(() => {
-    return getReleaseDownloadLinks(latestRelease).map((item) => ({
-      ...item,
-      icon: item.platform === "windows"
-        ? Monitor
-        : item.platform === "linux"
-          ? Terminal
-          : Smartphone,
-    }));
-  }, [latestRelease]);
+  const downloadLinks = (latestRelease ? getReleaseDownloadLinks(latestRelease) : []).map((item) => ({
+    ...item,
+    icon: item.platform === "windows"
+      ? Monitor
+      : item.platform === "linux"
+        ? Terminal
+        : Smartphone,
+  }));
 
   return (
     <div className="relative min-h-screen bg-[#03040b] font-outfit text-white selection:bg-sky-500/30">
@@ -450,7 +668,7 @@ export default function Home() {
 
       <main className="relative z-10 mx-auto max-w-7xl px-6 sm:px-12 lg:px-16">
 
-        {/* HERO */}
+        {/* 1. HERO */}
         <section className="flex min-h-screen flex-col items-center justify-center pt-32 pb-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -467,47 +685,57 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="max-w-6xl text-7xl font-black uppercase leading-[0.85] tracking-tighter text-white sm:text-8xl lg:text-[11rem]"
+            className="max-w-6xl text-6xl font-black uppercase leading-[0.9] tracking-tighter text-white sm:text-8xl lg:text-[10rem]"
           >
-            Aartiq™ <br />
-            <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI-Integrated Browser</span>
+            Aartiq™
+            <span className="mt-4 block bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              For The Questions That Matter.
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-16 max-w-3xl text-xl font-medium leading-relaxed text-white/40 sm:text-2xl"
+            className="mt-14 max-w-3xl text-xl font-medium leading-relaxed text-white/50 sm:text-2xl"
           >
-            An open-source browser with a built-in AI assistant and permission-gated OS automation. Electron + Next.js + React.
-            <br />
-            <span className="mt-4 block text-sm font-black uppercase tracking-[0.4em] text-white/20">
-              Built by <span className="text-sky-400">Preet Patel</span> — v{version || '...'} {channel}
-            </span>
+            “The most important question isn't what you ask AI. It's what AI asks you before it acts.”
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25 }}
+            className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-white/40 sm:text-lg"
+          >
+            Aartiq™ is an open-source AI browser that plans tasks, explains non-trivial actions, requests permission when required, and executes through controlled capabilities.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.32 }}
+            className="mt-8 inline-flex items-center gap-3 rounded-full border border-cyan-500/30 bg-cyan-500/5 px-6 py-3 font-mono text-xs font-black uppercase tracking-[0.25em] text-cyan-300"
+          >
+            <span>Plan</span><span className="text-cyan-500/50">→</span>
+            <span>Explain</span><span className="text-cyan-500/50">→</span>
+            <span className="text-cyan-400">Ask</span><span className="text-cyan-500/50">→</span>
+            <span>Execute</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
             className="mt-16 flex flex-wrap items-center justify-center gap-6"
           >
-            <Link
-               href="/downloads"
-               className="group flex items-center gap-4 rounded-[2.5rem] bg-white px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-black transition hover:bg-sky-400 hover:text-white"
-            >
+            <Link href="/downloads" className="group flex items-center gap-4 rounded-[2.5rem] bg-white px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-black transition hover:bg-sky-400 hover:text-white">
               Download <ArrowRight className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-               href="/docs"
-               className="flex items-center gap-4 rounded-[2.5rem] border border-white/10 bg-white/5 px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-white/10"
-            >
+            <Link href="/docs" className="flex items-center gap-4 rounded-[2.5rem] border border-white/10 bg-white/5 px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:bg-white/10">
               Documentation
             </Link>
-            <Link
-               href="/mcp-settings"
-               className="flex items-center gap-4 rounded-[2.5rem] border border-sky-500/20 bg-sky-500/5 px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-sky-400 transition hover:bg-sky-500/20"
-            >
+            <Link href="/mcp-settings" className="flex items-center gap-4 rounded-[2.5rem] border border-sky-500/20 bg-sky-500/5 px-12 py-7 text-sm font-black uppercase tracking-[0.2em] text-sky-400 transition hover:bg-sky-500/20">
               <Cpu size={18} /> MCP Setup
             </Link>
           </motion.div>
@@ -530,8 +758,40 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* VIDEO DEMO */}
-        <section id="demo" className="py-20 scroll-mt-24">
+        <Boundary />
+
+        {/* 2. BEFORE I CONTINUE */}
+        <BeforeIContinue />
+
+        <Boundary />
+
+        {/* 3. WHY AARTIQ */}
+        <section id="why" className="py-40 scroll-mt-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              <Quote size={14} /> Why Aartiq
+            </div>
+            <div className="space-y-8">
+              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
+                Traditional browsers help you navigate the web.
+              </motion.p>
+              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
+                AI assistants help you understand information.
+              </motion.p>
+              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-3xl font-black leading-relaxed text-white sm:text-4xl">
+                Aartiq is built for the space between the two: helping AI carry out tasks while keeping the user in control.
+              </motion.p>
+              <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="pt-10 text-4xl font-black uppercase tracking-tighter bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent sm:text-6xl">
+                AI can act. You decide what it is allowed to do.
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* 4. SEE AARTIQ IN ACTION */}
+        <section id="demo" className="py-40 scroll-mt-24">
           <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
               <Video size={14} /> Demo
@@ -542,170 +802,197 @@ export default function Home() {
           </div>
 
           <ClickToLoadYouTube />
+
+          <div className="mt-24 text-center">
+            <p className="mb-2 text-xs font-black uppercase tracking-[0.5em] text-cyan-400">The Aartiq Loop</p>
+            <ActionWorkflow />
+          </div>
         </section>
 
-        {/* PROJECT PHILOSOPHY */}
-        <section id="mission" className="py-40 scroll-mt-24">
-          <div className="mb-24 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
-              <Quote size={14} /> Project Philosophy
-            </div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              For The <br /> <span className="text-white/40">Questions That Matter.</span>
+        <Boundary />
+
+        {/* 5. THE QUESTION THAT WASN'T ASKED */}
+        <section id="unasked" className="py-40 scroll-mt-24">
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+              The Question That <span className="text-white/40">Wasn't Asked.</span>
             </h2>
           </div>
 
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-center lg:p-20">
-            <div className="mb-10 flex justify-center">
-              <div className="relative h-20 w-20 overflow-hidden rounded-[2rem] bg-gradient-to-br from-sky-500/20 to-purple-500/20 shadow-2xl">
-                <Image
-                  src="/logo-transparent.png"
-                  alt="Aartiq Logo"
-                  width={80}
-                  height={80}
-                  className="h-full w-full object-contain"
-                />
+          <div className="grid items-stretch gap-6 lg:grid-cols-2">
+            <div className="relative overflow-hidden rounded-[40px] border border-rose-500/20 bg-[#0a070e] p-10">
+              <p className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-rose-400">Generic AI</p>
+              <div className="space-y-3 font-mono text-sm text-white/70">
+                <p className="rounded-xl bg-white/5 p-3">&gt; Organize my files.</p>
+                <p className="rounded-xl bg-rose-500/10 p-3 text-rose-300">&gt; Done. All files sorted into folders.</p>
               </div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-rose-500/10 py-3 text-xs font-black uppercase tracking-[0.4em] text-rose-300 backdrop-blur"
+              >
+                It never asked.
+              </motion.div>
             </div>
-            <p className="text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl">
-              The most important question isn't what you ask AI.
-              <span className="mt-2 block bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                It's what AI asks you before it acts.
-              </span>
-            </p>
-            <blockquote className="mt-12 text-xl font-medium leading-relaxed text-white/40">
-              "Aartiq™ exists because one unasked question taught me that the questions we don't ask matter most."
+
+            <div className="rounded-[40px] border border-cyan-500/20 bg-[#070a14] p-10">
+              <p className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-cyan-400">Aartiq reveals</p>
+              <ul className="space-y-3 text-sm font-medium text-white/80">
+                {[
+                  "Which directories should be scanned?",
+                  "Can existing file structures be modified?",
+                  "Should temporary files be permanently deleted?",
+                  "Are private or sensitive documents involved?",
+                  "Should changes be applied immediately or held for review?",
+                ].map((q, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.25 }}
+                    className="flex items-start gap-3 rounded-xl bg-white/[0.03] p-3"
+                  >
+                    <span className="text-cyan-400 font-bold">0{i+1}.</span> {q}
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mx-auto mt-16 max-w-3xl rounded-[40px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-center">
+            <blockquote className="text-2xl font-bold leading-relaxed text-white sm:text-3xl">
+              <Typewriter text={'"One unasked question taught me that the questions we don’t ask matter most."'} className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent" />
             </blockquote>
-            <p className="mx-auto mt-12 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
-              That idea became the foundation of Aartiq's permission-first design: before any non-trivial action,
-              the AI explains its plan, asks for your approval, and only then executes it.
-            </p>
           </div>
         </section>
 
-        {/* PROJECT STATUS */}
-        <section id="status" className="py-40 scroll-mt-24">
-          <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
-            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
-              <AlertTriangle size={14} /> 🚧 Project Status
-            </div>
-            <h2 className="mb-10 max-w-4xl text-5xl font-black uppercase tracking-tighter sm:text-7xl leading-[0.9]">
-              Aartiq™ is temporarily <span className="text-amber-400">on hold.</span>
-            </h2>
+        <Boundary />
 
-            <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
-              <p>
-                This project started as a simple experiment called Comet-AI — a question about what AI could become.
-                Over time, that question evolved into Aartiq™, an AI-native browser built around the idea that AI
-                should not only answer questions, but help execute tasks while keeping humans in control.
-              </p>
-              <p>
-                After five months of building Aartiq independently, including its AI systems, security architecture,
-                MCP integration, synchronization features, and multi-platform releases, I am taking a temporary pause
-                to focus on my studies and recharge after balancing development with academics.
-              </p>
-              <p>
-                Development, feature work, and issue responses will be limited until my exams are over.
-              </p>
-              <p>
-                The repository will remain public, and existing releases will continue to be available. Once the exam
-                is completed, development will resume with new features, improvements, and bug fixes.
-              </p>
-            </div>
-
-            <div className="mt-16 grid gap-6 lg:grid-cols-2">
-              <div className="rounded-[40px] border border-white/5 bg-white/[0.03] p-10">
-                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-500/10 text-rose-400">
-                  <Lock size={24} />
-                </div>
-                <blockquote className="text-xl font-bold leading-relaxed text-white/70">
-                  "What happened to my private diary should never happen to a computer system."
-                </blockquote>
-                <p className="mt-6 text-sm font-medium leading-relaxed text-white/40">
-                  Aartiq was built on one belief.
-                </p>
-              </div>
-
-              <div className="rounded-[40px] border border-white/5 bg-white/[0.03] p-10">
-                <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-400">
-                  <Heart size={24} />
-                </div>
-                <blockquote className="text-xl font-bold leading-relaxed text-white/70">
-                  "Aartiq exists because one unasked question taught me that the questions we don't ask matter most."
-                </blockquote>
-                <p className="mt-6 text-sm font-medium leading-relaxed text-white/40">
-                  This is not the end of the journey.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-16 rounded-[40px] border border-purple-500/20 bg-purple-500/5 p-10 lg:p-14 text-center">
-              <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-4xl">
-                Aartiq is just <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">1 CM</span> away from the future.
-              </p>
-              <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
-                "The '1 CM' in Aartiq is a personal reminder that respecting a boundary often begins with asking before crossing it."
-              </p>
-            </div>
-
-            <div className="mt-16 flex flex-col items-center justify-center gap-4 text-center">
-              <p className="text-lg font-bold text-white/60">
-                Thank you for your patience and support. <span className="text-rose-400">❤️</span>
-              </p>
-              <p className="text-xs font-black uppercase tracking-[0.4em] text-white/30">— Preet Patel</p>
-            </div>
-          </div>
-        </section>
-
-        {/* LICENSE */}
-        <section id="license" className="py-40 scroll-mt-24">
-          <div className="mb-24 text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
-              <Scale size={14} /> Legal
+        {/* 6. PERMISSION-FIRST AI */}
+        <section id="permissions" className="py-40 scroll-mt-24">
+          <div className="mb-16 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
+              <ShieldCheck size={14} /> Permission-First AI
             </div>
             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
-              License
+              Risk-Based <span className="text-white/40">Permissions.</span>
             </h2>
           </div>
 
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-[#0a0c10]/50">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Component</th>
-                    <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">License</th>
-                  </tr>
-                </thead>
-                <tbody className="text-base font-medium text-white/60">
-                  <tr className="border-b border-white/5">
-                    <td className="px-10 py-6">Aartiq Browser (desktop, mobile, all core code)</td>
-                    <td className="px-10 py-6"><span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-400">Apache License 2.0</span></td>
-                  </tr>
-                  <tr>
-                    <td className="px-10 py-6">Aartiq MCP Server (aartiq-mcp/)</td>
-                    <td className="px-10 py-6"><span className="rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-sky-400">MIT License</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="border-t border-white/5 p-10 text-sm font-medium leading-relaxed text-white/40">
-              The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.
-              All other components remain Apache 2.0.
-            </div>
-          </div>
-
-          <div className="mx-auto mt-10 max-w-4xl rounded-[40px] border border-amber-500/10 bg-amber-500/[0.03] p-10">
-            <p className="text-base font-medium leading-relaxed text-white/40">
-              "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
-              While our source code is freely available under the Apache 2.0 License, this license does not grant
-              permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
-              browser must be rebranded under a completely different name."
+          <div className="mx-auto max-w-4xl space-y-5">
+            {[
+              { level: "Low", behavior: "Automatic / policy-controlled", color: "bg-emerald-500" },
+              { level: "Medium", behavior: "Explicit approval", color: "bg-amber-500" },
+              { level: "High", behavior: "Stronger confirmation", color: "bg-orange-500" },
+              { level: "Critical", behavior: "Explicit authorization; never silently auto-approved", color: "bg-rose-500" },
+            ].map((r, i) => (
+              <motion.div
+                key={r.level}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12 }}
+                className="flex flex-col gap-4 rounded-[32px] border border-white/5 bg-[#0a0c10]/50 p-8 sm:flex-row sm:items-center sm:justify-between"
+              >
+                <div className="flex items-center gap-4">
+                  <span className={`h-3 w-3 rounded-full ${r.color}`} />
+                  <span className="text-2xl font-black uppercase tracking-wider text-white">{r.level}</span>
+                </div>
+                <p className="max-w-md text-sm font-medium text-white/50 sm:text-right">{r.behavior}</p>
+              </motion.div>
+            ))}
+            <p className="pt-6 text-center text-sm font-medium text-white/40">
+              Risk is assigned to the <span className="text-white/70">capability being invoked</span>, not inferred solely from the wording of the prompt.
             </p>
           </div>
         </section>
 
-        {/* FEATURES */}
+        <Boundary />
+
+        {/* 7. HOW IT WORKS */}
+        <section id="how" className="py-40 scroll-mt-24">
+          <div className="mb-16 text-center">
+            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+              How It <span className="text-white/40">Works.</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto max-w-2xl space-y-0">
+            {[
+              { label: "USER", sub: "Natural-language goal", strong: false },
+              { label: "AI ORCHESTRATOR", sub: "Interprets intent", strong: false },
+              { label: "TASK PLANNING", sub: "Structures execution", strong: false },
+              { label: "PERMISSION", sub: "Evaluates policy & boundaries", strong: true },
+              { label: "APPROVAL", sub: "Human-in-the-loop authorization", strong: true },
+              { label: "EXECUTION", sub: "Controlled, capability-scoped", strong: false },
+            ].map((node, i, arr) => (
+              <div key={node.label} className="flex flex-col items-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`w-full rounded-3xl border px-8 py-6 text-center ${
+                    node.strong
+                      ? "border-cyan-400/50 bg-cyan-500/10 shadow-[0_0_30px_rgba(6,182,212,0.2)]"
+                      : "border-white/10 bg-white/[0.03]"
+                  }`}
+                >
+                  <p className={`text-xl font-black uppercase tracking-[0.2em] ${node.strong ? "text-cyan-300" : "text-white/80"}`}>{node.label}</p>
+                  <p className="mt-1 text-xs font-medium text-white/40">{node.sub}</p>
+                </motion.div>
+                {i < arr.length - 1 && <div className="my-1 text-cyan-400/60">↓</div>}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* 8. SECURITY */}
+        <section id="security" className="py-40 scroll-mt-24">
+          <div className="mb-16 text-center">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+              <Lock size={14} /> Security
+            </div>
+            <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+              Defense In <span className="text-white/40">Depth.</span>
+            </h2>
+          </div>
+
+          <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: ShieldAlert, title: "Capability Controls", text: "Actions are gated by registered capabilities and a risk policy, not by prompt wording." },
+              { icon: FolderLock, title: "Directory Allowlists", text: "Filesystem boundaries are explicit, inspectable, and user-controlled." },
+              { icon: Lock, title: "Encrypted Vault", text: "Secrets and credentials are stored in an encrypted local vault." },
+              { icon: GitBranch, title: "CI Verification", text: "Builds and policies are verified continuously in CI before release." },
+              { icon: CheckCircle2, title: "492 Automated Tests", text: "A broad test suite guards permission, security, and execution behavior." },
+              { icon: HelpCircle, title: "Honest Limitations", text: "Aartiq documents what it cannot guarantee — no security theater." },
+            ].map((s, i) => (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400">
+                  <s.icon size={24} />
+                </div>
+                <h3 className="mb-3 text-lg font-black uppercase tracking-[0.1em] text-white">{s.title}</h3>
+                <p className="text-sm font-medium leading-relaxed text-white/40">{s.text}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* 9. CORE FEATURES */}
         <section id="features" className="py-40">
           <div className="mb-24 text-center">
              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
@@ -736,7 +1023,149 @@ export default function Home() {
           </div>
         </section>
 
-        {/* GITHUB */}
+        <Boundary />
+
+        {/* 10. FOUNDER STORY */}
+        <section id="founder" className="py-40 scroll-mt-24">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-12 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              <Quote size={14} /> The Founder
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+              {["One student.", "Intel i5.", "8 GB RAM.", "Essentially zero-cost tooling.", "School.", "Late-night coding."].map((line, i) => (
+                <motion.div
+                  key={line}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="rounded-3xl border border-white/5 bg-white/[0.02] p-6 text-sm font-black uppercase tracking-wider text-white/80"
+                >
+                  {line}
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-16 text-3xl font-black uppercase tracking-tighter text-white sm:text-5xl"
+            >
+              The hardware changed.
+              <br />The project evolved.
+              <br /><span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">The question remained.</span>
+            </motion.p>
+
+            <motion.blockquote
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mx-auto mt-16 max-w-3xl rounded-[40px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 text-2xl font-bold leading-relaxed text-white sm:text-3xl"
+            >
+              “What happened to my private diary should never happen to a computer system.”
+            </motion.blockquote>
+
+            <motion.blockquote
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mx-auto mt-10 max-w-3xl text-2xl font-bold leading-relaxed text-white/80 sm:text-3xl"
+            >
+              “One unasked question taught me that the questions we don't ask matter most.”
+            </motion.blockquote>
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* 11. PROJECT STATUS */}
+        <section id="status" className="py-40 scroll-mt-24">
+          <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
+            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
+              <AlertTriangle size={14} /> 🚧 Project Status
+            </div>
+            <h2 className="mb-10 max-w-4xl text-5xl font-black uppercase tracking-tighter sm:text-7xl leading-[0.9]">
+              Aartiq isn't <span className="text-amber-400">abandoned.</span> It's <span className="text-amber-400">paused.</span>
+            </h2>
+
+            <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
+              <p>
+                After five months of independently building Aartiq, the founder is temporarily shifting primary focus toward studies and upcoming exams.
+              </p>
+              <p>
+                During this period, AI agents may assist with reviewing issues, analyzing bugs, improving documentation, maintaining the codebase, and preparing proposed fixes.
+              </p>
+              <p className="text-white/70">
+                But changes involving security, permissions, user data, releases, or project direction remain subject to human review and approval. AI assists. Humans remain responsible.
+              </p>
+            </div>
+
+            <div className="mt-16 rounded-[40px] border border-purple-500/20 bg-purple-500/5 p-10 lg:p-14 text-center">
+              <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-4xl">
+                Aartiq is just <span className="bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">1 CM</span> away from the future.
+              </p>
+              <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
+                The “1 CM” is a personal reminder that respecting a boundary often begins with asking before crossing it.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <Boundary />
+
+        {/* 12. FINAL REVEAL */}
+        <section id="reveal" className="py-48 scroll-mt-24 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            <p className="text-xs font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
+            <h2 className="text-8xl font-black tracking-tighter uppercase text-white sm:text-[12rem] leading-none">
+              1 CM
+            </h2>
+            <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
+              1 CM away from the future.
+            </p>
+            <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
+              1 CM is not merely a measurement of distance. It is a reminder that capability and authority are not the same thing. Sometimes the difference between an AI that can act and an AI you can trust is the space it leaves for you to decide.
+            </p>
+          </motion.div>
+        </section>
+
+        <Boundary />
+
+        {/* 13. CLOSING */}
+        <section className="py-32 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-black uppercase leading-[0.9] tracking-tighter text-white sm:text-7xl"
+          >
+            For The <span className="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">Questions That Matter.</span>
+          </motion.h2>
+          <p className="mx-auto mt-8 max-w-3xl text-xl font-medium leading-relaxed text-white/50">
+            “The most important question isn't what you ask AI. It's what AI asks you before it acts.”
+          </p>
+          <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-cyan-500/30 bg-cyan-500/5 px-6 py-3 font-mono text-xs font-black uppercase tracking-[0.25em] text-cyan-300">
+            <span>Plan</span><span className="text-cyan-500/50">→</span>
+            <span>Explain</span><span className="text-cyan-500/50">→</span>
+            <span className="text-cyan-400">Ask</span><span className="text-cyan-500/50">→</span>
+            <span>Execute</span>
+          </div>
+          <p className="mt-10 text-4xl font-black uppercase tracking-tighter text-white">Aartiq™</p>
+        </section>
+
+        <Boundary />
+
+        {/* FAQ */}
+        <FaqSection />
+
+        {/* RESOURCES: GITHUB + CONTRIBUTORS */}
         <section id="github" className="py-40">
           <div className="rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 lg:p-24 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.03] blur-[120px] rounded-full sm:block hidden" />
@@ -861,38 +1290,23 @@ export default function Home() {
                     <h2 className="mb-10 text-5xl font-black uppercase tracking-tighter text-white sm:text-6xl">Documentation</h2>
 
                     <div className="space-y-3">
-                       <Link
-                         href="/docs/ai-commands"
-                         className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white"
-                       >
+                       <Link href="/docs/ai-commands" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
                          <span className="text-[12px] font-black uppercase tracking-[0.3em]">AI Commands</span>
                          <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                        </Link>
-                       <Link
-                         href="/docs/overview"
-                         className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white"
-                       >
+                       <Link href="/docs/overview" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
                          <span className="text-[12px] font-black uppercase tracking-[0.3em]">Architecture Overview</span>
                          <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                        </Link>
-                       <Link
-                         href="/docs/security"
-                         className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white"
-                       >
+                       <Link href="/docs/security" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
                          <span className="text-[12px] font-black uppercase tracking-[0.3em]">Security Model</span>
                          <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                        </Link>
-                       <Link
-                         href="/docs/automation"
-                         className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white"
-                       >
+                       <Link href="/docs/automation" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
                          <span className="text-[12px] font-black uppercase tracking-[0.3em]">Automation</span>
                          <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                        </Link>
-                       <Link
-                         href="/docs/getting-started"
-                         className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white"
-                       >
+                       <Link href="/docs/getting-started" className="group flex w-full items-center justify-between rounded-3xl px-8 py-5 text-left transition-all text-white/40 hover:bg-white/5 hover:text-white">
                          <span className="text-[12px] font-black uppercase tracking-[0.3em]">Getting Started</span>
                          <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                        </Link>
@@ -931,8 +1345,53 @@ export default function Home() {
            </div>
         </section>
 
-        {/* FAQ */}
-        <FaqSection />
+        {/* LICENSE */}
+        <section id="license" className="py-40 scroll-mt-24">
+           <div className="mb-24 text-center">
+             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+               <Scale size={14} /> Legal
+             </div>
+             <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
+               License
+             </h2>
+           </div>
+
+           <div className="mx-auto max-w-4xl overflow-hidden rounded-[60px] border border-white/5 bg-[#0a0c10]/50">
+             <div className="overflow-x-auto">
+               <table className="w-full text-left">
+                 <thead>
+                   <tr className="border-b border-white/10">
+                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Component</th>
+                     <th className="px-10 py-6 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">License</th>
+                   </tr>
+                 </thead>
+                 <tbody className="text-base font-medium text-white/60">
+                   <tr className="border-b border-white/5">
+                     <td className="px-10 py-6">Aartiq Browser (desktop, mobile, all core code)</td>
+                     <td className="px-10 py-6"><span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-400">Apache License 2.0</span></td>
+                   </tr>
+                   <tr>
+                     <td className="px-10 py-6">Aartiq MCP Server (aartiq-mcp/)</td>
+                     <td className="px-10 py-6"><span className="rounded-full border border-sky-500/20 bg-sky-500/10 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-sky-400">MIT License</span></td>
+                   </tr>
+                 </tbody>
+               </table>
+             </div>
+             <div className="border-t border-white/5 p-10 text-sm font-medium leading-relaxed text-white/40">
+               The MCP server is MIT-licensed for maximum compatibility with Claude Desktop and other MCP clients.
+               All other components remain Apache 2.0.
+             </div>
+           </div>
+
+           <div className="mx-auto mt-10 max-w-4xl rounded-[40px] border border-amber-500/10 bg-amber-500/[0.03] p-10">
+             <p className="text-base font-medium leading-relaxed text-white/40">
+               "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
+               While our source code is freely available under the Apache 2.0 License, this license does not grant
+               permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
+               browser must be rebranded under a completely different name."
+             </p>
+           </div>
+        </section>
 
         {/* FOOTER */}
         <footer className="border-t border-white/5 pt-40 pb-20">
@@ -941,7 +1400,7 @@ export default function Home() {
                   <div className="mb-10 flex items-center gap-4">
                      <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
                        <Image
-                          src="/logo-transparent.png"
+                          src="/icon.png"
                           alt="Aartiq Logo"
                           width={48}
                           height={48}
@@ -978,11 +1437,11 @@ export default function Home() {
 
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Support</p>
-                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
-                      <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
-                      <li><a href="/privacy" className="hover:text-sky-400 transition">Privacy Policy</a></li>
-                      <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
-                   </ul>
+                  <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
+                     <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
+                     <li><a href="/privacy" className="hover:text-sky-400 transition">Privacy Policy</a></li>
+                     <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
+                  </ul>
                </div>
            </div>
 
