@@ -201,7 +201,7 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
         <div className="bg-[#06080f] p-10">
           <div className="mb-10 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
+                     <div className="relative flex h-12 w-12 items-center justify-center">
                 <Image
                   src="/logo-transparent.png"
                   alt="Aartiq Logo"
@@ -1398,7 +1398,7 @@ export default function Home() {
            <div className="grid gap-20 sm:grid-cols-2 lg:grid-cols-5">
                <div className="lg:col-span-2">
                   <div className="mb-10 flex items-center gap-4">
-                     <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
+              <div className="relative flex h-12 w-12 items-center justify-center">
                        <Image
                           src="/logo-transparent.png"
                           alt="Aartiq Logo"

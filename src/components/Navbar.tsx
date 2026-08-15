@@ -22,7 +22,7 @@ export const Navbar = ({ onOpenAuth, user }: { onOpenAuth: () => void, user: any
     <nav className="fixed left-0 top-0 z-[60] w-full bg-transparent py-8">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 sm:px-12">
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
-          <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-lg shadow-sky-500/20">
+          <div className="relative flex h-10 w-10 items-center justify-center">
               <Image 
                src="/logo-transparent.png" 
                alt={`${APP_INFO.name} Logo`}
