@@ -24,7 +24,7 @@ export const Navbar = ({ onOpenAuth, user }: { onOpenAuth: () => void, user: any
         <Link href="/" className="flex items-center gap-3 cursor-pointer group">
           <div className="relative h-10 w-10 overflow-hidden rounded-xl shadow-lg shadow-sky-500/20">
               <Image 
-               src="/icon.png" 
+               src="/logo-transparent.png" 
                alt={`${APP_INFO.name} Logo`}
               width={40}
               height={40}

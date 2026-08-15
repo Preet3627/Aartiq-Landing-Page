@@ -203,7 +203,7 @@ const AuthModal = ({ onClose, user }: { onClose: () => void, user: any }) => {
             <div className="flex items-center gap-4">
               <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
                 <Image
-                  src="/icon.png"
+                  src="/logo-transparent.png"
                   alt="Aartiq Logo"
                   width={48}
                   height={48}
@@ -1124,7 +1124,7 @@ export default function Home() {
             className="space-y-10"
           >
             <p className="text-xs font-black uppercase tracking-[0.6em] text-cyan-400">The recurring motif</p>
-            <h2 className="text-8xl font-black tracking-tighter uppercase text-white sm:text-[12rem] leading-none">
+            <h2 className="text-8xl font-black tracking-tighter uppercase bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent drop-shadow-[0_0_50px_rgba(56,189,248,0.55)] drop-shadow-[0_0_20px_rgba(168,85,247,0.45)] sm:text-[12rem] leading-none">
               1 CM
             </h2>
             <p className="text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
@@ -1400,7 +1400,7 @@ export default function Home() {
                   <div className="mb-10 flex items-center gap-4">
                      <div className="relative h-12 w-12 overflow-hidden rounded-2xl shadow-lg shadow-sky-500/20">
                        <Image
-                          src="/icon.png"
+                          src="/logo-transparent.png"
                           alt="Aartiq Logo"
                           width={48}
                           height={48}
