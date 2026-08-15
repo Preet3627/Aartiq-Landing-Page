@@ -325,7 +325,7 @@ function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-40 scroll-mt-24">
+    <section id="faq" className="py-24 sm:py-40 scroll-mt-24">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -809,7 +809,7 @@ export default function Home() {
         <Boundary />
 
         {/* 3. THE AARTIQ LOOP */}
-        <section id="loop" className="py-40 scroll-mt-24">
+        <section id="loop" className="py-24 sm:py-40 scroll-mt-24">
           <div className="mb-8 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
               <Bot size={14} /> The Aartiq Loop
@@ -827,7 +827,7 @@ export default function Home() {
         <Boundary />
 
         {/* 4. WHY AARTIQ — missing context ≠ permission + comparison */}
-        <section id="why" className="py-40 scroll-mt-24">
+        <section id="why" className="py-24 sm:py-40 scroll-mt-24">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-rose-500/20 bg-rose-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-rose-400">
               <AlertTriangle size={14} /> Why Aartiq
@@ -840,27 +840,29 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mx-auto mt-16 max-w-5xl overflow-hidden rounded-[40px] border border-white/5 bg-[#0a0c14]/60">
-            <div className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b border-white/5 px-8 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
-              <span>Capability</span>
-              <span className="text-center">Typical AI agent</span>
-              <span className="text-center text-cyan-400">Aartiq</span>
-            </div>
-            {[
-              ["Plans multi-step tasks", "✓", "✓"],
-              ["Can act on the system", "✓", "✓"],
-              ["Explains consequential actions", "Sometimes", "Core behavior"],
-              ["Explicit permission boundaries", "Varies", "Core behavior"],
-              ["User-controlled capabilities", "Varies", "Core behavior"],
-              ["Open source & inspectable", "Varies", "Yes"],
-              ["Auditable security model", "Varies", "Yes"],
-            ].map(([cap, typ, art], i) => (
-              <div key={i} className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b border-white/5 px-8 py-5 text-sm font-medium text-white/70 last:border-0">
-                <span>{cap}</span>
-                <span className="text-center text-white/40">{typ}</span>
-                <span className="text-center font-black text-cyan-400">{art}</span>
+          <div className="mx-auto mt-16 max-w-5xl overflow-x-auto rounded-[40px] border border-white/5 bg-[#0a0c14]/60">
+            <div className="min-w-[640px]">
+              <div className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b border-white/5 px-8 py-5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30">
+                <span>Capability</span>
+                <span className="text-center">Typical AI agent</span>
+                <span className="text-center text-cyan-400">Aartiq</span>
               </div>
-            ))}
+              {[
+                ["Plans multi-step tasks", "✓", "✓"],
+                ["Can act on the system", "✓", "✓"],
+                ["Explains consequential actions", "Sometimes", "Core behavior"],
+                ["Explicit permission boundaries", "Varies", "Core behavior"],
+                ["User-controlled capabilities", "Varies", "Core behavior"],
+                ["Open source & inspectable", "Varies", "Yes"],
+                ["Auditable security model", "Varies", "Yes"],
+              ].map(([cap, typ, art], i) => (
+                <div key={i} className="grid grid-cols-[1.4fr_1fr_1fr] items-center border-b border-white/5 px-8 py-5 text-sm font-medium text-white/70 last:border-0">
+                  <span>{cap}</span>
+                  <span className="text-center text-white/40">{typ}</span>
+                  <span className="text-center font-black text-cyan-400">{art}</span>
+                </div>
+              ))}
+            </div>
           </div>
           <p className="mx-auto mt-8 max-w-2xl text-center text-sm font-medium text-white/40">
             The difference is not ambition. It is whether the agent asks <span className="text-white/70">before</span> crossing a line you never drew.
@@ -915,7 +917,7 @@ export default function Home() {
         <Boundary />
 
         {/* 5. SECURITY ARCHITECTURE — evidence-driven */}
-        <section id="security" className="py-40 scroll-mt-24">
+        <section id="security" className="py-24 sm:py-40 scroll-mt-24">
           <div className="mb-12 text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
               <Lock size={14} /> Security Architecture
@@ -1006,7 +1008,7 @@ export default function Home() {
         <Boundary />
 
         {/* 6. OPEN SOURCE — small project, fully inspectable */}
-        <section id="opensource" className="py-40 scroll-mt-24">
+        <section id="opensource" className="py-24 sm:py-40 scroll-mt-24">
           <div className="rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14]/60 to-transparent p-12 lg:p-24 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.03] blur-[120px] rounded-full sm:block hidden" />
             <div className="grid gap-16 lg:grid-cols-2 items-center">
@@ -1055,7 +1057,7 @@ export default function Home() {
         <Boundary />
 
         {/* CORE FEATURES — concise, full matrix in docs */}
-        <section id="features" className="py-40">
+        <section id="features" className="py-24 sm:py-40">
           <div className="mb-16 text-center">
              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-500/20 bg-sky-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-sky-400">
                <Cpu size={14} /> Core Technologies
@@ -1091,7 +1093,7 @@ export default function Home() {
         <Boundary />
 
         {/* FOUNDER STORY */}
-        <section id="founder" className="py-40 scroll-mt-24">
+        <section id="founder" className="py-24 sm:py-40 scroll-mt-24">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-12 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
               <Quote size={14} /> The Founder
@@ -1146,7 +1148,7 @@ export default function Home() {
         <Boundary />
 
         {/* PROJECT STATUS — reframed, product-oriented */}
-        <section id="status" className="py-40 scroll-mt-24">
+        <section id="status" className="py-24 sm:py-40 scroll-mt-24">
           <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
             <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
               <AlertTriangle size={14} /> 🚧 Project Status
@@ -1181,7 +1183,7 @@ export default function Home() {
         <Boundary />
 
         {/* CLOSING */}
-        <section className="py-32 text-center">
+        <section className="py-24 sm:py-32 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1208,7 +1210,7 @@ export default function Home() {
         <FaqSection />
 
         {/* DOCS */}
-        <section id="docs" className="py-40 scroll-mt-24">
+        <section id="docs" className="py-24 sm:py-40 scroll-mt-24">
            <div className="overflow-hidden rounded-[60px] border border-white/5 bg-gradient-to-br from-[#0a0c14] to-[#04060b] shadow-[0_50px_100px_rgba(0,0,0,0.6)]">
               <div className="grid lg:grid-cols-[1.2fr_2fr]">
                  <div className="border-b border-white/5 p-16 lg:border-b-0 lg:border-r">
@@ -1265,7 +1267,7 @@ export default function Home() {
         </section>
 
         {/* DOWNLOADS */}
-        <section id="downloads" className="py-40 scroll-mt-24">
+        <section id="downloads" className="py-24 sm:py-40 scroll-mt-24">
            <div className="mb-24 flex flex-col items-center justify-between gap-10 md:flex-row">
               <h2 className="text-5xl font-black uppercase tracking-tighter sm:text-6xl lg:text-8xl">
                  Downloads
@@ -1307,7 +1309,7 @@ export default function Home() {
           </section>
 
         {/* LICENSE */}
-        <section id="license" className="py-40 scroll-mt-24">
+        <section id="license" className="py-24 sm:py-40 scroll-mt-24">
            <div className="mb-24 text-center">
              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
                <Scale size={14} /> Legal
@@ -1349,7 +1351,7 @@ export default function Home() {
         <Boundary />
 
         {/* FINAL REVEAL — quiet signature, not another explanation */}
-        <section id="reveal" className="py-48 scroll-mt-24 text-center">
+        <section id="reveal" className="py-32 sm:py-48 scroll-mt-24 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
