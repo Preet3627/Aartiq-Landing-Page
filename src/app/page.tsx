@@ -1134,7 +1134,7 @@ export default function Home() {
               The space between capability and authority.
             </p>
             <p className="mx-auto max-w-2xl text-base font-medium leading-relaxed text-white/50">
-              1 CM is not merely a measurement of distance. It is a reminder that capability and authority are not the same thing. Sometimes the difference between an AI that can act and an AI you can trust is the space it leaves for you to decide.
+              1 CM is more than a distance. It is a reminder that being able to cross a boundary doesn't mean you have the right to. Sometimes, trust begins by leaving space for someone to decide.
             </p>
           </motion.div>
         </section>
