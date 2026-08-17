@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: `Aartiq - Open Source AI-Integrated Browser with Local LLM & OS Automation`,
     template: `%s | Aartiq - AI-Integrated Browser`,
   },
-  description: "Aartiq is an open-source browser with a built-in AI assistant, local LLM support (Ollama), permission-gated OS automation, and cross-device sync. Built with Electron, Next.js, and TypeScript.",
+  description: "Aartiq is a local-first, open-source AI-native browser with a built-in assistant, local LLM support (Ollama), permission-gated OS automation, and end-to-end encrypted cross-device sync. Built by Preet Patel (Ponsri School) with Electron, Next.js, and TypeScript.",
   keywords: [
     "Aartiq", "Aartiq Browser", "AI Browser", "Autonomous Browser",
     "Browser Automation", "Electron Browser", "AI Agent",
@@ -38,9 +38,13 @@ export const metadata: Metadata = {
     "Productivity Browser", "AI Assistant Browser",
     "Permission-Gated Automation", "Secure Browser",
     "AI-Integrated Browser", "AI Task Agent",
+    "PONSRISCHOOL BROWSER", "Ponsri School Browser", "AARTIQ PONSRISCHOOL",
+    "AARTIQ PREET", "aarti preet", "aarti preet browser",
+    "Preet Patel", "Preet3627", "Latestinssan",
     "Aartipreet", "aart", "aartiq", "aartiqpreet",
     "aartiq preet", "aarti preet", "aartipreet browser",
-    "aarti", "aarti browser"
+    "aarti", "aarti browser", "local first browser",
+    "privacy first AI browser", "open source AI automation"
   ],
   authors: [
     { name: "Preet Patel", url: "https://github.com/Preet3627" },
@@ -137,10 +141,19 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Aartiq",
-              "alternateName": "Aartiq Browser",
+              "alternateName": ["Aartiq Browser", "Ponsri School Browser", "PONSRISCHOOL BROWSER"],
               "url": SITE_URL,
               "logo": LOGO_URL,
               "image": LOGO_URL,
+              "founder": {
+                "@type": "Person",
+                "name": "Preet Patel",
+                "url": "https://github.com/Preet3627",
+                "sameAs": [
+                  "https://github.com/Preet3627",
+                  "https://github.com/Latestinssan"
+                ]
+              },
               "sameAs": [
                 "https://github.com/Preet3627/Aartiq",
                 "https://aartiq.ponsrischool.in"

@@ -671,7 +671,7 @@ export default function Home() {
   }));
 
   return (
-    <div className="relative min-h-screen bg-[#03040b] font-outfit text-white selection:bg-sky-500/30">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#03040b] font-outfit text-white selection:bg-sky-500/30">
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-[10%] left-1/2 aspect-square w-[120vw] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.15)_0%,transparent_70%)] blur-[100px]" />
         <div className="absolute top-[20%] -left-[10%] aspect-square w-[50vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.1)_0%,transparent_60%)] blur-[80px]" />
@@ -768,12 +768,12 @@ export default function Home() {
             className="mt-28 grid w-full max-w-4xl grid-cols-2 gap-5 sm:grid-cols-4"
           >
             {metrics.map((metric, i) => (
-              <div key={metric.label} className="group relative overflow-hidden rounded-[36px] border border-white/5 bg-white/5 p-9 text-left transition hover:bg-white/10">
+              <div key={metric.label} className="group relative min-w-0 overflow-hidden rounded-[36px] border border-white/5 bg-white/5 p-6 text-left transition hover:bg-white/10 sm:p-9">
                 <div className="absolute -right-6 -top-6 opacity-[0.02] transition-transform group-hover:scale-125">
                    <Zap size={120} />
                 </div>
-                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.5em] text-white/40">{metric.label}</p>
-                <p className="text-4xl font-black text-sky-400">{metric.value}</p>
+                <p className="mb-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/40">{metric.label}</p>
+                <p className="break-words text-2xl font-black leading-tight text-sky-400 sm:text-3xl lg:text-4xl">{metric.value}</p>
               </div>
             ))}
           </motion.div>

@@ -9,6 +9,17 @@ export async function GET() {
 
 Aartiq is a privacy-focused browser that integrates AI directly into the browsing experience. It supports multiple AI providers (Gemini, GPT, Claude, Ollama), can execute OS-level automation through a permission-gated system, schedule background tasks, sync data across devices with end-to-end encryption, and generate PDFs/Excel/PPTX documents from JSON templates. Available on Windows, macOS, Linux, and Android.
 
+## Product Philosophy
+
+Aartiq is built on a small set of firm beliefs:
+
+- **Local-first, privacy-first.** Your data stays yours. AI runs locally (Ollama) when you want it to, sync is end-to-end encrypted, and credentials live in an OS keychain — never in plaintext, never in the cloud by default.
+- **AI-native, not AI-bolted-on.** The assistant is a first-class citizen of the browser, not a sidebar gadget. It can read, act, automate, and create with your explicit permission.
+- **Human-in-the-loop, always.** Autonomy is permission-gated. Destructive actions require approval, biometrics, or QR confirmation. The machine proposes; the human disposes.
+- **Open by default.** Aartiq is open source (Apache-2.0 browser core / MIT MCP server). Trust is verified by reading the code, not by reading a privacy policy.
+- **Secure by architecture.** A six-layer defense-in-depth model — visual sandbox, syntactic firewall, human-in-the-loop, directory allowlist, OS-level sandboxing, and capability-scoped execution — keeps automation safe.
+- **Empower, don't replace.** Aartiq augments human productivity: scheduling, document generation, research, and OS control, with the user firmly in control.
+
 ## Docs
 
 - [Getting Started](https://aartiq.ponsrischool.in/docs/getting-started): Complete installation instructions for all platforms including AI provider setup (Gemini, OpenAI, Anthropic, Ollama)
@@ -68,8 +79,12 @@ Aartiq is a privacy-focused browser that integrates AI directly into the browsin
 - **License**: Apache-2.0 (Browser), MIT (MCP Server)
 - **Language**: English
 - **Founded**: 2024
-- **Author**: Preet Patel (https://github.com/Preet3627)
+- **Brand / Project**: Aartiq (also known as PONSRISCHOOL BROWSER, AARTIQ PONSRISCHOOL) — developed under the Ponsri School umbrella
+- **Founder & Author**: Preet Patel (GitHub: Preet3627, Latestinssan) — creator of Aartiq and the Ponsri School browser initiative
+- **Creator handle**: aarti preet / AARTIQ PREET
 - **Co-author**: Preet Patel (Latestinssan, https://github.com/Latestinssan)
+- **Repository**: https://github.com/Preet3627/Aartiq
+- **Website**: https://aartiq.ponsrischool.in
 - **Last updated**: 2026-07-20
 
 ---

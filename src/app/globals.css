@@ -8,7 +8,8 @@
   --accent-secondary: #f472b6;
 }
 
-body {
+html, body {
+  max-width: 100%;
   background: var(--body-bg);
   color: var(--body-fg);
   overflow-x: hidden;
