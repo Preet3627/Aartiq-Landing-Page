@@ -1,15 +1,15 @@
 {
-  "generated": "2026-08-19T15:33:54.926Z",
+  "generated": "2026-08-19T16:07:58.761Z",
   "version": "0.3.5",
   "desktop": {
-    "total": 211,
-    "totalLines": 56543,
+    "total": 212,
+    "totalLines": 56617,
     "byCategory": {
       "components": 127,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 84
+      "lib": 85
     },
     "components": [
       {
@@ -13151,6 +13151,60 @@
         }
       },
       {
+        "name": "bootstrap.ts",
+        "path": "agent-api/bootstrap.ts",
+        "lines": 90,
+        "description": "Bootstrap",
+        "tags": [
+          "Security",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "electron"
+          ],
+          "importsInternal": [
+            "../guardrails",
+            "../agent/agent-registry",
+            "../snapshot/manager",
+            "./bridge",
+            "./server",
+            "./providers",
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "BootstrapDeps",
+              "properties": [
+                {
+                  "name": "extensions",
+                  "type": "any",
+                  "required": false
+                },
+                {
+                  "name": "vault",
+                  "type": "any",
+                  "required": false
+                },
+                {
+                  "name": "config",
+                  "type": "Partial<AgentApiConfig>",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "BootstrapDeps"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "bridge.ts",
         "path": "agent-api/bridge.ts",
         "lines": 109,
@@ -13378,7 +13432,7 @@
       {
         "name": "tools.ts",
         "path": "agent-api/tools.ts",
-        "lines": 198,
+        "lines": 199,
         "description": "Tools",
         "tags": [
           "Security",
@@ -13389,7 +13443,8 @@
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
-            "./types"
+            "./types",
+            "./registry"
           ],
           "interfaces": [],
           "hooks": [],
@@ -15054,7 +15109,7 @@
       {
         "name": "index.ts",
         "path": "guardrails/index.ts",
-        "lines": 165,
+        "lines": 148,
         "description": "Index",
         "tags": [
           "Security",
@@ -17513,7 +17568,7 @@
     "components": []
   },
   "summary": {
-    "total": 211,
-    "totalLines": 56543
+    "total": 212,
+    "totalLines": 56617
   }
 }
