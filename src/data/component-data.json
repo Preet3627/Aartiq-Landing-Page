@@ -1,15 +1,15 @@
 {
-  "generated": "2026-07-29T16:39:21.532Z",
+  "generated": "2026-08-19T15:33:54.926Z",
   "version": "0.3.5",
   "desktop": {
-    "total": 191,
-    "totalLines": 53965,
+    "total": 211,
+    "totalLines": 56543,
     "byCategory": {
       "components": 127,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 64
+      "lib": 84
     },
     "components": [
       {
@@ -23,7 +23,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "dompurify",
@@ -77,7 +77,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -109,7 +109,7 @@
           "PDF",
           "OCR"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -476,7 +476,7 @@
           "Linux",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -879,7 +879,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1039,7 +1039,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1129,7 +1129,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1182,7 +1182,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1225,7 +1225,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1317,7 +1317,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1441,7 +1441,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1579,7 +1579,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1665,7 +1665,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -1721,7 +1721,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1778,7 +1778,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1828,7 +1828,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1867,7 +1867,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -1899,7 +1899,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1939,7 +1939,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2003,7 +2003,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2050,7 +2050,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2092,7 +2092,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2155,7 +2155,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2227,7 +2227,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2300,7 +2300,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2387,7 +2387,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2418,7 +2418,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2446,7 +2446,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -2485,7 +2485,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2666,7 +2666,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2711,7 +2711,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2740,7 +2740,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2806,7 +2806,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2915,7 +2915,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2952,7 +2952,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2982,7 +2982,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -3023,7 +3023,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3062,7 +3062,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3231,7 +3231,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3274,7 +3274,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3315,7 +3315,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3395,7 +3395,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3432,7 +3432,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3474,7 +3474,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3514,7 +3514,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3654,7 +3654,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3693,7 +3693,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3731,7 +3731,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3762,7 +3762,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3805,7 +3805,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3848,7 +3848,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3901,7 +3901,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3966,7 +3966,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4064,7 +4064,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4113,7 +4113,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4198,7 +4198,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4258,7 +4258,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4298,7 +4298,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4359,7 +4359,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4428,7 +4428,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4487,7 +4487,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4522,7 +4522,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4623,7 +4623,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4755,7 +4755,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4786,7 +4786,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4908,7 +4908,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4949,7 +4949,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4999,7 +4999,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5045,7 +5045,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -5083,7 +5083,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5135,7 +5135,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5202,7 +5202,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5293,7 +5293,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -5696,7 +5696,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5806,7 +5806,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5862,7 +5862,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -5984,7 +5984,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6123,7 +6123,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6178,7 +6178,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6220,7 +6220,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6345,7 +6345,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6521,7 +6521,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -6619,7 +6619,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6672,7 +6672,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6718,7 +6718,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6777,7 +6777,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -6841,7 +6841,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6919,7 +6919,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7039,7 +7039,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7133,7 +7133,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7254,7 +7254,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7364,7 +7364,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -7423,7 +7423,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -7503,7 +7503,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7677,7 +7677,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -7889,7 +7889,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7985,7 +7985,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8181,7 +8181,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8229,7 +8229,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8313,7 +8313,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8378,7 +8378,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8611,7 +8611,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8660,7 +8660,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8757,7 +8757,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -8810,7 +8810,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -8862,7 +8862,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8945,7 +8945,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9005,7 +9005,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9056,7 +9056,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9147,7 +9147,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9207,7 +9207,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9288,7 +9288,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9318,7 +9318,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -9483,7 +9483,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9516,7 +9516,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9624,7 +9624,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9688,7 +9688,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9795,7 +9795,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9843,7 +9843,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9925,7 +9925,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10013,7 +10013,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10067,7 +10067,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10131,7 +10131,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10186,7 +10186,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10249,7 +10249,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10305,7 +10305,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10377,7 +10377,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10428,7 +10428,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -10500,7 +10500,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -10645,7 +10645,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -10924,7 +10924,7 @@
         "tags": [
           "Automation"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -10972,7 +10972,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -11140,7 +11140,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "@tensorflow/tfjs"
@@ -11174,7 +11174,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -11281,7 +11281,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "firebase/app",
@@ -11312,7 +11312,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "firebase/database",
@@ -11345,7 +11345,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -11440,7 +11440,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -11596,7 +11596,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -11655,7 +11655,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -11735,7 +11735,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -11862,7 +11862,7 @@
         "lines": 8,
         "description": "Shell Command Parser",
         "tags": [],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -11917,7 +11917,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "fs",
@@ -11954,7 +11954,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12012,7 +12012,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "events"
@@ -12167,7 +12167,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12331,7 +12331,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -12395,7 +12395,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12473,7 +12473,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -12570,7 +12570,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12724,6 +12724,64 @@
         }
       },
       {
+        "name": "agent-registry.ts",
+        "path": "agent/agent-registry.ts",
+        "lines": 83,
+        "description": "Agent Registry",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "../guardrails/agent-trust",
+            "./tab-lock",
+            "../guardrails/origin-guard"
+          ],
+          "interfaces": [
+            {
+              "name": "AgentConnection",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "transport",
+                  "type": "'mcp' | 'http' | 'websocket' | 'in-product'",
+                  "required": true
+                },
+                {
+                  "name": "remote",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "userAgent",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "pairedAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "AgentConnection",
+            "AgentRegistry"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "navigator.ts",
         "path": "agent/navigator.ts",
         "lines": 139,
@@ -12731,7 +12789,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -12775,7 +12833,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -12810,6 +12868,76 @@
         }
       },
       {
+        "name": "tab-lock.ts",
+        "path": "agent/tab-lock.ts",
+        "lines": 137,
+        "description": "Tab Lock",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "TabLease",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "agentId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "acquiredAt",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "expiresAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "LockRequest",
+              "properties": [
+                {
+                  "name": "tabId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "agentId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "ttlMs",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "TabLease",
+            "LockRequest",
+            "TabLockManager"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "types.ts",
         "path": "agent/types.ts",
         "lines": 50,
@@ -12817,7 +12945,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13023,6 +13151,428 @@
         }
       },
       {
+        "name": "bridge.ts",
+        "path": "agent-api/bridge.ts",
+        "lines": 109,
+        "description": "Bridge",
+        "tags": [
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./types",
+            "../snapshot/types",
+            "../snapshot/manager",
+            "../autofill/vault"
+          ],
+          "interfaces": [
+            {
+              "name": "PageAdapter",
+              "properties": []
+            },
+            {
+              "name": "BridgeDeps",
+              "properties": [
+                {
+                  "name": "snapshots",
+                  "type": "SnapshotManager",
+                  "required": true
+                },
+                {
+                  "name": "vault",
+                  "type": "AutofillVault",
+                  "required": false
+                },
+                {
+                  "name": "pageAdapter",
+                  "type": "PageAdapter",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "PageAdapter",
+            "BridgeDeps",
+            "InProcessBridge",
+            "createRemoteBridge"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "providers.ts",
+        "path": "agent-api/providers.ts",
+        "lines": 81,
+        "description": "Providers",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [
+            {
+              "name": "ModelEndpoint",
+              "properties": [
+                {
+                  "name": "provider",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "baseURL",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "apiKey",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "model",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ModelEndpoint",
+            "defaultConfig",
+            "resolveModelEndpoint",
+            "OpenClawClient",
+            "bindHost"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "registry.ts",
+        "path": "agent-api/registry.ts",
+        "lines": 91,
+        "description": "Registry",
+        "tags": [
+          "Security",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./types",
+            "../guardrails/origin-guard",
+            "../guardrails/prompt-injection"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ToolRegistry"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "server.ts",
+        "path": "agent-api/server.ts",
+        "lines": 132,
+        "description": "Server",
+        "tags": [
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "http",
+            "@modelcontextprotocol/sdk/server/index.js",
+            "@modelcontextprotocol/sdk/server/stdio.js",
+            "@modelcontextprotocol/sdk/types.js"
+          ],
+          "importsInternal": [
+            "./registry",
+            "./tools",
+            "./providers",
+            "./types",
+            "../guardrails",
+            "../agent/agent-registry",
+            "../snapshot/manager",
+            "../autofill/vault"
+          ],
+          "interfaces": [
+            {
+              "name": "AgentApiDeps",
+              "properties": [
+                {
+                  "name": "bridge",
+                  "type": "Bridge",
+                  "required": true
+                },
+                {
+                  "name": "security",
+                  "type": "SecurityPipeline",
+                  "required": true
+                },
+                {
+                  "name": "agents",
+                  "type": "AgentRegistry",
+                  "required": true
+                },
+                {
+                  "name": "snapshots",
+                  "type": "SnapshotManager",
+                  "required": true
+                },
+                {
+                  "name": "vault",
+                  "type": "AutofillVault",
+                  "required": false
+                },
+                {
+                  "name": "extensions",
+                  "type": "any",
+                  "required": false
+                },
+                {
+                  "name": "config",
+                  "type": "Partial<AgentApiConfig>",
+                  "required": false
+                },
+                {
+                  "name": "pageAdapter",
+                  "type": "any",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "AgentApiDeps",
+            "AgentApiServer"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "args"
+          ]
+        }
+      },
+      {
+        "name": "tools.ts",
+        "path": "agent-api/tools.ts",
+        "lines": 198,
+        "description": "Tools",
+        "tags": [
+          "Security",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ALL_TOOLS",
+            "registerAllTools"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "str",
+            "bool"
+          ]
+        }
+      },
+      {
+        "name": "types.ts",
+        "path": "agent-api/types.ts",
+        "lines": 79,
+        "description": "Types",
+        "tags": [
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "../guardrails/origin-guard",
+            "../guardrails",
+            "../agent/agent-registry",
+            "../snapshot/manager",
+            "../autofill/vault",
+            "../extensions/ChromeExtensionManager"
+          ],
+          "interfaces": [
+            {
+              "name": "Bridge",
+              "properties": []
+            },
+            {
+              "name": "AgentApiConfig",
+              "properties": [
+                {
+                  "name": "port",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "host",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "enableHttp",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "enableMcp",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "remote",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ToolContext",
+              "properties": [
+                {
+                  "name": "agentId",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "bridge",
+                  "type": "Bridge",
+                  "required": true
+                },
+                {
+                  "name": "security",
+                  "type": "SecurityPipeline",
+                  "required": true
+                },
+                {
+                  "name": "agents",
+                  "type": "AgentRegistry",
+                  "required": true
+                },
+                {
+                  "name": "snapshots",
+                  "type": "SnapshotManager",
+                  "required": true
+                },
+                {
+                  "name": "vault",
+                  "type": "AutofillVault",
+                  "required": false
+                },
+                {
+                  "name": "extensions",
+                  "type": "ChromeExtensionManager",
+                  "required": false
+                },
+                {
+                  "name": "config",
+                  "type": "AgentApiConfig",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ToolResult",
+              "properties": []
+            },
+            {
+              "name": "Tool",
+              "properties": [
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "category",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "inputSchema",
+                  "type": "Record<string, any>",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "CallOutcome",
+              "properties": [
+                {
+                  "name": "result",
+                  "type": "ToolResult",
+                  "required": false
+                },
+                {
+                  "name": "error",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "injection",
+                  "type": "import('../guardrails/prompt-injection').IpiVerdict",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "Bridge",
+            "AgentApiConfig",
+            "ToolContext",
+            "ToolResult",
+            "Tool",
+            "CallOutcome",
+            "textResult",
+            "jsonResult"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "ai-action-security.ts",
         "path": "ai-action-security.ts",
         "lines": 607,
@@ -13038,7 +13588,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13141,7 +13691,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -13259,7 +13809,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13310,7 +13860,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13333,7 +13883,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13412,6 +13962,229 @@
         }
       },
       {
+        "name": "matcher.ts",
+        "path": "autofill/matcher.ts",
+        "lines": 165,
+        "description": "Matcher",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "FieldDescriptor",
+              "properties": [
+                {
+                  "name": "index",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "type",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "autocomplete",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "placeholder",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "selector",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "disabled",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "FieldMatch",
+              "properties": [
+                {
+                  "name": "fieldIndex",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "selector",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "confidence",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "matchedBy",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "profileKey",
+                  "type": "ProfileKey",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "FieldDescriptor",
+            "ProfileKey",
+            "Profile",
+            "FieldMatch",
+            "matchField",
+            "matchFields"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "vault.ts",
+        "path": "autofill/vault.ts",
+        "lines": 163,
+        "description": "Vault",
+        "tags": [
+          "Node.js",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "../crypto-utils",
+            "./matcher"
+          ],
+          "interfaces": [
+            {
+              "name": "CredentialEntry",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "domain",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "username",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "password",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "notes",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "createdAt",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "updatedAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ProfileEntry",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "fields",
+                  "type": "Profile",
+                  "required": true
+                },
+                {
+                  "name": "createdAt",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "updatedAt",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "VaultData",
+              "properties": [
+                {
+                  "name": "credentials",
+                  "type": "CredentialEntry[]",
+                  "required": true
+                },
+                {
+                  "name": "profiles",
+                  "type": "ProfileEntry[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "CredentialEntry",
+            "ProfileEntry",
+            "VaultData",
+            "AutofillVault"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "constants.ts",
         "path": "constants.ts",
         "lines": 53,
@@ -13421,7 +14194,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13463,7 +14236,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13525,7 +14298,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13596,7 +14369,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13623,7 +14396,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13680,7 +14453,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13756,7 +14529,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13813,7 +14586,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13875,6 +14648,215 @@
         }
       },
       {
+        "name": "chrome-importer.ts",
+        "path": "extensions/chrome-importer.ts",
+        "lines": 90,
+        "description": "Chrome Importer",
+        "tags": [
+          "Node.js",
+          "Plugin",
+          "macOS",
+          "Linux"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "fs",
+            "path"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ImportedExtension",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "version",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "sourcePath",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "destPath",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ImportedExtension",
+            "findChromeProfile",
+            "importFromChrome"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "crx-verifier.ts",
+        "path": "extensions/crx-verifier.ts",
+        "lines": 115,
+        "description": "Crx Verifier",
+        "tags": [
+          "Node.js",
+          "Security",
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "crypto"
+          ],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "CrxVerificationResult",
+              "properties": [
+                {
+                  "name": "valid",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "extensionId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "publicKey",
+                  "type": "Buffer",
+                  "required": false
+                },
+                {
+                  "name": "headerSize",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "zipStart",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "error",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "CrxVerificationResult",
+            "verifyCrx",
+            "buildCrx3"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "permission-analyzer.ts",
+        "path": "extensions/permission-analyzer.ts",
+        "lines": 90,
+        "description": "Permission Analyzer",
+        "tags": [
+          "Plugin",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ManifestPermissions",
+              "properties": [
+                {
+                  "name": "permissions",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "host_permissions",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "optional_permissions",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "optional_host_permissions",
+                  "type": "string[]",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "PermissionReport",
+              "properties": [
+                {
+                  "name": "risk",
+                  "type": "RiskLevel",
+                  "required": true
+                },
+                {
+                  "name": "reasons",
+                  "type": "string[]",
+                  "required": true
+                },
+                {
+                  "name": "broadHostAccess",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "sensitiveApis",
+                  "type": "string[]",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ConflictReport",
+              "properties": []
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "ManifestPermissions",
+            "RiskLevel",
+            "PermissionReport",
+            "analyzePermissions",
+            "ConflictReport",
+            "detectConflicts"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "firebaseConfigStorage.ts",
         "path": "firebaseConfigStorage.ts",
         "lines": 51,
@@ -13882,7 +14864,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13941,26 +14923,291 @@
         }
       },
       {
+        "name": "agent-trust.ts",
+        "path": "guardrails/agent-trust.ts",
+        "lines": 166,
+        "description": "Agent Trust",
+        "tags": [
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./origin-guard"
+          ],
+          "interfaces": [
+            {
+              "name": "AgentCapabilities",
+              "properties": [
+                {
+                  "name": "verbs",
+                  "type": "Verb[]",
+                  "required": true
+                },
+                {
+                  "name": "maxConcurrentTabs",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "canRequestApproval",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "RegisteredAgent",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "trust",
+                  "type": "TrustLevel",
+                  "required": true
+                },
+                {
+                  "name": "capabilities",
+                  "type": "AgentCapabilities",
+                  "required": true
+                },
+                {
+                  "name": "createdAt",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "lastSeen",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "revoked",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "injectionAttempts",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "failedActions",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "successfulActions",
+                  "type": "number",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "RegisterAgentInput",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "trust",
+                  "type": "TrustLevel",
+                  "required": false
+                },
+                {
+                  "name": "capabilities",
+                  "type": "Partial<AgentCapabilities>",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "TrustLevel",
+            "AgentCapabilities",
+            "RegisteredAgent",
+            "RegisterAgentInput",
+            "AgentTrustRegistry"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "index.ts",
         "path": "guardrails/index.ts",
-        "lines": 77,
+        "lines": 165,
         "description": "Index",
         "tags": [
           "Security",
+          "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
             "./types",
-            "./sanitizer"
+            "./sanitizer",
+            "./prompt-injection",
+            "./origin-guard",
+            "./agent-trust"
           ],
-          "interfaces": [],
+          "interfaces": [
+            {
+              "name": "GateResult",
+              "properties": [
+                {
+                  "name": "allowed",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "requiresApproval",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "injection",
+                  "type": "import('./prompt-injection').IpiVerdict",
+                  "required": false
+                }
+              ]
+            }
+          ],
           "hooks": [],
           "componentType": "utility",
           "exports": [
-            "SecurityGuardrails"
+            "SecurityGuardrails",
+            "GateResult",
+            "SecurityPipeline"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "origin-guard.ts",
+        "path": "guardrails/origin-guard.ts",
+        "lines": 119,
+        "description": "Origin Guard",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "AgentAction",
+              "properties": [
+                {
+                  "name": "verb",
+                  "type": "Verb",
+                  "required": true
+                },
+                {
+                  "name": "agentId",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "tool",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "PolicyDecision",
+              "properties": [
+                {
+                  "name": "allowed",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "reason",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "requiresApproval",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "policy",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "OriginGuardOptions",
+              "properties": [
+                {
+                  "name": "allowlist",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "enforceAllowlist",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "approvalVerbs",
+                  "type": "Verb[]",
+                  "required": false
+                },
+                {
+                  "name": "denyVerbs",
+                  "type": "Verb[]",
+                  "required": false
+                },
+                {
+                  "name": "killSwitch",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "Verb",
+            "AgentAction",
+            "PolicyDecision",
+            "OriginGuardOptions",
+            "originOf",
+            "OriginGuard"
           ],
           "apiUsage": [],
           "keyFunctions": []
@@ -13975,7 +15222,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14020,6 +15267,128 @@
         }
       },
       {
+        "name": "prompt-injection.ts",
+        "path": "guardrails/prompt-injection.ts",
+        "lines": 320,
+        "description": "Prompt Injection",
+        "tags": [
+          "Security",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "IpiThreat",
+              "properties": [
+                {
+                  "name": "layer",
+                  "type": "IpiLayer",
+                  "required": true
+                },
+                {
+                  "name": "kind",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "start",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "end",
+                  "type": "number",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "IpiVerdict",
+              "properties": [
+                {
+                  "name": "safe",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "action",
+                  "type": "IpiAction",
+                  "required": true
+                },
+                {
+                  "name": "threats",
+                  "type": "IpiThreat[]",
+                  "required": true
+                },
+                {
+                  "name": "sanitized",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "triggeredLayer",
+                  "type": "IpiLayer | 'none'",
+                  "required": true
+                },
+                {
+                  "name": "quarantineToken",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "ScanContext",
+              "properties": [
+                {
+                  "name": "untrusted",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "origin",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "userGoal",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "history",
+                  "type": "string[]",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "IpiLayer",
+            "IpiAction",
+            "IpiThreat",
+            "IpiVerdict",
+            "SemanticCritic",
+            "ScanContext",
+            "PromptInjectionGuard",
+            "defaultPromptInjectionGuard"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "sanitizer.ts",
         "path": "guardrails/sanitizer.ts",
         "lines": 158,
@@ -14028,7 +15397,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14049,6 +15418,32 @@
         }
       },
       {
+        "name": "spotlight.ts",
+        "path": "guardrails/spotlight.ts",
+        "lines": 39,
+        "description": "Spotlight",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "SpotlightMethod",
+            "spotlight",
+            "unspotlight",
+            "UNTRUSTED_CONTENT_DIRECTIVE"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "types.ts",
         "path": "guardrails/types.ts",
         "lines": 29,
@@ -14057,7 +15452,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14136,7 +15531,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14445,7 +15840,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14502,7 +15897,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14532,7 +15927,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14639,7 +16034,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14664,7 +16059,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14690,7 +16085,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14715,7 +16110,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14740,7 +16135,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14767,7 +16162,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14915,7 +16310,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14939,7 +16334,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -15064,7 +16459,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15231,7 +16626,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15573,7 +16968,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15582,6 +16977,225 @@
           "componentType": "utility",
           "exports": [
             "safeEval"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "manager.ts",
+        "path": "snapshot/manager.ts",
+        "lines": 178,
+        "description": "Manager",
+        "tags": [
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "SnapshotManager"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "scopeMatch",
+            "visit",
+            "walk",
+            "collect",
+            "node"
+          ]
+        }
+      },
+      {
+        "name": "types.ts",
+        "path": "snapshot/types.ts",
+        "lines": 49,
+        "description": "Types",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "RawAxNode",
+              "properties": [
+                {
+                  "name": "role",
+                  "type": "AxRole",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "states",
+                  "type": "string[]",
+                  "required": false
+                },
+                {
+                  "name": "attributes",
+                  "type": "Record<string, string>",
+                  "required": false
+                },
+                {
+                  "name": "backendNodeId",
+                  "type": "string | number",
+                  "required": false
+                },
+                {
+                  "name": "selector",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "href",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "children",
+                  "type": "RawAxNode[]",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "SnapshotNode",
+              "properties": [
+                {
+                  "name": "ref",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "role",
+                  "type": "AxRole",
+                  "required": true
+                },
+                {
+                  "name": "name",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "value",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "href",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "interactive",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "depth",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "backendNodeId",
+                  "type": "string | number",
+                  "required": false
+                },
+                {
+                  "name": "selector",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "children",
+                  "type": "SnapshotNode[]",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "SnapshotOptions",
+              "properties": [
+                {
+                  "name": "interactiveOnly",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "compact",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "depth",
+                  "type": "number",
+                  "required": false
+                },
+                {
+                  "name": "scopeSelector",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "SnapshotResult",
+              "properties": [
+                {
+                  "name": "nodes",
+                  "type": "SnapshotNode[]",
+                  "required": true
+                },
+                {
+                  "name": "refs",
+                  "type": "Record<string, SnapshotNode>",
+                  "required": true
+                },
+                {
+                  "name": "text",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "AxRole",
+            "RawAxNode",
+            "SnapshotNode",
+            "SnapshotOptions",
+            "SnapshotResult"
           ],
           "apiUsage": [],
           "keyFunctions": []
@@ -15597,7 +17211,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15629,7 +17243,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -15653,6 +17267,103 @@
         }
       },
       {
+        "name": "resolver.ts",
+        "path": "theme/resolver.ts",
+        "lines": 86,
+        "description": "Resolver",
+        "tags": [
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "ThemePrefs",
+              "properties": [
+                {
+                  "name": "accent",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "background",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "foreground",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "surface",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "density",
+                  "type": "'compact' | 'comfortable' | 'spacious'",
+                  "required": true
+                },
+                {
+                  "name": "glow",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "dark",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "ResolvedTheme",
+              "properties": [
+                {
+                  "name": "mode",
+                  "type": "UiMode",
+                  "required": true
+                },
+                {
+                  "name": "prefs",
+                  "type": "ThemePrefs",
+                  "required": true
+                },
+                {
+                  "name": "cssVars",
+                  "type": "Record<string, string>",
+                  "required": true
+                },
+                {
+                  "name": "bodyClass",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "UiMode",
+            "ThemePrefs",
+            "ResolvedTheme",
+            "PRESETS",
+            "defaultPrefs",
+            "resolveTheme",
+            "applyThemeToDocument"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "merged"
+          ]
+        }
+      },
+      {
         "name": "url-validator.ts",
         "path": "url-validator.ts",
         "lines": 18,
@@ -15661,7 +17372,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15684,7 +17395,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -15717,7 +17428,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-07-29",
+        "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15802,7 +17513,7 @@
     "components": []
   },
   "summary": {
-    "total": 191,
-    "totalLines": 53965
+    "total": 211,
+    "totalLines": 56543
   }
 }
