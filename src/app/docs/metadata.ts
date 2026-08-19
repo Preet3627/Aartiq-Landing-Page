@@ -78,6 +78,11 @@ export const docsPages: Record<string, { title: string; description: string; key
     description: "Canonical JSON-first AI command reference for Aartiq, including scheduling, OCR, automation, and plugin commands",
     keywords: ["AI commands", "JSON", "automation", "OCR", "scheduling", "shell", "plugins"],
   },
+  "skills": {
+    title: "Skills",
+    description: "Aartiq skills: on-demand Markdown prompt skills, the capability catalog, and the MCP/HTTP agent API",
+    keywords: ["skills", "prompt skills", "SkillRegistry", "SkillLoader", "MCP", "agent API", "tools"],
+  },
   security: {
     title: "Security Model",
     description: "Three-layer security architecture, E2EE encryption, permissions, and privacy features",

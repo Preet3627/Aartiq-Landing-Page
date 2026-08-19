@@ -341,18 +341,18 @@ const commands = [
       { name: "shell", type: "string", required: false, description: "Shell type: bash, zsh, powershell, cmd" }
     ],
     safetyFeatures: [
-      "Syntactic firewall filters dangerous patterns",
+      "Syntactic firewall filters dangerous patterns (SecurityValidator.js)",
       "Command is displayed for user review before execution",
-      "High-risk commands require QR code approval via mobile",
-      "Commands are logged for audit purposes"
+      "Rated HIGH risk — never auto-executes; gated by checkShellPermission (command-validator.js:77)",
+      "High-risk commands require QR + PIN or Touch ID approval (ClickPermissionModal.tsx)",
+      "Executed inside the fail-closed OS sandbox (sandbox-executor.js)",
+      "Every run is logged for audit (ActionLogsStore.ts)"
     ],
     example: {
       json: `{
-  "command": "SHELL_COMMAND",
-  "params": {
-    "command": "system_profiler SPNetworkDataType",
-    "shell": "bash"
-  }
+  "commands": [
+    { "type": "SHELL_COMMAND", "value": "system_profiler SPNetworkDataType" }
+  ]
 }`,
       natural: "Show me my network information"
     },
@@ -1227,9 +1227,24 @@ export default function AICommandsPage() {
         </h1>
 
         <p className="max-w-3xl text-xl font-medium leading-relaxed text-white/50">
-          Structured JSON commands for browser control, system automation, and AI orchestration.
-          Source: src/lib/AICommandParser.ts, src/components/ai/AIConstants.ts, src/components/ai/AIUtils.ts
+          Aartiq turns AI output into structured commands before anything runs. The parser is
+          <strong className="text-white/70"> JSON-first</strong>, then HTML-comment, then bracket tags. The shell
+          verb is <code className="font-mono text-sky-400/80">SHELL_COMMAND</code> (there is no
+          <code className="font-mono text-rose-400/80"> RUN_SHELL</code>); it is rated
+          <strong className="text-rose-400/80"> HIGH risk</strong> and never auto-executes.
+          Commands are executed one at a time with per-step human approval.
         </p>
+
+        <div className="mt-8 rounded-2xl border border-sky-500/20 bg-sky-500/5 p-6 text-sm leading-relaxed text-white/60">
+          <p className="mb-3 text-[10px] font-black uppercase tracking-[0.4em] text-sky-400/80">How commands are parsed</p>
+          <ul className="space-y-2">
+            <li><span className="font-bold text-white/80">1. JSON (tried first)</span> — <code className="font-mono text-sky-400/70">```json</code> blocks and bare <code className="font-mono text-sky-400/70">{'{ "commands": [...] }'}</code> / <code className="font-mono text-sky-400/70">{'{ "type": ..., "value": ... }'}</code> objects, parsed with a balanced-brace scanner.</li>
+            <li><span className="font-bold text-white/80">2. HTML comment</span> — <code className="font-mono text-sky-400/70">&lt;!-- AI_COMMANDS_START --&gt; ... &lt;!-- AI_COMMANDS_END --&gt;</code> containing <code className="font-mono text-sky-400/70">[TYPE]:value</code> lines.</li>
+            <li><span className="font-bold text-white/80">3. Bracket tags</span> — <code className="font-mono text-sky-400/70">[NAVIGATE: https://example.com]</code>, <code className="font-mono text-sky-400/70">[FILL_FORM: #email | user@example.com]</code>, <code className="font-mono text-sky-400/70">[CLICK_ELEMENT: #submit | click submit]</code>.</li>
+            <li>Text inside code blocks, inline code, <code className="font-mono text-sky-400/70">&lt;think&gt;</code> blocks, and markdown tables is masked so it is not re-parsed. A command may carry a <code className="font-mono text-sky-400/70">risk</code> field and <code className="font-mono text-sky-400/70">reason</code>; default risk is <code className="font-mono text-sky-400/70">medium</code>.</li>
+          </ul>
+          <p className="mt-3 text-[11px] font-mono text-sky-400/70">Source: src/lib/AICommandParser.ts:374-513, src/lib/AICommandParser.ts:62-138, src/components/ai/AIConstants.ts:96-108</p>
+        </div>
 
         <div className="mt-12 flex flex-wrap gap-3">
           <Link

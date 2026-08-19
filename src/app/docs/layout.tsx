@@ -36,7 +36,8 @@ import {
   Keyboard,
   Apple,
   Monitor,
-  TestTube
+  TestTube,
+  Boxes
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import Image from "next/image";
@@ -97,6 +98,12 @@ const navigation: NavItem[] = [
     title: "AI Commands",
     href: "/docs/ai-commands",
     icon: Bot,
+  },
+  {
+    id: "skills",
+    title: "Skills",
+    href: "/docs/skills",
+    icon: Boxes,
   },
 
   {
@@ -192,10 +199,10 @@ const sectionGroups = [
       ["cloud-sync"].includes(item.id)
     ),
   },
-  {
+   {
     title: "Core Features",
     items: navigation.filter(item => 
-      ["ai-commands", "security", "automation"].includes(item.id)
+      ["ai-commands", "skills", "security", "automation"].includes(item.id)
     ),
   },
   {

@@ -108,30 +108,39 @@ const securityLayers = [
     approvalTiers: [
       {
         name: "Low Risk",
-        risk: "Instant / Shift+Tab",
-        description: "Read-only actions, navigation, volume changes",
+        risk: "Auto / Shift+Tab",
+        description: "Read-only actions, navigation, volume changes. Auto-run only if autoApproveLowRisk is enabled (default false); otherwise a quick approval.",
         examples: ["Taking screenshots", "Navigating to URLs", "Adjusting volume"]
       },
       {
         name: "Medium Risk",
-        risk: "Shift+Tab Required",
-        description: "Actions that modify browser state or open apps",
+        risk: "Approval dialog",
+        description: "Actions that modify browser state or open apps. Shown as Allow Once / Always Allow / Deny (shell-permission-bridge.js); persist via the permission store.",
         examples: ["Filling forms", "Clicking buttons", "Opening applications"]
       },
       {
         name: "High Risk",
-        risk: "QR Code + Mobile Approval",
-        description: "Shell commands, external app clicks, system changes",
+        risk: "QR + PIN or Touch ID",
+        description: "Shell commands and system changes. Either a QR+PIN approval from the paired mobile app, or an OS-native biometric prompt (Touch ID / Windows Hello). The QR carries a single-use token + 6-digit PIN.",
         examples: ["Shell command execution", "External app automation", "File modifications"]
+      },
+      {
+        name: "Critical Risk",
+        risk: "Never auto-approved",
+        description: "Always denied at checkShellPermission (command-validator.js:87). Routed through the capability controller's ticket-based flow; tickets are single-use, input-hash-bound, 5-minute TTL.",
+        examples: ["Destructive / irreversible operations", "Privilege escalation"]
       }
     ],
     howItWorks: [
-      "AI generates a command with proposed action",
-      "User sees the exact command before execution",
-      "Medium risk: User can approve with keyboard shortcut",
-      "High risk: User must scan QR code with mobile app",
-      "Command only executes after explicit approval",
-      "Source files: src/main/handlers/permission-handlers.js, src/components/ai/ClickPermissionModal.tsx, src/main/permission-store.js"
+      "AI generates a command; the parser assigns a risk field (default medium).",
+      "checkShellPermission() classifies low/medium/high/critical and checks the PermissionStore allowlist; with no store it denies (fail-closed) — src/core/command-validator.js:77-133.",
+      "Low risk: auto-runs only if autoApproveLowRisk is on (default off); otherwise a lightweight approval.",
+      "High risk (shell/power): the desktop generates a QR encoding aartiq://approve?id=<token>&pin=<6-digit> and waits for the paired mobile to return the PIN — src/main/handlers/sync-handlers.js:40-48, src/main/handlers/utils.js:377-387.",
+      "Alternatively, high risk uses an OS-native dialog: macOS 'Approve with Touch ID', Windows PowerShell, Linux bash — src/main/handlers/native-approval-manager.js:22-98. Biometric is gated by requireBiometricPerSession / requireBiometricEveryTime.",
+      "The renderer only enables Approve when both mobileApproved and pinVerified are true (or the biometric dialog succeeds) — src/components/ai/ClickPermissionModal.tsx:247-302.",
+      "Critical risk is denied at the gate; anything that does proceed goes through capability-controller single-use tickets — src/core/capability-controller.js:29-100, src/core/approval-ticket-manager.js:139-278, src/lib/approval-gate.js:53-147.",
+      "Command only executes after explicit approval; timeouts and missing renderers resolve to deny — src/core/shell-permission-bridge.js:42-71.",
+      "Source files: src/core/command-validator.js, src/lib/permission-store.js, src/main/handlers/sync-handlers.js, src/main/handlers/utils.js, src/main/handlers/native-approval-manager.js, src/components/ai/ClickPermissionModal.tsx, src/core/capability-controller.js"
     ],
     benefits: [
       "No automated execution of destructive commands",
