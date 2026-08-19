@@ -1,15 +1,15 @@
 {
-  "generated": "2026-08-19T16:07:58.761Z",
-  "version": "0.3.5",
+  "generated": "2026-08-19T17:04:50.679Z",
+  "version": "0.3.6",
   "desktop": {
-    "total": 212,
-    "totalLines": 56617,
+    "total": 230,
+    "totalLines": 59670,
     "byCategory": {
-      "components": 127,
+      "components": 144,
       "core": 0,
       "automation": 0,
       "service": 0,
-      "lib": 85
+      "lib": 86
     },
     "components": [
       {
@@ -102,7 +102,7 @@
       {
         "name": "types.ts",
         "path": "AIChatSidebar/types.ts",
-        "lines": 162,
+        "lines": 167,
         "description": "Types",
         "tags": [
           "AI",
@@ -114,7 +114,8 @@
           "importsExternal": [],
           "importsInternal": [
             "../ai/ConversationHistoryPanel",
-            "../ai/ThinkingPanel"
+            "../ai/ThinkingPanel",
+            "../../lib/aiQuestion"
           ],
           "interfaces": [
             {
@@ -458,7 +459,7 @@
       {
         "name": "AIChatSidebar.tsx",
         "path": "AIChatSidebar.tsx",
-        "lines": 7943,
+        "lines": 8383,
         "description": "Chat Sidebar",
         "tags": [
           "React",
@@ -498,6 +499,7 @@
             "./ai/CollapsibleOCRMessage",
             "./ai/ProcessingIndicator",
             "./ai/CollapsibleSkillMessage",
+            "./ai/SkillsListMessage",
             "./ai/MessageActions",
             "./ai/ConversationHistoryPanel",
             "./ai/useAIActionSecurityManager",
@@ -529,10 +531,17 @@
             "@/lib/SkillRegistry",
             "@/lib/ActionLogsStore",
             "./sidebar/AIFallback",
-            "./sidebar/AIHomeExperience",
+            "./sidebar/SidebarWidgets",
+            "./sidebar/AISuggestionsHome",
+            "./sidebar/AISuggestionBubbles",
             "./sidebar/CustomizationPanel",
+            "./sidebar/useSidebarPrefs",
+            "./sidebar/SidebarContext",
+            "./sidebar/theme",
             "@/store/tabIntelligenceStore",
             "./sidebar/PrivacyControls",
+            "./QuestionCard",
+            "@/lib/aiQuestion",
             "./sidebar/AIVisualTheme",
             "./sidebar/AITabAnimation",
             "./sidebar/BackgroundNotifications",
@@ -657,6 +666,11 @@
                 },
                 {
                   "name": "bridgeOnly",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "isResizing",
                   "type": "boolean",
                   "required": false
                 }
@@ -839,8 +853,10 @@
             "softPanelStyle",
             "popoverStyle",
             "userBubbleStyle",
+            "onResize",
             "findYouTubeLinkElement",
             "next",
+            "messagesPayload",
             "flushStreamText",
             "websiteDetailNode",
             "generateImage",
@@ -860,8 +876,7 @@
             "handleFocusAI",
             "handleAbort",
             "handleToggleAutonomous",
-            "options",
-            "updated"
+            "options"
           ]
         }
       },
@@ -3754,6 +3769,79 @@
         }
       },
       {
+        "name": "QuestionCard.tsx",
+        "path": "QuestionCard.tsx",
+        "lines": 153,
+        "description": "Question Card",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "@/lib/aiQuestion"
+          ],
+          "interfaces": [
+            {
+              "name": "QuestionCardProps",
+              "properties": [
+                {
+                  "name": "question",
+                  "type": "AartiqQuestion",
+                  "required": true
+                },
+                {
+                  "name": "answered",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "answer",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "skipped",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "onAnswer",
+                  "type": "(text: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "onSkip",
+                  "type": "() => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default QuestionCard"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "submit",
+            "toggleOption",
+            "submitMulti"
+          ]
+        }
+      },
+      {
         "name": "QuickNavOverlay.tsx",
         "path": "QuickNavOverlay.tsx",
         "lines": 213,
@@ -3887,7 +3975,7 @@
       {
         "name": "SettingsPanel.tsx",
         "path": "SettingsPanel.tsx",
-        "lines": 1195,
+        "lines": 1263,
         "description": "Settings Panel",
         "tags": [
           "React",
@@ -3899,7 +3987,8 @@
           "OCR",
           "Plugin",
           "macOS",
-          "Windows"
+          "Windows",
+          "Flutter"
         ],
         "lastModified": "2026-08-19",
         "codeAnalysis": {
@@ -3911,6 +4000,8 @@
           ],
           "importsInternal": [
             "@/store/useAppStore",
+            "./sidebar/useSidebarPrefs",
+            "./sidebar/CustomizationPanel",
             "./SearchEngineSettings",
             "./KeyboardShortcutSettings",
             "./UserAgentSettings",
@@ -5034,7 +5125,7 @@
       {
         "name": "AIConstants.ts",
         "path": "ai/AIConstants.ts",
-        "lines": 438,
+        "lines": 489,
         "description": "AIConstants",
         "tags": [
           "Node.js",
@@ -5688,7 +5779,7 @@
       {
         "name": "ActionChainTimeline.tsx",
         "path": "ai/ActionChainTimeline.tsx",
-        "lines": 296,
+        "lines": 350,
         "description": "Action Chain Timeline",
         "tags": [
           "React",
@@ -5705,6 +5796,21 @@
           ],
           "importsInternal": [],
           "interfaces": [
+            {
+              "name": "ActionChainSite",
+              "properties": [
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
             {
               "name": "ActionChainStep",
               "properties": [
@@ -5731,6 +5837,11 @@
                 {
                   "name": "detailNode",
                   "type": "React.ReactNode",
+                  "required": false
+                },
+                {
+                  "name": "sites",
+                  "type": "ActionChainSite[]",
                   "required": false
                 },
                 {
@@ -5782,6 +5893,7 @@
           "componentType": "react-utility",
           "exports": [
             "default ActionChainTimeline",
+            "ActionChainSite",
             "ActionChainStep",
             "ActionChainTimelineProps"
           ],
@@ -5792,7 +5904,8 @@
           "keyFunctions": [
             "statusStyles",
             "statusIcon",
-            "DetailDisplay"
+            "DetailDisplay",
+            "SitesRow"
           ]
         }
       },
@@ -7974,6 +8087,42 @@
         }
       },
       {
+        "name": "SkillsListMessage.tsx",
+        "path": "ai/SkillsListMessage.tsx",
+        "lines": 86,
+        "description": "Skills List Message",
+        "tags": [
+          "React",
+          "Security",
+          "AI",
+          "Automation",
+          "PDF",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "@/lib/SkillRegistry"
+          ],
+          "interfaces": [],
+          "hooks": [
+            "useState"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default SkillsListMessage"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "SmartMessageContent.tsx",
         "path": "ai/SmartMessageContent.tsx",
         "lines": 789,
@@ -8649,101 +8798,142 @@
         }
       },
       {
-        "name": "AIHomeExperience.tsx",
-        "path": "sidebar/AIHomeExperience.tsx",
-        "lines": 145,
-        "description": "Home Experience",
+        "name": "AISuggestionBubbles.tsx",
+        "path": "sidebar/AISuggestionBubbles.tsx",
+        "lines": 85,
+        "description": "Suggestion Bubbles",
         "tags": [
           "React",
           "AI",
-          "Automation",
-          "macOS",
-          "Flutter"
+          "macOS"
         ],
         "lastModified": "2026-08-19",
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "framer-motion",
             "lucide-react"
           ],
-          "importsInternal": [
-            "./types",
-            "@/components/ai/ActionChainTimeline",
-            "@/lib/homeIntelligence",
-            "./widgets/home/CurrentContextWidget",
-            "./widgets/home/WorkspaceIntelligenceWidget",
-            "./widgets/home/AISuggestionsWidget",
-            "./widgets/home/SessionResumeWidget",
-            "./widgets/home/AutomationMonitorWidget",
-            "./widgets/home/MemoryInsightsWidget",
-            "./widgets/home/AIHomeTimelineWidget"
-          ],
+          "importsInternal": [],
           "interfaces": [
             {
-              "name": "AIHomeExperienceProps",
+              "name": "BubbleSuggestion",
               "properties": [
                 {
-                  "name": "enabledWidgets",
-                  "type": "WidgetId[]",
-                  "required": true
-                },
-                {
-                  "name": "widgetOrder",
-                  "type": "WidgetId[]",
-                  "required": true
-                },
-                {
-                  "name": "tabs",
-                  "type": "TabInfo[]",
-                  "required": true
-                },
-                {
-                  "name": "activeTabId",
+                  "name": "id",
                   "type": "string",
-                  "required": false
-                },
-                {
-                  "name": "history",
-                  "type": "HistoryEntry[]",
-                  "required": false
-                },
-                {
-                  "name": "actionSteps",
-                  "type": "ActionChainStep[]",
                   "required": true
                 },
                 {
-                  "name": "sessionLabel",
+                  "name": "label",
                   "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "AISuggestionBubblesProps",
+              "properties": [
+                {
+                  "name": "autoSuggestions",
+                  "type": "BubbleSuggestion[]",
+                  "required": true
+                },
+                {
+                  "name": "onAction",
+                  "type": "(command: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "onRefresh",
+                  "type": "() => void",
                   "required": false
                 },
                 {
-                  "name": "isWorking",
+                  "name": "loading",
                   "type": "boolean",
                   "required": false
                 },
                 {
-                  "name": "onAction",
-                  "type": "(cmd: string) => void",
-                  "required": true
+                  "name": "max",
+                  "type": "number",
+                  "required": false
                 }
               ]
             }
           ],
           "hooks": [],
-          "componentType": "function-component",
+          "componentType": "react-utility",
           "exports": [
-            "default AIHomeExperience",
-            "AIHomeExperienceProps"
+            "default AISuggestionBubbles",
+            "BubbleSuggestion"
           ],
           "apiUsage": [
-            "framer-motion",
             "lucide-icons"
           ],
-          "keyFunctions": [
-            "renderWidget"
-          ]
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "AISuggestionsHome.tsx",
+        "path": "sidebar/AISuggestionsHome.tsx",
+        "lines": 150,
+        "description": "Suggestions Home",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "./SidebarContext",
+            "./useSidebarPrefs"
+          ],
+          "interfaces": [
+            {
+              "name": "Suggestion",
+              "properties": [
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "command",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "hint",
+                  "type": "string",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default AISuggestionsHome",
+            "Suggestion",
+            "historySuggestions",
+            "GENERIC_SUGGESTIONS"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
         }
       },
       {
@@ -8938,10 +9128,11 @@
       {
         "name": "CustomizationPanel.tsx",
         "path": "sidebar/CustomizationPanel.tsx",
-        "lines": 166,
+        "lines": 599,
         "description": "Customization Panel",
         "tags": [
           "React",
+          "PDF",
           "macOS",
           "Flutter"
         ],
@@ -8949,29 +9140,44 @@
         "codeAnalysis": {
           "importsExternal": [
             "react",
-            "framer-motion",
-            "lucide-react"
+            "react-dom",
+            "framer-motion"
           ],
           "importsInternal": [
-            "./types"
+            "./layouts"
           ],
           "interfaces": [
             {
               "name": "CustomizationPanelProps",
               "properties": [
                 {
+                  "name": "initialPrefs",
+                  "type": "SidebarPreferences",
+                  "required": true
+                },
+                {
+                  "name": "initialGlobalTheme",
+                  "type": "ThemeId",
+                  "required": true
+                },
+                {
+                  "name": "onPreview",
+                  "type": "(prefs: SidebarPreferences) => void",
+                  "required": true
+                },
+                {
+                  "name": "onApply",
+                  "type": "(prefs: SidebarPreferences) => void",
+                  "required": true
+                },
+                {
                   "name": "onClose",
                   "type": "() => void",
                   "required": true
                 },
                 {
-                  "name": "currentPrefs",
-                  "type": "SidebarPreferences",
-                  "required": true
-                },
-                {
-                  "name": "onUpdatePrefs",
-                  "type": "(prefs: SidebarPreferences) => void",
+                  "name": "setGlobalTheme",
+                  "type": "(theme: ThemeId) => void",
                   "required": true
                 }
               ]
@@ -8980,18 +9186,23 @@
           "hooks": [
             "useState",
             "useEffect",
-            "useCallback"
+            "useCallback",
+            "useRef",
+            "useMemo"
           ],
-          "componentType": "react-utility",
+          "componentType": "function-component",
           "exports": [
-            "default memo"
+            "default memo",
+            "CustomizationPanelProps"
           ],
           "apiUsage": [
             "framer-motion",
             "lucide-icons"
           ],
           "keyFunctions": [
-            "CustomizationPanel"
+            "CustomizationPanel",
+            "next",
+            "panel"
           ]
         }
       },
@@ -9047,9 +9258,211 @@
         }
       },
       {
+        "name": "SidebarContext.tsx",
+        "path": "sidebar/SidebarContext.tsx",
+        "lines": 60,
+        "description": "Sidebar Context",
+        "tags": [
+          "React",
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "@/components/ai/ActionChainTimeline",
+            "@/lib/homeIntelligence"
+          ],
+          "interfaces": [
+            {
+              "name": "NeedsAttentionItem",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "type",
+                  "type": "AttentionType",
+                  "required": true
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "detail",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "severity",
+                  "type": "\"info\" | \"warning\" | \"error\"",
+                  "required": false
+                },
+                {
+                  "name": "actionLabel",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "onAction",
+                  "type": "() => void",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "SidebarData",
+              "properties": [
+                {
+                  "name": "agentState",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "currentTask",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "isPaused",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "onPause",
+                  "type": "() => void",
+                  "required": false
+                },
+                {
+                  "name": "onResume",
+                  "type": "() => void",
+                  "required": false
+                },
+                {
+                  "name": "onStop",
+                  "type": "() => void",
+                  "required": false
+                },
+                {
+                  "name": "actionChainSteps",
+                  "type": "ActionChainStep[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useContext"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "AttentionType",
+            "NeedsAttentionItem",
+            "SidebarData",
+            "SidebarDataContext",
+            "useSidebarData",
+            "SidebarDataProvider"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "SidebarWidgets.tsx",
+        "path": "sidebar/SidebarWidgets.tsx",
+        "lines": 100,
+        "description": "Sidebar Widgets",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion"
+          ],
+          "importsInternal": [
+            "./WidgetContainer",
+            "./WidgetErrorBoundary",
+            "./registry",
+            "./types",
+            "./SidebarContext"
+          ],
+          "interfaces": [
+            {
+              "name": "SidebarWidgetsController",
+              "properties": [
+                {
+                  "name": "setWidgetCollapsed",
+                  "type": "(id: WidgetId, collapsed: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidgetSize",
+                  "type": "(id: WidgetId, size: WidgetSize) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidgetPinned",
+                  "type": "(id: WidgetId, pinned: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "toggleWidget",
+                  "type": "(id: WidgetId) => void",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "SidebarWidgetsProps",
+              "properties": [
+                {
+                  "name": "prefs",
+                  "type": "SidebarPreferences",
+                  "required": true
+                },
+                {
+                  "name": "controller",
+                  "type": "SidebarWidgetsController",
+                  "required": true
+                },
+                {
+                  "name": "emptyState",
+                  "type": "React.ReactNode",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useCallback",
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default SidebarWidgets",
+            "SidebarWidgetsController"
+          ],
+          "apiUsage": [
+            "framer-motion"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "WidgetContainer.tsx",
         "path": "sidebar/WidgetContainer.tsx",
-        "lines": 91,
+        "lines": 157,
         "description": "Widget Container",
         "tags": [
           "React",
@@ -9072,7 +9485,7 @@
               "properties": [
                 {
                   "name": "id",
-                  "type": "WidgetId",
+                  "type": "string",
                   "required": true
                 },
                 {
@@ -9086,7 +9499,22 @@
                   "required": true
                 },
                 {
-                  "name": "isCollapsed",
+                  "name": "description",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "collapsed",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "size",
+                  "type": "WidgetSize",
+                  "required": true
+                },
+                {
+                  "name": "pinned",
                   "type": "boolean",
                   "required": true
                 },
@@ -9096,7 +9524,12 @@
                   "required": true
                 },
                 {
-                  "name": "onRemove",
+                  "name": "onCycleSize",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "onTogglePin",
                   "type": "() => void",
                   "required": true
                 },
@@ -9107,22 +9540,19 @@
                 },
                 {
                   "name": "dragHandleProps",
-                  "type": "Record<string, any>",
+                  "type": "Record<string, unknown>",
                   "required": false
                 },
                 {
-                  "name": "className",
-                  "type": "string",
+                  "name": "headerExtra",
+                  "type": "React.ReactNode",
                   "required": false
                 }
               ]
             }
           ],
           "hooks": [
-            "useState",
-            "useEffect",
-            "useCallback",
-            "useRef"
+            "useCallback"
           ],
           "componentType": "react-utility",
           "exports": [
@@ -9308,10 +9738,10 @@
         }
       },
       {
-        "name": "types.ts",
-        "path": "sidebar/types.ts",
-        "lines": 190,
-        "description": "Types",
+        "name": "layouts.ts",
+        "path": "sidebar/layouts.ts",
+        "lines": 120,
+        "description": "Layouts",
         "tags": [
           "AI",
           "Automation",
@@ -9324,7 +9754,234 @@
           "importsInternal": [],
           "interfaces": [
             {
-              "name": "SidebarWidget",
+              "name": "LayoutPreset",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "SidebarLayoutId",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "description",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "enabled",
+                  "type": "WidgetId[]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "LayoutPreset",
+            "LAYOUT_PRESETS",
+            "LAYOUT_MAP",
+            "applyLayout",
+            "layoutMatchesWidgets",
+            "deriveLayoutId"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "registry.tsx",
+        "path": "sidebar/registry.tsx",
+        "lines": 25,
+        "description": "Registry",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "./types",
+            "./widgets/CurrentTaskWidget",
+            "./widgets/LiveActivityWidget",
+            "./widgets/GoalIntentWidget",
+            "./widgets/WorkspaceWidget",
+            "./widgets/MemoryInsightsWidget",
+            "./widgets/AISuggestionsWidget",
+            "./widgets/NeedsAttentionWidget",
+            "./widgets/AutomationMonitorWidget"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "WIDGET_COMPONENTS"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "theme.ts",
+        "path": "sidebar/theme.ts",
+        "lines": 154,
+        "description": "Theme",
+        "tags": [
+          "React",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "./types"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "sidebarRootStyle",
+            "AgentStateName",
+            "AGENT_STATE_COLORS",
+            "agentStateColor",
+            "agentStateLabel"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "types.ts",
+        "path": "sidebar/types.ts",
+        "lines": 484,
+        "description": "Types",
+        "tags": [
+          "Security",
+          "AI",
+          "Automation",
+          "macOS",
+          "Windows",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "SidebarWidgetState",
+              "properties": [
+                {
+                  "name": "id",
+                  "type": "WidgetId",
+                  "required": true
+                },
+                {
+                  "name": "enabled",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "collapsed",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "size",
+                  "type": "WidgetSize",
+                  "required": true
+                },
+                {
+                  "name": "pinned",
+                  "type": "boolean",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "SidebarPreferences",
+              "properties": [
+                {
+                  "name": "version",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "layout",
+                  "type": "SidebarLayoutId",
+                  "required": true
+                },
+                {
+                  "name": "widgets",
+                  "type": "SidebarWidgetState[]",
+                  "required": true
+                },
+                {
+                  "name": "density",
+                  "type": "Density",
+                  "required": true
+                },
+                {
+                  "name": "width",
+                  "type": "number",
+                  "required": true
+                },
+                {
+                  "name": "theme",
+                  "type": "ThemeId",
+                  "required": false
+                },
+                {
+                  "name": "accent",
+                  "type": "string",
+                  "required": false
+                },
+                {
+                  "name": "blur",
+                  "type": "BlurLevel",
+                  "required": true
+                },
+                {
+                  "name": "radius",
+                  "type": "RadiusLevel",
+                  "required": true
+                },
+                {
+                  "name": "showSecondaryInfo",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "mode",
+                  "type": "\"full\" | \"compact\" | \"hidden\"",
+                  "required": true
+                },
+                {
+                  "name": "showWidgets",
+                  "type": "boolean",
+                  "required": true
+                },
+                {
+                  "name": "historySuggestions",
+                  "type": "\"always\" | \"ask\" | \"never\"",
+                  "required": true
+                }
+              ]
+            },
+            {
+              "name": "SidebarWidgetMeta",
               "properties": [
                 {
                   "name": "id",
@@ -9337,54 +9994,29 @@
                   "required": true
                 },
                 {
-                  "name": "icon",
+                  "name": "description",
                   "type": "string",
                   "required": true
                 },
                 {
-                  "name": "defaultVisible",
+                  "name": "alwaysAvailable",
+                  "type": "boolean",
+                  "required": false
+                },
+                {
+                  "name": "defaultEnabled",
                   "type": "boolean",
                   "required": true
                 },
                 {
-                  "name": "defaultOrder",
-                  "type": "number",
+                  "name": "defaultSize",
+                  "type": "WidgetSize",
                   "required": true
                 },
                 {
-                  "name": "minHeight",
-                  "type": "number",
+                  "name": "defaultPinned",
+                  "type": "boolean",
                   "required": false
-                }
-              ]
-            },
-            {
-              "name": "SidebarPreferences",
-              "properties": [
-                {
-                  "name": "enabledWidgets",
-                  "type": "WidgetId[]",
-                  "required": true
-                },
-                {
-                  "name": "widgetOrder",
-                  "type": "WidgetId[]",
-                  "required": true
-                },
-                {
-                  "name": "collapsedWidgets",
-                  "type": "WidgetId[]",
-                  "required": true
-                },
-                {
-                  "name": "sidebarWidth",
-                  "type": "number",
-                  "required": true
-                },
-                {
-                  "name": "sidebarMode",
-                  "type": "'full' | 'compact' | 'hidden'",
-                  "required": true
                 }
               ]
             },
@@ -9448,25 +10080,275 @@
           "componentType": "utility",
           "exports": [
             "WidgetId",
-            "SidebarWidget",
+            "SidebarLayoutId",
+            "Density",
+            "WidgetSize",
+            "BlurLevel",
+            "RadiusLevel",
+            "ThemeId",
+            "SidebarWidgetState",
             "SidebarPreferences",
+            "SidebarWidgetMeta",
+            "WIDGET_REGISTRY",
+            "WIDGET_META",
+            "DEFAULT_DENSITY",
+            "DEFAULT_WIDTH",
+            "MIN_WIDTH",
+            "MAX_WIDTH",
+            "DEFAULT_TRANSPARENCY",
+            "DEFAULT_BLUR",
+            "DEFAULT_RADIUS",
+            "SIDEBAR_SCHEMA_VERSION",
+            "buildDefaultWidgets",
+            "DEFAULT_SIDEBAR_PREFERENCES",
+            "migrateSidebarPreferences",
+            "getSidebarPreferences",
+            "saveSidebarPreferences",
             "GlowMode",
             "AIVisualSettings",
             "PrivacySettings",
-            "WIDGET_DEFINITIONS",
-            "DEFAULT_SIDEBAR_PREFERENCES",
             "DEFAULT_AI_VISUAL_SETTINGS",
             "DEFAULT_PRIVACY_SETTINGS",
-            "getSidebarPreferences",
-            "saveSidebarPreferences",
             "getAIVisualSettings",
             "saveAIVisualSettings",
             "getPrivacySettings",
             "savePrivacySettings"
           ],
-          "apiUsage": [],
+          "apiUsage": [
+            "zustand-store"
+          ],
           "keyFunctions": [
             "updated"
+          ]
+        }
+      },
+      {
+        "name": "useSidebarPrefs.ts",
+        "path": "sidebar/useSidebarPrefs.ts",
+        "lines": 240,
+        "description": "Sidebar Prefs",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "./layouts"
+          ],
+          "interfaces": [
+            {
+              "name": "UseSidebarPrefs",
+              "properties": [
+                {
+                  "name": "prefs",
+                  "type": "SidebarPreferences",
+                  "required": true
+                },
+                {
+                  "name": "preview",
+                  "type": "(next: SidebarPreferences) => void",
+                  "required": true
+                },
+                {
+                  "name": "commit",
+                  "type": "(next: SidebarPreferences) => void",
+                  "required": true
+                },
+                {
+                  "name": "soft",
+                  "type": "(next: SidebarPreferences) => void",
+                  "required": true
+                },
+                {
+                  "name": "resetDefaults",
+                  "type": "() => void",
+                  "required": true
+                },
+                {
+                  "name": "applyLayoutPreset",
+                  "type": "(id: Parameters<typeof applyLayout>[1]) => void",
+                  "required": true
+                },
+                {
+                  "name": "toggleWidget",
+                  "type": "(id: WidgetId) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidgetCollapsed",
+                  "type": "(id: WidgetId, collapsed: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidgetSize",
+                  "type": "(id: WidgetId, size: WidgetSize) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidgetPinned",
+                  "type": "(id: WidgetId, pinned: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "reorderWidgets",
+                  "type": "(from: number, to: number) => void",
+                  "required": true
+                },
+                {
+                  "name": "setDensity",
+                  "type": "(d: Density) => void",
+                  "required": true
+                },
+                {
+                  "name": "setWidth",
+                  "type": "(w: number) => void",
+                  "required": true
+                },
+                {
+                  "name": "setTheme",
+                  "type": "(t: ThemeId) => void",
+                  "required": true
+                },
+                {
+                  "name": "setAccent",
+                  "type": "(a: string) => void",
+                  "required": true
+                },
+                {
+                  "name": "setTransparency",
+                  "type": "(n: number) => void",
+                  "required": true
+                },
+                {
+                  "name": "setBlur",
+                  "type": "(b: BlurLevel) => void",
+                  "required": true
+                },
+                {
+                  "name": "setRadius",
+                  "type": "(r: RadiusLevel) => void",
+                  "required": true
+                },
+                {
+                  "name": "setShowSecondaryInfo",
+                  "type": "(v: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "setMode",
+                  "type": "(m: \"full\" | \"compact\" | \"hidden\") => void",
+                  "required": true
+                },
+                {
+                  "name": "setShowWidgets",
+                  "type": "(v: boolean) => void",
+                  "required": true
+                },
+                {
+                  "name": "setHistorySuggestions",
+                  "type": "(v: \"always\" | \"ask\" | \"never\") => void",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useRef",
+            "useMemo"
+          ],
+          "componentType": "utility",
+          "exports": [
+            "UseSidebarPrefs",
+            "useSidebarPrefs"
+          ],
+          "apiUsage": [],
+          "keyFunctions": [
+            "onStorage",
+            "onCustom",
+            "next"
+          ]
+        }
+      },
+      {
+        "name": "AISuggestionsWidget.tsx",
+        "path": "sidebar/widgets/AISuggestionsWidget.tsx",
+        "lines": 49,
+        "description": "Suggestions Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext",
+            "@/lib/homeIntelligence"
+          ],
+          "interfaces": [],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default AISuggestionsWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "AutomationMonitorWidget.tsx",
+        "path": "sidebar/widgets/AutomationMonitorWidget.tsx",
+        "lines": 85,
+        "description": "Automation Monitor Widget",
+        "tags": [
+          "React",
+          "AI",
+          "Automation",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext",
+            "@/components/ai/ActionChainTimeline"
+          ],
+          "interfaces": [],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "function-component",
+          "exports": [
+            "default AutomationMonitorWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": [
+            "nodeIcon"
           ]
         }
       },
@@ -9503,6 +10385,40 @@
             "capabilities",
             "CapabilitiesWidget"
           ]
+        }
+      },
+      {
+        "name": "CurrentTaskWidget.tsx",
+        "path": "sidebar/widgets/CurrentTaskWidget.tsx",
+        "lines": 96,
+        "description": "Current Task Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext",
+            "../theme"
+          ],
+          "interfaces": [],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default CurrentTaskWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
         }
       },
       {
@@ -9615,6 +10531,134 @@
         }
       },
       {
+        "name": "GoalIntentWidget.tsx",
+        "path": "sidebar/widgets/GoalIntentWidget.tsx",
+        "lines": 61,
+        "description": "Goal Intent Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default GoalIntentWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "LiveActivityWidget.tsx",
+        "path": "sidebar/widgets/LiveActivityWidget.tsx",
+        "lines": 103,
+        "description": "Live Activity Widget",
+        "tags": [
+          "React",
+          "AI",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "framer-motion",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext",
+            "@/components/ai/ActionChainTimeline"
+          ],
+          "interfaces": [
+            {
+              "name": "ActivityItem",
+              "properties": [
+                {
+                  "name": "key",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "kind",
+                  "type": "keyof typeof ACTIVITY_META",
+                  "required": true
+                },
+                {
+                  "name": "label",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "status",
+                  "type": "ActionChainStep[\"status\"]",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [
+            "useState",
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default LiveActivityWidget"
+          ],
+          "apiUsage": [
+            "framer-motion",
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
+        "name": "MemoryInsightsWidget.tsx",
+        "path": "sidebar/widgets/MemoryInsightsWidget.tsx",
+        "lines": 71,
+        "description": "Memory Insights Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext"
+          ],
+          "interfaces": [],
+          "hooks": [
+            "useMemo"
+          ],
+          "componentType": "react-utility",
+          "exports": [
+            "default MemoryInsightsWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
+        }
+      },
+      {
         "name": "MemoryWidget.tsx",
         "path": "sidebar/widgets/MemoryWidget.tsx",
         "lines": 207,
@@ -9674,6 +10718,37 @@
           "keyFunctions": [
             "MemoryWidget"
           ]
+        }
+      },
+      {
+        "name": "NeedsAttentionWidget.tsx",
+        "path": "sidebar/widgets/NeedsAttentionWidget.tsx",
+        "lines": 67,
+        "description": "Needs Attention Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react",
+            "lucide-react"
+          ],
+          "importsInternal": [
+            "../SidebarContext"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default NeedsAttentionWidget"
+          ],
+          "apiUsage": [
+            "lucide-icons"
+          ],
+          "keyFunctions": []
         }
       },
       {
@@ -10000,6 +11075,36 @@
             "formatDuration",
             "formatTime"
           ]
+        }
+      },
+      {
+        "name": "WorkspaceWidget.tsx",
+        "path": "sidebar/widgets/WorkspaceWidget.tsx",
+        "lines": 22,
+        "description": "Workspace Widget",
+        "tags": [
+          "React",
+          "macOS",
+          "Flutter"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [
+            "react"
+          ],
+          "importsInternal": [
+            "../SidebarContext",
+            "./home/WorkspaceIntelligenceWidget",
+            "./home/SessionResumeWidget"
+          ],
+          "interfaces": [],
+          "hooks": [],
+          "componentType": "react-utility",
+          "exports": [
+            "default WorkspaceWidget"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
         }
       },
       {
@@ -10488,7 +11593,7 @@
       {
         "name": "AICommandParser.ts",
         "path": "AICommandParser.ts",
-        "lines": 862,
+        "lines": 867,
         "description": "Command Parser",
         "tags": [
           "Node.js",
@@ -13853,6 +14958,68 @@
             "buildOverviewMessages",
             "payload"
           ]
+        }
+      },
+      {
+        "name": "aiQuestion.ts",
+        "path": "aiQuestion.ts",
+        "lines": 55,
+        "description": "AiQuestion",
+        "tags": [
+          "AI",
+          "macOS"
+        ],
+        "lastModified": "2026-08-19",
+        "codeAnalysis": {
+          "importsExternal": [],
+          "importsInternal": [],
+          "interfaces": [
+            {
+              "name": "AartiqQuestion",
+              "properties": [
+                {
+                  "name": "question",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "options",
+                  "type": "string[]",
+                  "required": true
+                },
+                {
+                  "name": "multi",
+                  "type": "boolean",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "ParsedQuestion",
+              "properties": [
+                {
+                  "name": "question",
+                  "type": "AartiqQuestion | null",
+                  "required": true
+                },
+                {
+                  "name": "text",
+                  "type": "string",
+                  "required": true
+                }
+              ]
+            }
+          ],
+          "hooks": [],
+          "componentType": "utility",
+          "exports": [
+            "AartiqQuestion",
+            "ParsedQuestion",
+            "parseAartiqQuestion",
+            "serializeAartiqQuestion"
+          ],
+          "apiUsage": [],
+          "keyFunctions": []
         }
       },
       {
@@ -17568,7 +18735,7 @@
     "components": []
   },
   "summary": {
-    "total": 212,
-    "totalLines": 56617
+    "total": 230,
+    "totalLines": 59670
   }
 }
