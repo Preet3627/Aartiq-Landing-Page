@@ -120,7 +120,7 @@ function ClickToLoadYouTube() {
         {loaded ? (
           <iframe
             className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/QWdeUURLRjo?si=fZPLFzwcx_j5KobL&autoplay=1"
+            src="https://www.youtube.com/embed/TCKNNuOduqE?autoplay=1"
             title="Aartiq Demo"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -907,7 +907,7 @@ export default function Home() {
             <DemoCard
               tag="Demo 5 — Attack"
               title="Attack the system"
-              body="Webpage instructions are treated as untrusted input and cannot directly authorize privileged capabilities. See the tested threat model."
+              body="The tested execution path does not treat webpage-derived instructions as authorization for privileged capabilities. See the tested threat model."
               href="/docs/testing"
               cta="Tests & threat model"
             />
@@ -980,7 +980,7 @@ export default function Home() {
               <div className="rounded-3xl border border-cyan-400/30 bg-cyan-500/[0.04] p-6">
                 <p className="mb-3 text-[10px] uppercase tracking-widest text-cyan-400">Aartiq</p>
                 <p className="text-base font-medium leading-relaxed text-white/70">
-                  Aartiq's tested threat model treats webpage instructions as untrusted input and prevents them from directly authorizing privileged capabilities. It asks the user before any page-derived command runs.
+                  Aartiq's tested threat model does not treat webpage-derived instructions as authorization for privileged capabilities. It asks the user before any page-derived command runs.
                   <Link href="/docs/testing" className="ml-1 text-cyan-400 hover:underline">View the test →</Link>
                 </p>
               </div>
