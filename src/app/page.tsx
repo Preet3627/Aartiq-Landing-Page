@@ -27,7 +27,6 @@ import {
   MessageSquare,
   FileText,
   Users,
-  Video,
   ChevronRight,
   CheckCircle2,
   AlertTriangle,
@@ -104,35 +103,23 @@ const metrics = [
 ];
 
 function ClickToLoadYouTube() {
-  const [loaded, setLoaded] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative mx-auto overflow-hidden rounded-[40px] border border-white/10 bg-[#0a0c14]/60 shadow-[0_50px_100px_rgba(0,0,0,0.6)] cursor-pointer group"
+      className="relative mx-auto overflow-hidden rounded-[40px] border border-white/10 bg-[#0a0c14]/60 shadow-[0_50px_100px_rgba(0,0,0,0.6)]"
       style={{ maxWidth: '900px' }}
-      onClick={() => setLoaded(true)}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-sky-500/10 pointer-events-none" />
       <div className="relative" style={{ paddingTop: '65.29%' }}>
-        {loaded ? (
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/TCKNNuOduqE?autoplay=1"
-            title="Aartiq Demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        ) : (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0a0c14]">
-            <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 transition-transform group-hover:scale-110">
-              <Video size={40} className="text-white ml-1" />
-            </div>
-            <p className="mt-6 text-sm font-medium text-white/40">Click to load video</p>
-          </div>
-        )}
+        <iframe
+          className="absolute inset-0 w-full h-full"
+          src="https://www.youtube.com/embed/TCKNNuOduqE?rel=0"
+          title="Aartiq Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
       </div>
     </motion.div>
   );
