@@ -116,7 +116,7 @@ function ClickToLoadYouTube() {
       <div className="relative" style={{ paddingTop: '65.29%' }}>
         <iframe
           className="absolute inset-0 w-full h-full"
-          src="https://www.youtube.com/embed/TCKNNuOduqE?rel=0"
+          src="https://www.youtube.com/embed/r48UIBZ_jRc?rel=0"
           title="Aartiq Trailer"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
