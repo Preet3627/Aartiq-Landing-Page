@@ -38,6 +38,7 @@ import {
   GitBranch,
   ShieldAlert,
   FolderLock,
+  Play,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -812,6 +813,16 @@ export default function Home() {
         </section>
 
         <Boundary />
+
+        {/* TRAILER — Aartiq trailer video */}
+        <section className="py-24 sm:py-32">
+          <div className="mx-auto max-w-4xl text-center">
+            <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-purple-500/20 bg-purple-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-purple-400">
+              <Play size={14} /> Watch the trailer
+            </div>
+          </div>
+          <ClickToLoadYouTube />
+        </section>
 
         {/* 4. WHY AARTIQ — missing context ≠ permission + comparison */}
         <section id="why" className="py-24 sm:py-40 scroll-mt-24">
