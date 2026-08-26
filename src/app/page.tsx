@@ -1425,12 +1425,15 @@ export default function Home() {
                     Built by <span className="text-white/20">Preet Patel</span> (Latestinssan · Preet3627) — v{version || '...'}
                   </p>
                </div>
-              <div className="flex items-center gap-10">
-                 <a href="https://github.com/Preet3627/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
-                  <div className="flex h-12 px-6 items-center rounded-2xl bg-white/5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ring-1 ring-white/10">
-                    v{latestRelease?.tag_name?.replace('v', '') || version || '...'}
-                  </div>
-              </div>
+               <div className="flex items-center gap-10">
+                  <a href="https://github.com/Preet3627/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
+                  <a href="https://www.producthunt.com/products/aartiq?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-aartiq" target="_blank" rel="noopener noreferrer" aria-label="Aartiq on Product Hunt">
+                    <img alt="Aartiq - For Questions That Matter | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1233199&amp;theme=dark&amp;t=1787761147836" />
+                  </a>
+                   <div className="flex h-12 px-6 items-center rounded-2xl bg-white/5 text-[10px] font-black uppercase tracking-[0.3em] text-white/30 ring-1 ring-white/10">
+                     v{latestRelease?.tag_name?.replace('v', '') || version || '...'}
+                   </div>
+               </div>
            </div>
         </footer>
 

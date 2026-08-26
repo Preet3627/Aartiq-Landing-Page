@@ -225,7 +225,7 @@ const securityLayers = [
     ],
     benefits: [
       "Removes dangerous primitives from the attack surface entirely",
-      "No amount of prompt injection can invoke an unregistered action",
+      "Prompt injection cannot invoke an action through the capability interface unless that action is registered and authorized",
       "Ticket system prevents replay attacks on approved actions",
       "Granular control over what the AI can and cannot do"
     ]
@@ -290,7 +290,7 @@ const threatScenarios = [
   {
     threat: "Unauthorized API Invocation",
     scenario: "Prompt injection attempts to invoke an unregistered shell command or system action",
-    defense: "Capability-Scoped Execution rejects unregistered actions entirely. If there's no registered run_shell_command action, no amount of prompt injection can invoke one.",
+    defense: "Capability-Scoped Execution rejects unregistered actions entirely. If there's no registered run_shell_command action, prompt injection cannot invoke one through the capability interface unless that action is registered and authorized.",
     layer: "Capability-Scoped"
   }
 ];
@@ -1190,8 +1190,8 @@ export default function SecurityPage() {
               <p className="text-sm text-white/60">
                 Regex-based threat detection can be bypassed — obfuscation, synonyms, and encoding all defeat pattern matching. 
                 A capability-scoped model doesn't try to detect danger in text; it removes the dangerous primitive from the 
-                attack surface entirely. If there's no registered <code className="text-emerald-300">run_shell_command</code> action, 
-                no amount of prompt injection can invoke one.
+                 attack surface entirely. If there's no registered <code className="text-emerald-300">run_shell_command</code> action, 
+                 prompt injection cannot invoke one through the capability interface unless that action is registered and authorized.
               </p>
             </div>
           </div>
