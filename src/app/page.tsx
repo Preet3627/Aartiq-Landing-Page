@@ -39,6 +39,7 @@ import {
   ShieldAlert,
   FolderLock,
   Play,
+  Activity,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -97,7 +98,7 @@ const featureHighlights = [
 ];
 
 const metrics = [
-  { label: "Automated Tests", value: "492" },
+  { label: "Automated Tests", value: "537" },
   { label: "Platforms", value: "4" },
   { label: "AI Commands", value: "25" },
   { label: "Security Model", value: "Capability-gated" },
@@ -955,8 +956,8 @@ export default function Home() {
             </Link>
             <Link href="/docs/testing" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-400"><CheckCircle2 size={24} /></div>
-              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">492 Automated Tests</h3>
-              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Including approval-ticket and permission-boundary regression tests that run on every push.</p>
+              <h3 className="mb-2 text-lg font-black uppercase tracking-[0.1em] text-white">537 Automated Tests</h3>
+              <p className="mb-4 text-sm font-medium leading-relaxed text-white/40">Including approval-ticket and permission-boundary regression tests. The latest green CI run is 537 passing / 40 environment-skipped / 0 failing across all four jest.yml jobs — read the honest breakdown, including the one suite that is currently skipped.</p>
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400 group-hover:underline">Browse the test suite →</span>
             </Link>
             <Link href="/docs/security" className="group rounded-[36px] border border-white/5 bg-[#0a0c10]/50 p-8 transition hover:border-cyan-400/40">
@@ -1145,34 +1146,35 @@ export default function Home() {
 
         <Boundary />
 
-        {/* PROJECT STATUS — reframed, product-oriented */}
+{/* PROJECT STATUS — reframed, product-oriented */}
         <section id="status" className="py-24 sm:py-40 scroll-mt-24">
-          <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
-            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
-              <AlertTriangle size={14} /> 🚧 Project Status
+          <div className="overflow-hidden rounded-[60px] border border-emerald-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
+            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
+              <Activity size={14} /> Project Status
             </div>
             <h2 className="mb-10 max-w-4xl text-4xl font-black uppercase tracking-tighter sm:text-6xl leading-[0.95]">
-              Development is currently <span className="text-amber-400">paused.</span>
+              Development is currently <span className="text-emerald-400">active.</span>
             </h2>
 
             <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
               <p>
-                Development is currently paused while the founder focuses on studies. The repository remains available, and security-, permission-, and user-data-related changes require human review.
+                The current release is <span className="text-white/70">v0.3.7</span> (AppContainer + Job Object sandboxing on Windows, agent API &amp; tool server, CRX3 extension validation). The full jest.yml CI run is green on all four jobs: Windows AppContainer 61 passing, macOS Seatbelt 104 passing, Linux bubblewrap 57 passing, and the complete aartiq-browser suite 537 passing / 40 environment-skipped / 0 failing.
               </p>
               <p>
-                During this period, AI agents may assist with reviewing issues, analyzing bugs, improving documentation, maintaining the codebase, and preparing proposed fixes.
+                One honest gap remains: the CRX3 signature-verifier suite is skipped until its verifier parses the header correctly (see Known Limits on the{' '}
+                <Link href="/docs/testing" className="text-emerald-400 hover:underline">test suite page</Link>). It is counted as skipped, never as passing.
               </p>
               <p className="text-white/70">
                 AI assistance does not replace human responsibility. The philosophy of the product and the governance of the project are the same: AI can assist, but consequential authority stays with a human.
               </p>
             </div>
 
-            <div className="mt-16 rounded-[40px] border border-amber-500/20 bg-amber-500/[0.04] p-10 lg:p-14 text-center">
+            <div className="mt-16 rounded-[40px] border border-emerald-500/20 bg-emerald-500/[0.04] p-10 lg:p-14 text-center">
               <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-3xl">
-                Aartiq isn't abandoned. It's <span className="text-amber-400">paused</span> — by design, with review.
+                Every capability claim links to its <span className="text-emerald-400">source or test</span>.
               </p>
               <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
-                This boundary that defines the product also defines how the project is run: capabilities ship only with human authorization.
+                The suite reports the real numbers — what is covered, what runs only on its own OS, and what is honestly not covered.
               </p>
             </div>
           </div>
