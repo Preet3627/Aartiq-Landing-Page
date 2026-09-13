@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "privacy first AI browser", "open source AI automation"
   ],
   authors: [
-    { name: "Latestinssan", url: "https://github.com/Latestinsaan" },
+    { name: "Latestinssan", url: "https://github.com/Latestinssan" },
     { name: "Latestinssan", url: "https://github.com/Latestinssan" }
   ],
   creator: "Latestinssan",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Aartiq - Open Source AI-Integrated Browser',
     description: 'Open-source browser with a built-in AI assistant, local LLM support, and cross-device sync.',
-    creator: '@Latestinsaan',
+    creator: '@Latestinssan',
   },
   robots: {
     index: true,
@@ -146,14 +146,14 @@ export default function RootLayout({
               "founder": {
                 "@type": "Person",
                 "name": "Latestinssan",
-                "url": "https://github.com/Latestinsaan",
+                "url": "https://github.com/Latestinssan",
                 "sameAs": [
-                  "https://github.com/Latestinsaan",
+                  "https://github.com/Latestinssan",
                   "https://github.com/Latestinssan"
                 ]
               },
               "sameAs": [
-                "https://github.com/Latestinsaan/Aartiq",
+                "https://github.com/Latestinssan/Aartiq",
                 "https://aartiq.ponsrischool.in"
               ]
             })
@@ -181,7 +181,7 @@ export default function RootLayout({
               "author": {
                 "@type": "Person",
                 "name": "Latestinssan",
-                "url": "https://github.com/Latestinsaan",
+                "url": "https://github.com/Latestinssan",
                 "memberOf": {
                   "@type": "Organization",
                   "name": "Aartiq Team"
@@ -189,7 +189,7 @@ export default function RootLayout({
               },
               "downloadUrl": `${SITE_URL}/downloads`,
               "softwareVersion": APP_VERSION.version,
-              "releaseNotes": "https://github.com/Latestinsaan/Aartiq/releases",
+              "releaseNotes": "https://github.com/Latestinssan/Aartiq/releases",
               "featureList": [
                 "AI Agent Control",
                 "Local LLM Support (Ollama)",
@@ -217,7 +217,7 @@ export default function RootLayout({
               "author": {
                 "@type": "Person",
                 "name": "Latestinssan",
-                "url": "https://github.com/Latestinsaan"
+                "url": "https://github.com/Latestinssan"
               },
               "publisher": {
                 "@type": "Organization",

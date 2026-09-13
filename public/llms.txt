@@ -36,9 +36,9 @@ Aartiq is built on a small set of firm beliefs:
 
 ## GitHub
 
-- [Source Repository](https://github.com/Latestinsaan/Aartiq): Apache-2.0 licensed full source code
-- [Releases](https://github.com/Latestinsaan/Aartiq/releases): Pre-built binaries for all platforms
-- [Issues](https://github.com/Latestinsaan/Aartiq/issues): Bug reports and feature requests
+- [Source Repository](https://github.com/Latestinssan/Aartiq): Apache-2.0 licensed full source code
+- [Releases](https://github.com/Latestinssan/Aartiq/releases): Pre-built binaries for all platforms
+- [Issues](https://github.com/Latestinssan/Aartiq/issues): Bug reports and feature requests
 
 ## Downloads
 
@@ -56,7 +56,7 @@ Aartiq is built on a small set of firm beliefs:
 - Background Scheduler: Cron-based task scheduling that runs even when the browser window is closed
 - Document Generation: PDF, Excel, PowerPoint, and Word generation from JSON/JSX templates
 - Cross-Device: E2EE WiFi sync between desktop and Android devices
-- Security: Six-layer permission system, AES-256-GCM vault encryption with OS keychain backup, sandboxed automation
+- Security: Six-layer permission system, AES-256-GCM vault encryption with OS keychain backup, OS-level sandboxing (Seatbelt on macOS, bubblewrap on Linux, AppContainer + Job Objects on Windows) that always fails closed — the three-platform sandbox runtime matrix is green in CI
 - Plugin System: Node.js-based plugin SDK with command registration and event hooks
 - Extensions: Chrome manifest v3 extension support
 - Agent Skills: Modular skill cards for automation, browsing, documents, scheduling, security, research, MCP, Apple Intelligence, and image generation
@@ -81,6 +81,6 @@ Aartiq is built on a small set of firm beliefs:
 - **Founder & Author**: Latestinssan — creator of Aartiq
 - **Creator handle**: Latestinssan
 - **Co-author**: Latestinssan
-- **Repository**: https://github.com/Latestinsaan/Aartiq
+- **Repository**: https://github.com/Latestinssan/Aartiq
 - **Website**: https://aartiq.ponsrischool.in
-- **Last updated**: 2026-07-20 (v0.3.4)
+- **Last updated**: 2026-09-13 (v0.3.7)

@@ -181,15 +181,17 @@ export default function PrivacyPolicy() {
             </h2>
             <div className="glass-card p-8 space-y-4 text-white/60 leading-relaxed">
               <p>
-                Aartiq supports the Model Context Protocol (MCP) for connecting to external tools and services.
-                When you connect to an MCP server:
+                Aartiq implements the Model Context Protocol in two directions: it <strong className="text-white/80">exposes a local
+                MCP server</strong> (aartiq-mcp) so Claude Desktop and other agents can drive the browser, and it can
+                <strong className="text-white/80"> register approved external MCP servers</strong> (SSE/stdio) as tool providers.
               </p>
               <ul className="space-y-3 mt-4">
                 {[
-                  "Communication happens between your device and the MCP server — Aartiq acts as a transport layer",
+                  "All MCP traffic stays on the loopback interface (127.0.0.1) — nothing in the MCP stack listens externally",
                   "You choose which MCP servers to connect to and what tools to approve",
-                  "Each tool invocation requires your explicit approval (except pre-approved low-risk tools)",
-                  "We are not responsible for the data practices of third-party MCP servers",
+                  "Every tool call runs the fail-closed security pipeline (verb gate, tab lock, handler, prompt-injection scan)",
+                  "High-risk tools require your explicit approval before they execute",
+                  "We are not responsible for the data practices of external MCP servers you connect manually",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
@@ -214,7 +216,7 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="space-y-3 mt-4">
                 {[
-                  "Source code: github.com/Latestinsaan/Aartiq",
+                  "Source code: github.com/Latestinssan/Aartiq",
                   "All data handling logic is auditable in the source",
                   "Community contributions and security reviews are welcome",
                   "No telemetry or analytics tracking code exists in the codebase",
@@ -260,7 +262,7 @@ export default function PrivacyPolicy() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-400" />
-                  GitHub: <a href="https://github.com/Latestinsaan/Aartiq/issues" target="_blank" className="text-sky-400 hover:underline">github.com/Latestinsaan/Aartiq/issues</a>
+                  GitHub: <a href="https://github.com/Latestinssan/Aartiq/issues" target="_blank" className="text-sky-400 hover:underline">github.com/Latestinssan/Aartiq/issues</a>
                 </li>
               </ul>
             </div>

@@ -184,7 +184,7 @@ Aartiq uses structured JSON commands. Always respond with JSON format:
 
 ---
 
-### Three-Layer Security Architecture
+### Seven-Layer Security Architecture
 
 1. **Visual Sandbox & SecureDOM** - AI uses `OCR_SCREEN` for external apps and a dedicated **SecureDOM Reader** (`READ_PAGE_CONTENT`) for internal pages. Raw HTML is filtered via a PII-stripping sanitization layer before reaching the agent.
 2. **In-Page DOM Search** - AI can perform targeted `SEARCH_DOM` queries to find specific text without loading the entire page into context, minimizing token usage and security exposure.
@@ -349,23 +349,23 @@ export interface ReleaseEntry {
 When preparing a new release, ensure all these are updated:
 
 ### 1. Version Update
-- [ ] Update `src/lib/version.ts` with new version number
-- [ ] Add entry to `src/lib/release-notes.ts`
+- [x] Update `src/lib/version.ts` with new version number
+- [x] Add entry to `src/lib/release-notes.ts`
 
 ### 2. Documentation
-- [ ] Update relevant doc pages in `/docs/`
-- [ ] Add new doc pages if needed
-- [ ] Update sidebar navigation in `layout.tsx`
+- [x] Update relevant doc pages in `/docs/`
+- [x] Add new doc pages if needed
+- [x] Update sidebar navigation in `layout.tsx`
 
 ### 3. Search Index
-- [ ] Add new entries to `src/lib/search-index.ts`
-- [ ] Update keywords for changed features
-- [ ] Add new command/API entries
+- [x] Add new entries to `src/lib/search-index.ts`
+- [x] Update keywords for changed features
+- [x] Add new command/API entries
 
 ### 4. AI Crawlability
-- [ ] Update `public/sitemap.xml` with new pages
-- [ ] Update `public/llms.txt` with new features
-- [ ] Update `src/app/llms.txt/route.ts` if needed
+- [x] Update `public/sitemap.xml` with new pages
+- [x] Update `public/llms.txt` with new features
+- [x] Update `src/app/llms.txt/route.ts` if needed
 
 ### 5. Build & Test
 - [ ] Run `npm run build` to verify no errors
@@ -377,6 +377,7 @@ When preparing a new release, ensure all these are updated:
 - [ ] Push: `git push origin v{x.y.z}`
 - [ ] Create GitHub release with notes
 
+#### v0.3.7 (AppContainer) — Steps 1–4 complete (2026-09-13). Build/tag/push pending.
 ---
 
 ## Common Patterns
@@ -451,21 +452,22 @@ node scripts/component-scanner.js --update
 The script generates `component-data.json` with:
 ```json
 {
-  "generated": "2026-04-08T12:00:00.000Z",
-  "version": "0.2.8",
-  "components": [
-    {
-      "name": "AIChatSidebar.tsx",
-      "path": "AIChatSidebar.tsx",
-      "lines": 4419,
-      "description": "Main chat interface with real-time streaming",
-      "tags": ["React", "AI", "Core"],
-      "lastModified": "2026-04-08"
-    }
-  ],
-  "summary": {
-    "total": 179,
-    "totalLines": 45000
+  "generated": "2026-09-13T14:13:48.553Z",
+  "version": "0.3.6",
+  "desktop": {
+    "total": 230,
+    "totalLines": 59710,
+    "components": [
+      {
+        "name": "AIAssistOverlay.tsx",
+        "path": "AIAssistOverlay.tsx",
+        "lines": 282,
+        "description": "Assist Overlay",
+        "tags": ["React", "Security", "AI", "macOS"],
+        "lastModified": "2026-09-13",
+        "codeAnalysis": { ... }
+      }
+    ]
   }
 }
 ```
@@ -545,8 +547,8 @@ export default function PageName() {
 ### Important URLs
 - Website: https://aartiq.ponsrischool.in
 - Docs: https://aartiq.ponsrischool.in/docs
-- GitHub: https://github.com/Latestinsaan/Aartiq
-- Releases: https://github.com/Latestinsaan/Aartiq/releases
+- GitHub: https://github.com/Latestinssan/Aartiq
+- Releases: https://github.com/Latestinssan/Aartiq/releases
 
 ---
 

@@ -331,7 +331,7 @@ Extensions directory: ~/Library/Application Support/Aartiq/extensions/ (macOS)
 - **Language**: English
 - **Founded**: 2024
 - **Authors**: Latestinssan
-- **Repository**: https://github.com/Latestinsaan/Aartiq
+- **Repository**: https://github.com/Latestinssan/Aartiq
 - **Last updated**: 2026-07-20
 `;
 

@@ -40,7 +40,7 @@ const contributionAreas = [
       "Provide steps to reproduce",
       "Attach relevant logs and screenshots"
     ],
-    link: "https://github.com/Latestinsaan/Aartiq/issues"
+    link: "https://github.com/Latestinssan/Aartiq/issues"
   },
   {
     title: "Feature Requests",
@@ -55,7 +55,7 @@ const contributionAreas = [
       "Consider backward compatibility",
       "Discuss with maintainers first"
     ],
-    link: "https://github.com/Latestinsaan/Aartiq/discussions"
+    link: "https://github.com/Latestinssan/Aartiq/discussions"
   },
   {
     title: "Code Contributions",
@@ -70,7 +70,7 @@ const contributionAreas = [
       "Follow code style guidelines",
       "Add tests for new features"
     ],
-    link: "https://github.com/Latestinsaan/Aartiq/pulls"
+    link: "https://github.com/Latestinssan/Aartiq/pulls"
   },
   {
     title: "Documentation",
@@ -85,7 +85,7 @@ const contributionAreas = [
       "Translate to other languages",
       "Update outdated information"
     ],
-    link: "https://github.com/Latestinsaan/Aartiq/tree/main/Landing_Page"
+    link: "https://github.com/Latestinssan/Aartiq/tree/main/Landing_Page"
   }
 ];
 
@@ -94,7 +94,7 @@ const setupSteps = [
     step: 1,
     title: "Fork the Repository",
     description: "Create your own copy of the project on GitHub",
-    command: "gh repo fork Latestinsaan/Aartiq",
+    command: "gh repo fork Latestinssan/Aartiq",
     icon: GitBranch
   },
   {
@@ -160,9 +160,9 @@ export default function ContributingPage() {
 
   useEffect(() => {
     Promise.all([
-      fetch("https://api.github.com/repos/Latestinsaan/Aartiq").then(res => res.json()),
-      fetch("https://api.github.com/repos/Latestinsaan/Aartiq/contributors").then(res => res.json()),
-      fetch("https://api.github.com/search/issues?q=repo:Latestinsaan/Aartiq+is:pr").then(res => res.json())
+      fetch("https://api.github.com/repos/Latestinssan/Aartiq").then(res => res.json()),
+      fetch("https://api.github.com/repos/Latestinssan/Aartiq/contributors").then(res => res.json()),
+      fetch("https://api.github.com/search/issues?q=repo:Latestinssan/Aartiq+is:pr").then(res => res.json())
     ])
     .then(([repoData, contributorsData, prData]) => {
       setGithubStats({
@@ -235,7 +235,7 @@ export default function ContributingPage() {
           {[
             { name: "Shashank Shekhar", role: "Microsoft Store Advisor · UI/UX Feedback", desc: "Guided Microsoft Store submission, flagged macOS UI on Windows, suggested ad-blocker and Zen-inspired design.", initials: "SS", gradient: "from-sky-500/20 to-violet-500/20", link: "https://github.com/theshekhr" },
             { name: "eddzsh", role: "Security Architecture · Approval System Design", desc: "Designed the ticket-based approval system. Hash verification, pre-registered call shapes, pattern-based approval.", initials: "ed", gradient: "from-green-500/20 to-emerald-500/20", link: "https://www.reddit.com/user/eddzsh" },
-            { name: "Dxrkaa", role: "First Issue Reporter · Early Adopter", desc: "Opened the first community bug report. Helped identify and fix a critical Windows launch regression.", initials: "Dx", gradient: "from-orange-500/20 to-red-500/20", link: "https://github.com/Latestinsaan/Aartiq/issues/6" },
+            { name: "Dxrkaa", role: "First Issue Reporter · Early Adopter", desc: "Opened the first community bug report. Helped identify and fix a critical Windows launch regression.", initials: "Dx", gradient: "from-orange-500/20 to-red-500/20", link: "https://github.com/Latestinssan/Aartiq/issues/6" },
           ].map((c, i) => (
             <motion.div
               key={c.name}

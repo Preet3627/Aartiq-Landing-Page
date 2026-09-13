@@ -50,14 +50,14 @@ interface ChatMessage {
 
 const fakeSearchResults: SearchResult[] = [
   { title: "Aartiq - AI-Powered Browser", url: "https://aartiq.ponsrischool.in", description: "An open-source AI browser with automation, scheduling, and mobile sync." },
-  { title: "GitHub - Aartiq", url: "https://github.com/Latestinsaan/Aartiq", description: "Cross-platform AI-powered browser with advanced automation capabilities." },
+  { title: "GitHub - Aartiq", url: "https://github.com/Latestinssan/Aartiq", description: "Cross-platform AI-powered browser with advanced automation capabilities." },
   { title: "Aartiq Documentation", url: "https://aartiq.ponsrischool.in/docs", description: "Complete guide to AI commands, automation, and integration." },
   { title: "Download Aartiq", url: "https://aartiq.ponsrischool.in/downloads", description: "Get the latest version for macOS, Windows, and Linux." },
 ];
 
 const mockAIResponse = `Here's what I found for you:
 
-**[NAVIGATE: https://github.com/Latestinsaan/Aartiq]**
+**[NAVIGATE: https://github.com/Latestinssan/Aartiq]**
 
 Aartiq is a cross-platform AI-powered browser with:
 - Advanced automation and scheduling

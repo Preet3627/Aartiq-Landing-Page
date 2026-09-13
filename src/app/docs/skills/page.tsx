@@ -8,8 +8,23 @@ import {
   Cpu, 
   ArrowRight,
   FileText,
-  Bot
+  Bot,
+  ExternalLink
 } from "lucide-react";
+
+const GH = 'https://github.com/Latestinssan/Aartiq/blob/main';
+
+function refUrl(ref: string): string | null {
+  const idx = ref.indexOf(':');
+  if (idx <= 0) return null;
+  const file = ref.slice(0, idx).trim();
+  const lineSpec = ref.slice(idx + 1).trim();
+  if (!/^(src|public|aartiq-mcp|scripts|tests|Audit\sReport|release_notes)\//.test(file)) return null;
+  const first = lineSpec.split(',')[0].trim();
+  const lines = first.split('-');
+  const anchor = lines.length > 1 ? `#L${lines[0]}-L${lines[1]}` : `#L${lines[0]}`;
+  return `${GH}/${file}${anchor}`;
+}
 
 const sections = [
   {
@@ -147,9 +162,16 @@ export default function SkillsPage() {
               <h4 className="mb-2 text-lg font-bold text-white">{pt.h}</h4>
               <p className="text-sm leading-relaxed text-white/60">{pt.p}</p>
               <div className="mt-4 space-y-1 border-t border-white/5 pt-3">
-                {pt.refs.map((r) => (
-                  <code key={r} className="block text-[11px] font-mono text-sky-400/70">{r}</code>
-                ))}
+                {pt.refs.map((r) => {
+                  const url = refUrl(r);
+                  return url ? (
+                    <a key={r} href={url} target="_blank" rel="noopener noreferrer" className="block text-[11px] font-mono text-sky-400/70 transition hover:text-sky-300 hover:underline">
+                      {r} <ExternalLink size={10} className="inline" />
+                    </a>
+                  ) : (
+                    <code key={r} className="block text-[11px] font-mono text-sky-400/70">{r}</code>
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -178,9 +200,16 @@ export default function SkillsPage() {
 
           {s.refs && (
             <div className="mt-6 space-y-1">
-              {s.refs.map((r) => (
-                <code key={r} className="block text-[11px] font-mono text-sky-400/70">{r}</code>
-              ))}
+              {s.refs.map((r) => {
+                const url = refUrl(r);
+                return url ? (
+                  <a key={r} href={url} target="_blank" rel="noopener noreferrer" className="block text-[11px] font-mono text-sky-400/70 transition hover:text-sky-300 hover:underline">
+                    {r} <ExternalLink size={10} className="inline" />
+                  </a>
+                ) : (
+                  <code key={r} className="block text-[11px] font-mono text-sky-400/70">{r}</code>
+                );
+              })}
             </div>
           )}
         </motion.section>

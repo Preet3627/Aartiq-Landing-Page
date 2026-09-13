@@ -18,7 +18,7 @@ Aartiq is an open-source Electron browser with a built-in AI assistant, develope
 
 ## Official Links
 - **Landing Page**: [https://aartiq.ponsrischool.in](https://aartiq.ponsrischool.in)
-- **Repository**: [https://github.com/Latestinsaan/Aartiq](https://github.com/Latestinsaan/Aartiq)
+- **Repository**: [https://github.com/Latestinssan/Aartiq](https://github.com/Latestinssan/Aartiq)
 - **Auth Endpoint**: `https://aartiq.ponsrischool.in/auth`
 - **Config API**: `https://aartiq.ponsrischool.in/api/config`
 

@@ -51,7 +51,7 @@ const covered = [
 ];
 
 const limitations = [
-  "Runtime enforcement tests only EXECUTE on their own OS, and CI runs all three: the Windows AppContainer matrix on windows-latest, macOS Seatbelt enforcement on macos-latest, and Linux bubblewrap on ubuntu-latest (where runtime blocks may be skipped if the runner restricts user namespaces — the fail-closed contract tests still run).",
+  "Runtime enforcement tests only EXECUTE on their own OS. CI runs all three: macOS Seatbelt enforcement on macos-latest and Linux bubblewrap on ubuntu-latest (where runtime blocks may be skipped if the runner restricts user namespaces — the fail-closed contract tests still run). The Windows AppContainer runtime matrix runs on windows-latest and currently PASSES there — the three-platform Jest sandbox run linked below is green (Windows 91 tests, 61 passed / 30 platform-skipped; macOS 104 passed; Linux 57 passed / 21 skipped). Suspended AppContainer start, OS-enforced ACL allowlist, verified job assignment, grandchild containment, secret isolation, and KILL_ON_JOB_CLOSE all return verified sandbox results; the Windows JS-contract and policy-fail-closed tests pass on every platform.",
   "macOS Seatbelt OS-enforcement tests execute only on macOS; they pass on this machine and run in CI on macos-latest. The profile-generation and fail-closed config paths are asserted on every platform.",
   "These are unit and integration tests for core modules. They do NOT cover the full Electron UI, installers, MSIX/MSI packaging, or complete end-to-end user flows.",
   "A sandbox confines what code can do; it is not a proof that the AI's decisions are safe, nor a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code. See the security page's 'What this does NOT guarantee'.",
@@ -107,6 +107,17 @@ export default function TestingPage() {
             <p className="text-sm text-white/50">Platform-skipped · 0 failing</p>
           </div>
         </div>
+
+        <a
+          href="https://github.com/Latestinssan/Aartiq/actions/runs/34761077425"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-sm font-bold text-emerald-300 transition-colors hover:bg-emerald-500/20"
+        >
+          <ShieldCheck size={16} />
+          Windows AppContainer + macOS Seatbelt + Linux bubblewrap CI — PASSING (3/3 jobs)
+          <ExternalLink size={16} />
+        </a>
       </motion.section>
 
       {/* Per-suite breakdown */}
@@ -268,7 +279,7 @@ export default function TestingPage() {
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a
-            href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/tests"
+            href="https://github.com/Latestinssan/Aartiq/tree/main/aartiq-browser/tests"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:bg-sky-400 hover:text-white"

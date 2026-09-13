@@ -6,14 +6,14 @@ export const APP_INFO = {
   authors: ['Latestinssan'],
   website: 'https://aartiq.ponsrischool.in',
   docs: 'https://aartiq.ponsrischool.in/docs',
-  github: 'https://github.com/Latestinsaan/Aartiq',
-  releases: 'https://github.com/Latestinsaan/Aartiq/releases',
+  github: 'https://github.com/Latestinssan/Aartiq',
+  releases: 'https://github.com/Latestinssan/Aartiq/releases',
   supportEmail: 'support@ponsrischool.in',
 };
 
 export const APP_VERSION = {
-  version: '0.3.4',
-  codename: 'Nebula',
-  releaseDate: '2026-07-20',
+  version: '0.3.7',
+  codename: 'AppContainer',
+  releaseDate: '2026-09-13',
   channel: 'stable',
 };

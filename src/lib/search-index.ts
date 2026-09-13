@@ -63,10 +63,19 @@ export const searchIndex: SearchIndex = {
     {
       id: "testing",
       title: "Testing & Test Series",
-      description: "Jest test suite runs in CI on every push and PR across macOS, Linux, and Windows runners — sandboxing (Seatbelt / bubblewrap / AppContainer), security, extraction, and automation. Counts are declared test blocks; see /docs/testing.",
-      content: "testing test series jest test suites tests passing coverage sandbox-security directory-allowlist security-validator security-fixes extraction dom-engine dom-handlers webauthn automation skill-loading tab-intelligence component-tests home-intelligence fail-closed Seatbelt bubblewrap bwrap AppContainer Job Object Windows macOS Linux CI unit integration how to run npx jest",
+      description: "Jest test suite runs in CI on every push and PR across macOS, Linux, and Windows runners — sandboxing (Seatbelt / bubblewrap / AppContainer), security, extraction, and automation. The Windows AppContainer runtime matrix (suspended start, OS-enforced ACL allowlist, verified job assignment, KILL_ON_JOB_CLOSE) is currently PASSING on windows-latest. Counts are declared test blocks; see /docs/testing.",
+      content: "testing test series jest test suites tests passing coverage sandbox-security directory-allowlist security-validator security-fixes extraction dom-engine dom-handlers webauthn automation skill-loading tab-intelligence component-tests home-intelligence fail-closed Seatbelt bubblewrap bwrap AppContainer Job Object Windows AppContainer runtime matrix suspended-start os-acl-allowlist job-assignment kill-on-close windows-latest currently-passing macOS Linux CI unit integration how to run npx jest",
       url: "/docs/testing",
-      keywords: ["tests", "testing", "jest", "test series", "coverage", "sandbox", "security", "npx jest", "CI"],
+      keywords: ["tests", "testing", "jest", "test series", "coverage", "sandbox", "AppContainer", "windows-latest", "CI", "npx jest"],
+      type: "page"
+    },
+    {
+      id: "mcp-agent-api",
+      title: "Aartiq MCP Server & Agent API",
+      description: "Real implemented MCP server (aartiq-mcp, MIT) — 60+ tools across 11 categories for Claude Desktop and any MCP client — plus an Agent API over HTTP. The ToolRegistry runs a fail-closed pipeline (verb gate, tab lock, handler, prompt-injection scan) and everything binds to 127.0.0.1.",
+      content: "MCP Model Context Protocol aartiq-mcp Claude Desktop agent API ToolRegistry stdio HTTP bridge 46203 127.0.0.1 loopback 60+ tools 11 categories panels settings bookmarks history permissions security scheduling video system clipboard app-knowledge send_ai_prompt fail-closed verb gate tab lock injection scan defaultTrust limited setup mcpb bundle MIT source lines",
+      url: "/mcp-settings",
+      keywords: ["MCP", "Model Context Protocol", "Claude Desktop", "agent API", "ToolRegistry", "stdio", "HTTP bridge", "aartiq-mcp", "tools"],
       type: "page"
     },
     {

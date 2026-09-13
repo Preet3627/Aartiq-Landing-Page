@@ -113,10 +113,10 @@ function ClickToLoadYouTube() {
       style={{ maxWidth: '900px' }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-transparent to-sky-500/10 pointer-events-none" />
-      <div className="relative" style={{ paddingTop: '65.29%' }}>
+      <div className="relative" style={{ paddingTop: '56.25%' }}>
         <iframe
           className="absolute inset-0 w-full h-full"
-          src="https://www.youtube.com/embed/YNnuZ-_Lm8M?rel=0"
+          src="https://www.youtube.com/embed/EHr-5-cB5jU?rel=0"
           title="Aartiq Trailer"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -625,15 +625,15 @@ export default function Home() {
       setUser(user);
     });
 
-    fetch("https://api.github.com/repos/Latestinsaan/Aartiq/releases/latest")
+    fetch("https://api.github.com/repos/Latestinssan/Aartiq/releases/latest")
       .then(res => res.json())
       .then(data => setLatestRelease(data))
       .catch(err => console.error("Release fetch failed:", err));
 
     Promise.all([
-      fetch("https://api.github.com/repos/Latestinsaan/Aartiq").then(res => res.json()),
-      fetch("https://api.github.com/repos/Latestinsaan/Aartiq/contributors?per_page=100").then(res => res.json()),
-      fetch("https://api.github.com/search/issues?q=repo:Latestinsaan/Aartiq+is:pr").then(res => res.json())
+      fetch("https://api.github.com/repos/Latestinssan/Aartiq").then(res => res.json()),
+      fetch("https://api.github.com/repos/Latestinssan/Aartiq/contributors?per_page=100").then(res => res.json()),
+      fetch("https://api.github.com/search/issues?q=repo:Latestinssan/Aartiq+is:pr").then(res => res.json())
     ])
     .then(([repoData, contributorsData, prData]) => {
       setGithubStats({
@@ -686,7 +686,7 @@ export default function Home() {
           >
             <div className="flex h-2 w-2 rounded-full bg-sky-500 animate-ping" />
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-sky-400">
-              {latestRelease ? `v${latestRelease.tag_name}` : version ? `v${version} ${channel}` : "..."}
+              {latestRelease ? `v${latestRelease.tag_name.replace(/^v/i, '')}` : version ? `v${version} ${channel}` : "..."}
             </span>
           </motion.div>
 
@@ -998,7 +998,7 @@ export default function Home() {
               <span className="text-white/20">→</span>
               <Link href="/docs/testing" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Tests</Link>
               <span className="text-white/20">→</span>
-              <a href="https://github.com/Latestinsaan/Aartiq" target="_blank" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Source</a>
+              <a href="https://github.com/Latestinssan/Aartiq" target="_blank" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Source</a>
             </div>
           </div>
         </section>
@@ -1021,10 +1021,10 @@ export default function Home() {
                   Aartiq is young — a handful of stars, two contributors, no PRs yet. That is not a weakness here: every capability claim above links to its source or test. You can read the whole thing in an afternoon.
                 </p>
                 <div className="flex flex-wrap gap-5">
-                  <a href="https://github.com/Latestinsaan/Aartiq" target="_blank" className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10">
+                  <a href="https://github.com/Latestinssan/Aartiq" target="_blank" className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10">
                     View Source <ExternalLink size={18} />
                   </a>
-                  <a href="https://github.com/Latestinsaan/Aartiq/fork" target="_blank" className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white">
+                  <a href="https://github.com/Latestinssan/Aartiq/fork" target="_blank" className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white">
                     Fork Project <GitPullRequest size={18} />
                   </a>
                   <Link href="/docs/testing" className="flex items-center gap-4 rounded-full border border-sky-500/20 bg-sky-500/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-sky-400 transition hover:bg-sky-500/20">
@@ -1256,7 +1256,7 @@ export default function Home() {
                      </Link>
                      <Link href="/docs/getting-started" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
                        <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors"><CheckCircle2 size={16} /></div>
-                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Latestinsaan/Aartiq</span>
+                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Latestinssan/Aartiq</span>
                      </Link>
                    </div>
                  </div>
@@ -1394,11 +1394,11 @@ export default function Home() {
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Source Code</p>
                    <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
-                      <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser" target="_blank" className="hover:text-sky-400 transition">aartiq-browser/</a></li>
-                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/lib" target="_blank" className="hover:text-sky-400 transition">src/lib/</a></li>
-                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/components" target="_blank" className="hover:text-sky-400 transition">src/components/</a></li>
-                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/lib/native-panels" target="_blank" className="hover:text-sky-400 transition">native-panels/</a></li>
-                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/flutter_browser_app" target="_blank" className="hover:text-sky-400 transition">flutter_browser_app/</a></li>
+                      <li><a href="https://github.com/Latestinssan/Aartiq/tree/main/aartiq-browser" target="_blank" className="hover:text-sky-400 transition">aartiq-browser/</a></li>
+                     <li><a href="https://github.com/Latestinssan/Aartiq/tree/main/aartiq-browser/src/lib" target="_blank" className="hover:text-sky-400 transition">src/lib/</a></li>
+                     <li><a href="https://github.com/Latestinssan/Aartiq/tree/main/aartiq-browser/src/components" target="_blank" className="hover:text-sky-400 transition">src/components/</a></li>
+                     <li><a href="https://github.com/Latestinssan/Aartiq/tree/main/aartiq-browser/src/lib/native-panels" target="_blank" className="hover:text-sky-400 transition">native-panels/</a></li>
+                     <li><a href="https://github.com/Latestinssan/Aartiq/tree/main/flutter_browser_app" target="_blank" className="hover:text-sky-400 transition">flutter_browser_app/</a></li>
                   </ul>
                </div>
                <div>
@@ -1414,7 +1414,7 @@ export default function Home() {
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
                      <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
                      <li><a href="/privacy" className="hover:text-sky-400 transition">Privacy Policy</a></li>
-                     <li><a href="https://github.com/Latestinsaan/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
+                     <li><a href="https://github.com/Latestinssan/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
                   </ul>
                </div>
            </div>
@@ -1426,7 +1426,7 @@ export default function Home() {
                   </p>
                </div>
                <div className="flex items-center gap-10">
-                  <a href="https://github.com/Latestinsaan/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
+                  <a href="https://github.com/Latestinssan/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
                   <a href="https://www.producthunt.com/products/aartiq?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-aartiq" target="_blank" rel="noopener noreferrer" aria-label="Aartiq on Product Hunt">
                     <img alt="Aartiq - For Questions That Matter | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1233199&amp;theme=dark&amp;t=1787761147836" />
                   </a>

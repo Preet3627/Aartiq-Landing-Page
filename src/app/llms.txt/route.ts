@@ -41,9 +41,9 @@ Aartiq is built on a small set of firm beliefs:
 
 ## GitHub
 
-- [Source Repository](https://github.com/Latestinsaan/Aartiq): Apache-2.0 licensed full source code
-- [Releases](https://github.com/Latestinsaan/Aartiq/releases): Pre-built binaries for all platforms
-- [Issues](https://github.com/Latestinsaan/Aartiq/issues): Bug reports and feature requests
+- [Source Repository](https://github.com/Latestinssan/Aartiq): Apache-2.0 licensed full source code
+- [Releases](https://github.com/Latestinssan/Aartiq/releases): Pre-built binaries for all platforms
+- [Issues](https://github.com/Latestinssan/Aartiq/issues): Bug reports and feature requests
 
 ## Downloads
 
@@ -83,9 +83,9 @@ Aartiq is built on a small set of firm beliefs:
 - **Founder & Author**: Latestinssan — creator of Aartiq
 - **Creator handle**: Latestinssan
 - **Co-author**: Latestinssan
-- **Repository**: https://github.com/Latestinsaan/Aartiq
+- **Repository**: https://github.com/Latestinssan/Aartiq
 - **Website**: https://aartiq.ponsrischool.in
-- **Last updated**: 2026-07-20
+- **Last updated**: 2026-09-13 (v0.3.7)
 
 ---
 

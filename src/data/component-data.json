@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-26T11:42:57.321Z",
+  "generated": "2026-09-13T14:13:48.553Z",
   "version": "0.3.6",
   "desktop": {
     "total": 230,
@@ -23,7 +23,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "dompurify",
@@ -77,7 +77,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -109,7 +109,7 @@
           "PDF",
           "OCR"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -477,7 +477,7 @@
           "Linux",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -894,7 +894,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1054,7 +1054,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1144,7 +1144,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1197,7 +1197,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1240,7 +1240,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1332,7 +1332,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1456,7 +1456,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1594,7 +1594,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1680,7 +1680,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -1736,7 +1736,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1793,7 +1793,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1843,7 +1843,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1882,7 +1882,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -1914,7 +1914,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -1954,7 +1954,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2018,7 +2018,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2065,7 +2065,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2107,7 +2107,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2170,7 +2170,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2242,7 +2242,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2315,7 +2315,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2402,7 +2402,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2433,7 +2433,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2461,7 +2461,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -2500,7 +2500,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2681,7 +2681,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2726,7 +2726,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2755,7 +2755,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -2821,7 +2821,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2930,7 +2930,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2967,7 +2967,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -2997,7 +2997,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "framer-motion",
@@ -3038,7 +3038,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3077,7 +3077,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3246,7 +3246,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3289,7 +3289,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3330,7 +3330,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3410,7 +3410,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3447,7 +3447,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3489,7 +3489,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3529,7 +3529,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3669,7 +3669,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3708,7 +3708,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3746,7 +3746,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3778,7 +3778,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3850,7 +3850,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3893,7 +3893,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -3936,7 +3936,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -3990,7 +3990,7 @@
           "Windows",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4057,7 +4057,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4155,7 +4155,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4204,7 +4204,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4289,7 +4289,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4349,7 +4349,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4389,7 +4389,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4450,7 +4450,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4519,7 +4519,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4578,7 +4578,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4613,7 +4613,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4715,7 +4715,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -4847,7 +4847,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -4878,7 +4878,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5000,7 +5000,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5041,7 +5041,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5091,7 +5091,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5137,7 +5137,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -5175,7 +5175,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5227,7 +5227,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5294,7 +5294,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5385,7 +5385,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -5788,7 +5788,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5920,7 +5920,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -5976,7 +5976,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -6098,7 +6098,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6237,7 +6237,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6292,7 +6292,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6334,7 +6334,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6459,7 +6459,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6635,7 +6635,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -6733,7 +6733,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6786,7 +6786,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6832,7 +6832,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -6891,7 +6891,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -6955,7 +6955,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7033,7 +7033,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7153,7 +7153,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7247,7 +7247,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7368,7 +7368,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7478,7 +7478,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -7537,7 +7537,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -7617,7 +7617,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -7791,7 +7791,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -8003,7 +8003,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8100,7 +8100,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8135,7 +8135,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8331,7 +8331,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8379,7 +8379,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8463,7 +8463,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8528,7 +8528,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8761,7 +8761,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8808,7 +8808,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8889,7 +8889,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -8948,7 +8948,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9001,7 +9001,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9053,7 +9053,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9137,7 +9137,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9217,7 +9217,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9268,7 +9268,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9385,7 +9385,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9470,7 +9470,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9578,7 +9578,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9638,7 +9638,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -9719,7 +9719,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9749,7 +9749,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -9806,7 +9806,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9841,7 +9841,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -9876,7 +9876,7 @@
           "Windows",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -10133,7 +10133,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -10289,7 +10289,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10325,7 +10325,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10366,7 +10366,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10398,7 +10398,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10433,7 +10433,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10541,7 +10541,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10573,7 +10573,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10636,7 +10636,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10669,7 +10669,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10731,7 +10731,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10764,7 +10764,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10871,7 +10871,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -10919,7 +10919,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11001,7 +11001,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11088,7 +11088,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -11119,7 +11119,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11173,7 +11173,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11237,7 +11237,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11292,7 +11292,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11355,7 +11355,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11411,7 +11411,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11483,7 +11483,7 @@
           "macOS",
           "Flutter"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react",
@@ -11534,7 +11534,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -11606,7 +11606,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -11751,7 +11751,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -12030,7 +12030,7 @@
         "tags": [
           "Automation"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12078,7 +12078,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12246,7 +12246,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "@tensorflow/tfjs"
@@ -12280,7 +12280,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -12387,7 +12387,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "firebase/app",
@@ -12418,7 +12418,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "firebase/database",
@@ -12451,7 +12451,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12546,7 +12546,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -12702,7 +12702,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12761,7 +12761,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -12841,7 +12841,7 @@
           "macOS",
           "Windows"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -12968,7 +12968,7 @@
         "lines": 8,
         "description": "Shell Command Parser",
         "tags": [],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13023,7 +13023,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "fs",
@@ -13060,7 +13060,7 @@
           "OCR",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13118,7 +13118,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "events"
@@ -13273,7 +13273,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13437,7 +13437,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -13501,7 +13501,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13579,7 +13579,7 @@
           "Sync",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "events",
@@ -13676,7 +13676,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -13837,7 +13837,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -13895,7 +13895,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -13939,7 +13939,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -13981,7 +13981,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14051,7 +14051,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14265,7 +14265,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "electron"
@@ -14319,7 +14319,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14375,7 +14375,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14430,7 +14430,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14458,7 +14458,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "http",
@@ -14545,7 +14545,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14576,7 +14576,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14749,7 +14749,7 @@
           "Windows",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -14852,7 +14852,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -14970,7 +14970,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15032,7 +15032,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15083,7 +15083,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15106,7 +15106,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15192,7 +15192,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15301,7 +15301,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -15417,7 +15417,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15459,7 +15459,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15521,7 +15521,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15592,7 +15592,7 @@
           "Node.js",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15619,7 +15619,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15676,7 +15676,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15752,7 +15752,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15809,7 +15809,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -15881,7 +15881,7 @@
           "macOS",
           "Linux"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "fs",
@@ -15942,7 +15942,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "crypto"
@@ -16005,7 +16005,7 @@
           "Plugin",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16087,7 +16087,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16153,7 +16153,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -16284,7 +16284,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -16341,7 +16341,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16445,7 +16445,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -16499,7 +16499,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16620,7 +16620,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -16649,7 +16649,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16675,7 +16675,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -16754,7 +16754,7 @@
           "Automation",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17063,7 +17063,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17120,7 +17120,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17150,7 +17150,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17257,7 +17257,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17282,7 +17282,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17308,7 +17308,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17333,7 +17333,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17358,7 +17358,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17385,7 +17385,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17533,7 +17533,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17557,7 +17557,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -17682,7 +17682,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -17849,7 +17849,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18191,7 +18191,7 @@
         "tags": [
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18214,7 +18214,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -18245,7 +18245,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18434,7 +18434,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18466,7 +18466,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [
@@ -18498,7 +18498,7 @@
           "PDF",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18595,7 +18595,7 @@
           "Security",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],
@@ -18618,7 +18618,7 @@
           "React",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [
             "react"
@@ -18651,7 +18651,7 @@
           "AI",
           "macOS"
         ],
-        "lastModified": "2026-08-26",
+        "lastModified": "2026-09-13",
         "codeAnalysis": {
           "importsExternal": [],
           "importsInternal": [],

@@ -347,7 +347,7 @@ export default function DocsLayout({
               <Keyboard size={20} />
             </a>
             <a
-              href="https://github.com/Latestinsaan/Aartiq"
+              href="https://github.com/Latestinssan/Aartiq"
               target="_blank"
               className="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-xs font-black uppercase tracking-wider text-white/60 transition hover:bg-white/10 hover:text-white sm:flex"
             >
@@ -499,7 +499,7 @@ function SidebarContent({
         <ul className="space-y-2">
           <li>
             <a
-              href="https://github.com/Latestinsaan/Aartiq/releases"
+              href="https://github.com/Latestinssan/Aartiq/releases"
               target="_blank"
               className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/40 hover:bg-white/5 hover:text-white transition"
             >
@@ -508,7 +508,7 @@ function SidebarContent({
           </li>
           <li>
             <a
-              href="https://github.com/Latestinsaan/Aartiq/issues"
+              href="https://github.com/Latestinssan/Aartiq/issues"
               target="_blank"
               className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-white/40 hover:bg-white/5 hover:text-white transition"
             >
