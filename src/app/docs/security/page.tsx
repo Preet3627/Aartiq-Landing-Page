@@ -51,6 +51,11 @@ const securityLayers = [
       "Hidden elements and blocked tags/classes never appear in AI-visible content",
       "Malicious scripts, event handlers (on*=), javascript:, data:, vbscript:, iframe/embed/object are removed from the AI's reading path"
     ],
+    notGuaranteed: [
+      "Visual and sanitized extraction reduces the attack surface for certain DOM-based prompt injection techniques; it does NOT prevent prompt injection entirely.",
+      "OCR processes visible text on rendered pages, but visible text can itself contain adversarial instructions. OCR does not distinguish legitimate content from attacker-injected instructions.",
+      "Visual layout analysis and OCR cannot guarantee semantic immunity against jailbreaks or instruction overrides rendered into the viewport."
+    ],
     diagram: {
       browser: "Chrome / WebView",
       capture: "Screenshot Capture",
@@ -96,6 +101,11 @@ const securityLayers = [
       "Prevents accidental destructive commands",
       "Provides logging for security audits",
       "Custom rules can be added by administrators"
+    ],
+    notGuaranteed: [
+      "The Syntactic Firewall is a fast first-pass heuristic, NOT a fundamental security boundary.",
+      "Regexes and token inspection can be bypassed by creative command construction, aliasing, encoding variations, or multi-step execution chains.",
+      "SecurityValidator.js does not guarantee that non-blocked commands are safe — the OS sandbox (Seatbelt / bubblewrap / AppContainer) and human approval are the primary security boundaries."
     ]
   },
   {
@@ -157,7 +167,7 @@ const securityLayers = [
     borderColor: "border-purple-500/30",
     iconColor: "text-purple-400",
     level: 4,
-    description: "AI file access is restricted to explicitly approved directories with fine-grained read/write permissions.",
+    description: "AI file access is restricted to explicitly approved directories with fine-grained read/write permissions. This is a policy layer; the enforcement boundary is the OS sandbox.",
     howItWorks: [
       "Each directory in the allowlist specifies an access level (Read Only or Read & Write) and recursive flag (src/lib/permission-store.js)",
       "Path canonicalization resolves symlinks via fs.realpathSync before checking against the allowlist — the resolved path is checked, never the user-supplied string (src/core/directory-allowlist.js)",
@@ -174,6 +184,17 @@ const securityLayers = [
       "Read-only entries never receive write access — enforced in the sandbox profile (macOS/Linux) and by isPathAllowed() on all platforms",
       "Audit trail of all directory access grants with timestamps (comet-audit.jsonl)"
     ],
+    notGuaranteed: [
+      "TOCTOU races: the path is checked at validation time; the filesystem may change before the operation executes",
+      "Hard links: a hard link inside the allowlist to a file outside it bypasses path-based checks",
+      "Bind mounts / mount namespaces: an attacker with mount privileges can remap filesystem views",
+      "Permission changes after authorization: a granted path may later have its permissions widened",
+      "Filesystem namespaces: Linux mount namespaces can present different filesystem hierarchies",
+      "Helper processes: a sandboxed command that spawns an allowed helper (e.g. python) may escape the allowlist",
+      "Alternate APIs: some operations (archive extraction, memory-mapped files, certain IPC) may bypass the checked path",
+      "Platform-specific filesystem semantics: Windows reparse points, macOS firmlinks, etc. may behave differently",
+      "The real enforcement boundary is the OS sandbox (Seatbelt / bubblewrap / AppContainer), not the allowlist check alone"
+    ]
   },
   {
     name: "OS-Level Sandboxing",
@@ -199,12 +220,12 @@ const securityLayers = [
     ],
     benefits: [
       "Defense in depth: even if the regex blocklist is bypassed, the OS sandbox still confines what the command can read, write, execute, and reach on the network",
-      "On all three platforms the sandbox physically prevents writes outside the workspace + allowlisted write directories — on Windows this is enforced by OS ACL grants on the AppContainer package SID",
+      "On all three platforms the OS sandbox prevents writes outside the workspace + allowlisted write directories — on Windows this is enforced by OS ACL grants on the AppContainer package SID",
       "Credential leakage via ambient environment variables is prevented by the env allowlist",
       "Network exfiltration is blocked by default-deny networking inside the sandbox (macOS/Linux/Windows), not by firewall rules"
     ],
     notGuaranteed: [
-      "On Windows before v0.3.7 the Job Object confined processes only; AppContainer (v0.3.7) adds OS-layer filesystem (package-SID ACL grants) and network (zero capabilities) isolation. The Windows runtime matrix runs in CI on windows-latest and is currently PASSING — the full three-sandbox Jest matrix on Windows (91 tests: 61 passing, 30 platform-skipped) completes green, and every runtime containment test (suspended AppContainer start, verified job assignment, grandchild containment, secret isolation, OS-enforced ACL allowlist denial, KILL_ON_JOB_CLOSE) returns a verified sandbox result. Proof: the successful CI run linked below, alongside the passing macOS Seatbelt and Linux bubblewrap jobs. The Windows JS-contract and policy-fail-closed tests pass on every platform.",
+      "On Windows before v0.3.7 the Job Object confined processes only; AppContainer (v0.3.7) adds OS-layer filesystem (package-SID ACL grants) and network (zero capabilities) isolation. The Windows runtime matrix runs in CI on windows-latest and is currently PASSING — the full three-sandbox Jest matrix on Windows (91 tests: 61 passing, 30 platform-skipped) completes green, and every runtime containment test (suspended AppContainer start, verified job assignment, grandchild containment, secret isolation, OS-enforced ACL allowlist denial, KILL_ON_JOB_CLOSE) returns a verified sandbox result. The documentation claims the process is created suspended with SECURITY_CAPABILITIES on CreateProcessW, then the Job Object is assigned and verified via IsProcessInJob before resuming. This is the right design — you should verify the actual PowerShell/C++/Node implementation (src/core/win-job-runner.ps1) rather than trusting the documentation alone.",
       "A sandbox confines what a command can do. It does not make a malicious command safe, and it does not decide what the AI asks for. Human approval is a social control, not a cryptographic one; a coerced or careless approval still executes.",
       "Seatbelt and bubblewrap constrain the process, not the data it is handed. If you allowlist a directory that contains secrets, the sandboxed command can read them. Allowlists are trust boundaries you draw — only as good as where you draw them.",
       "These guarantees apply to code executed through executeSandboxed(). The Electron main process, the renderer, native modules, and helper apps are NOT inside the sandbox. Sandboxing reduces blast radius; it is not a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code.",
@@ -239,7 +260,7 @@ const threatScenarios = [
   {
     threat: "Prompt Injection via Hidden Text",
     scenario: "A malicious webpage hides prompt injection instructions in invisible text",
-    defense: "Visual Sandbox prevents the AI from seeing hidden DOM elements. OCR only captures visible, rendered text.",
+    defense: "Visual Sandbox strips hidden DOM elements and scripts before the AI sees content. OCR captures only visible, rendered text. This significantly reduces DOM-based prompt injection but does not prevent visible-text injection — adversarial instructions rendered on the page can still reach the model.",
     layer: "Visual Sandbox"
   },
   {
@@ -251,43 +272,43 @@ const threatScenarios = [
   {
     threat: "Social Engineering via Commands",
     scenario: "An attacker tricks the AI into running 'rm -rf /'",
-    defense: "The Syntactic Firewall blocks execution of dangerous shell patterns regardless of how the command is phrased.",
+    defense: "The Syntactic Firewall attempts to block known dangerous shell patterns (rm -rf /, sudo, fork bombs, command substitution) before execution. It is a fast first-pass filter — creative command construction can bypass it. The OS sandbox and approval gates are the real boundaries.",
     layer: "Syntactic Firewall"
   },
   {
     threat: "Context Injection via Context Switching",
     scenario: "A webpage contains instructions that attempt to override AI behavior",
-    defense: "All user-provided content is filtered for injection patterns before reaching the AI context.",
+    defense: "User-provided content is filtered for known injection patterns before reaching the AI context. Pattern-based filtering is not foolproof; novel jailbreaks can evade it.",
     layer: "Syntactic Firewall"
   },
   {
     threat: "Unauthorized Shell Execution",
     scenario: "AI executes a destructive shell command",
-    defense: "Human-in-the-Loop requires explicit approval for all shell commands. High-risk commands require QR approval.",
+    defense: "Human-in-the-Loop requires explicit approval for all shell commands. High-risk commands require QR approval via the paired mobile device.",
     layer: "HITL"
   },
   {
     threat: "Remote Code Execution",
     scenario: "AI is tricked into downloading and running malicious code",
-    defense: "Shell commands requiring downloads are blocked by default. User approval ensures no unauthorized code execution.",
+    defense: "Shell commands triggering downloads (curl, wget) are blocked by the firewall. The OS sandbox denies network by default. Any shell execution requires human approval.",
     layer: "HITL + Firewall"
   },
   {
     threat: "Symlink Traversal Attack",
     scenario: "Attacker creates a symlink in an allowed directory pointing to /etc/passwd or other sensitive files",
-    defense: "Path canonicalization resolves all symlinks via fs.realpath() before checking against the directory allowlist. The resolved path is checked, not the user-supplied path.",
+    defense: "Path canonicalization resolves symlinks via fs.realpath() before checking against the allowlist. This catches standard symlink traversal. It does not protect against TOCTOU races, hard links, bind mounts, or filesystem namespace tricks — the OS sandbox is the enforcement boundary.",
     layer: "Directory Allowlist"
   },
   {
     threat: "Credential Leakage via Environment Variables",
     scenario: "AI executes a command that inherits the parent process's environment with API keys and tokens",
-    defense: "OS-level sandboxing strips all ambient environment variables. Only explicitly allowlisted variables (PATH, HOME, USER, LANG, LC_ALL, TMPDIR, SHELL, TERM, etc.) are passed to child processes; on Windows only non-credential system variables (SystemRoot, TEMP, USERPROFILE, etc.) pass through.",
+    defense: "OS-level sandboxing strips all ambient environment variables. Only explicitly allowlisted non-credential variables are passed to child processes.",
     layer: "OS-Level Sandboxing"
   },
   {
     threat: "Network Exfiltration via Shell",
     scenario: "AI is tricked into executing curl to upload sensitive data to an attacker's server",
-    defense: "The sandbox denies network by default: macOS Seatbelt emits (deny network*), Linux bubblewrap runs with --unshare-net, and Windows AppContainers carry zero capabilities. curl/wget downloads are additionally flagged by the command validator, and all shell execution requires human approval. Per-domain allowlisting is not supported on any platform.",
+    defense: "The sandbox denies network by default: macOS Seatbelt emits (deny network*), Linux bubblewrap runs with --unshare-net, Windows AppContainer carries zero capabilities. curl/wget is additionally flagged by the command validator, and all shell execution requires human approval. Per-domain allowlisting is not supported on any platform.",
     layer: "OS-Level Sandboxing"
   },
   {
@@ -1212,19 +1233,19 @@ export default function SecurityPage() {
             Verification
           </p>
           <h2 className="text-4xl font-black uppercase tracking-tighter sm:text-5xl">
-            Security <span className="text-white/20">Test Coverage</span>
+Security <span className="text-white/20">Test Coverage</span>
           </h2>
           <p className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/40">
-             Every layer above is backed by automated regression tests. The full suite runs in GitHub Actions CI (`.github/workflows/jest.yml`) on every push and pull request, and protects the security invariants from silent regressions.
-           </p>
+             Every layer above is backed by automated regression tests. The suite is dispatched via GitHub Actions CI (`.github/workflows/jest.yml`) on demand (latest green run: <a href="https://github.com/Latestinssan/Aartiq/actions/runs/34769503518" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:underline">#34769503518</a>). It is not triggered on every push.
+          </p>
           <a
-            href="https://github.com/Latestinssan/Aartiq/actions/runs/34761077425"
+            href="https://github.com/Latestinssan/Aartiq/actions/runs/34769503518"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 py-2.5 text-sm font-bold text-emerald-300 transition-colors hover:bg-emerald-500/20"
           >
             <ShieldCheck size={16} />
-            Windows AppContainer + macOS Seatbelt + Linux bubblewrap CI — PASSING (3/3 jobs)
+            Full aartiq-browser suite + three sandbox runtimes — PASSING (4/4 jobs)
             <ArrowUpRight size={16} />
           </a>
          </div>
@@ -1232,8 +1253,8 @@ export default function SecurityPage() {
           <div className="grid gap-6 lg:grid-cols-4">
             <div className="rounded-[2rem] border border-emerald-500/20 bg-emerald-500/5 p-8 text-center">
               <Bug size={32} className="mx-auto mb-4 text-emerald-400" />
-              <h3 className="text-3xl font-black text-emerald-400">525</h3>
-              <p className="text-sm text-white/50">Total Jest tests (514 passing, 11 platform-skipped; the Windows AppContainer runtime matrix is GREEN in CI — see the successful run linked below)</p>
+              <h3 className="text-3xl font-black text-emerald-400">577</h3>
+              <p className="text-sm text-white/50">Total declared tests (537 passing, 40 environment-skipped, 0 failing in the latest green run)</p>
             </div>
             <div className="rounded-[2rem] border border-rose-500/20 bg-rose-500/5 p-8 text-center">
               <ShieldOff size={32} className="mx-auto mb-4 text-rose-400" />
