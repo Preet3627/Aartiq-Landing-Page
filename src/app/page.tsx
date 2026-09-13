@@ -39,7 +39,6 @@ import {
   ShieldAlert,
   FolderLock,
   Play,
-  Activity,
 } from "lucide-react";
 import { auth } from "@/lib/firebase";
 import { signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
@@ -1148,33 +1147,36 @@ export default function Home() {
 
 {/* PROJECT STATUS — reframed, product-oriented */}
         <section id="status" className="py-24 sm:py-40 scroll-mt-24">
-          <div className="overflow-hidden rounded-[60px] border border-emerald-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
-            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400">
-              <Activity size={14} /> Project Status
+          <div className="overflow-hidden rounded-[60px] border border-amber-500/20 bg-gradient-to-br from-[#0a0c14] to-[#04060b] p-12 lg:p-24">
+            <div className="mb-10 inline-flex items-center gap-3 rounded-full border border-amber-500/30 bg-amber-500/10 px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-amber-400">
+              <AlertTriangle size={14} /> 🚧 Project Status
             </div>
             <h2 className="mb-10 max-w-4xl text-4xl font-black uppercase tracking-tighter sm:text-6xl leading-[0.95]">
-              Development is currently <span className="text-emerald-400">active.</span>
+              Development is currently <span className="text-amber-400">paused.</span>
             </h2>
 
             <div className="max-w-3xl space-y-6 text-lg font-medium leading-relaxed text-white/40">
               <p>
-                The current release is <span className="text-white/70">v0.3.7</span> (AppContainer + Job Object sandboxing on Windows, agent API &amp; tool server, CRX3 extension validation). The full jest.yml CI run is green on all four jobs: Windows AppContainer 61 passing, macOS Seatbelt 104 passing, Linux bubblewrap 57 passing, and the complete aartiq-browser suite 537 passing / 40 environment-skipped / 0 failing.
+                Development is paused — and it is <span className="text-white/70">led by AI, not by a human developer</span>. AI agents do the planning, writing, testing, and maintenance; the founder sets the direction and reviews consequential changes. There is no paid team behind the product.
+              </p>
+              <p>
+                Current state: release <span className="text-white/70">v0.3.7</span> (AppContainer + Job Object sandboxing on Windows, agent API &amp; tool server, CRX3 extension validation). The full jest.yml CI run is green on all four jobs — Windows AppContainer 61 passing, macOS Seatbelt 104 passing, Linux bubblewrap 57 passing, and the complete aartiq-browser suite 537 passing / 40 environment-skipped / 0 failing.
               </p>
               <p>
                 One honest gap remains: the CRX3 signature-verifier suite is skipped until its verifier parses the header correctly (see Known Limits on the{' '}
-                <Link href="/docs/testing" className="text-emerald-400 hover:underline">test suite page</Link>). It is counted as skipped, never as passing.
+                <Link href="/docs/testing" className="text-amber-400 hover:underline">test suite page</Link>). It is counted as skipped, never as passing.
               </p>
               <p className="text-white/70">
-                AI assistance does not replace human responsibility. The philosophy of the product and the governance of the project are the same: AI can assist, but consequential authority stays with a human.
+                AI assistance does not replace human responsibility. The philosophy of the product and the governance of the project are the same: AI can assist — and here it leads — but consequential authority stays with a human.
               </p>
             </div>
 
-            <div className="mt-16 rounded-[40px] border border-emerald-500/20 bg-emerald-500/[0.04] p-10 lg:p-14 text-center">
+            <div className="mt-16 rounded-[40px] border border-amber-500/20 bg-amber-500/[0.04] p-10 lg:p-14 text-center">
               <p className="text-2xl font-black uppercase tracking-tighter text-white sm:text-3xl">
-                Every capability claim links to its <span className="text-emerald-400">source or test</span>.
+                Aartiq isn't abandoned. It's <span className="text-amber-400">paused</span> — by design, with review.
               </p>
               <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-relaxed text-white/40">
-                The suite reports the real numbers — what is covered, what runs only on its own OS, and what is honestly not covered.
+                Development is driven by AI, but the human stays in the loop for security, permissions, and user data — capabilities ship only with review.
               </p>
             </div>
           </div>
