@@ -156,7 +156,7 @@ const codeSnippets = {
   macosArm64: "Aartiq-x.x.x-arm64.dmg",
   macosX64: "Aartiq-x.x-x64.dmg",
   linux: "Aartiq.Browser-x.x.x.AppImage",
-  build: `git clone https://github.com/Preet3627/Aartiq.git
+  build: `git clone https://github.com/Latestinsaan/Aartiq.git
 cd Aartiq/aartiq-browser
 npm install
 npm run dev`,

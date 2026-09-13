@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: `Aartiq - Open Source AI-Integrated Browser with Local LLM & OS Automation`,
     template: `%s | Aartiq - AI-Integrated Browser`,
   },
-  description: "Aartiq is a local-first, open-source AI-native browser with a built-in assistant, local LLM support (Ollama), permission-gated OS automation, and end-to-end encrypted cross-device sync. Built by Preet Patel (Ponsri School) with Electron, Next.js, and TypeScript.",
+  description: "Aartiq is a local-first, open-source AI-native browser with a built-in assistant, local LLM support (Ollama), permission-gated OS automation, and end-to-end encrypted cross-device sync. Built by Latestinssan (Ponsri School) with Electron, Next.js, and TypeScript.",
   keywords: [
     "Aartiq", "Aartiq Browser", "AI Browser", "Autonomous Browser",
     "Browser Automation", "Electron Browser", "AI Agent",
@@ -39,18 +39,16 @@ export const metadata: Metadata = {
     "Permission-Gated Automation", "Secure Browser",
     "AI-Integrated Browser", "AI Task Agent",
     "PONSRISCHOOL BROWSER", "Ponsri School Browser", "AARTIQ PONSRISCHOOL",
-    "AARTIQ PREET", "aarti preet", "aarti preet browser",
-    "Preet Patel", "Preet3627", "Latestinssan",
-    "Aartipreet", "aart", "aartiq", "aartiqpreet",
-    "aartiq preet", "aarti preet", "aartipreet browser",
+    "Latestinssan",
+    "aart", "aartiq",
     "aarti", "aarti browser", "local first browser",
     "privacy first AI browser", "open source AI automation"
   ],
   authors: [
-    { name: "Preet Patel", url: "https://github.com/Preet3627" },
-    { name: "Preet Patel", url: "https://github.com/Latestinssan" }
+    { name: "Latestinssan", url: "https://github.com/Latestinsaan" },
+    { name: "Latestinssan", url: "https://github.com/Latestinssan" }
   ],
-  creator: "Preet Patel",
+  creator: "Latestinssan",
   publisher: "Aartiq",
   formatDetection: {
     email: false,
@@ -69,7 +67,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Aartiq - Open Source AI-Integrated Browser',
     description: 'Open-source browser with a built-in AI assistant, local LLM support, and cross-device sync.',
-    creator: '@Preet3627',
+    creator: '@Latestinsaan',
   },
   robots: {
     index: true,
@@ -147,15 +145,15 @@ export default function RootLayout({
               "image": LOGO_URL,
               "founder": {
                 "@type": "Person",
-                "name": "Preet Patel",
-                "url": "https://github.com/Preet3627",
+                "name": "Latestinssan",
+                "url": "https://github.com/Latestinsaan",
                 "sameAs": [
-                  "https://github.com/Preet3627",
+                  "https://github.com/Latestinsaan",
                   "https://github.com/Latestinssan"
                 ]
               },
               "sameAs": [
-                "https://github.com/Preet3627/Aartiq",
+                "https://github.com/Latestinsaan/Aartiq",
                 "https://aartiq.ponsrischool.in"
               ]
             })
@@ -182,8 +180,8 @@ export default function RootLayout({
               },
               "author": {
                 "@type": "Person",
-                "name": "Preet Patel",
-                "url": "https://github.com/Preet3627",
+                "name": "Latestinssan",
+                "url": "https://github.com/Latestinsaan",
                 "memberOf": {
                   "@type": "Organization",
                   "name": "Aartiq Team"
@@ -191,7 +189,7 @@ export default function RootLayout({
               },
               "downloadUrl": `${SITE_URL}/downloads`,
               "softwareVersion": APP_VERSION.version,
-              "releaseNotes": "https://github.com/Preet3627/Aartiq/releases",
+              "releaseNotes": "https://github.com/Latestinsaan/Aartiq/releases",
               "featureList": [
                 "AI Agent Control",
                 "Local LLM Support (Ollama)",
@@ -218,8 +216,8 @@ export default function RootLayout({
               "dateModified": "2026-04-06",
               "author": {
                 "@type": "Person",
-                "name": "Preet Patel",
-                "url": "https://github.com/Preet3627"
+                "name": "Latestinssan",
+                "url": "https://github.com/Latestinsaan"
               },
               "publisher": {
                 "@type": "Organization",

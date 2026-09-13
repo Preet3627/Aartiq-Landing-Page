@@ -27,7 +27,7 @@ export default function DownloadsPage() {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => setUser(user));
-    fetch("https://api.github.com/repos/Preet3627/Aartiq/releases/latest")
+    fetch("https://api.github.com/repos/Latestinsaan/Aartiq/releases/latest")
       .then(res => res.json())
       .then(data => setLatestRelease(data));
   }, []);

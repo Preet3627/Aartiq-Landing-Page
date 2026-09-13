@@ -581,7 +581,7 @@ export default function OverviewPage() {
           <p className="mt-6 text-base font-bold text-white/60">
             Thank you for your patience and support. <span className="text-rose-400">❤️</span>
           </p>
-          <p className="mt-1 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">— Preet Patel</p>
+          <p className="mt-1 text-[10px] font-black uppercase tracking-[0.4em] text-white/30">— Latestinssan</p>
         </div>
       </motion.section>
 
@@ -623,7 +623,7 @@ export default function OverviewPage() {
           All other components remain Apache 2.0.
         </p>
         <p className="mt-6 rounded-[1.5rem] border border-amber-500/10 bg-amber-500/[0.03] p-6 text-sm font-medium leading-relaxed text-white/40">
-          "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627).
+          "Aartiq™ is a trademark of <span className="text-white/70">Latestinssan</span>.
           While our source code is freely available under the Apache 2.0 License, this license does not grant
           permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this
           browser must be rebranded under a completely different name."

@@ -183,25 +183,27 @@ const securityLayers = [
     level: 5,
     description: "Shell commands execute inside platform-specific OS sandboxes that enforce process, filesystem, and network boundaries. Execution is FAIL-CLOSED: if the sandbox cannot be built and verified, the command is never run — there is no automatic fallback to unsandboxed execution.",
     howItWorks: [
-      "macOS: Seatbelt (sandbox-exec) with a closed-by-default profile — (deny file-read*) and (deny file-write*) then re-allow only system paths + allowlisted directories, (deny network*), and (deny process-exec*) with allowlisted exec paths",
+      "macOS: Seatbelt (sandbox-exec) with a closed-by-default profile — (deny file-read*) and (deny file-write*) then re-allow only system paths + allowlisted directories + workspace, (deny network*), (deny system-socket) to block AF_UNIX IPC, (deny signal) confined to self/children, (deny file-map-executable) mirroring the exec allowlist, and (deny file-write-mount file-write-umount)",
       "The Seatbelt profile is written to a temp file and validated with a pre-flight `sandbox-exec -f <profile> /usr/bin/true` run; if the profile fails to compile, the command is rejected (SANDBOX_POLICY_INVALID)",
-      "Linux: bubblewrap (bwrap) with unshared pid/net/ipc/uts namespaces, read-only system mounts (/usr, /bin, /sbin, /lib, /lib64, /etc), private /tmp, and --unshare-net",
-      "bubblewrap gets an extra capability pre-flight: `--version` succeeds even when user namespaces are disabled, so we run a real `--unshare-pid/net/ipc/uts /bin/true` probe and fail closed if the namespaces we require cannot be created (common in locked-down containers and some CI runners)",
-      "Windows: Job Object containment (src/core/win-job-runner.ps1) — the target is created SUSPENDED, assigned to a Job Object, verified via IsProcessInJob, then resumed; limits (KILL_ON_JOB_CLOSE, active-process cap, job memory, die-on-unhandled-exception) are applied and verified before the target runs a single instruction",
-      "Windows explicitly does NOT provide OS-level filesystem or network isolation in this release — the directory allowlist is enforced at the application layer (isPathAllowed), and requesting a per-process network policy fails closed (SANDBOX_UNAVAILABLE)",
+      "Linux: bubblewrap (bwrap) with unshared pid/net/ipc/uts/user/cgroup namespaces, a new session (--new-session), read-only system mounts (/usr, /bin, /sbin, /lib, /lib64, /etc), private /tmp, and --unshare-net",
+      "bubblewrap gets an extra capability pre-flight: `--version` succeeds even when user namespaces are disabled, so we run a real `--unshare-pid/net/ipc/uts/user/cgroup /bin/true` probe and fail closed if the namespaces we require cannot be created (common in locked-down containers and some CI runners)",
+      "Windows: AppContainer (src/core/win-job-runner.ps1) — the target process is created SUSPENDED under a restricted token (dangerous privileges deleted, Low integrity) as an AppContainer via the SECURITY_CAPABILITIES startup-info attribute list, assigned to a Job Object, and verified via IsProcessInJob before resuming; limits (KILL_ON_JOB_CLOSE, active-process cap, job memory, die-on-unhandled-exception) are applied and verified before the target runs a single instruction",
+      "Windows filesystem isolation is at the OS layer: the AppContainer package SID is granted ACL access ONLY to allowlisted directories, the sandbox workspace, and the resolved executable (icacls). Anything not allowlisted stays DENIED. Grants are revoked and the AppContainer profile deleted after each run",
+      "Windows network isolation is at the OS layer: the AppContainer carries ZERO capabilities, so it cannot initiate network connections at all; TEMP/TMP/LOCALAPPDATA are rerouted into the per-run profile folder",
       "All platforms: environment is sanitized — only allowlisted variables (PATH, HOME, USER, LANG, LC_ALL, TMPDIR, SHELL, TERM, etc.) pass through; API keys and tokens never reach the sandboxed process (buildSafeEnv)",
-      "Every result carries an explicit `isolation` object ({ filesystem, network, process }) so callers cannot mistake process containment for filesystem/network isolation: macOS/Linux report all true, Windows reports {false, false, true}, and any setup failure reports all false. No single boolean 'sandboxed' is trusted on its own",
-      "Network inside the sandbox is denied by default on macOS (deny network*) and Linux (--unshare-net). Per-domain network allowlisting is NOT supported on any platform — requesting it fails closed. Windows cannot enforce per-process network policy in this release",
+      "Every result carries an explicit `isolation` object ({ filesystem, network, process }) so callers cannot mistake process containment for filesystem/network isolation: macOS, Linux, and Windows all report {true, true, true} when the platform sandbox is active, and any setup failure or unsandboxed run reports all false. No single boolean 'sandboxed' is trusted on its own",
+      "Network inside the sandbox is denied by default on all platforms: macOS (deny network*), Linux (--unshare-net), and Windows (zero AppContainer capabilities). Per-domain network allowlisting is NOT supported on any platform — requesting it fails closed",
+      "Honest macOS residual: Seatbelt profiles start from (allow default), so not every IPC class is denied-by-default — Mach IPC remains usable (required for node/python/shell), and Apple Events cannot be filtered by current sandbox-exec (operation not exposed), so a sandboxed command could still ask another app to act on its behalf",
       "Source files: src/core/sandbox-executor.js, src/core/win-job-runner.ps1, src/core/directory-allowlist.js"
     ],
     benefits: [
       "Defense in depth: even if the regex blocklist is bypassed, the OS sandbox still confines what the command can read, write, execute, and reach on the network",
-      "On macOS/Linux the sandbox physically prevents writes outside the workspace + allowlisted write directories; on Windows this is enforced at the application layer by isPathAllowed()",
+      "On all three platforms the sandbox physically prevents writes outside the workspace + allowlisted write directories — on Windows this is enforced by OS ACL grants on the AppContainer package SID",
       "Credential leakage via ambient environment variables is prevented by the env allowlist",
-      "Network exfiltration is blocked by default-deny networking inside the sandbox (macOS/Linux), not by firewall rules"
+      "Network exfiltration is blocked by default-deny networking inside the sandbox (macOS/Linux/Windows), not by firewall rules"
     ],
     notGuaranteed: [
-      "On Windows, the Job Object confines processes only. It does NOT isolate the filesystem or network at the OS layer. The directory allowlist and network denial are enforced by application code (isPathAllowed), not by the kernel — a bug in that code, or a path you explicitly allowlist, sits outside the Job Object's reach.",
+      "On Windows before v0.4.0 the Job Object confined processes only; AppContainer (v0.4.0) adds OS-layer filesystem (package-SID ACL grants) and network (zero capabilities) isolation. Windows CI verifies the runtime matrix on windows-latest.",
       "A sandbox confines what a command can do. It does not make a malicious command safe, and it does not decide what the AI asks for. Human approval is a social control, not a cryptographic one; a coerced or careless approval still executes.",
       "Seatbelt and bubblewrap constrain the process, not the data it is handed. If you allowlist a directory that contains secrets, the sandboxed command can read them. Allowlists are trust boundaries you draw — only as good as where you draw them.",
       "These guarantees apply to code executed through executeSandboxed(). The Electron main process, the renderer, native modules, and helper apps are NOT inside the sandbox. Sandboxing reduces blast radius; it is not a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code.",
@@ -284,7 +286,7 @@ const threatScenarios = [
   {
     threat: "Network Exfiltration via Shell",
     scenario: "AI is tricked into executing curl to upload sensitive data to an attacker's server",
-    defense: "The sandbox denies network by default: macOS Seatbelt emits (deny network*) and Linux bubblewrap runs with --unshare-net. curl/wget downloads are additionally flagged by the command validator, and all shell execution requires human approval. Per-domain allowlisting is not supported; Windows cannot enforce per-process network policy in this release.",
+    defense: "The sandbox denies network by default: macOS Seatbelt emits (deny network*), Linux bubblewrap runs with --unshare-net, and Windows AppContainers carry zero capabilities. curl/wget downloads are additionally flagged by the command validator, and all shell execution requires human approval. Per-domain allowlisting is not supported on any platform.",
     layer: "OS-Level Sandboxing"
   },
   {
@@ -1246,8 +1248,9 @@ export default function SecurityPage() {
               </h4>
               <p className="text-sm text-white/50">
                 macOS Seatbelt fail-closed + real OS-enforcement (read/write denied outside the allowlist, /tmp allowed,
-                network bind denied, symlink-escape denied, child processes contained), plus Linux bubblewrap and
-                Windows Job Object contract tests and command-tokenizer/env-sanitization checks.
+                network bind denied, AF_UNIX socket denied, cross-process signal denied, self-signal allowed, symlink-escape
+                denied, child processes contained), plus Linux bubblewrap, Windows AppContainer contract tests and
+                command-tokenizer/env-sanitization checks.
               </p>
             </div>
             <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">
@@ -1256,8 +1259,8 @@ export default function SecurityPage() {
               </h4>
               <p className="text-sm text-white/50">
                 JS contract (isolation flags, fail-closed network/allowlist policy) runs everywhere; the
-                runtime matrix — suspended start, verified job assignment, grandchild containment, secret
-                isolation, and KILL_ON_JOB_CLOSE — runs on Windows CI (windows-latest).
+                runtime matrix — suspended AppContainer start, OS-enforced ACL allowlist, verified job basis,
+                grandchild containment, secret isolation, and KILL_ON_JOB_CLOSE — runs on Windows CI (windows-latest).
               </p>
             </div>
             <div className="rounded-[2rem] border border-white/5 bg-white/[0.02] p-8">

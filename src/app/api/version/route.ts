@@ -5,7 +5,7 @@ export async function GET() {
   const fallback = getVersionFromPackage();
 
   try {
-    const res = await fetch('https://api.github.com/repos/Preet3627/Aartiq/releases/latest', {
+    const res = await fetch('https://api.github.com/repos/Latestinsaan/Aartiq/releases/latest', {
       next: { revalidate: 300 },
     });
     if (res.ok) {

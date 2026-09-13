@@ -214,7 +214,7 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="space-y-3 mt-4">
                 {[
-                  "Source code: github.com/Preet3627/Aartiq",
+                  "Source code: github.com/Latestinsaan/Aartiq",
                   "All data handling logic is auditable in the source",
                   "Community contributions and security reviews are welcome",
                   "No telemetry or analytics tracking code exists in the codebase",
@@ -260,7 +260,7 @@ export default function PrivacyPolicy() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-pink-400" />
-                  GitHub: <a href="https://github.com/Preet3627/Aartiq/issues" target="_blank" className="text-sky-400 hover:underline">github.com/Preet3627/Aartiq/issues</a>
+                  GitHub: <a href="https://github.com/Latestinsaan/Aartiq/issues" target="_blank" className="text-sky-400 hover:underline">github.com/Latestinsaan/Aartiq/issues</a>
                 </li>
               </ul>
             </div>

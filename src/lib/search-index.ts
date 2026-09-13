@@ -63,8 +63,8 @@ export const searchIndex: SearchIndex = {
     {
       id: "testing",
       title: "Testing & Test Series",
-      description: "Jest test suite results: 13 suites, 471 tests passing across sandboxing, security, extraction, and automation",
-      content: "testing test series jest test suites tests passing coverage sandbox-security directory-allowlist security-validator security-fixes extraction dom-engine dom-handlers webauthn automation skill-loading tab-intelligence component-tests home-intelligence fail-closed Seatbelt bubblewrap bwrap Job Object Windows macOS Linux unit integration how to run npx jest",
+      description: "Jest test suite runs in CI on every push and PR across macOS, Linux, and Windows runners — sandboxing (Seatbelt / bubblewrap / AppContainer), security, extraction, and automation. Counts are declared test blocks; see /docs/testing.",
+      content: "testing test series jest test suites tests passing coverage sandbox-security directory-allowlist security-validator security-fixes extraction dom-engine dom-handlers webauthn automation skill-loading tab-intelligence component-tests home-intelligence fail-closed Seatbelt bubblewrap bwrap AppContainer Job Object Windows macOS Linux CI unit integration how to run npx jest",
       url: "/docs/testing",
       keywords: ["tests", "testing", "jest", "test series", "coverage", "sandbox", "security", "npx jest", "CI"],
       type: "page"
@@ -286,8 +286,8 @@ export const searchIndex: SearchIndex = {
     {
       id: "security-os-sandboxing",
       title: "OS-Level Sandboxing",
-      description: "Platform-specific sandboxing with Seatbelt, bubblewrap, and Job Objects",
-      content: "OS sandboxing Seatbelt macOS bubblewrap Linux Job Objects Windows filesystem network process containment",
+      description: "Platform-specific sandboxing with Seatbelt (macOS), bubblewrap (Linux), and AppContainer + Job Objects (Windows)",
+      content: "OS sandboxing Seatbelt macOS bubblewrap Linux AppContainer Job Objects Windows filesystem network process containment",
       url: "/docs/security#os-level-sandboxing",
       section: "OS-Level Sandboxing",
       keywords: ["sandbox", "Seatbelt", "bubblewrap", "Job Objects", "filesystem", "network", "confinement"],

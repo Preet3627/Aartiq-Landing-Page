@@ -625,15 +625,15 @@ export default function Home() {
       setUser(user);
     });
 
-    fetch("https://api.github.com/repos/Preet3627/Aartiq/releases/latest")
+    fetch("https://api.github.com/repos/Latestinsaan/Aartiq/releases/latest")
       .then(res => res.json())
       .then(data => setLatestRelease(data))
       .catch(err => console.error("Release fetch failed:", err));
 
     Promise.all([
-      fetch("https://api.github.com/repos/Preet3627/Aartiq").then(res => res.json()),
-      fetch("https://api.github.com/repos/Preet3627/Aartiq/contributors?per_page=100").then(res => res.json()),
-      fetch("https://api.github.com/search/issues?q=repo:Preet3627/Aartiq+is:pr").then(res => res.json())
+      fetch("https://api.github.com/repos/Latestinsaan/Aartiq").then(res => res.json()),
+      fetch("https://api.github.com/repos/Latestinsaan/Aartiq/contributors?per_page=100").then(res => res.json()),
+      fetch("https://api.github.com/search/issues?q=repo:Latestinsaan/Aartiq+is:pr").then(res => res.json())
     ])
     .then(([repoData, contributorsData, prData]) => {
       setGithubStats({
@@ -998,7 +998,7 @@ export default function Home() {
               <span className="text-white/20">→</span>
               <Link href="/docs/testing" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Tests</Link>
               <span className="text-white/20">→</span>
-              <a href="https://github.com/Preet3627/Aartiq" target="_blank" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Source</a>
+              <a href="https://github.com/Latestinsaan/Aartiq" target="_blank" className="rounded-full border border-white/10 bg-white/5 px-5 py-3 transition hover:border-cyan-400/50 hover:text-cyan-400">Source</a>
             </div>
           </div>
         </section>
@@ -1021,10 +1021,10 @@ export default function Home() {
                   Aartiq is young — a handful of stars, two contributors, no PRs yet. That is not a weakness here: every capability claim above links to its source or test. You can read the whole thing in an afternoon.
                 </p>
                 <div className="flex flex-wrap gap-5">
-                  <a href="https://github.com/Preet3627/Aartiq" target="_blank" className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10">
+                  <a href="https://github.com/Latestinsaan/Aartiq" target="_blank" className="flex items-center gap-4 rounded-full bg-white/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white transition hover:bg-white/10">
                     View Source <ExternalLink size={18} />
                   </a>
-                  <a href="https://github.com/Preet3627/Aartiq/fork" target="_blank" className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white">
+                  <a href="https://github.com/Latestinsaan/Aartiq/fork" target="_blank" className="flex items-center gap-4 rounded-full border border-white/10 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-white/40 transition hover:border-white hover:text-white">
                     Fork Project <GitPullRequest size={18} />
                   </a>
                   <Link href="/docs/testing" className="flex items-center gap-4 rounded-full border border-sky-500/20 bg-sky-500/5 px-10 py-5 text-xs font-black uppercase tracking-[0.3em] text-sky-400 transition hover:bg-sky-500/20">
@@ -1256,7 +1256,7 @@ export default function Home() {
                      </Link>
                      <Link href="/docs/getting-started" className="flex gap-6 rounded-[2.5rem] border border-white/5 bg-white/[0.03] p-8 hover:bg-white/[0.05] transition-colors group">
                        <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-sky-500/10 text-sky-400 group-hover:bg-sky-500 group-hover:text-black transition-colors"><CheckCircle2 size={16} /></div>
-                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Preet3627/Aartiq</span>
+                       <span className="text-base font-medium leading-relaxed text-white/60">Installation and configuration for all platforms. Source: github.com/Latestinsaan/Aartiq</span>
                      </Link>
                    </div>
                  </div>
@@ -1341,7 +1341,7 @@ export default function Home() {
            </div>
            <div className="mx-auto mt-10 max-w-4xl rounded-[40px] border border-amber-500/10 bg-amber-500/[0.03] p-10">
              <p className="text-base font-medium leading-relaxed text-white/40">
-               "Aartiq™ is a trademark of <span className="text-white/70">Preet Patel</span> (Latestinssan, Preet3627). While our source code is freely available under the Apache 2.0 License, this license does not grant permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this browser must be rebranded under a completely different name."
+               "Aartiq™ is a trademark of <span className="text-white/70">Latestinssan</span>. While our source code is freely available under the Apache 2.0 License, this license does not grant permission to use the trade name, logos, or branding of Aartiq. Any modified distributions of this browser must be rebranded under a completely different name."
              </p>
            </div>
         </section>
@@ -1394,11 +1394,11 @@ export default function Home() {
                <div>
                    <p className="mb-8 text-[11px] font-black uppercase tracking-[0.5em] text-white/40">Source Code</p>
                    <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
-                      <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser" target="_blank" className="hover:text-sky-400 transition">aartiq-browser/</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/src/lib" target="_blank" className="hover:text-sky-400 transition">src/lib/</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/src/components" target="_blank" className="hover:text-sky-400 transition">src/components/</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/src/lib/native-panels" target="_blank" className="hover:text-sky-400 transition">native-panels/</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/tree/main/flutter_browser_app" target="_blank" className="hover:text-sky-400 transition">flutter_browser_app/</a></li>
+                      <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser" target="_blank" className="hover:text-sky-400 transition">aartiq-browser/</a></li>
+                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/lib" target="_blank" className="hover:text-sky-400 transition">src/lib/</a></li>
+                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/components" target="_blank" className="hover:text-sky-400 transition">src/components/</a></li>
+                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/src/lib/native-panels" target="_blank" className="hover:text-sky-400 transition">native-panels/</a></li>
+                     <li><a href="https://github.com/Latestinsaan/Aartiq/tree/main/flutter_browser_app" target="_blank" className="hover:text-sky-400 transition">flutter_browser_app/</a></li>
                   </ul>
                </div>
                <div>
@@ -1414,7 +1414,7 @@ export default function Home() {
                   <ul className="space-y-5 text-xs font-black uppercase tracking-widest text-white/40">
                      <li><a href="/docs" className="hover:text-sky-400 transition">Documentation</a></li>
                      <li><a href="/privacy" className="hover:text-sky-400 transition">Privacy Policy</a></li>
-                     <li><a href="https://github.com/Preet3627/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
+                     <li><a href="https://github.com/Latestinsaan/Aartiq/security" className="hover:text-sky-400 transition">Security</a></li>
                   </ul>
                </div>
            </div>
@@ -1422,11 +1422,11 @@ export default function Home() {
                <div className="flex flex-col gap-2">
                    <p className="text-xs font-black uppercase tracking-[0.5em] text-white/30">© 2026 Aartiq™. All rights reserved.</p>
                   <p className="text-[10px] font-bold text-white/30 uppercase tracking-[0.3em]">
-                    Built by <span className="text-white/20">Preet Patel</span> (Latestinssan · Preet3627) — v{version || '...'}
+                    Built by <span className="text-white/20">Latestinssan</span> — v{version || '...'}
                   </p>
                </div>
                <div className="flex items-center gap-10">
-                  <a href="https://github.com/Preet3627/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
+                  <a href="https://github.com/Latestinsaan/Aartiq" aria-label="Aartiq on GitHub" className="text-white/40 hover:text-white transition transform hover:scale-110"><Github size={24} /></a>
                   <a href="https://www.producthunt.com/products/aartiq?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-aartiq" target="_blank" rel="noopener noreferrer" aria-label="Aartiq on Product Hunt">
                     <img alt="Aartiq - For Questions That Matter | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1233199&amp;theme=dark&amp;t=1787761147836" />
                   </a>

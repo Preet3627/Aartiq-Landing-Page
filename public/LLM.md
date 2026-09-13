@@ -1,6 +1,6 @@
 # Aartiq - Public Overview for LLMs
 
-Aartiq is an open-source Electron browser with a built-in AI assistant, developed by PreetPatel (Latestinssan). It integrates AI workflows directly into the browsing experience.
+Aartiq is an open-source Electron browser with a built-in AI assistant, developed by Latestinssan. It integrates AI workflows directly into the browsing experience.
 
 ## Key Features
 - **Native AI Orchestration**: Support for Google Gemini, GPT-4o, Claude, and local models (Deepseek R1 via Ollama).
@@ -18,7 +18,7 @@ Aartiq is an open-source Electron browser with a built-in AI assistant, develope
 
 ## Official Links
 - **Landing Page**: [https://aartiq.ponsrischool.in](https://aartiq.ponsrischool.in)
-- **Repository**: [https://github.com/Preet3627/Aartiq](https://github.com/Preet3627/Aartiq)
+- **Repository**: [https://github.com/Latestinsaan/Aartiq](https://github.com/Latestinsaan/Aartiq)
 - **Auth Endpoint**: `https://aartiq.ponsrischool.in/auth`
 - **Config API**: `https://aartiq.ponsrischool.in/api/config`
 

@@ -330,8 +330,8 @@ Extensions directory: ~/Library/Application Support/Aartiq/extensions/ (macOS)
 - **License**: Apache-2.0 (Browser), MIT (MCP Server)
 - **Language**: English
 - **Founded**: 2024
-- **Authors**: Preet Patel (Latestinssan, Preet3627)
-- **Repository**: https://github.com/Preet3627/Aartiq
+- **Authors**: Latestinssan
+- **Repository**: https://github.com/Latestinsaan/Aartiq
 - **Last updated**: 2026-07-20
 `;
 

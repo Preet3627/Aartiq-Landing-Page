@@ -9,19 +9,14 @@ export const docsMetadata: Metadata = {
     default: `Documentation | Aartiq Browser`,
     template: `%s | Aartiq Docs`,
   },
-  description: `Complete documentation for Aartiq Browser - An open-source browser with built-in AI assistant and OS automation, built by Preet Patel while preparing for JEE.`,
+  description: `Complete documentation for Aartiq Browser - An open-source browser with built-in AI assistant and OS automation, built by Latestinssan.`,
   keywords: [
     "Aartiq", 
     "Aartiq Docs", 
-    "Aartiq by Preet Patel", 
+    "Aartiq by Latestinssan", 
     "Aartiq India",
     "AI Browser Documentation",
     "Autonomous Browser Guide",
-    "Aartipreet",
-    "aartiqpreet",
-    "aartiq preet",
-    "aarti preet",
-    "aartipreet browser",
     "aarti browser"
   ],
   robots: {

@@ -20,15 +20,15 @@ import {
 } from "lucide-react";
 
 const testSuites = [
-  { file: "sandbox-security.test.js", count: 60, focus: "Fail-closed sandboxing (Seatbelt / bubblewrap / Job Objects), macOS adversarial OS-enforcement, command tokenizer, env sanitization" },
-  { file: "windows-job-sandbox.test.js", count: 10, focus: "Windows Job Object JS contract + runtime matrix (suspended start, verified job assignment, grandchild containment, secret isolation, KILL_ON_JOB_CLOSE)" },
-  { file: "linux-bwrap-sandbox.test.js", count: 14, focus: "bubblewrap arg generation, namespace/unshare flags, capability pre-flight fail-closed, Linux runtime enforcement" },
+  { file: "sandbox-security.test.js", count: 65, focus: "Fail-closed sandboxing (Seatbelt / bubblewrap / AppContainer + Job Objects), macOS adversarial OS-enforcement (AF_UNIX + signal confinement), command tokenizer, env sanitization" },
+  { file: "windows-job-sandbox.test.js", count: 31, focus: "Windows AppContainer JS contract + runtime matrix (suspended AppContainer start, OS-enforced ACL allowlist, verified job, grandchild containment, secret isolation, KILL_ON_JOB_CLOSE)" },
+  { file: "linux-bwrap-sandbox.test.js", count: 14, focus: "bubblewrap arg generation, namespace/unshare flags (pid/net/ipc/uts/user/cgroup), capability pre-flight fail-closed, Linux runtime enforcement" },
   { file: "security-fixes.test.js", count: 40, focus: "Regression suite for applied security fixes" },
   { file: "security-validator.test.js", count: 42, focus: "Blocklist / injection detection / risk classification" },
   { file: "directory-allowlist.test.js", count: 36, focus: "Path canonicalization, symlink traversal, read/write separation" },
-  { file: "approval-ticket-security.test.js", count: 21, focus: "Ticket-based approval + capability-controller regression (audit findings)" },
+  { file: "approval-ticket-security.test.js", count: 25, focus: "Ticket-based approval + capability-controller regression (audit findings)" },
   { file: "skill-loading.test.js", count: 54, focus: "Dynamic skill loading, validation allowlist, require-path resolution" },
-  { file: "extraction.test.js", count: 58, focus: "Web extractor, DOM parsing, content extraction edge cases" },
+  { file: "extraction.test.js", count: 15, focus: "Web extractor, DOM parsing, content extraction edge cases (declared test blocks; it.each expands case count)" },
   { file: "tab-intelligence.test.ts", count: 51, focus: "Tab intelligence, domain grouping, smart icons" },
   { file: "dom-engine.test.js", count: 40, focus: "DOM interaction engine, click/fill strategies" },
   { file: "component-tests.test.js", count: 37, focus: "React component behavior and props" },
@@ -40,10 +40,10 @@ const testSuites = [
 
 const covered = [
   "Fail-closed by construction: every sandbox setup, validation, or policy failure returns a structured SANDBOX_* error and the command is never silently run unsandboxed — there is no automatic fallback path",
-  "macOS Seatbelt — real OS enforcement: writing outside the directory allowlist is denied by the kernel and the file is verified absent; reading a secret outside the allowlist is denied; /tmp is writable; a network bind is denied; reading/writing through a symlink that escapes the allowlist is denied; a child process spawned by the target is still contained",
-  "Linux bubblewrap — closed-by-default namespaces (pid/net/ipc/uts), correct --bind (write) vs --ro-bind (read-only) mapping, network denied by default, and fail-closed when bwrap is missing OR present-but-incapable of creating the required namespaces (the new capability pre-flight)",
-  "Windows Job Object containment — policy fail-closed (a per-process network policy is rejected as SANDBOX_UNAVAILABLE), missing-runner fail-closed, result parsing, explicit isolation flags ({ filesystem:false, network:false, process:true }), and a runtime matrix proving suspended start + verified job assignment + grandchild containment + secret isolation + KILL_ON_JOB_CLOSE",
-  "Explicit isolation contract — every result carries { filesystem, network, process } so callers cannot mistake process containment for filesystem/network isolation; Windows reports process-only, macOS/Linux report all true, and any setup failure reports all false",
+  "macOS Seatbelt — real OS enforcement: writing outside the directory allowlist is denied by the kernel and the file is verified absent; reading a secret outside the allowlist is denied; /tmp is writable; an IP network bind is denied; an AF_UNIX socket bind is denied; signalling a host process is denied while self-signal works; reading/writing through a symlink that escapes the allowlist is denied; a child process spawned by the target is still contained",
+  "Linux bubblewrap — closed-by-default namespaces (pid/net/ipc/uts/user/cgroup + new session), correct --bind (write) vs --ro-bind (read-only) mapping, network denied by default, and fail-closed when bwrap is missing OR present-but-incapable of creating the required namespaces (the capability pre-flight)",
+  "Windows AppContainer — policy fail-closed (missing runner, invalid allowlist, network-allowlist requests), result parsing, explicit isolation flags ({ filesystem:true, network:true, process:true }), plus a runtime matrix proving suspended AppContainer start + OS-enforced ACL allowlist + verified job assignment + grandchild containment + secret isolation + KILL_ON_JOB_CLOSE",
+  "Explicit isolation contract — every result carries { filesystem, network, process }; macOS/Linux/Windows all report all-true when their platform sandbox is active, and any setup failure or unsandboxed run reports all-false",
   "Directory allowlist — fs.realpath() canonicalization, ../ traversal, symlink escape, read-only vs read-write separation, and invalid/missing-path rejection (never silently skipped)",
   "Command execution — the tokenizer preserves quoted arguments verbatim, separates direct execution from explicit shell mode, and never reconstructs a command via a string-joined sh -c; it is documented as a classifier, not a security parser",
   "Environment sanitization — API keys, tokens, and secrets are stripped from every sandboxed process; only an allowlisted set of non-credential variables passes through",
@@ -51,11 +51,11 @@ const covered = [
 ];
 
 const limitations = [
-  "Windows and Linux runtime enforcement tests are real test files, but they only EXECUTE on their own OS: the Windows matrix runs on windows-latest CI, the Linux matrix on Linux hosts with bwrap installed. On macOS they are collected but skipped — their JS-contract portions still run everywhere.",
-  "macOS Seatbelt OS-enforcement tests execute only on macOS; they ran and passed on this machine. The profile-generation and fail-closed config paths are asserted on every platform.",
+  "Runtime enforcement tests only EXECUTE on their own OS, and CI runs all three: the Windows AppContainer matrix on windows-latest, macOS Seatbelt enforcement on macos-latest, and Linux bubblewrap on ubuntu-latest (where runtime blocks may be skipped if the runner restricts user namespaces — the fail-closed contract tests still run).",
+  "macOS Seatbelt OS-enforcement tests execute only on macOS; they pass on this machine and run in CI on macos-latest. The profile-generation and fail-closed config paths are asserted on every platform.",
   "These are unit and integration tests for core modules. They do NOT cover the full Electron UI, installers, MSIX/MSI packaging, or complete end-to-end user flows.",
   "A sandbox confines what code can do; it is not a proof that the AI's decisions are safe, nor a substitute for least-privilege OS accounts, patched dependencies, or simply not running untrusted code. See the security page's 'What this does NOT guarantee'.",
-  "Test counts reflect the repository state at the time this page was generated (525 tests across 16 suites; 514 passing, 11 platform-skipped, 0 failing). Always run npx jest to get current numbers.",
+  "Counts above are declared it()/test() blocks as of the last sync; suites using it.each expand into more executed cases. Run npx jest (or check the CI run for jest.yml) for exact pass/skip/fail numbers.",
 ];
 
 export default function TestingPage() {
@@ -268,7 +268,7 @@ export default function TestingPage() {
 
         <div className="mt-10 flex flex-wrap items-center gap-4">
           <a
-            href="https://github.com/Preet3627/Aartiq/tree/main/aartiq-browser/tests"
+            href="https://github.com/Latestinsaan/Aartiq/tree/main/aartiq-browser/tests"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:bg-sky-400 hover:text-white"

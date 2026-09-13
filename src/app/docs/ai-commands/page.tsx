@@ -171,7 +171,7 @@ const commands = [
       { name: "url", type: "string", required: true, description: "Target URL" }
     ],
     example: {
-      json: `[NAVIGATE: https://github.com/Preet3627/Aartiq]`,
+      json: `[NAVIGATE: https://github.com/Latestinsaan/Aartiq]`,
       natural: "Go to the Aartiq GitHub repository"
     }
   },
@@ -1005,7 +1005,7 @@ const commands = [
     example: {
       json: `{
   "command": "ADD_BOOKMARK",
-  "url": "https://github.com/Preet3627/Aartiq",
+  "url": "https://github.com/Latestinsaan/Aartiq",
   "title": "Aartiq Repository"
 }`,
       natural: "Bookmark this page"
